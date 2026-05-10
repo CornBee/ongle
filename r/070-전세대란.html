@@ -59,23 +59,37 @@
     margin: 0 auto;
     padding: 2.4em 1.4em 4em;
   }
-  /* HERO — 모바일 28~32px 후크 */
-  .hero { padding: 0.4em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.8em; }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.7em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
   .article-meta {
-    font-size: 0.88em;
+    font-size: 0.84em;
     color: var(--muted);
-    margin-bottom: 0.7em;
+    margin: 0.8em 0 0.6em;
   }
   .article-meta a { color: var(--muted); text-decoration: underline; }
-  .article-title {
-    font-size: 2em;
-    font-weight: 800;
-    line-height: 1.22;
-    margin: 0 0 0.4em;
-    letter-spacing: -0.02em;
-  }
   .article-subtitle {
-    font-size: 1.02em;
+    font-size: 1em;
     color: var(--ink-soft);
     margin: 0 0 1em;
     white-space: pre-line;
@@ -160,20 +174,59 @@
     word-break: break-all;
     overflow-wrap: anywhere;
   }
-  /* Cusdis comments section */
-  .comments {
-    margin: 3em 0 1em;
-    padding-top: 1.6em;
-    border-top: 1px solid var(--rule);
+  /* Cusdis comments — 토스 톤 wrapper */
+  .comments-section {
+    margin: 48px 0 32px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
+  .comments-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .comments-hint {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+  .comments-wrapper {
+    background: #FAFBFC;
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 80px;
+  }
+  .comments-wrapper iframe { border: none; width: 100%; }
+  .comments { margin: 0; padding: 0; border: 0; }
   .comments-placeholder {
-    background: #f7f9fb;
+    background: transparent;
     border: 1px dashed #cdd5dc;
     border-radius: 10px;
     padding: 1em 1.2em;
     color: var(--muted);
     font-size: 0.92em;
     text-align: center;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 1.4em 0 0;
+    padding: 1.2em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* dark mode 대응 */
+  @media (prefers-color-scheme: dark) {
+    .comments-wrapper { background: #1a1d20; }
   }
   /* ONGLE brand 마스코트 */
   .brand-mascot {
@@ -234,9 +287,24 @@
 </header>
 <main>
   <section class="hero">
+    <h1 class="article-title">정작 이번 정책으로 가장 안정적으로 돈이 흘러간 곳은 보증보험 한 곳이었습니다.</h1>
+    <div class="hero-visual"><pre class="mermaid">flowchart LR
+    A[양도세 중과 부활&lt;br/&gt;5/9] --&gt;|매도 의지 ↓| B[다주택자 매물 잠금&lt;br/&gt;-23.5%]
+    B --&gt;|공급 부족| C[전세값 ↑&lt;br/&gt;+0.23%/주]
+    C --&gt;|전세금 ↑| D[전세대출 잔액 ↑]
+    C --&gt;|역전세 위험 ↑| E[보증 수요 ↑]
+    C --&gt;|매수 전환 압박| F[중간 단계 분양·신축 수요]
+
+    E -.숨은 단계 1.-&gt; G[SGI·HUG 보증료 수입 ↑]
+    F -.숨은 단계 2.-&gt; H[살아남은 신탁사 점유율 ↑]
+    D -.숨은 단계 3.-&gt; I[은행·MBS 시장]
+
+    style A fill:#fff3e0
+    style G fill:#fff9c4
+    style H fill:#fff9c4
+    style I fill:#fff9c4
+</pre></div>
     <div class="article-meta">2026-05-10 · 약 7분 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
-    <h1 class="article-title">전세 대란 — 다주택자 시세조정의 진짜 수혜자는 누구인가?</h1>
-    <p class="article-subtitle">양도세 중과 부활(5/9) 직후 서울 전세 매물 −23.5%, 주간 전세값 +0.23%(6년 5개월 만에 최고), 2026년 서울 입주 −47.6%. 가격 상승분이 어디로 흘러가는지를 추적한 결과 — 상장된 직접 수혜 채널은 SGI서울보증, 그리고 살아남은 부동산 신탁사 두 곳입니다.</p>
     <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span></div>
     <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">양도세 중과 부활</div>  <div class="kpi-value">2026-05-09</div>  <div class="kpi-sub">조정대상지역 2주택 +20%P, 3주택 +30%P</div></div><div class="kpi-card">  <div class="kpi-label">서울 전세 매물 (5/9)</div>  <div class="kpi-value">16,240건</div>  <div class="kpi-sub">3개월 전 21,221건 대비 −23.5%</div></div><div class="kpi-card">  <div class="kpi-label">서울 주간 전세값 (5월 1주)</div>  <div class="kpi-value">+0.23%</div>  <div class="kpi-sub">6년 5개월 만에 최고치</div></div><div class="kpi-card">  <div class="kpi-label">2026 서울 입주</div>  <div class="kpi-value">24,462가구</div>  <div class="kpi-sub">전년 대비 −47.6%</div></div><div class="kpi-card">  <div class="kpi-label">2027 서울 입주 (추정)</div>  <div class="kpi-value">약 10,113가구</div>  <div class="kpi-sub">3년 전 대비 −58.7% (R114)</div></div></div>
     <div class="key-conclusion">전세값 +0.23%/주는 단순 가격 통계가 아니라 자금 이동 신호입니다. 매물 잠김 → 전세 전가 → 보증·금융 라인으로 자금이 흐르고, 상장된 직접 수혜 채널은 SGI서울보증이 사실상 유일합니다 — 단, 예금보험공사 지분 83.85% 오버행과 사고율 두 변수를 함께 봐야 합니다. 부동산 신탁업은 책임준공 부실로 양극화 — 부채비율·브랜드 점유율을 지킨 곳과 적자 누적 곳의 격차가 입주 절벽 3년간 더 벌어집니다.</div>
@@ -292,22 +360,7 @@
 <hr />
 <h2>③ 밸류체인 분해 — 전세값 0.23%가 만드는 자금 흐름</h2>
 <h3>전체 흐름도</h3>
-<pre class="mermaid">flowchart LR
-    A[양도세 중과 부활&lt;br/&gt;5/9] --&gt;|매도 의지 ↓| B[다주택자 매물 잠금&lt;br/&gt;-23.5%]
-    B --&gt;|공급 부족| C[전세값 ↑&lt;br/&gt;+0.23%/주]
-    C --&gt;|전세금 ↑| D[전세대출 잔액 ↑]
-    C --&gt;|역전세 위험 ↑| E[보증 수요 ↑]
-    C --&gt;|매수 전환 압박| F[중간 단계 분양·신축 수요]
 
-    E -.숨은 단계 1.-&gt; G[SGI·HUG 보증료 수입 ↑]
-    F -.숨은 단계 2.-&gt; H[살아남은 신탁사 점유율 ↑]
-    D -.숨은 단계 3.-&gt; I[은행·MBS 시장]
-
-    style A fill:#fff3e0
-    style G fill:#fff9c4
-    style H fill:#fff9c4
-    style I fill:#fff9c4
-</pre>
 <h3>단계별 행위자</h3>
 <p><strong>1단계 — 매물 잠금 (다주택자).</strong> 양도세율이 올라가면 매도 차익의 50~80%가 세금으로 빠지므로 매도가 비합리적입니다. 국토연구원 분석에 따르면 2018~2022년 수도권 71개 시군구 데이터에서 다주택자 양도세율이 1%P 오를 때 아파트 매매가격 변동률은 +0.206% 상승했습니다.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 즉 중과 = 가격 하락이 아니라 <strong>가격 상승</strong>으로 이어진 것이 historical pattern입니다.</p>
 <p><strong>2단계 — 거래량 절벽 (시장 전체).</strong> 2018년 4월 양도세 중과 직전 1분기 서울 아파트 거래량은 36,533건이었으나, 강화 조치 적용 2분기에는 17,062건으로 <strong>−53.3%</strong> 급감했습니다.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 거래가 안 일어나면 가격은 호가 한두 건으로 결정됩니다.</p>
@@ -397,7 +450,7 @@
 <li><strong>전세대출 시중은행</strong> — 잔액 증가는 단기 호재이나 역전세 부실이 누적되면 양면입니다. 보증으로 헤지된 부분 vs 보증 미가입분의 비율을 봐야 합니다.</li>
 </ul>
 <hr />
-<h2>⑤ 한국 시청자 stake — 이게 당신에게 뭐냐</h2>
+<h2>⑤ 그래서 당신에게는?</h2>
 <p><strong>무주택 임차인.</strong> 전세금반환보증은 임차인이 직접 가입할 수 있습니다. 보증료는 보증금·요율에 따라 다르지만 일부 지자체(서울 등)는 청년·신혼부부에 대한 보증료 지원사업을 운영합니다.<sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup> 매물 부족과 역전세 리스크가 누적되는 시기에는 가입을 검토할 가치가 있습니다.</p>
 <p><strong>전세 보유 임대인.</strong> 갱신 시 역전세 우려가 커지면 보증을 통한 신뢰 시그널 제공이 임차인 유치에 유리할 수 있습니다.</p>
 <p><strong>투자자 관점 (정보 제공, 자문 X).</strong> 양도세 중과 후 historical pattern은 (1) 거래량 급감 (2) 가격 상승 (3) 임차 시장으로 부담 전가 → (4) 정책 후속 대책 발효까지 평균 6~12개월의 시간차가 존재했습니다. 이 구간에서 (a) 보증·금융 (b) 살아남은 신탁사 (c) 신축 가치 관련 종목군이 시장보다 높은 변동성을 보였습니다. 다만 SGI서울보증은 오버행, 신탁사는 추가 PF 부실, 어느 쪽도 일방향이 아닙니다.</p>
@@ -419,7 +472,20 @@
 <li><strong>분기 전세가율 변화</strong> — 2017년 70.1% → 2025년 51.1%<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup>의 구조적 하락이 반등으로 돌아서는가.</li>
 </ul>
 <hr />
-<h2>⑦ 출처</h2>
+
+  </article>
+
+  <section class="comments-section">
+    <div class="comments-header">
+      <h3>💬 의견 남기기</h3>
+      <p class="comments-hint">이 리포트가 도움이 됐다면 한 줄 의견을 남겨주세요. 익명·이메일 입력 안 하셔도 됩니다.</p>
+    </div>
+    <div class="comments-wrapper">
+      <section class="comments" id="comments"><div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="8ff54980-03d7-450e-bcf3-04765916d0b8" data-page-id="/ongle/r/070-전세대란" data-page-url="https://cornbee.github.io/ongle/r/070-전세대란" data-page-title="SGI서울보증 — 전세 대란 정책의 수혜 구조"></div><script async defer src="https://cusdis.com/js/cusdis.es.js"></script></section>
+    </div>
+  </section>
+
+  <article class="references"><h2>⑦ 출처</h2>
 <hr />
 <blockquote>
 <p>↪ 관련 영상: <a href="https://www.youtube.com/@CornBeeRock">어제, 다주택자가 사라졌습니다 — 영상_070</a></p>
@@ -492,10 +558,7 @@
 <p>다음(서울신문), "文 실패 반복? 양도세 중과 후 가격 급등… 보유세 카드까지 꺼낼까", 2026. https://v.daum.net/v/Z9bNH8oMgg&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
 </li>
 </ol>
-</div>
-  </article>
-
-  <section class="comments" id="comments"><div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="8ff54980-03d7-450e-bcf3-04765916d0b8" data-page-id="/ongle/r/070-전세대란" data-page-url="https://cornbee.github.io/ongle/r/070-전세대란" data-page-title="SGI서울보증 — 전세 대란 정책의 수혜 구조"></div><script async defer src="https://cusdis.com/js/cusdis.es.js"></script></section>
+</div></article>
 </main>
 <footer>
   <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
