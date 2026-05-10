@@ -19,6 +19,8 @@
     --rule: #e8e8e8;
     --bg: #fafafa;
     --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -30,7 +32,7 @@
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: var(--accent); }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
   .topbar {
     background: var(--surface);
     border-bottom: 1px solid var(--rule);
@@ -56,29 +58,28 @@
     margin: 0 auto;
     padding: 2.4em 1.4em 4em;
   }
+  /* HERO — 모바일 28~32px 후크 */
+  .hero { padding: 0.4em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.8em; }
   .article-meta {
     font-size: 0.88em;
     color: var(--muted);
-    margin-bottom: 0.6em;
+    margin-bottom: 0.7em;
   }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
   .article-title {
-    font-size: 1.9em;
+    font-size: 2em;
     font-weight: 800;
-    line-height: 1.25;
-    margin: 0 0 0.6em;
-    letter-spacing: -0.015em;
+    line-height: 1.22;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
   }
-  .article-summary {
+  .article-subtitle {
     font-size: 1.02em;
     color: var(--ink-soft);
-    border-left: 3px solid var(--accent);
-    background: #fff7f2;
-    padding: 0.9em 1.1em;
-    margin: 1.2em 0 1.8em;
-    border-radius: 0 6px 6px 0;
+    margin: 0 0 1em;
     white-space: pre-line;
   }
-  .tags { margin: 0 0 1.4em; }
+  .tags { margin: 0 0 1.2em; }
   .tag {
     display: inline-block;
     background: #f3f3f3;
@@ -88,56 +89,98 @@
     font-size: 0.82em;
     margin-right: 0.3em;
   }
-  .pdf-cta {
-    margin: 2em 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7em;
-    justify-content: stretch;
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
   }
-  .pdf-btn {
-    flex: 1 1 160px;
-    min-height: 56px;            /* 모바일 터치 타깃 안전 사이즈 */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent);
-    color: #fff;
-    padding: 1em 1.4em;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.02em;
-    line-height: 1.2;
-    box-shadow: 0 2px 8px rgba(255,107,53,0.28);
-  }
-  .pdf-btn-view {
+  .kpi-card {
     background: var(--surface);
-    color: var(--ink);
-    border: 1.5px solid var(--rule);
-    box-shadow: none;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
   }
-  .pdf-btn-download {
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
     background: var(--accent);
     color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
   }
-  .pdf-btn:hover { filter: brightness(1.04); }
-  .pdf-btn:active { transform: translateY(1px); }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
   .article-body { font-size: 1.03em; }
   .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* Giscus comments section */
+  .comments {
+    margin: 3em 0 1em;
+    padding-top: 1.6em;
+    border-top: 1px solid var(--rule);
+  }
+  /* footer — © 한 줄 */
   footer {
     border-top: 1px solid var(--rule);
-    padding: 2em 1.4em 3em;
-    color: var(--muted);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
     text-align: center;
-    font-size: 0.86em;
+    font-size: 11.5px;
     background: var(--surface);
     margin-top: 3em;
   }
-  footer a { color: var(--muted); }
+  footer a { color: #999; text-decoration: none; }
   @media (max-width: 600px) {
-    .article-title { font-size: 1.55em; }
+    .article-title { font-size: 1.7em; }
     main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
@@ -153,12 +196,19 @@
   </div>
 </header>
 <main>
-  <div class="article-meta">2026-05-10</div>
-  <h1 class="article-title">SGI서울보증 — 전세 대란 정책의 수혜 구조</h1>
-  <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span></div>
-  <div class="article-summary">어제(5월 9일) 4년간 미뤄졌던 다주택자 양도세 중과 유예가 종료됐습니다.
-서울 전세 매물은 3개월 만에 23.5% 사라졌고, 전세값은 한 주에 0.23% 올라 6년 만에 가장 빠른 속도. 그런데 2026년 서울 입주는 작년의 절반밖에 안 됩니다.</div>
-  <div class="pdf-cta"><a class="pdf-btn pdf-btn-view" href="https://cornbee.github.io/ongle/pdfs/ongle레포트_070_SGI서울보증-전세대란-수혜구조.pdf" target="_blank" rel="noopener">📄 PDF 보기</a><a class="pdf-btn pdf-btn-download" href="https://cornbee.github.io/ongle/pdfs/ongle레포트_070_SGI서울보증-전세대란-수혜구조.pdf" download rel="noopener">📥 다운로드</a></div>
+  <section class="hero">
+    <div class="article-meta">2026-05-10 · 약 5분 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <h1 class="article-title">다주택자가 사라진 자리 — 가격 결정권은 누구의 손에 들어갔나?</h1>
+    <p class="article-subtitle">어제(5월 9일) 4년간 미뤄졌던 다주택자 양도세 중과 유예가 종료됐습니다.
+서울 전세 매물은 3개월 만에 23.5% 사라졌고, 전세값은 한 주에 0.23% 올라 6년 만에 가장 빠른 속도. 그런데 2026년 서울 입주는 작년의 절반밖에 안 됩니다.</p>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span></div>
+    <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">서울 전세 매물 변화</div>  <div class="kpi-value">−23.5%</div>  <div class="kpi-sub">3개월 만에 (5/9 종료 직후)</div></div><div class="kpi-card">  <div class="kpi-label">주간 전세값 상승</div>  <div class="kpi-value">+0.23%</div>  <div class="kpi-sub">6년 5개월 만의 최고치</div></div><div class="kpi-card">  <div class="kpi-label">2026 서울 입주</div>  <div class="kpi-value">−47.6%</div>  <div class="kpi-sub">작년 절반(24,462가구)</div></div><div class="kpi-card">  <div class="kpi-label">정책 비대칭 수혜</div>  <div class="kpi-value">정비사업 자본</div>  <div class="kpi-sub">헤드라인이 못 보는 진짜 종착지</div></div></div>
+    <div class="key-conclusion">표면적으로는 다주택자 매물 잠김이 헤드라인을 차지하지만, 시세조정의 진짜 비대칭 수혜는 정비사업 입주권·시공권을 가진 좁은 집단으로 흐릅니다. 신축 공급 절벽(−47.6%)이 같은 분기에 겹친 것이 6년 전과 결정적으로 다른 점입니다.</div>
+    <div class="why-matters"><span class="why-label">왜 중요한가</span>임대료 상승은 6월 갱신 시즌부터 가속, 분양가 인상은 2026 하반기부터 반영됩니다.</div>
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
   <article class="article-body">
 <h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">전세 대란 — 다주택자 시세조정의 진짜 수혜자는 누구인가?</h1>
 <blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
@@ -273,12 +323,27 @@ flowchart LR
 </ol>
 </div>
   </article>
-  <div class="pdf-cta"><a class="pdf-btn pdf-btn-view" href="https://cornbee.github.io/ongle/pdfs/ongle레포트_070_SGI서울보증-전세대란-수혜구조.pdf" target="_blank" rel="noopener">📄 PDF 보기</a><a class="pdf-btn pdf-btn-download" href="https://cornbee.github.io/ongle/pdfs/ongle레포트_070_SGI서울보증-전세대란-수혜구조.pdf" download rel="noopener">📥 다운로드</a></div>
+
+  <section class="comments" id="comments">
+  <script src="https://giscus.app/client.js"
+          data-repo="CornBee/ongle"
+          data-repo-id="R_kgDOSZQiSg"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOSZQiSs4C8tIg"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="ko"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
 </main>
 <footer>
-  © 락스타지망생 · 본 리포트는 영상 컨텐츠 보조 자료로 제작됐으며, 수치·인용은 모두 출처 링크로 검증 가능합니다.<br>
-  <a href="https://cornbee.github.io/ongle/">전체 리포트</a> ·
-  <a href="https://www.youtube.com/@락스타지망생" target="_blank" rel="noopener">YouTube 채널</a>
+  © 2026 ongle
 </footer>
 </body>
 </html>
