@@ -1,0 +1,14 @@
+# Sandbox 잔여물 차단
+_test_file.txt
+.DS_Store
+
+# OS·tooling
+*.pyc
+.vscode/
+
+# 임시
+*.tmp
+*.bak
+
+# 사용자 1회용 push 헬퍼 — repo에 commit 안 함
+_FIRST_PUSH.command
