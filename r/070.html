@@ -89,6 +89,36 @@
     padding: 0.6em 0.4em;
     margin: 0;
   }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
   .article-meta {
     font-size: 0.84em;
     color: var(--muted);
@@ -277,9 +307,25 @@
     .kpi-value { font-size: 1.4em; }
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
 <script>
-  if (window.mermaid) { mermaid.initialize({ startOnLoad: true, theme: "default" }); }
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
 </script>
 </head>
 <body>
@@ -303,16 +349,16 @@
     C --&gt;|역전세 위험 ↑| E[보증 수요 ↑]
     C --&gt;|매수 전환 압박| F[중간 단계 분양·신축 수요]
 
-    E -.숨은 단계 1.-&gt; G[SGI·HUG 보증료 수입 ↑]
-    F -.숨은 단계 2.-&gt; H[살아남은 신탁사 점유율 ↑]
-    D -.숨은 단계 3.-&gt; I[은행·MBS 시장]
+    E -.보증·금융 채널.-&gt; G[SGI·HUG 보증료 수입 ↑]
+    F -.공급 측 채널.-&gt; H[살아남은 신탁사 점유율 ↑]
+    D -.대출 시장.-&gt; I[은행·MBS 시장]
 
     style A fill:#fff3e0
     style G fill:#fff9c4
     style H fill:#fff9c4
     style I fill:#fff9c4
 </pre></div>
-    <div class="article-meta">2026-05-10 · 약 7분 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="article-meta">2026-05-10 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
     <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span></div>
     <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">양도세 중과 부활</div>  <div class="kpi-value">2026-05-09</div>  <div class="kpi-sub">조정대상지역 2주택 +20%P, 3주택 +30%P</div></div><div class="kpi-card">  <div class="kpi-label">서울 전세 매물 (5/9)</div>  <div class="kpi-value">16,240건</div>  <div class="kpi-sub">3개월 전 21,221건 대비 −23.5%</div></div><div class="kpi-card">  <div class="kpi-label">서울 주간 전세값 (5월 1주)</div>  <div class="kpi-value">+0.23%</div>  <div class="kpi-sub">6년 5개월 만에 최고치</div></div><div class="kpi-card">  <div class="kpi-label">2026 서울 입주</div>  <div class="kpi-value">24,462가구</div>  <div class="kpi-sub">전년 대비 −47.6%</div></div><div class="kpi-card">  <div class="kpi-label">2027 서울 입주 (추정)</div>  <div class="kpi-value">약 10,113가구</div>  <div class="kpi-sub">3년 전 대비 −58.7% (R114)</div></div></div>
     <div class="key-conclusion">전세값 +0.23%/주는 단순 가격 통계가 아니라 자금 이동 신호입니다. 매물 잠김 → 전세 전가 → 보증·금융 라인으로 자금이 흐르고, 상장된 직접 수혜 채널은 SGI서울보증이 사실상 유일합니다 — 단, 예금보험공사 지분 83.85% 오버행과 사고율 두 변수를 함께 봐야 합니다. 부동산 신탁업은 책임준공 부실로 양극화 — 부채비율·브랜드 점유율을 지킨 곳과 적자 누적 곳의 격차가 입주 절벽 3년간 더 벌어집니다.</div>
@@ -373,10 +419,10 @@
 <p><strong>1단계 — 매물 잠금 (다주택자).</strong> 양도세율이 올라가면 매도 차익의 50~80%가 세금으로 빠지므로 매도가 비합리적입니다. 국토연구원 분석에 따르면 2018~2022년 수도권 71개 시군구 데이터에서 다주택자 양도세율이 1%P 오를 때 아파트 매매가격 변동률은 +0.206% 상승했습니다.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 즉 중과 = 가격 하락이 아니라 <strong>가격 상승</strong>으로 이어진 것이 historical pattern입니다.</p>
 <p><strong>2단계 — 거래량 절벽 (시장 전체).</strong> 2018년 4월 양도세 중과 직전 1분기 서울 아파트 거래량은 36,533건이었으나, 강화 조치 적용 2분기에는 17,062건으로 <strong>−53.3%</strong> 급감했습니다.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 거래가 안 일어나면 가격은 호가 한두 건으로 결정됩니다.</p>
 <p><strong>3단계 — 전세 시장 전가 (세입자).</strong> 매물이 전세로 전환되지 않고 잠기면 전세 시장은 신규 공급 없이 갱신 수요만 받게 됩니다. 입주 물량까지 반토막인 상황에서는 전세값 상승이 수개월~분기 단위로 누적됩니다.</p>
-<p><strong>4단계 — 보증·금융 (숨은 수혜).</strong> 전세금이 오르면 (a) 전세대출 잔액이 늘고, (b) 임차인의 보증금 반환보증 가입 수요가 늘고, (c) 임대인 입장에서도 역전세 우려가 커지면 보증 가입 압력이 생깁니다.</p>
+<p><strong>4단계 — 보증·금융 (간접 수혜 채널).</strong> 전세금이 오르면 (a) 전세대출 잔액이 늘고, (b) 임차인의 보증금 반환보증 가입 수요가 늘고, (c) 임대인 입장에서도 역전세 우려가 커지면 보증 가입 압력이 생깁니다.</p>
 <p>여기서 <strong>돈이 어디로 가는지</strong>가 갈립니다.</p>
 <hr />
-<h2>④ 숨은 승자·병목 식별 — 핵심 단계 2개</h2>
+<h2>④ 수혜 채널·병목 식별 — 핵심 단계 2개</h2>
 <h3>4-1. 직접 수혜: SGI서울보증 (KOSPI 신규 상장)</h3>
 <p><strong>왜 시청자 다수가 이 종목을 모르는가.</strong> 전세금반환보증 시장은 공공기관 HUG(주택도시보증공사)와 민간 SGI서울보증의 양대 축입니다. HUG는 공기업이라 일반 투자자가 접근할 종목이 아닙니다. <strong>유일하게 상장된 직접 수혜 채널이 SGI서울보증</strong>인데, 이 회사가 코스피에 상장한 것이 불과 2025년 3월입니다.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> 너무 신생 종목이라 일반 투자자 인지도가 낮습니다.</p>
 <p><strong>왜 직접 수혜인가.</strong>
@@ -452,7 +498,7 @@
     style D fill:#c8e6c9
     style E fill:#c8e6c9
 </pre>
-<h3>4-3. 그 외 숨은 단계 (간단)</h3>
+<h3>4-3. 그 외 간접 단계 (간단)</h3>
 <ul>
 <li><strong>부동산 정보 플랫폼</strong> — 매물이 잠기면 정보 가치가 오릅니다. 직방은 2025년 매출 922억원, MAU 229만 명으로 1위 (비상장).<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup> 호갱노노(직방 자회사)·네이버 부동산이 뒤를 받칩니다. 데이터·매물 정보를 가진 비상장 플랫폼은 IPO·M&amp;A 후보군입니다.</li>
 <li><strong>전세대출 시중은행</strong> — 잔액 증가는 단기 호재이나 역전세 부실이 누적되면 양면입니다. 보증으로 헤지된 부분 vs 보증 미가입분의 비율을 봐야 합니다.</li>
