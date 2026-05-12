@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>효성중공업 — 미국 AI 데이터센터 전력 병목의 단일 통로 — ONGLE</title>
+<meta name="description" content="미국 데이터센터 build-out 절반이 취소·지연되는 진짜 이유는 칩이 아니라 변압기, 그것도 송전망 backbone 인 765kV 초고압 변압기. 미국 내에서 그 등급을 설계·생산할 수 있는 공장은 단 한 곳뿐이고, 그 공장은 한국 회사 효성중공업의 Memphis 사업장. 누적 점유 약 50%, 2025 영업이익 +106% YoY, 북미 매출 사상 첫 1조 돌파, 2026 backlog 11.9조. ⚠️ 본 리포트는 정보 제공이며 종목 추천이 아닙니다. §④ 시나리오 분기 표·면책 참고.">
+<meta property="og:title" content="효성중공업 — 미국 AI 데이터센터 전력 병목의 단일 통로">
+<meta property="og:description" content="미국 데이터센터 build-out 절반이 취소·지연되는 진짜 이유는 칩이 아니라 변압기, 그것도 송전망 backbone 인 765kV 초고압 변압기. 미국 내에서 그 등급을 설계·생산할 수 있는 공장은 단 한 곳뿐이고, 그 공장은 한국 회사 효성중공업의 Memphis 사업장. 누적 점유 약 50%, 2025 영업이익 +106% YoY, 북미 매출 사상 첫 1조 돌파, 2026 backlog 11.9조. ⚠️ 본 리포트는 정보 제공이며 종목 추천이 아닙니다. §④ 시나리오 분기 표·면책 참고.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">효성중공업 — 미국 AI 데이터센터 전력 병목의 단일 통로</h1>
+    <p class="article-sub">PJM 2027 6,623MW 부족 + 변압기 납기 5년 + 미국 내 765kV 설계·생산 가능한 공장 단 한 곳, 그 공장 소유주가 효성중공업.</p>
+    <div class="hero-visual"><pre class="mermaid">flowchart LR
+    N1[&quot;미국 AI 데이터센터&lt;br/&gt;전력 폭증&lt;br/&gt;(PJM 2027 6,623MW 부족)&quot;] --&gt;|병목의 본체| N2
+    N2[&quot;송전·변압기 capacity&lt;br/&gt;변압기 납기 5년&lt;br/&gt;($40M 변압기 없으면 $2B 캠퍼스 idle)&quot;] --&gt;|765kV 단일 통로| N3
+    N3[&quot;효성중공업&lt;br/&gt;Memphis 미국 유일&lt;br/&gt;765kV 제조 공장 + 누적 점유 ~50%&quot;]
+
+    style N1 fill:#fff3e0
+    style N2 fill:#bbdefb
+    style N3 fill:#c8e6c9
+</pre></div>
+    <div class="article-meta">2026-05-12 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span> <span class="tag">#AI</span> <span class="tag">#전력인프라</span></div>
+    <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">PJM 2027/28 capacity 부족</div>  <div class="kpi-value">6,623 MW ⚠️ 사상 최초</div>  <div class="kpi-sub">2025-12-17 입찰 결과 — 데이터센터가 부족분의 94% 차지</div></div><div class="kpi-card">  <div class="kpi-label">PJM capacity 가격</div>  <div class="kpi-value">$333.44 /MW-day (캡 도달)</div>  <div class="kpi-sub">FERC 인가 캡 — record-high 3회 연속, 데이터센터 부담분 $6.5B (전체의 40%)</div></div><div class="kpi-card">  <div class="kpi-label">765kV 변압기 납기 (미국)</div>  <div class="kpi-value">24~30개월 → 5년</div>  <div class="kpi-sub">2020년 이전 → 2026 현재. substation 변압기는 140주(2023) → 160주+(2026)</div></div><div class="kpi-card">  <div class="kpi-label">효성중공업 미국 765kV 누적 점유</div>  <div class="kpi-value">약 50% (1위)</div>  <div class="kpi-sub">Memphis 공장 = 미국 내 유일 765kV 설계·생산 가능 시설</div></div><div class="kpi-card">  <div class="kpi-label">효성중공업 2026 backlog</div>  <div class="kpi-value">11.9조원 (사상 최대)</div>  <div class="kpi-sub">2025 영업이익 +106% YoY (7,470억) · 북미 매출 사상 첫 1조 돌파 · 신규 수주 북미 비중 53%</div></div></div>
+    <div class="key-conclusion">미국 AI 데이터센터 전력 부족의 표면 fact 는 발전·가격·정책 논쟁이지만, 한 단계 깊이 따라가면 송전·변압기 capacity 의 문제. 그 변압기 중 가장 굵은 등급(765kV) 을 미국 내에서 만드는 공장은 효성중공업의 Memphis 사업장 단 한 곳. 누적 점유 ~50%, 2026 backlog 11.9조, 2025 영업이익 +106% YoY 등 정량 fact 가 이미 흐름을 가시화. ⚠️ 시나리오상 가능성이며, 미국 국산화·관세 압력 등 비관 시나리오 모니터링 필요.</div>
+    <div class="why-matters"><span class="why-label">왜 중요한가</span>AI 시대의 전력 부족은 발전 부족이 아니라 송전·변압기 부족. 미국이 우회하기 어려운 단일 부품의 위치를 한국 회사가 갖고 있다는 점이 단기 수주 호조 이상의 의미 — 한국 송배전 산업이 AI 사이클의 한가운데 위치한 산업이라는 산업 구조의 비교 우위. 미국 데이터센터 가동률 둔화 시 글로벌 AI·클라우드 단가 압력으로 환산 가능.</div>
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<hr />
+<h2>⓪ Executive Summary — 한 페이지 요약</h2>
+<p><strong>핵심 발견.</strong> AI 데이터센터 전력 부족의 표면 뉴스는 "전기가 모자라다"로 끝나지만, 한 단계 깊이 따라가 보면 발전 자체가 아니라 송전·배전을 잇는 변압기 병목으로 좁혀집니다. 그 병목의 가장 깊은 단에 미국 내 유일 765킬로볼트 변압기 공장이 있고, 그 공장은 한국 회사 효성중공업 소유입니다.</p>
+
+<p><strong>한 줄 요약.</strong> AI 데이터센터를 멈출 수도 있는 진짜 부품은 칩이 아니라 765킬로볼트 변압기고, 미국 내에서 그 부품을 만드는 공장은 한국 회사 한 곳의 것입니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>사실</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미국 전력 부족</td>
+<td>PJM 2027/28 capacity 입찰 6,623MW 부족 — 신뢰도 기준 미달성 사상 최초. 데이터센터가 부족분의 94% 차지. capacity 가격 $333.44/MW-day 캡 도달 (record-high 3회 연속).</td>
+<td><sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td>변압기 병목</td>
+<td>미국 데이터센터 12GW 계획 중 약 5GW만 착공. 변압기·차단기·배터리 부족이 핵심 병목. 765kV 변압기 납기 24~30개월(2020년 이전)에서 5년(2026)으로 확대. $2B 캠퍼스가 $40M 변압기 주문 기다리며 idle.</td>
+<td><sup id="fnref4:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup></td>
+</tr>
+<tr>
+<td>효성중공업</td>
+<td>Memphis 공장 = 미국 내 유일 765kV 변압기 설계·생산 시설. 누적 점유 ~50%(1위). 2025 영업이익 7,470억(+106% YoY), 북미 매출 사상 첫 1조 돌파. 2026 backlog 11.9조(사상 최대), 신규 수주 북미 비중 53%. 2025-09 미국 765kV 풀패키지 7,870억 — 창사 최대 단일 수주.</td>
+<td><sup id="fnref4:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref3:7"><a class="footnote-ref" href="#fn:7">7</a></sup><sup id="fnref4:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref4:9"><a class="footnote-ref" href="#fn:9">9</a></sup><sup id="fnref2:10"><a class="footnote-ref" href="#fn:10">10</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 면책.</strong> 본 리포트는 정보 제공이며 종목 추천이 아닙니다. 765kV 미국 점유율 ~50%는 효성중공업 IR 및 업계 인터뷰 기반 누적 추정 — §⑧ 출처 참고. PJM 2027/28 부족은 12월 입찰 결과 발표 fact, 변압기 납기·점유율은 보도 일관 fact.</p>
+<hr />
+<h2>① 미국 전력 부족 (AI 데이터센터가 만든 표면 fact)</h2>
+<h3>1-1. 사실</h3>
+<ul>
+<li>PJM Interconnection 2027/28 Base Residual Auction(2025-12-17 발표): 134,479MW 확보, 하지만 신뢰도 기준 대비 <strong>6,623MW 부족</strong> — 그리드 운영자 역사상 처음.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li>Reserve margin 14.8% (요구 기준 20%). 2027년 6월부터 2028년 5월 사이 공급 부족 예상.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li>부족분의 94%(약 5,100MW) = 데이터센터 수요 증가분.<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+<li>capacity 가격 $333.44/MW-day (FERC 인가 캡 도달, record-high 3회 연속). 데이터센터 부담분만 $6.5B — 전체 $16.4B의 40%.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+<h3>1-2. 흐름 — 왜 발전 자체가 아니라 송전이 문제인가</h3>
+<p>표면 뉴스는 "발전이 모자라다"로 끝납니다. 그런데 PJM 입찰에서 확보한 134GW의 자원이 데이터센터로 못 가는 건 발전 capacity 자체가 부족해서가 아닙니다. 발전소에서 데이터센터까지 전기를 보낼 송전·배전 인프라 — 특히 변압기 — 가 부족하기 때문입니다. 다음 단계에서 그 병목이 어떤 모양인지를 봅니다.</p>
+<h3>1-3. 이 단계 결론</h3>
+<p>미국 전력 부족의 표면 단계는 발전·가격·정책 논쟁. 한 단계 깊이 들어가면 부족이 발전이 아니라 송전 인프라에서 발생한다는 점이 보입니다.</p>
+<hr />
+<h2>② 변압기 병목 (발전을 늘려도 못 보내는 단일 부품)</h2>
+<h3>2-1. 사실</h3>
+<ul>
+<li>미국 2026년 계획 데이터센터 12GW 중 약 <strong>5GW만 착공</strong> — 절반 가까이 취소·지연.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li>변압기·차단기·배터리 같은 전기 인프라가 데이터센터 건설비의 10% 미만이지만, 이게 없으면 나머지 90%(서버·냉각·랙·GPU) 가 켜질 수 없음. <em>$2B짜리 캠퍼스가 $40M 변압기 주문을 기다리며 idle</em>.<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+<li>고압 변압기 납기: 2020년 이전 24~30개월 → 2026 기준 5년 (substation 변압기 기준 140주(2023) → 160주 이상(2026)).<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></li>
+<li>Gartner: 2027년까지 미국 AI 데이터센터의 40%가 전력 제약을 받을 것.<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup></li>
+</ul>
+<h3>2-2. 왜 765킬로볼트인가</h3>
+<p>송전망에서 거리가 멀수록 더 높은 전압이 필요합니다. 765kV는 미국 송전망의 backbone — 발전소와 도시·산업 단지를 잇는 가장 굵은 전선. 154kV·345kV 등 하위 등급으로 변환되기 전 단계라, 765kV 변압기 없이는 다른 등급도 의미가 떨어집니다. AI 데이터센터처럼 대규모 부하가 한 곳에 몰리는 경우 765kV 송전망이 거의 필수.</p>
+<h3>2-3. 미국 내 765kV 제조 capacity 현황</h3>
+<p>미국 내에서 765kV 변압기를 <em>설계·생산</em>할 수 있는 시설은 사실상 한 곳 — 효성중공업의 Memphis 공장.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 그 외 미국 회사(Hitachi Energy·GE 등)는 일부 작업만 가능하거나 신규 capacity 가 늦음. 한국·일본·유럽에서 수입해야 하는데, 한국이 압도적 점유 — 다음 단계에서 그 점유의 정체를 봅니다.</p>
+<h3>2-4. 이 단계 결론</h3>
+<p>변압기 병목의 본체는 765kV 초고압 변압기. 미국 내 제조 capacity 가 거의 없어 수입 의존. 한국이 그 수입의 거의 절반 — 그 한국 점유의 가장 깊은 단이 한 회사로 좁혀집니다.</p>
+<hr />
+<h2>③ 효성중공업 (Memphis 단일 + 누적 점유 ~50%)</h2>
+<h3>3-1. 사실</h3>
+<ul>
+<li>Memphis 공장: 미국 내에서 765kV 초고압 변압기를 <em>설계·생산</em>할 수 있는 유일한 시설.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li>미국 송전망 누적 설치 기준 765kV 점유: <strong>약 50%(1위)</strong>.<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup></li>
+<li>2025 영업이익 <strong>7,470억원</strong>(+106% YoY). 매출액 약 4.6조원.<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li><strong>북미 매출 사상 첫 1조 돌파</strong> (2025).<sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup></li>
+<li>2026년 2월 기준 글로벌 backlog <strong>11.9조원</strong> — 사상 최대. 일부 보도 기준 15조원 돌파.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li>신규 수주 중 북미 비중 <strong>53%</strong>.<sup id="fnref3:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+<li>2025-09 미국 송전망에 <strong>7,870억원</strong> 단일 수주 — 창사 최대.<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></li>
+<li>그룹 차원 — 효성그룹이 4년 만에 재계 20위권 탈환. 765kV 변압기가 그룹 운명을 바꿨다는 평가.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+</ul>
+<h3>3-2. 매출·수익 시계열</h3>
+<table>
+<thead>
+<tr>
+<th>연도</th>
+<th>영업이익</th>
+<th>영업이익률</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023</td>
+<td>약 1,800억</td>
+<td>~5%</td>
+<td>미국 AI 수요 본격화 전</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>3,620억</td>
+<td>~9%</td>
+<td>미국 송전망 노후화 + AI 수요 시작</td>
+</tr>
+<tr>
+<td>2025</td>
+<td><strong>7,470억</strong></td>
+<td><strong>15%대</strong></td>
+<td><strong>+106% YoY</strong>, 북미 매출 1조 돌파</td>
+</tr>
+<tr>
+<td>2026E</td>
+<td>1조 추정 (시장 컨센서스 기준)</td>
+<td>17~20%대 추정</td>
+<td>backlog 11.9조 소화 + Memphis 풀가동</td>
+</tr>
+</tbody>
+</table>
+<h3>3-3. 효성중공업이 흐름의 끝에 있는 이유</h3>
+<ol>
+<li><strong>단일 시설 fact</strong>: 미국 내 765kV 설계·생산 시설 단 한 곳이 효성중공업 Memphis. 미국 변압기 부족이 직접 입력값.</li>
+<li><strong>누적 점유 ~50%</strong>: 단일 회사로 미국 송전망에 절반의 765kV 변압기를 공급. 신규 수요의 절반 이상도 사실상 효성중공업으로.</li>
+<li><strong>수익 폭증의 시간 일관성</strong>: 영업이익이 2024년 3,620억 → 2025년 7,470억으로 두 배 가까이. AI 데이터센터 수요의 직접 반응.</li>
+<li><strong>수주 잔고의 시계열 보장</strong>: 11.9조 backlog 가 2027~2028년 매출까지 가시화 — PJM 부족 시점과 정확히 일치.</li>
+</ol>
+<h3>3-4. 산업의 다른 행위자 — 매핑</h3>
+<p>효성중공업이 단일 중심 회사이지만 산업 행위자가 함께 움직입니다.</p>
+<ul>
+<li><strong>HD현대일렉트릭</strong>: 미국 송전망에 1,730억(2026-05)·2,778억(별건) 765kV 변압기 수주. Alabama 공장 2027 가동 — 765kV 변압기 연간 생산 100대 → 150대 확장 계획.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup><sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></li>
+<li><strong>LS일렉트릭</strong>: 데이터센터 전용 변압기 패키지 + 송전망 인프라. 미국 시장 확대 중.</li>
+<li>3사 합산 2026년 1분기 신규 수주 <strong>7조원</strong>, 합산 backlog <strong>32조원</strong>.<sup id="fnref3:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
+</ul>
+<p>다만 <strong>765kV 미국 내 제조 시설은 효성중공업 Memphis 하나</strong> — 다른 두 회사는 변압기 다른 등급·다른 지역에서 경쟁.</p>
+<h3>3-5. 이 단계 결론</h3>
+<p>AI 데이터센터 전력 부족이라는 표면 fact의 본체는 변압기 병목, 그 병목의 가장 깊은 단이 미국 내 유일 765kV 제조 시설을 가진 효성중공업. 이 흐름이 영업이익 +106%·북미 매출 1조 돌파·11.9조 backlog 라는 정량 fact로 이미 가시화돼 있습니다.</p>
+<hr />
+<h2>④ 시나리오 분기 + 면책</h2>
+<blockquote>
+<p><strong>면책.</strong> 아래 시나리오는 위 구조 분석에서 도출한 <em>가능성</em>입니다. 시나리오상 가능성이며, 종목 추천이 아닙니다. 변압기 점유 추정치는 회사 IR·업계 보도 기반 누적 추정으로 단일 시점 정밀치 한계가 있습니다.</p>
+</blockquote>
+<h3>4-1. 시나리오 분기 표</h3>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>확률</th>
+<th>효성중공업 영향</th>
+<th>트리거 신호</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 낙관</strong>: 미국 데이터센터 build-out 가속 + 한국 변압기 의존 심화</td>
+<td>30%</td>
+<td>backlog 추가 확대 / 2026~2027 매출 컨센서스 상향</td>
+<td>NVIDIA Blackwell·Rubin 출하 가속 / PJM 2028 이후 capacity auction 추가 부족</td>
+</tr>
+<tr>
+<td><strong>② 중립</strong>: 미국 변압기 신규 capacity 일부 가동 + 한국 점유 유지</td>
+<td>50%</td>
+<td>현 backlog 소화 base case — 매출·이익 안정</td>
+<td>미국 내 신규 변압기 공장 가동 시점 (Hitachi 등) / 효성 Memphis 풀가동 유지</td>
+</tr>
+<tr>
+<td><strong>③ 비관</strong>: 미국 국산화·관세 압력 강화 + 한국 변압기 점유 축소</td>
+<td>20%</td>
+<td>신규 수주 점유 하락 / 매출 base case 대비 둔화</td>
+<td>미국 변압기 관세 인상 / Defense Production Act 발동 / Memphis 신규 capacity 한계 도달</td>
+</tr>
+</tbody>
+</table>
+<h3>4-2. 핵심 면책 메시지</h3>
+<ul>
+<li>765kV 미국 점유 ~50%는 누적 설치 기준 추정 — 신규 수주 기준 점유는 변동.</li>
+<li>HD현대일렉트릭 Alabama 가동(2027)·LS일렉 데이터센터 패키지 확대로 산업군 구도가 변할 수 있음.</li>
+<li>PJM 부족 fact 는 입찰 결과지만, 그 부족이 변압기 수요로 얼마나 직접 환산되는지는 utility 별 송배전 투자 계획에 따라 변동.</li>
+<li>본 리포트는 정보 제공이며, 특정 종목 추천이 아닙니다.</li>
+</ul>
+<h3>4-3. 모니터링 트리거</h3>
+<ul>
+<li>2026~2027년 PJM 후속 capacity auction 결과</li>
+<li>미국 utility 의 송배전 capex 가이드 (PJM·MISO·ERCOT 등)</li>
+<li>미국 변압기 관세·국산화 정책 (DPA 발동 여부)</li>
+<li>효성중공업 분기 IR — Memphis 가동률·신규 수주 북미 비중</li>
+</ul>
+<hr />
+<h2>⑤ 그래서 당신에게는?</h2>
+<h3>5-1. 산업·정책 관점</h3>
+<p>AI 데이터센터 표면 뉴스는 칩·GPU·발전 위주. 한 단계 깊이 들여다보면 송배전 인프라가 진짜 입력값. 한국이 이 단일 부품(765kV)에서 미국이 우회하기 어려운 위치를 가졌다는 점은 단기 수주 호조 이상의 의미 — 산업 구조의 비교 우위.</p>
+<h3>5-2. 시민·소비자 관점</h3>
+<p>미국에서 변압기 부족이 길어지면 데이터센터 가동률이 떨어지고, AI 서비스 단가·클라우드 단가가 상승 압력을 받습니다. 6~18개월 시차로 글로벌 IT 가격·전기료에 반영 가능. 한국 송배전 산업이 그 사이클의 한가운데 위치한 산업.</p>
+<h3>5-3. 정보·산업 관점 (정보 제공, 자문 X)</h3>
+<p>⚠️ §④ 시나리오 분기 표 참고. 어느 시나리오도 일방향이 아니며, <em>예측</em>이 아니라 <em>AI 전력 병목 흐름의 한국 단일 통로 위치</em>를 매핑한 정보입니다.</p>
+<hr />
+<h2>⑥ 결론·시사점</h2>
+<p><strong>핵심 세 가지:</strong></p>
+<ol>
+<li><strong>AI 데이터센터 전력 부족 → 변압기 병목 → 효성중공업</strong> 흐름. PJM 2027/28 6,623MW 부족 fact 와 변압기 납기 5년이 만나는 자리에서 미국 내 유일 765kV 제조 공장이 한국 회사 소유라는 single fact 가 가장 sharp.</li>
+<li>정량 가시화 — 효성중공업 영업이익 +106% YoY (2025), 북미 매출 1조 돌파, 2026 backlog 11.9조. AI 흐름이 회사 재무에 이미 반영됨.</li>
+<li>⚠️ 시나리오 분기 표 + 면책 §④. 미국 국산화·관세 등 비관 트리거 모니터링 필요. 정보 제공, 종목 추천 X.</li>
+</ol>
+<h3>향후 6~24개월 관전 포인트</h3>
+<ul>
+<li>2026 PJM 2028/29 capacity auction 결과 (12월 발표 예정)</li>
+<li>미국 utility 송배전 capex 가이드</li>
+<li>효성중공업 분기 IR — Memphis 가동률·신규 수주 북미 비중</li>
+<li>HD현대일렉트릭 Alabama 가동 시점(2027) 및 산업군 구도 변화</li>
+</ul>
+<hr />
+<h2>⑦ 종합 면책</h2>
+<ul>
+<li>본 리포트는 시의성 분석·정보 제공이며, 특정 종목 추천이 아닙니다.</li>
+<li>위 흐름은 <em>구조 분석</em>이며, 정책의 변동·미국 변압기 신규 capacity 가동 등으로 시나리오 확률 변동 가능.</li>
+<li>765kV 점유 ~50% 는 회사 IR·업계 보도 누적 추정 — 신규 수주 기준 점유는 분기별 변동.</li>
+<li>출처 §⑧ 참고.</li>
+</ul>
+<hr />
+
+  </article>
+
+  <article class="references"><h2>⑧ 출처</h2>
+<hr />
+<p><em>본 리포트는 정보 제공 목적이며, 특정 종목 매수·매도 권유가 아닙니다. 시나리오 분기는 §④, 핵심 면책은 §⑦ 참고.</em></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>PJM 2027/28 Base Residual Auction 결과 — <a href="https://insidelines.pjm.com/pjm-auction-procures-134479-mw-of-generation-resources/">PJM Inside Lines 2025-12-17</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>데이터센터 capacity 비중 40% — <a href="https://www.utilitydive.com/news/data-centers-pjm-capacity-auction/808951/">Utility Dive 2026-01</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>PJM 6GW shortfall 분석 — <a href="https://introl.com/blog/pjm-grid-crisis-6gw-shortfall-data-center-power-2027">Introl Blog 2026-01</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>미국 데이터센터 build-out 절반 취소·지연 + $40M 변압기 비유 — <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/half-of-planned-us-data-center-builds-have-been-delayed-or-canceled-growth-limited-by-shortages-of-power-infrastructure-and-parts-from-china-the-ai-build-out-flips-the-breakers">Tom's Hardware 2026-04</a>.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>변압기 lead time 24개월→5년 / substation 140주→160주 — <a href="https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/">Tech Insider 2026 AI Data Center Crisis Report</a> / <a href="https://www.datacenterknowledge.com/build-design/ai-data-center-boom-rewires-us-power-supply-chain">Data Center Knowledge 2026</a>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Hyosung Memphis = 미국 유일 765kV 시설 — <a href="https://www.kedglobal.com/machinery/newsView/ked202604070003">KED Global 2026-04</a>.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>효성중공업 미국 765kV 누적 점유 ~50% — <a href="https://www.kcenews.kr/6514">대한건설경제 2026</a> / <a href="https://www.energyprosumer.info/5301">에너지프로슈머 2026</a>.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>효성중공업 2025 영업이익 +106% / 북미 매출 1조 — <a href="https://www.hyosungheavyindustries.com/kr/brand/brand-now/journalism/841">브랜드저널리즘 효성중공업 2026</a>.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>효성중공업 backlog 11.9조 / 신규 수주 북미 53% / 3사 합산 7조·32조 — <a href="https://infoarounds.com/%EA%B2%BD%EC%A0%9C%EC%A0%95%EB%B3%B4/hyosung-heavy-industries-2026-outlook/">인포어라운즈 2026 효성중공업 outlook</a> / <a href="https://en.sedaily.com/news/2026/05/01/korean-power-equipment-makers-clinch-record-orders-on-us">Seoul Economic Daily 2026-05-01</a>.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>2025-09 미국 765kV 풀패키지 7,870억 단일 수주 — <a href="https://www.ajunews.com/view/20250919085807906">아주경제 2025-09-19</a> / <a href="http://www.economytalk.kr/news/articleView.html?idxno=417682">이코노미톡뉴스 2026</a>.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>765kV 변압기 = 효성그룹 운명 바꿈 — <a href="https://www.thebigdata.co.kr/view.php?ud=202605081334504227bbceadc3c9_23">더빅데이터 2026-05-08</a>.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>HD현대일렉트릭 미국 1,730억 수주 / Alabama 2027 — <a href="https://www.insightkorea.co.kr/news/articleView.html?idxno=246005">인사이트코리아 2026-05</a> / <a href="https://www.thelec.kr/news/articleView.html?idxno=41124">디일렉 2026</a>.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>HD현대일렉트릭 Alabama 100→150대 확장 — <a href="https://core.asiae.co.kr/article/2026050715192812044">아시아경제 CORE 2026-05-07</a>.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
