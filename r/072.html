@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>서울 — 미중 갈등 시대 외교 결절점의 등장 — ONGLE</title>
+<meta name="description" content="2026-05-13 베센트-허리펑 서울 회담은 14~15일 트럼프-시진핑 베이징 정상회담의 마지막 사전 조율 무대. 2025-10-30 부산(정상)에 이어 6개월 사이 두 번째 한국 개최. 냉전 시대 빈·헬싱키·싱가포르가 했던 외교 결절점 역할이 21세기 미중 경쟁 구조에서 서울로 이동 중이라는 가설. 단, 한국은 그들과 달리 회담 의제(반도체·배터리·희토류) 모두에 산업 stake를 가진 이해당사자이기도 함.">
+<meta property="og:title" content="서울 — 미중 갈등 시대 외교 결절점의 등장">
+<meta property="og:description" content="2026-05-13 베센트-허리펑 서울 회담은 14~15일 트럼프-시진핑 베이징 정상회담의 마지막 사전 조율 무대. 2025-10-30 부산(정상)에 이어 6개월 사이 두 번째 한국 개최. 냉전 시대 빈·헬싱키·싱가포르가 했던 외교 결절점 역할이 21세기 미중 경쟁 구조에서 서울로 이동 중이라는 가설. 단, 한국은 그들과 달리 회담 의제(반도체·배터리·희토류) 모두에 산업 stake를 가진 이해당사자이기도 함.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">냉전 시대 빈·헬싱키가 했던 역할을 이제 서울이 맡습니다.</h1>
+    <p class="article-sub">5/13 미·중 경제수장 회담 → 5/14~15 트럼프-시진핑 정상회담 사전 조율 — 6개월 사이 두 번째 한국 개최</p>
+    <div class="hero-visual"><pre class="mermaid">flowchart LR
+    A[빈 1961·1979·1985&lt;br/&gt;오스트리아 영구중립] --&gt; X[냉전 시대&lt;br/&gt;외교 결절점]
+    B[헬싱키 1975·1990&lt;br/&gt;핀란드 균형외교] --&gt; X
+    C[싱가포르 2018&lt;br/&gt;화교·동남아 중간자] --&gt; X
+    X --&gt; Y[탈냉전 공백]
+    Y --&gt; Z[서울 2025-2026&lt;br/&gt;미중 경쟁 시대]
+
+    style X fill:#e3f2fd
+    style Z fill:#fff9c4
+</pre></div>
+    <div class="article-meta">2026-05-12 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#외교분석</span> <span class="tag">#지정학</span> <span class="tag">#한국경제</span></div>
+    <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">회담 일자</div>  <div class="kpi-value">2026-05-13</div>  <div class="kpi-sub">트럼프-시진핑 베이징 정상회담(5/14~15) 하루 전</div></div><div class="kpi-card">  <div class="kpi-label">양국 수석 회담 한국 개최 횟수 (6개월)</div>  <div class="kpi-value">2회</div>  <div class="kpi-sub">2025-10-30 부산(정상) → 2026-05-13 서울(경제수장)</div></div><div class="kpi-card">  <div class="kpi-label">공식 의제 카테고리 수</div>  <div class="kpi-value">7개 이상</div>  <div class="kpi-sub">관세·반도체·배터리·희토류·환율·중동·대만</div></div><div class="kpi-card">  <div class="kpi-label">한국 전체 수출 중 반도체 비중 (2025)</div>  <div class="kpi-value">24.4% (1,734억 달러)</div>  <div class="kpi-sub">역대 최대, 미·중 갈등 직격 품목</div></div><div class="kpi-card">  <div class="kpi-label">중국 글로벌 희토류 정제·가공 점유율</div>  <div class="kpi-value">약 90%</div>  <div class="kpi-sub">한국 반도체·배터리·방산 의존 구조</div></div></div>
+    <div class="key-conclusion">부산(2025·정상) → 서울(2026·경제수장)의 6개월 연속 개최는 우연이 아니라 구조다. 한국은 미국 동맹 + 중국 교역 + 산업 stake + 지리 + 다자 회의 인프라를 동시에 만족하는 거의 유일한 곳이고, 이번 일정은 그 구조의 1차 confirmation이다. 냉전 시대 빈·헬싱키·싱가포르가 했던 외교 결절점 역할이 21세기 미중 경쟁 구조에서 서울로 이동 중이라는 가설이 가능하다.</div>
+    <div class="why-matters"><span class="why-label">왜 중요한가</span>회담 의제 7개(관세·반도체·배터리·희토류·환율·중동·대만) 모두가 한국 산업의 1차 변수다. 회담 결과는 단순한 외교 뉴스가 아니라 한국 산업의 다음 분기 실적 가정을 직접 흔드는 입력값이다.</div>
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<hr />
+<h2>⓪ Executive Summary — 한 페이지로 보는 이번 회담</h2>
+<p><strong>Hero finding —</strong> 냉전 시대 빈·헬싱키가 했던 역할을 이제 서울이 맡고 있습니다. 2025년 부산(트럼프-시진핑 정상회담)에 이어 2026년 5월 13일, 서울은 미·중 경제수장(스콧 베센트 美 재무장관 + 허리펑 中 국무원 부총리) 회담의 무대가 됩니다. <strong>6개월 사이 두 번째</strong>, 그것도 양국 정상회담 직전 마지막 조율 무대로 한국 영토가 선택됐다는 점이 이 사건의 본질입니다.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p><strong>Sub —</strong> 14~15일 베이징 트럼프-시진핑 정상회담 직전 사전 조율 → 의제는 관세·반도체·배터리·희토류·환율·중동·대만.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>값</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>회담 일자</td>
+<td><strong>2026-05-13</strong></td>
+<td>트럼프-시진핑 베이징 정상회담(5/14~15) 하루 전<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>미·중 양국 수석 회담 한국 개최 횟수 (6개월)</td>
+<td><strong>2회</strong></td>
+<td>2025-10-30 부산(정상) → 2026-05-13 서울(경제수장)<sup id="fnref4:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+<tr>
+<td>공식 의제 카테고리 수</td>
+<td><strong>7개 이상</strong></td>
+<td>관세·반도체·배터리·희토류·환율·중동·대만<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td>한국 전체 수출 중 반도체 비중 (2025)</td>
+<td><strong>24.4%</strong> (1,734억 달러)</td>
+<td>역대 최대, 미·중 갈등 직격 품목<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></td>
+</tr>
+<tr>
+<td>중국 글로벌 희토류 정제·가공 점유율</td>
+<td><strong>약 90%</strong></td>
+<td>한국 반도체·배터리·방산 의존 구조<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>핵심 결론.</strong> 부산(2025·정상) → 서울(2026·경제수장)의 6개월 연속 개최는 단순한 우연이 아닙니다. 한국이 (1) 미국 동맹 + 중국 최대 교역 파트너라는 <strong>이중 접점</strong>, (2) 반도체·배터리·희토류 가공이 모두 의제에 걸리는 <strong>산업 이해당사자</strong>, (3) 정상이 모두 비행으로 1.5~2시간 이내라는 <strong>지리적 중심</strong>을 동시에 만족하는 거의 유일한 곳이라는 점에서, 냉전 시대 빈·헬싱키·싱가포르가 했던 "외교 결절점" 역할이 21세기 미중 경쟁 구조에서 서울로 이동하고 있다는 가설이 가능합니다.</p>
+<p><strong>왜 중요한가.</strong> 다음 6~12개월 동안 회담 의제 7개(관세·반도체·배터리·희토류·환율·중동·대만) 모두가 한국 산업의 1차 변수입니다. 회담 결과는 단순한 외교 뉴스가 아니라 SK하이닉스·삼성전자·LG에너지솔루션·포스코 같은 한국 산업의 다음 분기 실적 가정을 직접 흔드는 입력값입니다.</p>
+<hr />
+<h2>① 도입 — 6개월 만에 다시 한국으로</h2>
+<p>2026년 5월 13일, 미국 재무장관 스콧 베센트가 서울에서 중국 국무원 부총리 허리펑을 만납니다.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup> 같은 날 이재명 대통령이 베센트 장관을 접견할 예정입니다.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> 하루 뒤(5/14~15) 베이징에서는 트럼프 대통령과 시진핑 주석의 정상회담이 이어집니다.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></p>
+<p>이 일정의 의미는 일자보다 <strong>반복성</strong>에 있습니다. 불과 6개월 전인 2025년 10월 30일, 트럼프 대통령과 시진핑 주석은 부산 김해공항 인근 공군시설 '나래마루'에서 정상회담을 가졌습니다.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> 그 자리에서 대중 펜타닐 관세 인하(20%→10%)와 중국의 미국산 농산물 즉시 구매가 합의됐습니다.<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup> 그리고 6개월 뒤, 두 정상의 두 번째 만남 직전 마지막 사전 조율 무대로 다시 한국이 선택됐습니다.</p>
+<p>대다수 보도는 여기서 끝납니다 — "베센트 방한, 미중 회담." 하지만 한 번은 우연이지만 두 번은 패턴입니다. 이 리포트는 표면 사실 너머 <strong>"왜 서울인가"</strong>와 <strong>"이게 한국 산업에 무엇을 의미하는가"</strong>를 추적합니다.</p>
+<hr />
+<h2>② 표면 사실 정리 — 모두가 아는 부분</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>값</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>베센트-허리펑 회담 일자·장소</td>
+<td><strong>2026-05-13 서울</strong></td>
+<td>파이낸셜뉴스·뉴스핌<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>트럼프-시진핑 베이징 정상회담</td>
+<td><strong>2026-05-14~15</strong></td>
+<td>CSIS·SCMP<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup></td>
+</tr>
+<tr>
+<td>베센트 방일 일정 (직전 stop)</td>
+<td><strong>2026-05-12 도쿄</strong> (다카이치 사나에 총리, 가타야마 사쓰키 재무상)</td>
+<td>뉴스핌<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></td>
+</tr>
+<tr>
+<td>한국 대통령 접견</td>
+<td><strong>2026-05-13 이재명 대통령</strong></td>
+<td>헤럴드경제<sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup></td>
+</tr>
+<tr>
+<td>직전 미중 정상회담</td>
+<td><strong>2025-10-30 부산</strong> (APEC 경주 계기)</td>
+<td>나무위키·파이낸셜뉴스<sup id="fnref5:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+<tr>
+<td>회담 의제(보도 기준)</td>
+<td>관세·반도체·배터리·희토류·대중 수출통제·환율·중동·대만</td>
+<td>파이낸셜뉴스·VOA·CSIS<sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>여기까지가 거의 모든 매체의 헤드라인입니다. 이 리포트는 여기서 출발해 <strong>"왜 한국 영토가 6개월 사이 두 번째 미중 무대로 선택됐는가"</strong>를 따라갑니다.</p>
+<hr />
+<h2>③ 냉전 유사 사례 비교 — 4개 모델</h2>
+<p>미·중 정상이 베이징·워싱턴 양쪽 본토를 피해 제3의 영토에서 만나는 구조는 새롭지 않습니다. 냉전 시기, 미·소도 모스크바·워싱턴 본토 회담을 피했고, 그 자리에 4개의 도시·운동이 외교 무대로 자리 잡았습니다.</p>
+<h3>3-1. 비교 표</h3>
+<table>
+<thead>
+<tr>
+<th>모델</th>
+<th>시기</th>
+<th>주역</th>
+<th>핵심 사건</th>
+<th>한국 적용 가능성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>오스트리아 빈</strong></td>
+<td>1955~</td>
+<td>영구중립(1955 국가조약·중립선언)</td>
+<td>1961 케네디-흐루쇼프, 1979 카터-브레즈네프(SALT II), 1985 레이건-고르바초프(시초)<sup id="fnref2:11"><a class="footnote-ref" href="#fn:11">11</a></sup><sup id="fnref2:12"><a class="footnote-ref" href="#fn:12">12</a></sup></td>
+<td>△ (한국은 동맹국, 중립 X)</td>
+</tr>
+<tr>
+<td><strong>핀란드 헬싱키</strong></td>
+<td>1975~</td>
+<td>동·서 사이 균형외교 ("Finlandization")</td>
+<td>1975 헬싱키 협정(CSCE, 35개국), 1990 부시-고르바초프, 1997 클린턴-옐친<sup id="fnref2:13"><a class="footnote-ref" href="#fn:13">13</a></sup><sup id="fnref2:14"><a class="footnote-ref" href="#fn:14">14</a></sup></td>
+<td>△ (균형외교 모델 일부 적용 가능)</td>
+</tr>
+<tr>
+<td><strong>싱가포르</strong></td>
+<td>2018</td>
+<td>화교·동남아 중간자, 양쪽 모두와 외교관계</td>
+<td>2018 트럼프-김정은 1차 정상회담(Sentosa Capella)<sup id="fnref2:15"><a class="footnote-ref" href="#fn:15">15</a></sup></td>
+<td>◯ (실용주의 + 양쪽 외교 채널 유사)</td>
+</tr>
+<tr>
+<td><strong>비동맹운동(NAM)</strong></td>
+<td>1961~</td>
+<td>티토·네루·나세르·은크루마·수카르노 (제3진영 형성)</td>
+<td>1961 베오그라드 회의(25개국)<sup id="fnref2:16"><a class="footnote-ref" href="#fn:16">16</a></sup></td>
+<td>✗ <strong>안티 패턴</strong> (한국은 진영 형성보다 결절점 역할)</td>
+</tr>
+</tbody>
+</table>
+<h3>3-2. 각 모델 한 줄 요약</h3>
+<p><strong>(1) 빈 — 영구중립 + 국제기구 도시.</strong> 1955년 오스트리아 국가조약 직후 자체 선언한 영구중립 덕분에, 빈은 IAEA·OPEC·OSCE 본부와 UN 빈 사무국을 보유한 외교 도시가 됐습니다.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> 1961 케네디-흐루쇼프 회담은 결과적으로 베를린 위기를 막지 못했지만(같은 해 베를린 장벽 건설), 빈이 "양 진영이 만나는 장소"라는 정체성을 굳혔습니다.<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></p>
+<p><strong>(2) 헬싱키 — 균형외교 + 인권 베이스킷.</strong> 1975년 헬싱키 협정(CSCE Final Act)은 35개국이 참여한 다자 안보·인권·경제 협력 체제로, 동구권 반체제 운동의 근거가 됐습니다.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup><sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup> 핀란드는 소련과 1,300km 국경을 맞대고도 서구 진영과의 균형을 유지한 "Finlandization" 모델로 알려졌습니다.</p>
+<p><strong>(3) 싱가포르 — 양쪽 다 외교관계 + 실용주의.</strong> 2018년 트럼프-김정은 1차 정상회담이 카펠라 호텔에서 열린 이유는 단순합니다 — 싱가포르는 미국과 북한 양쪽 모두와 정식 외교관계를 유지한 매우 드문 국가였고, 보안·중립성·시설을 모두 갖췄습니다.<sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup> 작은 도시국가가 외교 leverage를 만든 모범 사례입니다.</p>
+<p><strong>(4) 비동맹운동(NAM) — 안티 패턴.</strong> 1961년 베오그라드에서 티토·네루·나세르가 25개국과 함께 출범시킨 NAM은 양 진영과 분리된 제3진영 형성을 시도했습니다.<sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup> 그러나 내부 노선 차이(인도-중국 국경 분쟁, 아랍-비아랍 분열, 친소·친서구 갈등 등)로 1980년대 이후 약화됐습니다. <strong>한국은 동맹·교역 구조상 NAM 모델이 아니라 빈·헬싱키·싱가포르 모델에 더 가깝습니다 — 진영을 만들기보다 양쪽이 만나는 장소가 되는 모델입니다.</strong></p>
+<h3>3-3. 서울이 이 4개 모델과 다른 점</h3>
+<table>
+<thead>
+<tr>
+<th>차원</th>
+<th>빈</th>
+<th>헬싱키</th>
+<th>싱가포르</th>
+<th>NAM</th>
+<th><strong>서울 (2025~)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>동맹 구조</td>
+<td>영구중립</td>
+<td>비동맹·서구 친화</td>
+<td>비동맹·실용</td>
+<td>비동맹 진영</td>
+<td><strong>미국 동맹 + 중국 교역</strong></td>
+</tr>
+<tr>
+<td>양쪽 외교관계</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>△</td>
+<td>◯ (한·중 1992 수교)</td>
+</tr>
+<tr>
+<td>산업 stake</td>
+<td>낮음</td>
+<td>낮음</td>
+<td>낮음</td>
+<td>낮음</td>
+<td><strong>매우 높음 (반도체·배터리·희토류 가공)</strong></td>
+</tr>
+<tr>
+<td>지리</td>
+<td>유럽 중앙</td>
+<td>동유럽 접경</td>
+<td>동남아 허브</td>
+<td>분산</td>
+<td><strong>동북아 중심</strong></td>
+</tr>
+<tr>
+<td>다자 회의 인프라</td>
+<td>UN·IAEA·OPEC</td>
+<td>OSCE</td>
+<td>다자 회의 빈도 높음</td>
+<td>자체 운동</td>
+<td><strong>2025 APEC 경주 개최 직후</strong></td>
+</tr>
+</tbody>
+</table>
+<p>서울이 빈·헬싱키와 다른 점은 <strong>이해당사자(stakeholder)</strong>라는 것입니다. 회담 의제 7개(관세·반도체·배터리·희토류·환율·중동·대만) 가운데 반도체·배터리·희토류 가공은 한국 산업의 직접 변수이고, 환율·중동은 거시 변수입니다. 빈·헬싱키는 회담 장소만 제공했지만, 서울은 <strong>장소 + 이해당사자</strong>라는 이중 역할을 수행합니다. 싱가포르 모델(양쪽 외교관계 + 실용주의)에 가장 가깝지만, 싱가포르보다 산업 stake가 압도적으로 큽니다.</p>
+<hr />
+<h2>④ 한국의 전략적 위치 분석 — 왜 서울인가</h2>
+<h3>4-1. 지리적 요인</h3>
+<p>미국 동부(워싱턴 DC) → 베이징 직선거리 약 11,000km, 비행 약 14시간. 서울 → 베이징 약 950km, 비행 약 2시간. 도쿄 → 베이징 약 2,100km, 비행 약 3.5시간.</p>
+<p>베이징 정상회담 직전 사전 조율 무대로 단 하루에 마치고 베이징으로 이동해야 한다면 <strong>서울이 도쿄보다도 1.5시간 가깝고</strong>, 미국 본토에서 출발한 베센트가 도쿄(5/12) → 서울(5/13) → 베이징(미참석) 일정을 짤 때 서울이 마지막 stop이 되는 것이 시간상 자연스럽습니다.</p>
+<h3>4-2. 정치적·외교적 요인 (분석)</h3>
+<ul>
+<li><strong>한·중 수교 1992</strong> — 한국은 미국 동맹국 가운데 매우 이른 시점에 중국과 정식 외교관계를 맺은 국가입니다.</li>
+<li><strong>2025년 APEC 경주 정상회의 인프라</strong> — 2025년 10월 31일~11월 1일 APEC 경주 정상회의를 한국이 호스트했고, 그 계기에 트럼프-시진핑 부산 회담이 이뤄졌습니다.<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup> 외교 의전·보안·통역·언론 인프라가 직전에 가동됐다는 의미입니다.</li>
+<li><strong>2026년 1월 한일정상회담</strong> — 다카이치 정부 출범 후 첫 양자 협의가 한일 사이에서 빠르게 진행된 적이 있어, 동북아 다자 조율의 채널이 활성 상태입니다.<sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup></li>
+</ul>
+<h3>4-3. 산업적 요인 — 회담 의제와 한국 산업의 매칭</h3>
+<table>
+<thead>
+<tr>
+<th>회담 의제</th>
+<th>한국 산업 노출</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>반도체 수출통제·관세</strong></td>
+<td>한국 2025년 반도체 수출 1,734억 달러 (전체의 24.4%)<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup> — 직격</td>
+</tr>
+<tr>
+<td><strong>배터리</strong></td>
+<td>LG에너지솔루션·삼성SDI·SK온, 미국 IRA + 중국 흑연·코발트 의존 양면</td>
+</tr>
+<tr>
+<td><strong>희토류</strong></td>
+<td>중국 가공·정제 점유율 약 90%<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup> — 한국 반도체·전기차·방산 의존</td>
+</tr>
+<tr>
+<td><strong>환율</strong></td>
+<td>원화는 위안화·엔화 변동과 연동</td>
+</tr>
+<tr>
+<td><strong>중동</strong></td>
+<td>한국 원유 수입 중 중동산 약 59%(2026.3-4월)<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup></td>
+</tr>
+<tr>
+<td><strong>대만</strong></td>
+<td>TSMC 영향 → 글로벌 메모리·파운드리 가격 영향</td>
+</tr>
+<tr>
+<td><strong>AI 칩</strong></td>
+<td>엔비디아 H20 대중 수출 통제 → 삼성·SK하이닉스 HBM 수요 영향</td>
+</tr>
+</tbody>
+</table>
+<p>회담 의제 7개 모두가 한국 산업의 직접 또는 1차 변수입니다. <strong>장소가 한국이라서가 아니라, 의제가 한국 산업과 겹치기 때문에 한국이 장소가 됐다</strong>는 인과 방향도 검토 대상입니다.</p>
+<hr />
+<h2>⑤ 산업 영향 — 분기 실적 가정으로 들어가는 7개 의제</h2>
+<pre class="mermaid">flowchart TB
+    A[5/13 베센트-허리펑 서울] --&gt;|사전 조율| B[5/14-15 트럼프-시진핑 베이징]
+    B --&gt; C[관세·반도체·배터리·희토류·환율·중동·대만]
+    C --&gt; D1[반도체 — 삼성·SK하이닉스]
+    C --&gt; D2[배터리 — LG에너지솔루션·삼성SDI·SK온]
+    C --&gt; D3[희토류 — 포스코퓨처엠·LS]
+    C --&gt; D4[조선·해운 — HD현대중공업·삼성중공업]
+    C --&gt; D5[방산 — 한화에어로스페이스·LIG넥스원]
+
+    style A fill:#fff3e0
+    style B fill:#fff3e0
+    style C fill:#fff9c4
+</pre>
+<h3>5-1. 반도체</h3>
+<p>베이징 회담의 핵심 변수 중 하나는 <strong>AI 칩 수출통제 완화 여부</strong>입니다. 미국이 중국향 AI 칩(엔비디아 H20급) 수출을 다시 허용하는 방향으로 움직이면, 한국 메모리(HBM) 수요는 단기 호재 — HBM은 GPU·가속기에 필수 부속이기 때문입니다. 반대로 미국이 동맹국 공조(MATCH 법안 등)로 한국·일본·네덜란드 장비·핵심 부품 통제를 강화하면, 삼성전자·SK하이닉스의 중국 내 팹 운영이 직접 영향을 받습니다.<sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup></p>
+<h3>5-2. 배터리</h3>
+<p>미·중 어느 쪽도 양보할 가능성이 낮은 의제는 <strong>핵심광물·배터리 공급망</strong>입니다. G7 통상장관 회담(2026-05-05~06 파리)도 같은 의제를 다뤘습니다.<sup id="fnref:21"><a class="footnote-ref" href="#fn:21">21</a></sup> 한국 배터리 3사는 (a) 미국 IRA AMPC 보조금 (b) 중국 흑연·전구체 의존 두 변수를 동시에 안고 있어, 회담 결과 어느 쪽으로도 가정이 흔들립니다.</p>
+<h3>5-3. 희토류·핵심광물</h3>
+<p>중국이 글로벌 희토류 정제·가공 약 90% 점유.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> 한국 반도체·EV 모터·방산 모두 희토류 의존이 높습니다. 2023년부터 한국 정부가 비축을 늘려왔지만, 회담에서 중국이 추가 수출통제 카드를 꺼내면 단기 변동성은 큽니다.</p>
+<h3>5-4. 거시 — 환율·중동</h3>
+<ul>
+<li><strong>환율</strong> — 미·중 환율 조항이 합의되면 원화 변동성도 따라 움직입니다.</li>
+<li><strong>중동</strong> — 베이징 회담 의제에 이란 원유·중동 안정이 포함됐고<sup id="fnref:22"><a class="footnote-ref" href="#fn:22">22</a></sup>, 한국 원유 수입 중 중동산 비중이 1년 만에 67.5%→59%로 빠진 상황(직전 영상_071 분석)이라 한국 정유 4사·해운에 직접 영향.</li>
+</ul>
+<hr />
+<h2>⑥ 그래서 당신에게는? — 시민·산업 관점</h2>
+<p><strong>시민 관점.</strong> 회담 결과가 단순한 외교 뉴스로 그치지 않습니다. (1) 반도체·배터리·희토류 가격이 흔들리면 6개월 시차로 가전·EV·휴대폰 가격에 반영됩니다. (2) 환율이 흔들리면 해외 직구·여행·유학 비용에 반영됩니다. (3) 중동 리스크 합의 여부에 따라 휘발유·도시가스 가격이 흔들립니다.</p>
+<p><strong>산업·투자자 관점 (정보 제공, 자문 X).</strong> 5/13 회담 + 5/14-15 정상회담은 <strong>단기 변동성 trigger</strong>가 매우 큰 일정입니다. 회담 결과 발표는 시장 시간외에 나올 가능성이 큽니다. 한국 산업 가운데 (a) 반도체·배터리는 양면 노출, (b) 희토류 가공·소재는 중국 카드에 직격, (c) 조선·해운은 중동 합의에 직접 영향, (d) 방산·풍력은 미국 정책 방향에 노출됩니다. 어느 한쪽으로 일방향 베팅이 어려운 일정이라는 점이 핵심입니다.</p>
+<p><strong>외교·정책 관점 (사실 보도).</strong> 6개월 사이 두 번째 한국 개최라는 사실 자체가 한국 외교 자산입니다. 외교 무대를 제공한다는 것은 단순한 의전 비용이 아니라 (a) 회담 의제 사전 brief 채널 확보 (b) 회담 직후 양국 고위급 follow-up 채널 활성화 (c) 동맹·교역 양쪽 협상력 강화 같은 부수 효과를 의미합니다.</p>
+<hr />
+<h2>⑦ 결론·시사점</h2>
+<p>본문 핵심 3가지를 압축하면:</p>
+<ol>
+<li><strong>부산(2025·정상) → 서울(2026·경제수장)의 6개월 연속 개최는 우연이 아니라 구조다.</strong> 한국은 미국 동맹 + 중국 교역 + 산업 stake + 지리 + 다자 회의 인프라를 동시에 만족하는 거의 유일한 곳이고, 이번 일정은 그 구조의 1차 confirmation이다.</li>
+<li><strong>냉전 시대 빈·헬싱키·싱가포르가 했던 외교 결절점 역할이 21세기 미중 경쟁 구조에서 서울로 이동 중이다.</strong> 단, 서울은 그들과 다른 차원에서 <strong>이해당사자</strong>이기도 하다 — 회담 의제 7개 모두가 한국 산업의 직접 변수다.</li>
+<li><strong>NAM 모델은 한국에 맞지 않는다.</strong> 진영을 만드는 모델보다 양쪽이 만나는 장소가 되는 모델이 한국의 동맹·교역 구조에 부합한다. 이 차이는 외교 전략·산업 전략 모두에 함의가 있다.</li>
+</ol>
+<h3>향후 6~12개월 관전 포인트</h3>
+<ul>
+<li><strong>2026년 5월 14~15일 베이징 트럼프-시진핑 정상회담</strong> — 사전 조율의 결과물 확인.</li>
+<li><strong>2026년 후속 한·미·중 trilateral 채널</strong> — 이번 서울 회담이 단발성인지 정기화되는지.</li>
+<li><strong>AI 칩·HBM 수출통제 가이드라인</strong> — 미국 BIS·상무부 후속 조치.</li>
+<li><strong>희토류 수출통제</strong> — 중국이 회담 결과에 따라 추가 카드를 꺼내는지.</li>
+<li><strong>한국 정부의 외교 자산화</strong> — 서울 회담 후속으로 동북아 다자 협력(한·중·일, 한·미·일) 채널이 활성화되는지.</li>
+</ul>
+<hr />
+
+  </article>
+
+  <article class="references"><h2>⑧ 출처</h2>
+<hr />
+<blockquote>
+<p>↪ 관련 영상: <a href="https://www.youtube.com/@CornBeeRock">냉전 시대 빈·헬싱키가 했던 역할을 이제 서울이 맡습니다 — 영상_072</a></p>
+</blockquote>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>파이낸셜뉴스, "韓 오는 美 베선트-中 허리펑…정상회담 전 13일 '서울 담판'", 2026-05-11. https://www.fnnews.com/news/202605111827343658&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>뉴스핌, "베선트 美재무, 13일 한국 방문…'中허리펑 부총리와 회담 위해'", 2026-05-11. https://www.newspim.com/news/view/20260511000025&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>CSIS, "Trump-Xi Summit in Beijing: Managing the World's Most Important Relationship", 2026-05. https://www.csis.org/analysis/trump-xi-summit-beijing-managing-worlds-most-important-relationship&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>나무위키, "2025년 미중정상회담 (부산)", 2025-10-30. https://namu.wiki/w/2025년%20미중정상회담&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>한국무역협회·관세무역개발원, "2025년 무역통계 결산: 수출 7,097억 달러, 반도체 1,734억 달러(24.4%)", 2026. https://www.kctdi.or.kr/kctdi/research/research11.do?mode=view&amp;articleNo=5255&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>뉴스임팩트, "[긴급진단] 미·중 희토류 전쟁, 한국은 2023년부터 물량 비축 미리 대비 — 중국 정제·가공 약 90% 점유", 2026. https://www.newsimpact.co.kr/news/articleView.html?idxno=4000369&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>헤럴드경제, "靑 '李대통령, 13일 스콧 베센트 美 재무장관 접견'", 2026-05-11. https://biz.heraldcorp.com/article/10736479&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>위키피디아, "2026 state visit by Donald Trump to China (May 14–15, 2026)". https://en.wikipedia.org/wiki/2026_state_visit_by_Donald_Trump_to_China&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>뉴스핌, "베선트 美재무 방일…12일 다카이치 총리·가타야마 재무상과 회담", 2026-05-11. https://www.newspim.com/news/view/20260511000922&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>VOA Korea, "베센트 미 재무장관, 미중 정상회담 앞두고 일본·한국 방문", 2026-05-11. https://www.voakorea.com/a/u-s-treasury-secretary-bessent-to-visit-japan-and-south-korea-ahead-of-trump-xi-summit-20260511/8148829.html&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>위키피디아, "Austrian State Treaty (1955) — 영구중립·빈 국제기구". https://en.wikipedia.org/wiki/Austrian_State_Treaty&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>위키피디아, "Vienna Summit — 1961 케네디-흐루쇼프, 1979 카터-브레즈네프, 1985 레이건-고르바초프". https://en.wikipedia.org/wiki/Vienna_summit&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>위키피디아, "Helsinki Accords (1975) — CSCE 35개국". https://en.wikipedia.org/wiki/Helsinki_Accords&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Wilson Center, "OSCE Timeline: 50th Anniversary of the Helsinki Final Act". https://www.wilsoncenter.org/article/organization-security-and-co-operation-europe-osce-timeline-50th-anniversary-helsinki-final&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>위키피디아, "2018 North Korea–United States Singapore Summit — Capella Hotel, Sentosa". https://en.wikipedia.org/wiki/2018_North_Korea%E2%80%93United_States_Singapore_Summit&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>Global South Studies, "Belgrade, The 1961 Non-Aligned Conference — Tito·Nasser·Nehru·Nkrumah·Sukarno, 25 nations". https://www.globalsouthstudies.org/keyword-essay/belgrade-the-1961-non-aligned-conference/&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>나무위키, "2025년 APEC 대한민국 경주 정상회의". https://namu.wiki/w/2025년%20APEC%20대한민국%20경주%20정상회의&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>나무위키, "2026년 1월 한일정상회담". https://namu.wiki/w/2026년%201월%20한일정상회담&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>관세청, "중동전쟁 영향 품목 수입통관 점검 및 개선방안 — 중동산 원유 67.5%→59%", 2026-05-07 (영상_071 분석 데이터). https://www.customs.go.kr&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>EAI, "미중경제전쟁과 한국의 선택 시리즈 ② 반도체 산업 재편 — MATCH 법안 등". https://www.eai.or.kr/new/ko/pub/view.asp?intSeq=22448&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:21">
+<p>전국인력신문, "중동 위기·관세 압박 속 G7 통상장관 파리 회담…공급망 협력 강화", 2026-05-06. https://www.kjob.news/news/487714&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:22">
+<p>Eurasia Review, "What To Expect From The Trump-Xi Jinping 14-15 May Summit? — Iran, Taiwan, rare earths, AI", 2026-05-04. https://www.eurasiareview.com/04052026-what-to-expect-from-the-trump-xi-jinping-14-15-may-summit-analysis/&#160;<a class="footnote-backref" href="#fnref:22" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:23">
+<p>천지일보, "[사설] 미중 담판 앞둔 서울의 역할 주목된다", 2026-05. https://www.newscj.com/news/articleView.html?idxno=3400020&#160;<a class="footnote-backref" href="#fnref:23" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>중앙이코노미뉴스, "트럼프 방중 직전 서울 오는 美 베선트…미중 담판 무대 된 한국", 2026-05. https://www.joongangenews.com/news/articleView.html?idxno=518147&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:25">
+<p>INSS, "미중 경쟁과 한국의 외교 유연성 — 중소 중추국 외교전략". https://www.inss.re.kr/publication/bbs/rr_view.do?nttId=410135&#160;<a class="footnote-backref" href="#fnref:25" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
