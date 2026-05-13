@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>에스비비테크 — 휴머노이드 로봇 감속기 일본 독점의 첫 균열 — ONGLE</title>
+<meta name="description" content="Tesla Optimus 2026 양산 본격화로 휴머노이드가 첫 공장 출하 단위 발주 산업으로 진입. 그 원가 60%를 차지하는 단일 최대 부품은 감속기. 일본 Nabtesco가 2020년 Harmonic Drive Systems를 인수하며 정밀 감속기 양대 기술을 통합 독점. 2026년 3월 현대차 로보틱스랩이 양산품에 한국산 감속기 비중 최대화 방침을 명시. 그 결정에 가장 직접 닿는 한국 회사가 정밀 감속기 단일 pure-play 에스비비테크. 하모닉 7종 자체 개발, CES 2026 출품, 2025 Q3 누적 매출 +29.2% YoY. ⚠️ 본 리포트는 정보 제공이며 종목 추천이 아닙니다.">
+<meta property="og:title" content="에스비비테크 — 휴머노이드 로봇 감속기 일본 독점의 첫 균열">
+<meta property="og:description" content="Tesla Optimus 2026 양산 본격화로 휴머노이드가 첫 공장 출하 단위 발주 산업으로 진입. 그 원가 60%를 차지하는 단일 최대 부품은 감속기. 일본 Nabtesco가 2020년 Harmonic Drive Systems를 인수하며 정밀 감속기 양대 기술을 통합 독점. 2026년 3월 현대차 로보틱스랩이 양산품에 한국산 감속기 비중 최대화 방침을 명시. 그 결정에 가장 직접 닿는 한국 회사가 정밀 감속기 단일 pure-play 에스비비테크. 하모닉 7종 자체 개발, CES 2026 출품, 2025 Q3 누적 매출 +29.2% YoY. ⚠️ 본 리포트는 정보 제공이며 종목 추천이 아닙니다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">에스비비테크 — 휴머노이드 로봇 감속기 일본 독점의 첫 균열</h1>
+    <p class="article-sub">Tesla Optimus 2026 5~15만 대 양산 + 휴머노이드 원가 60%가 감속기 + 일본 Nabtesco가 Harmonic Drive 인수해 통합 독점 + 현대차 로보틱스랩이 한국산 감속기 양산 채택 결정.</p>
+    
+    <div class="article-meta">2026-05-13 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#한국경제</span> <span class="tag">#휴머노이드</span> <span class="tag">#로봇부품</span></div>
+    <div class="kpi-grid"><div class="kpi-card">  <div class="kpi-label">Tesla Optimus 2026 양산 목표</div>  <div class="kpi-value">5만~15만 대</div>  <div class="kpi-sub">Musk 2026-03 전사 회의 — 첫 양산 ramp 단위 (이전엔 시제품 단계)</div></div><div class="kpi-card">  <div class="kpi-label">휴머노이드 1대 액추에이터</div>  <div class="kpi-value">28개 (회전 14 + 직선 14)</div>  <div class="kpi-sub">회전 관절 대부분이 하모닉 감속기 기반 — 1대당 하모닉 14개</div></div><div class="kpi-card">  <div class="kpi-label">감속기의 휴머노이드 원가 비중</div>  <div class="kpi-value">약 60%</div>  <div class="kpi-sub">단일 부품 비중 최대 — 산업계 표준 평가 (AI 칩·카메라·배터리 합쳐도 못 미침)</div></div><div class="kpi-card">  <div class="kpi-label">휴머노이드 시장 2030 규모</div>  <div class="kpi-value">약 380억 달러 (≈ 56조원)</div>  <div class="kpi-sub">산업계 추정 — 자동차·반도체·가전 다음 단계 산업</div></div><div class="kpi-card">  <div class="kpi-label">에스비비테크 2025 Q3 누적 매출</div>  <div class="kpi-value">+29.2% YoY (별도)</div>  <div class="kpi-sub">하모닉 정밀 감속기 7종 자체 개발 · 일본 대비 저가 · CES 2026 출품</div></div></div>
+    <div class="key-conclusion">휴머노이드 표면 보도는 외형과 AI에 집중하지만, 한 단계 깊이 들어가면 원가 60%의 정밀 감속기가 산업 구조의 결정점. 일본 Nabtesco의 Harmonic Drive 인수(2020)로 단일 독점이 굳어진 시장에서, 2026년 3월 현대차 로보틱스랩이 양산품에 한국산 감속기 비중 최대화 방침을 명시. 그 결정에 가장 직접적으로 닿는 한국 회사가 정밀 감속기 단일 pure-play 에스비비테크. ⚠️ 시나리오상 가능성이며 양산 일정·채택 결정은 분기별 확인 필요.</div>
+    <div class="why-matters"><span class="why-label">왜 중요한가</span>휴머노이드는 자동차·반도체·가전 다음으로 한국 제조업이 들어갈 다음 단계 산업. 그 원가 절반 이상의 핵심 부품에서 일본 독점에 한국 회사가 어디까지 균열을 내느냐는 단기 종목 가격을 넘어 한국 산업의 다음 10년 위치를 정하는 문제.</div>
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<p>⚠️ 본 리포트는 산업 구조 분석을 위한 정보 제공이며 종목 추천이 아닙니다. §④ 시나리오 분기 표·면책 사항 참고.</p>
+<hr />
+<h2>⓪ Executive Summary</h2>
+<p>Tesla Optimus 가 2026년 양산을 본격화하면서 휴머노이드 로봇 시장이 처음으로 "공장 출하 단위" 로 환산되기 시작했다. Elon Musk 는 2026년 3월 전사 회의에서 Optimus 의 2026년 생산 목표를 5만~15만 대로 제시했다<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. 이는 휴머노이드를 연구 시제품에서 산업용 부품 발주의 대상으로 바꾸는 분기점이다.</p>
+<p>표면에서는 휴머노이드의 화제가 인공지능과 외형 디자인에 집중되지만, 한 단계 깊이 들여다보면 휴머노이드 한 대의 제조 원가에서 가장 큰 비중을 차지하는 부품은 모터도, 카메라도, 인공지능 칩도 아니다. <strong>정밀 감속기다.</strong> 산업계 표준 평가에 따르면 감속기는 휴머노이드 원가의 약 60%를 차지하며, 상용화의 단일 최대 변수로 꼽힌다<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. 휴머노이드 한 대에는 회전형과 직선형을 합쳐 약 28개의 액추에이터가 들어가고, 회전 관절은 거의 모두 하모닉 감속기를 기반으로 한다<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
+<p>이 감속기 시장은 오랫동안 일본이 사실상 독점해 왔다. 2020년 일본 Nabtesco 가 Harmonic Drive Systems 를 인수하면서 RV 감속기와 하모닉 감속기 양대 정밀 감속기 기술이 한 그룹 안으로 들어왔다<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. 글로벌 정밀 감속기 시장의 프리미엄 구간은 사실상 일본 1국 체제로 굳어졌다는 평가가 이어졌다.</p>
+<p>그 독점에 처음 본격적인 균열을 내고 있는 곳이 중국 Green Harmonic 과 한국 정밀 감속기 회사들이다. Green Harmonic 은 자국 내 점유율 60% 이상, 글로벌 35% 이상을 확보하고 Tesla Optimus 의 멕시코 공장 공급 검증까지 통과했다<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>. 한국 쪽 진입을 사실상 결정짓는 사건이 2026년 3월 3일 있었다. 현대차 로보틱스랩이 자체 개발 중인 이동형 양팔 로봇 시제품에 일본 Harmonic Drive·Nabtesco 와 함께 한국의 에스비비테크·에스피지 감속기를 함께 적용했고, <strong>양산품에서는 한국산 감속기 비중을 최대한 높이는 것을 목표로 한다</strong>고 디일렉이 단독 보도했다<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
+<p>본 리포트가 핵심 키 기업으로 보는 곳은 에스비비테크다. 휴머노이드 로봇에 들어가는 하모닉 타입 정밀 감속기 7종을 자체 개발해 일본 제품 대비 낮은 가격으로 공급하고 있고<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>, 2026년 1월 CES 에서 글로벌 로봇 구동 부품 기업으로 부각되며 해외 고객 채널을 열었다<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>. 2025년 3분기 누적 별도 기준 매출은 전년 동기 대비 29.2% 증가했고, 방산 RCWS·현대차 모베드 등 인접 모빌리티 플랫폼의 정밀 감속기 수요까지 동반 확대되고 있다<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup>.</p>
+<p>휴머노이드 시장 규모는 2030년 약 380억 달러(56조원)에 이를 것으로 산업계는 추정한다<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup>. 그 시장의 원가 60%가 감속기로 매겨지는 구조 안에서, 한국이 일본 독점의 첫 균열을 어디서 만들어 내는지가 향후 5년의 가장 큰 산업 구조 변화 가운데 하나다.</p>
+<h3>핵심 수치 (dashboard)</h3>
+<ul>
+<li><strong>Tesla Optimus 2026 양산 목표</strong>: 5만~15만 대 (Musk 2026-03 발표) — 첫 양산 ramp</li>
+<li><strong>휴머노이드 1대 액추에이터 수</strong>: 28개 (회전 14 + 직선 14) — 회전 관절 대부분이 하모닉 감속기 기반</li>
+<li><strong>감속기의 휴머노이드 원가 비중</strong>: 약 60% — 단일 부품 비중 최대</li>
+<li><strong>휴머노이드 시장 2030 규모</strong>: 약 380억 달러 (≈ 56조원)</li>
+<li><strong>에스비비테크 2025 Q3 누적 별도 매출</strong>: 전년 동기 대비 +29.2% / 하모닉 감속기 7종 자체 개발</li>
+</ul>
+<h3>왜 중요한가</h3>
+<p>휴머노이드는 자동차·반도체·가전 다음으로 한국 제조업이 들어갈 수 있는 다음 단계 산업으로 정부와 대기업이 동시에 지목하는 분야다. 그 산업의 원가 절반 이상을 차지하는 핵심 부품에서 일본 독점을 깨고 한국 회사가 어디까지 비중을 가져가느냐는, 단기 종목 가격을 넘어 한국 산업의 다음 10년 위치를 정하는 문제다.</p>
+<hr />
+<h2>① 도입 — Optimus 양산이 만드는 새 발주 흐름</h2>
+<p>Tesla 의 Optimus 는 2024년까지 시제품 시연 단계에 머물러 있었다. 변곡점은 2025년 10월이었다. Elon Musk 는 핵심 부품 회사인 중국 Sanhua Intelligent Controls 에 6억 8,500만 달러 규모 발주를 냈다. Sanhua 는 Tesla 멕시코 공장 가까이에 라인을 신설해 2026년부터 Optimus 액추에이터를 공급한다고 공식화했다<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup>.</p>
+<p>이어 2026년 3월 전사 회의에서 Musk 는 Optimus 의 <strong>2026년 생산 목표를 5만~15만 대</strong>로 제시했다<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. 휴머노이드가 처음으로 자동차·서버 같은 "공장 출하 단위" 의 부품 발주를 만들기 시작한 시점이다.</p>
+<p>Optimus 한 대에는 약 28개의 액추에이터가 들어간다. 회전 관절 14개에는 frameless torque motor 와 하모닉 감속기, 직선 관절 14개에는 frameless torque motor 와 유성 롤러 스크류가 결합되어 있다<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. 손에는 별도로 약 20개의 코어리스 모터가 들어간다. 양산 단위가 5만 대만 되어도, 하모닉 감속기 70만 개, 코어리스 모터 100만 개라는 단순 수치가 나온다. 부품 산업 입장에서는 새로운 발주 카테고리 하나가 통째로 열린 셈이다.</p>
+<h2>② 인과 흐름 — 왜 감속기에 원가가 몰리는가</h2>
+<p>휴머노이드의 관절은 사람 관절보다 훨씬 정밀한 각도 제어가 필요하다. 모터 자체로는 회전이 너무 빠르고 토크가 부족하기 때문에, 모터의 회전을 줄여서 토크로 바꾸는 부품이 반드시 들어가야 한다. 그 역할이 감속기다.</p>
+<p>감속기는 두 유형으로 나뉜다. 하모닉(harmonic) 감속기는 가볍고 정밀하며 백래시가 적어 휴머노이드의 손·팔 같은 작은 관절에 적합하다. RV(roller vector) 감속기는 큰 토크를 견디는 산업용 로봇·다리 관절에 쓰인다. 휴머노이드는 작고 정밀한 회전 관절이 압도적으로 많기 때문에, 하모닉 감속기가 사실상 표준 부품이 되어 있다.</p>
+<p>산업계 자료는 감속기가 휴머노이드 한 대 원가의 약 60%를 차지한다고 추정한다<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. AI 칩·카메라·배터리 같은 화제 부품을 다 더해도 감속기 한 카테고리 비중에 못 미친다는 의미다. 그래서 글로벌 로봇 회사들의 첫 번째 공급망 전략은 사실상 "감속기를 어디서 확보하느냐" 다.</p>
+<h2>③ 글로벌 구도 — 일본의 통합 독점과 첫 균열</h2>
+<p>정밀 감속기 시장은 오랫동안 일본 두 회사가 양분해 왔다. 하모닉 감속기는 Harmonic Drive Systems(HDS), RV 감속기는 Nabtesco 였다. 두 회사 모두 1970~1980년대부터 산업용 로봇·항공우주·반도체 장비 시장에서 기술 축적을 쌓아 왔다.</p>
+<p>균형이 바뀐 사건이 2020년이다. <strong>Nabtesco 가 Harmonic Drive Systems 를 인수</strong>하면서 정밀 감속기 양대 기술이 한 그룹 산하로 들어갔다<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup>. 휴머노이드 시대를 앞두고 일본 정밀 감속기 진영의 위치는 사실상 단일 사실상의 독점으로 굳어졌다.</p>
+<p>이 독점에 첫 균열을 낸 곳이 중국 Green Harmonic 이다. 자국 내 점유율 60% 이상, 글로벌 35% 이상에 도달했고<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup>, Tesla Optimus 멕시코 공장 공급 검증을 통과했다. 다만 Green Harmonic 의 강점은 가격과 양산 속도이고, 일본 HDS 와 동급의 정밀도·내구성을 본격 인정받기까지는 추가 검증이 필요하다는 시각이 여전히 있다.</p>
+<p>세 번째 진입 그룹이 한국이다. 한국에서는 에스비비테크, 에스피지가 정밀 감속기 자체 개발·양산에 가장 깊이 들어가 있다. 그리고 이 회사들이 시제품 단계가 아니라 양산 채택 단계의 검증을 받기 시작한 사건이 2026년 3월에 일어났다.</p>
+<h2>④ 한국 산업 매핑 — 감속기 단계의 한국 회사</h2>
+<h3>현대차 로보틱스랩 — 한국산 감속기 양산 채택 결정</h3>
+<p>2026년 3월 3일 디일렉 단독 보도는 한 줄로 정리되는 내용이지만 한국 감속기 산업에는 분기점이다. 현대차 로보틱스랩이 자체 개발 중인 이동형 양팔 로봇 시제품에 일본 Harmonic Drive·Nabtesco 와 함께 한국 에스비비테크·에스피지의 감속기를 적용해 시험하고 있고, <strong>양산품에서는 한국산 감속기 비중을 최대한 높이는 것을 목표</strong>로 한다는 내용이다<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
+<p>현대차 그룹은 이미 Boston Dynamics 를 보유하고 있고, 로보틱스랩에서 자체 휴머노이드도 별도로 개발 중이다. 두 라인이 동시에 한국산 정밀 감속기를 양산 채택 후보로 두기 시작했다는 사실은, 한국 감속기 회사가 시제품 공급 단계에서 양산 공급 단계로 이동하기 시작했다는 신호다.</p>
+<h3>에스비비테크 — 하모닉 7종 자체 개발의 단일 pure-play</h3>
+<p>에스비비테크는 정밀 감속기·정밀 부품 단일 전업 회사다. 1985년 설립, 2022년 코스닥 상장(389500). 하모닉 타입 정밀 감속기 7종을 자체 개발했고, 일본 제품 대비 낮은 가격으로 공급하고 있다는 점이 디일렉 보도에서 명시적으로 언급된다<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup>.</p>
+<p>2026년 1월 라스베이거스 CES 2026 에서는 로봇 구동 부품 핵심 기업으로 전시 부스를 차려, Tesla·Figure AI·Boston Dynamics 등 글로벌 휴머노이드 회사 엔지니어들과 직접 접촉했다는 산업 매체 보도가 이어졌다<sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup>. 시제품 단계 이상으로 글로벌 사이드 채널이 열리기 시작한 시점이다.</p>
+<p>수치로 보면 2025년 3분기 누적 별도 기준 매출은 전년 동기 대비 29.2% 증가했다. 방산 RCWS(원격무장 시스템) 채택과 현대차 모베드(MobED) 등 인접 모빌리티 플랫폼의 정밀 감속기 수요가 동반 확대되고 있다<sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup>. 휴머노이드 단일 매출이 본격 잡히기 전이지만, 인접 분야 매출이 이미 정밀 감속기 회사의 가시적 fact 로 쌓이고 있다.</p>
+<h3>에스피지 — 유성·SH·SR 3종 풀스택과 액추에이터 통합</h3>
+<p>에스피지는 1991년 설립된 정밀 모터·감속기 회사로, 2002년 코스닥 상장. 에스피지의 차별 포인트는 <strong>유성·SH·SR 감속기 3종을 모두 국내에서 유일하게 자체 개발·양산</strong> 한다는 점이다<sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup>. 협동 로봇·산업용 로봇·4족 보행 로봇·휴머노이드까지 한 회사에서 풀스택으로 커버할 수 있다는 의미다.</p>
+<p>2026년부터는 감속기·모터·제어기를 통합한 액추에이터(QDD·SDD) 양산에 본격 진입할 계획을 공시했다<sup id="fnref2:12"><a class="footnote-ref" href="#fn:12">12</a></sup><sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup>. 단일 부품 공급에서 한 단계 더 올라간, 액추에이터 모듈 공급자로의 포지셔닝이다.</p>
+<h3>LG이노텍 — vision 단계 진입</h3>
+<p>부품 단계의 다른 축으로는 LG이노텍이 있다. Figure AI 의 vision 모듈 공급 사실이 산업 매체에 보도되었고, Boston Dynamics 와도 센서 모듈 작업을 진행 중이다<sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup>. 카메라 모듈은 LG이노텍의 Apple Vision Pro·Tesla 차량 공급 경험과 직접 연결되는 영역이라, 휴머노이드 vision 단계 진입은 자연스러운 확장이다.</p>
+<h3>레인보우로보틱스·현대차 로보틱스랩 — 한국 휴머노이드 자체</h3>
+<p>부품이 아닌 완성형 휴머노이드 자체의 한국 진입은 두 축이다. 삼성전자가 2025년 35%까지 지분을 늘려 자회사로 편입한 레인보우로보틱스는 이미 RB-Y1 휠 듀얼암 로봇을 MIT·UC 버클리 등 글로벌 연구 기관에 공급하고 있다<sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup>. 현대차 로보틱스랩은 자체 휴머노이드 + Boston Dynamics 더블 트랙으로 움직이고 있다.</p>
+<p>본 리포트가 단일 회사 핵심 키 기업을 에스비비테크로 좁히는 이유는, 감속기라는 단일 부품 단계에서 일본 독점에 가장 직접적으로 부딪히는 한국 회사가 에스비비테크이기 때문이다. 휴머노이드 완성형 회사(레인보우)나 모듈 통합 회사(에스피지)는 본문 안에서 함께 다루지만, "감속기 단일 부품의 한국 진입 위치" 이라는 한 가지 질문의 답으로 가장 좁혀지는 곳이 에스비비테크다.</p>
+<h2>⑤ 그래서 당신에게는?</h2>
+<p>투자 권유가 아닌, 산업 구조 관점에서 정리한다.</p>
+<ul>
+<li><strong>휴머노이드는 자동차의 반복 발주 산업이 되어 가는 중</strong>: Tesla 가 5만~15만 대 양산 목표를 공식화한 순간부터, 휴머노이드는 더 이상 한두 회사의 시연 시제품이 아니라 매년 부품 발주가 반복되는 산업이다.</li>
+<li><strong>그 산업의 단일 최대 부품이 감속기 한 카테고리</strong>: 원가 60%, 단일 부품 비중 최대. AI 칩·카메라·배터리 화제와 감속기의 실제 가치 사슬 위치는 완전히 다르다.</li>
+<li><strong>일본 독점은 처음으로 흔들리는 중</strong>: 중국·한국이 동시에 양산 검증을 통과하기 시작했고, 현대차 그룹이 자체 채택 결정을 명시적으로 공식화했다.</li>
+<li><strong>단기 종목 가격이 아니라, 한국이 다음 산업의 어느 단계에 자리를 잡느냐</strong>가 본 리포트의 핵심 질문이다. 감속기 단계는 그 답이 가장 빨리 결정되는 단계다.</li>
+</ul>
+<h2>⑥ 시나리오 분기 표</h2>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>확률</th>
+<th>트리거</th>
+<th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>낙관</td>
+<td>30%</td>
+<td>Tesla Optimus 2026 양산 15만 대 도달 + 현대차 양산품 한국 감속기 비중 50% 이상 + 에스비비테크 글로벌 신규 고객 확보</td>
+<td>매출·이익 컨센서스 상향, 일본 독점 균열 본격화, 한국 정밀 감속기 산업 재평가</td>
+</tr>
+<tr>
+<td>중립</td>
+<td>50%</td>
+<td>Tesla 양산 5~10만 대 + 현대차 한국 감속기 비중 30~50% + 글로벌 직접 채택은 보류</td>
+<td>매출 base case 안정 성장, 방산 RCWS·모베드 인접 매출이 휴머노이드 양산 본격화 전까지의 brace</td>
+</tr>
+<tr>
+<td>비관</td>
+<td>20%</td>
+<td>Tesla 양산 5만 미만 + 중국 Green Harmonic 가격 압력 + 일본 HDS·Nabtesco 양산 capacity 추가 확대</td>
+<td>한국 신규 수주 점유 둔화, 매출 base case 하향 조정</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ 본 시나리오는 가능성과 확률을 분기로 정리한 것이며 종목 매수·매도 권유가 아닙니다. 휴머노이드 양산 일정·감속기 채택 결정은 분기별로 검증해야 합니다.</p>
+<h2>⑦ 결론·시사점</h2>
+<p>휴머노이드 표면 보도는 외형 디자인과 AI 데모에 집중한다. 그러나 휴머노이드가 자동차 같은 반복 발주 산업이 되는 순간, 산업 구조의 핵심은 외형이 아니라 원가 60%를 차지하는 단일 부품으로 이동한다.</p>
+<p>감속기 단계는 그 답이다. 일본 두 회사가 2020년 인수로 통합한 독점 구도가, 2026년에 처음으로 양산 채택 차원에서 흔들리기 시작했다. 한국 측 결정의 첫 증거가 현대차 로보틱스랩의 한국산 감속기 양산 채택 방침이었다. 그 결정이 가장 직접적으로 닿는 한국 회사가 정밀 감속기 단일 pure-play 인 에스비비테크다.</p>
+<p>본 리포트는 종목 추천을 목적으로 하지 않는다. 한국 제조업 다음 10년의 자리가 어느 단계에서 결정되는지, 그 단계의 한국 진입 위치을 식별하기 위한 산업 구조 분석이다. 휴머노이드 양산 일정·감속기 채택 결정은 분기별로 검증할 fact 가 풍부하기 때문에, 분기별 확인이 가능한 카테고리다.</p>
+<p>⚠️ 본 리포트는 정보 제공이며 종목 매수·매도 추천이 아닙니다. 투자 판단의 책임은 투자자 본인에게 있습니다.</p>
+<hr />
+
+  </article>
+
+  <article class="references"><h2>⑧ 출처 footnote</h2>
+<hr />
+<p>© 2026 ongle</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Humanoids Daily, "Tesla Targets 1 Million Unit Optimus Production Line, V3 Prototype Set for Q1", 2026-03. Musk 가 전사 회의에서 2026년 Optimus 생산 목표를 5만~15만 대로 제시했다는 보도. <a href="https://www.humanoidsdaily.com/news/tesla-targets-1-million-unit-optimus-line-v3-prototype-q1">원문</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>The Elec, "현대차, 휴머노이드에 국산 감속기 채택한다", 2026-03-03. "감속기는 휴머노이드 원가의 약 60%를 차지하며 상용화의 단일 최대 변수" 라는 산업 표준 평가 인용. <a href="https://www.thelec.kr/news/articleView.html?idxno=52966">원문</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>OptimusK Blog, "Tesla Optimus Hardware: Actuators, Hands &amp; Sensors (2026)", 2026. Optimus 한 대 = 회전형 14 + 직선형 14 = 28 액추에이터, 회전형은 frameless torque motor + 하모닉 감속기 + 센서 조합. <a href="https://optimusk.blog/blog/tesla-optimus-hardware-specs/">원문</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Custom Market Insights, "Global Harmonic Drive Market", 2026. 2020년 Nabtesco 의 Harmonic Drive Systems 인수와 일본 정밀 감속기 양대 기술의 통합. <a href="https://www.custommarketinsights.com/report/harmonic-drive-market/">원문</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>36kr, "Elon Musk's Plan to Build One Million Robots: How Many Motors, Reducers, and Lead Screws Are Made in China?", 2026. Green Harmonic 자국 60% 글로벌 35% 점유 및 Tesla 멕시코 공장 공급 검증 통과 보도. <a href="https://eu.36kr.com/en/p/3780414717129481">원문</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>The Elec, "[단독] 현대차, 휴머노이드에 국산 감속기 채택한다", 2026-03-03. 현대차 로보틱스랩이 일본 Harmonic Drive·Nabtesco·한국 에스비비테크·에스피지 감속기를 모두 시제품에 적용, 양산품에서는 한국산 비중 최대화 목표를 명시. <a href="https://www.thelec.kr/news/articleView.html?idxno=52966">원문</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>에스비비테크 회사 페이지, 사업분야 (하모닉 타입 정밀 감속기 7종 자체 개발). <a href="http://www.sbb.co.kr/page/21">원문</a>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>로봇신문, "에스비비테크, CES 2026 서 글로벌 로봇 구동부품 핵심 기업으로 부상", 2026-01. <a href="https://www.irobotnews.com/news/articleView.html?idxno=44285">원문</a>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>로봇신문, "에스비비테크, 방산·소형 모빌리티 수요 확대에 실적 개선 기대", 2025. 2025 Q3 누적 별도 매출 +29.2% YoY 인용. <a href="https://www.irobotnews.com/news/articleView.html?idxno=45438">원문</a>&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>산업계 추정, 휴머노이드 시장 2030 약 380억 달러 규모(≈ 56조원). 다수 시장 조사 보고서가 유사 수준을 제시.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>36kr, "Elon Musk Places $685M Order with Sanhua: China Becomes Key Supplier for Optimus", 2025-10. Sanhua Mexico 공장과 2026년 공급 일정. <a href="https://eu.36kr.com/en/p/3510288514980998">원문</a>&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>KMJ, "피지컬 AI 의 관절을 잡아라 — 국산 감속기 에스피지, 휴머노이드 시대의 핵심 공급사로 부상", 2026. 유성·SH·SR 3종 풀스택과 액추에이터 통합 사업 계획. <a href="https://www.kmjournal.net/news/articleView.html?idxno=5795">원문</a>&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>ZDNet Korea, "휴머노이드 승부수는 관절 — 에스피지, 차세대 구동부로 정면 돌파", 2026-02. QDD·SDD 액추에이터 2026 상반기 양산 계획. <a href="https://zdnet.co.kr/view/?no=20260209140242">원문</a>&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Seoulz, "Korea Humanoid Robotics 2026: The Hidden Supply Chain Winner", 2026. LG이노텍 Figure AI vision 모듈 공급 및 Boston Dynamics 센서 모듈 협력. <a href="https://www.seoulz.com/korea-humanoid-robotics-2026/">원문</a>&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>The Robot Report, "Samsung increases stake in Rainbow Robotics, establishes Future Robotics Office", 2025. 삼성전자 레인보우로보틱스 35% 지분 확대 및 Future Robotics Office 설립. <a href="https://www.therobotreport.com/samsung-increases-stake-in-rainbow-robotics-establishes-future-robotics-office/">원문</a>&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
