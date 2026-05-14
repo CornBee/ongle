@@ -103,6 +103,19 @@
     color: #fff;
     border-color: var(--accent);
   }
+  /* 태그 더보기 토글 — 5개째부터 .cat-btn-extra (collapsed 기본 숨김) */
+  .filter-bar.collapsed .cat-btn-extra { display: none; }
+  .cat-toggle {
+    background: transparent;
+    border: 1px dashed var(--rule);
+    color: var(--muted);
+    padding: 0.4em 0.9em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .cat-toggle:hover { color: var(--ink-soft); border-color: #d8d8d8; }
   main {
     max-width: 880px;
     margin: 1.4em auto 4em;
@@ -121,10 +134,29 @@
     color: inherit;
     transition: transform .15s ease, box-shadow .15s ease;
   }
+  .card {
+    overflow: hidden;  /* 섬네일 라운드 코너 클립 */
+  }
   .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     border-color: #d8d8d8;
+  }
+  /* 리포트 카드 섬네일 — 16:9, 라운드, 카드 패딩 안쪽 */
+  .card-thumb-wrap {
+    margin: -1.4em -1.5em 1em;  /* card padding 상쇄 — full-bleed 상단 */
+    aspect-ratio: 16 / 9;
+    background: #f3f3f3;
+    overflow: hidden;
+  }
+  .card-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .card-thumb-wrap { margin: -1.1em -1.2em 0.9em; }
   }
   .card-meta {
     display: flex;
@@ -200,12 +232,14 @@
   <p class="hero-copy">당신께 도움 되는 이야기를 하고 싶습니다</p>
   <a class="yt" href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">YouTube 채널 →</a>
 </header>
-<div class="filter-bar">
+<div class="filter-bar collapsed" id="filter-bar">
   <button class="cat-btn active" data-cat="">전체</button>
-  <button class="cat-btn" data-cat="산업분석">#산업분석</button><button class="cat-btn" data-cat="재보험">#재보험</button><button class="cat-btn" data-cat="해상보험">#해상보험</button><button class="cat-btn" data-cat="한국경제">#한국경제</button><button class="cat-btn" data-cat="지정학">#지정학</button><button class="cat-btn" data-cat="폭염">#폭염</button><button class="cat-btn" data-cat="산업안전">#산업안전</button><button class="cat-btn" data-cat="기능성섬유">#기능성섬유</button><button class="cat-btn" data-cat="산업군">#산업군</button><button class="cat-btn" data-cat="휴머노이드">#휴머노이드</button><button class="cat-btn" data-cat="로봇부품">#로봇부품</button><button class="cat-btn" data-cat="AI">#AI</button><button class="cat-btn" data-cat="전력인프라">#전력인프라</button><button class="cat-btn" data-cat="외교분석">#외교분석</button><button class="cat-btn" data-cat="단계별분석">#단계별분석</button>
+  <button class="cat-btn" data-cat="산업분석">#산업분석</button><button class="cat-btn" data-cat="재보험">#재보험</button><button class="cat-btn" data-cat="해상보험">#해상보험</button><button class="cat-btn" data-cat="한국경제">#한국경제</button><button class="cat-btn cat-btn-extra" data-cat="지정학">#지정학</button><button class="cat-btn cat-btn-extra" data-cat="폭염">#폭염</button><button class="cat-btn cat-btn-extra" data-cat="산업안전">#산업안전</button><button class="cat-btn cat-btn-extra" data-cat="기능성섬유">#기능성섬유</button><button class="cat-btn cat-btn-extra" data-cat="산업군">#산업군</button><button class="cat-btn cat-btn-extra" data-cat="휴머노이드">#휴머노이드</button><button class="cat-btn cat-btn-extra" data-cat="로봇부품">#로봇부품</button><button class="cat-btn cat-btn-extra" data-cat="AI">#AI</button><button class="cat-btn cat-btn-extra" data-cat="전력인프라">#전력인프라</button><button class="cat-btn cat-btn-extra" data-cat="외교분석">#외교분석</button><button class="cat-btn cat-btn-extra" data-cat="단계별분석">#단계별분석</button>
+  <button class="cat-toggle" id="cat-toggle" type="button">더보기 ▼</button>
 </div>
 <main id="card-grid">
 <a class="card" href="https://cornbee.github.io/ongle/r/076" data-cats="산업분석,재보험,해상보험,한국경제,지정학">
+  
   <div class="card-meta">
     <span class="card-date">2026-05-14</span>
     <span class="tag">#산업분석</span> <span class="tag">#재보험</span> <span class="tag">#해상보험</span> <span class="tag">#한국경제</span> <span class="tag">#지정학</span>
@@ -218,6 +252,7 @@
   </div>
 </a>
 <a class="card" href="https://cornbee.github.io/ongle/r/075" data-cats="산업분석,한국경제,폭염,산업안전,기능성섬유,산업군">
+  <div class="card-thumb-wrap"><img class="card-thumb" src="https://cornbee.github.io/ongle/assets/thumbs/075.png" alt="한국 쿨링 섬유 4파전 — 18년 누적 압력이 만든 산업 구조" loading="lazy"></div>
   <div class="card-meta">
     <span class="card-date">2026-05-14</span>
     <span class="tag">#산업분석</span> <span class="tag">#한국경제</span> <span class="tag">#폭염</span> <span class="tag">#산업안전</span> <span class="tag">#기능성섬유</span> <span class="tag">#산업군</span>
@@ -230,6 +265,7 @@
   </div>
 </a>
 <a class="card" href="https://cornbee.github.io/ongle/r/074" data-cats="산업분석,한국경제,휴머노이드,로봇부품">
+  
   <div class="card-meta">
     <span class="card-date">2026-05-13</span>
     <span class="tag">#산업분석</span> <span class="tag">#한국경제</span> <span class="tag">#휴머노이드</span> <span class="tag">#로봇부품</span>
@@ -242,6 +278,7 @@
   </div>
 </a>
 <a class="card" href="https://cornbee.github.io/ongle/r/073" data-cats="산업분석,한국경제,AI,전력인프라">
+  
   <div class="card-meta">
     <span class="card-date">2026-05-12</span>
     <span class="tag">#산업분석</span> <span class="tag">#한국경제</span> <span class="tag">#AI</span> <span class="tag">#전력인프라</span>
@@ -254,6 +291,7 @@
   </div>
 </a>
 <a class="card" href="https://cornbee.github.io/ongle/r/072" data-cats="산업분석,외교분석,한국경제,단계별분석">
+  
   <div class="card-meta">
     <span class="card-date">2026-05-12</span>
     <span class="tag">#산업분석</span> <span class="tag">#외교분석</span> <span class="tag">#한국경제</span> <span class="tag">#단계별분석</span>
@@ -266,6 +304,7 @@
   </div>
 </a>
 <a class="card" href="https://cornbee.github.io/ongle/r/070" data-cats="산업분석,한국경제">
+  
   <div class="card-meta">
     <span class="card-date">2026-05-12</span>
     <span class="tag">#산업분석</span> <span class="tag">#한국경제</span>
@@ -280,7 +319,7 @@
 </main>
 <footer>
   <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
-  © 2026 ONGLE · 마지막 업데이트: 2026-05-14 12:36
+  © 2026 ONGLE · 마지막 업데이트: 2026-05-14 23:29
 </footer>
 <script>
   const buttons = document.querySelectorAll('.cat-btn');
@@ -296,6 +335,17 @@
       });
     });
   });
+  // 태그 더보기 토글
+  (function () {
+    const bar = document.getElementById('filter-bar');
+    const toggle = document.getElementById('cat-toggle');
+    if (!bar || !toggle) return;
+    toggle.addEventListener('click', () => {
+      const expanded = !bar.classList.contains('collapsed') ? false : true;
+      bar.classList.toggle('collapsed');
+      toggle.textContent = expanded ? '접기 ▲' : '더보기 ▼';
+    });
+  })();
 </script>
 </body>
 </html>
