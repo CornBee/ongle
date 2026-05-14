@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>국민연금 — 미중 회담과 한국 외환 노출 분석 — ONGLE</title>
+<meta name="description" content="2026년 5월 14일 트럼프·시진핑 베이징 회담이 시작됐습니다. 동행 장관 4명 + 미국 CEO 17명이 한 자리에 묶여 무역·관세·이란·대만·반도체 의제를 함께 다룹니다. 회담의 영향이 한국 환율로 도달하는 경로를 한 단계씩 따라가면, 미국 측 베센트 재무장관(5/13 서울 경유 → 5/14~15 베이징) → 한국 외환 정책 결정자(한국은행 외환보유 4,236.6억 달러·기획재정부) → 한국 단일 외환 노출 자금 풀(국민연금 해외주식 573.1조 + 해외채권 98.7조 = 약 671.8조원) → 시청자 일상(연금·물가·해외 여행) 으로 모입니다. 한국은행 외환 보유고를 원화로 환산하면 약 631조원으로, 국민연금 해외자산보다 작습니다. 한국 단일 외환 노출 1위 자금 풀이 국민연금이라는 사실이 본 리포트의 핵심 finding 입니다. 영상_072(한미반도체 — 반도체 ecosystem)·076(코리안리 — 해상보험) 과 차원 분리.">
+<meta property="og:title" content="국민연금 — 미중 회담과 한국 외환 노출 분석">
+<meta property="og:description" content="2026년 5월 14일 트럼프·시진핑 베이징 회담이 시작됐습니다. 동행 장관 4명 + 미국 CEO 17명이 한 자리에 묶여 무역·관세·이란·대만·반도체 의제를 함께 다룹니다. 회담의 영향이 한국 환율로 도달하는 경로를 한 단계씩 따라가면, 미국 측 베센트 재무장관(5/13 서울 경유 → 5/14~15 베이징) → 한국 외환 정책 결정자(한국은행 외환보유 4,236.6억 달러·기획재정부) → 한국 단일 외환 노출 자금 풀(국민연금 해외주식 573.1조 + 해외채권 98.7조 = 약 671.8조원) → 시청자 일상(연금·물가·해외 여행) 으로 모입니다. 한국은행 외환 보유고를 원화로 환산하면 약 631조원으로, 국민연금 해외자산보다 작습니다. 한국 단일 외환 노출 1위 자금 풀이 국민연금이라는 사실이 본 리포트의 핵심 finding 입니다. 영상_072(한미반도체 — 반도체 ecosystem)·076(코리안리 — 해상보험) 과 차원 분리.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">미중 회담이 한국 환율로 떨어진다면 — 가장 크게 노출된 곳은 국민연금 해외자산 약 670조</h1>
+    <p class="article-sub">회담 직전 원/달러 1,490원대 · 베센트 5/13 서울 경유 · 한국 단일 외환 노출 1위 자금 풀</p>
+    <div class="hero-visual"><pre class="mermaid">flowchart TB
+    A[&quot;미중 패키지 회담&lt;br/&gt;(Day 2 결과 → 환율 변동성)&quot;]
+    B[&quot;미국 측 외환·통상 결정자&lt;br/&gt;베센트 재무장관 · 트럼프 행정부&quot;]
+    C[&quot;한국 외환 정책 결정자&lt;br/&gt;한국은행 · 기획재정부&quot;]
+    D[&quot;한국 단일 외환 노출 자금 풀&lt;br/&gt;국민연금 해외자산 약 670조&quot;]
+    E[&quot;시청자 일상 체감&lt;br/&gt;연금 수익률 · 수입 물가 · 해외 여행&quot;]
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+    D --&gt; E
+
+    style A fill:#fff3e0
+    style D fill:#fff9c4
+    style E fill:#e3f2fd
+</pre></div>
+    <div class="article-meta">2026-05-14 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#외환분석</span> <span class="tag">#국민연금</span> <span class="tag">#한국경제</span> <span class="tag">#지정학</span> <span class="tag">#미중관계</span></div>
+    
+    <div class="key-conclusion">회담의 세 갈래(이란/호르무즈·반도체·환율) 중 환율이 한국 시청자 일상에 가장 빠르고 광범위하게 도달하는 통로이고, 그 환율 변동이 가장 크게 도달하는 한국 단일 자금 풀은 국민연금 해외자산 약 670조원입니다. 한국은행 외환 보유고(원화 환산 약 631조)보다 큰 단일 노출이고, 한국 어떤 단일 주체보다 큽니다.</div>
+    <div class="why-matters"><span class="why-label">왜 중요한가</span>한국 단일 자금 풀 중 해외 노출이 가장 큰 곳이 국민연금이라는 사실은 회담 결과가 환율로 떨어지는 순간 가장 크게 흔들리는 단일 주체가 어디인지를 보여줍니다. 가장 빠른 도달은 해외 여행·해외 구매 (당일·다음 거래일), 가장 느린 도달은 연금 수익률 (분기 공시 시점). 두 끝점 사이에 수입 물가·수출 환차·CPI 가 1~2개월 시차로 도달합니다.</div>
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<hr />
+<h2>⓪ Executive Summary — 한눈에 보는 한국 외환 노출</h2>
+
+<p>회담의 환율 영향은 미국 측 결정자(베센트 재무)부터 시작해 한국 외환 정책 결정자(한국은행·기획재정부)를 거쳐, 한국 단일 자금 풀 중 해외 노출이 가장 큰 국민연금 해외자산 약 670조원으로 모이고, 마지막에 시청자의 연금·물가·해외 여행 비용으로 흘러옵니다. 환율 변동은 이 깔때기 끝에서 일상이 됩니다.</p>
+<p><strong>KPI 5 — 회담 직전 한국 외환 노출 한눈에</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>미 대통령 방중 동행 국방장관</td>
+<td><strong>1972년 닉슨 이후</strong></td>
+<td>narration 기준 (역사적 이례성)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>회담 동행 미국 CEO</td>
+<td><strong>17명</strong></td>
+<td>백악관 발표 공식 명단 — 엔비디아 젠슨 황·테슬라 머스크·애플 팀 쿡·블랙록·엑손모빌·퀄컴·블랙스톤·씨티그룹·비자·마이크론 등<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+</tr>
+<tr>
+<td>회담 직전 원/달러</td>
+<td><strong>1,490원대</strong></td>
+<td>2026-05-13 종가 약 1,489.9원 — 외환시장 정상회담 주시<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+<tr>
+<td>한국 단일 외환 노출 자금 풀</td>
+<td><strong>약 670조원</strong></td>
+<td>국민연금 해외주식 573.1조 + 해외채권 98.7조 (2025-10·2026-02 기준)<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup><sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></td>
+</tr>
+<tr>
+<td>한국은행 외환 보유</td>
+<td><strong>4,236억 달러</strong></td>
+<td>2026-03 말 기준 (외환 정책 도구)<sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>더 알고 싶다면 본문으로</strong> — 외환 결정자가 어떤 의제를 들고 베이징에 갔는지, 670조 해외자산이 환율 한 단위에 어떻게 반응하는지, Day 2 시나리오별로 1,490원이 어디로 움직일 수 있는지는 ① ~ ⑨ 본문에서 한 단계씩 따라갑니다.</p>
+</blockquote>
+<hr />
+<h2>① 도입 — 회담이 환율로 떨어진다면</h2>
+<p>2026년 5월 14일 트럼프 미국 대통령과 시진핑 중국 국가주석이 베이징 인민대회당에서 양자 회담을 시작했습니다. 트럼프 대통령의 베이징 방문은 2017년 11월 이후 약 9년 만이고, 동행 인원도 이례적입니다 — 국무·국방·재무·통상 4개 부처 장관에 미국 주요 기업 CEO 17명이 한 비행기에 탔습니다.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></p>
+<p>이 자리의 결과가 다음 주 한국의 환율·반도체 주가·물가를 흔들 수 있다는 전망이 회담 직전부터 이어져 왔습니다. 동행 회담 의제는 무역·관세·이란·대만·반도체로 묶여 있고, 그중 어느 갈래가 한국에 가장 sharp 하게 도달하는가 — 영상의 마지막 질문("환율일까, 반도체일까, 이란일까")에 대한 답을 이 리포트가 환율 쪽에서 한 단계씩 따라갑니다.</p>
+<p>결론을 미리 말하면, 세 갈래 중 <strong>환율</strong> 이 한국 시청자 일상에 가장 직접·즉시·광범위하게 도달하는 통로이고, 그 환율 변동이 도달하는 한국 단일 자금 풀 중 노출이 가장 큰 곳이 <strong>국민연금 해외자산</strong> 입니다. 반도체와 이란/호르무즈 갈래는 한국 한 산업·한 사건에 집중되지만, 환율 갈래는 모든 가계·기업·기금에 동시에 도달합니다.</p>
+<hr />
+<h2>② 표면 사실 정리 — 회담 한 자리에 묶인 의제와 인원</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수치·내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>회담 일정</td>
+<td><strong>2026-05-14 ~ 15</strong> (2박 3일, 베이징 인민대회당)</td>
+<td>RFA·CRI·서울신문<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></td>
+</tr>
+<tr>
+<td>트럼프 베이징 방문 간격</td>
+<td><strong>약 9년 만</strong> (2017-11 이후)</td>
+<td>VOA·헤럴드경제<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref3:8"><a class="footnote-ref" href="#fn:8">8</a></sup></td>
+</tr>
+<tr>
+<td>동행 부처 장관</td>
+<td><strong>4명</strong> — 국무·국방·재무·통상 (헤그세스 국방·베센트 재무·그리어 USTR 대표 등)</td>
+<td>서울신문·MBC·뉴스1<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup><sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></td>
+</tr>
+<tr>
+<td>동행 미국 CEO</td>
+<td><strong>17명</strong> (백악관 공식 명단)</td>
+<td>글로벌이코노믹·뉴스타운<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref2:11"><a class="footnote-ref" href="#fn:11">11</a></sup></td>
+</tr>
+<tr>
+<td>회담 의제</td>
+<td><strong>무역·관세·이란·대만·반도체</strong></td>
+<td>파이낸셜뉴스·MBC<sup id="fnref3:9"><a class="footnote-ref" href="#fn:9">9</a></sup><sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup></td>
+</tr>
+<tr>
+<td>베센트 재무장관 일정</td>
+<td><strong>5/12 도쿄 → 5/13 서울 (허리펑 중국 부총리와 회담) → 5/14 ~ 15 베이징</strong></td>
+<td>중앙이코노미뉴스·머니투데이·뉴스핌<sup id="fnref3:13"><a class="footnote-ref" href="#fn:13">13</a></sup><sup id="fnref3:14"><a class="footnote-ref" href="#fn:14">14</a></sup><sup id="fnref2:15"><a class="footnote-ref" href="#fn:15">15</a></sup></td>
+</tr>
+<tr>
+<td>한미 국방 장관 회담 (사전)</td>
+<td><strong>5/12 안규백 ↔ 헤그세스</strong> — 호르무즈 'Project Freedom' 한국 단계적 기여 검토 한국 입장 전달</td>
+<td>서울신문·뉴스핌·뉴스1<sup id="fnref2:16"><a class="footnote-ref" href="#fn:16">16</a></sup><sup id="fnref2:17"><a class="footnote-ref" href="#fn:17">17</a></sup><sup id="fnref2:18"><a class="footnote-ref" href="#fn:18">18</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>여기까지가 대다수 매체의 헤드라인 영역입니다. 본 리포트는 표면 사실을 넘어 회담이 환율 채널로 한국에 도달하는 흐름을 한 단계씩 따라갑니다.</p>
+<hr />
+<h2>③ 1972년 닉슨 이후 54년 만 — 역대 비교의 의미</h2>
+<p>이번 회담의 인원 구성이 이례적이라는 평가의 핵심은 두 가지입니다.</p>
+<p><strong>역사적 비교 (영상 narration 기준)</strong> — 1972년 닉슨 대통령이 베이징을 방문했을 때 미 국방장관이 함께 동행한 이후 미국 대통령 방중에 국방장관이 따라간 사례는 오랜 기간 보기 어려웠다는 점이 이번 회담을 다른 미중 정상회담과 구분 짓는 신호로 거론됩니다. 다만 매체별로 이 "54년 만" 이라는 표현의 정확한 시점·기준이 동일하지 않을 수 있으므로, 영상의 narration 표현을 그대로 옮긴 점을 명시합니다.</p>
+<p><strong>현 시점 비교</strong> — 2017년 11월 트럼프 1기 첫 방중 때 합류한 고위 임원은 27명이었던 것에 비해 이번 동행 CEO 17명은 규모가 줄어든 것이지만, 장관 4명 + CEO 17명이 동시에 한 자리에 묶인 패키지 구성은 회담 의제가 "무역만" 또는 "안보만" 이 아니라 <strong>무역·안보·기술·이란 의제를 한 패키지로 다룬다</strong> 는 신호로 해석됩니다.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></p>
+<p>영상에서 "경제·군사·외교를 한 자리에 묶는 게 이번 회담의 진짜 시그널" 이라고 말한 부분이 바로 이 지점입니다. 의제가 묶여 있다는 사실 자체가 한국 시청자 입장에서 의미가 큽니다 — 환율·반도체·안보가 같은 협상 테이블에서 동시에 결정될 수 있다는 의미이기 때문입니다.</p>
+<hr />
+<h2>④ 환율 채널 깊게 — 외환 결정자, 노출 주체, 전달 경로</h2>
+<h3>4-1. 미국 측 외환·통상 결정자 — 베센트 재무장관의 동선</h3>
+<p>베이징 회담의 환율 의제는 베센트 미 재무장관의 동선에서 가장 선명하게 드러납니다.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup><sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup><sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup></p>
+<table>
+<thead>
+<tr>
+<th>일자</th>
+<th>장소</th>
+<th>회담 상대</th>
+<th>의제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5/12</td>
+<td>도쿄</td>
+<td>다카이치 사나에 일본 총리·가타야마 사쓰키 재무상</td>
+<td>미일 경제 관계·환율·통상</td>
+</tr>
+<tr>
+<td><strong>5/13</strong></td>
+<td><strong>서울</strong></td>
+<td>허리펑 중국 국무원 부총리</td>
+<td>미중 정상회담 직전 관세·무역 막판 조율</td>
+</tr>
+<tr>
+<td>5/14 ~ 15</td>
+<td>베이징</td>
+<td>미중 정상회담 동행</td>
+<td>무역·통상 의제 본 협상</td>
+</tr>
+</tbody>
+</table>
+<p>서울에서 베센트 미 재무 ↔ 허리펑 중국 부총리가 만난 5월 13일 회동은 미중 정상회담 직전 관세·무역 의제의 막판 조율 자리로 보도됐습니다.<sup id="fnref2:13"><a class="footnote-ref" href="#fn:13">13</a></sup><sup id="fnref2:14"><a class="footnote-ref" href="#fn:14">14</a></sup> 한국이 미중 양국의 경제 채널이 만나는 무대로 활용된 것은 환율 측면에서 의미가 있습니다 — 미중 회담의 무역·관세·통화 의제가 한국 외환시장에 어떤 식으로 흘러들어올지를 회담 전에 미리 가늠해 볼 수 있는 자리였기 때문입니다.</p>
+<h3>4-2. 한국 측 외환 결정자 — 한국은행·기획재정부</h3>
+<p>회담 결과가 한국 외환시장에 도달하는 1차 흡수 단계는 한국은행과 기획재정부입니다. 한국은행의 외환 보유는 2026년 3월 말 기준 약 <strong>4,236.6억 달러</strong> 수준입니다.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> 외환 보유는 환율 변동성이 커질 때 시장 안정 도구로 활용되는 1차 정책 수단이고, 기획재정부와의 정책 협조를 통해 외환시장 개입·통화 스왑·자본 흐름 관리가 결정됩니다.</p>
+<p>다만 외환 보유고는 "도구" 일 뿐 "노출" 의 본체는 아닙니다. 한국 단일 주체 중 해외에 자금이 가장 많이 노출돼 있는 곳은 한국은행이 아니라 다음 단계 — 국민연금입니다.</p>
+<h3>4-3. 한국 단일 외환 노출 자금 풀 — 국민연금 해외자산</h3>
+<p>국민연금기금은 2026년 2월 말 기준 운용자산 약 <strong>1,610.4조원</strong> 규모로, 해외 노출은 다음과 같이 분산돼 있습니다.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+<table>
+<thead>
+<tr>
+<th>자산군</th>
+<th>규모</th>
+<th>비중 (기금 적립금 대비)</th>
+<th>기준 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>해외주식</td>
+<td><strong>573.1조원</strong></td>
+<td><strong>35.6%</strong></td>
+<td>2026-02 말<sup id="fnref3:5"><a class="footnote-ref" href="#fn:5">5</a></sup></td>
+</tr>
+<tr>
+<td>해외채권</td>
+<td><strong>98.7조원</strong></td>
+<td><strong>6.9%</strong></td>
+<td>2025-10 말<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup></td>
+</tr>
+<tr>
+<td>해외주식 + 해외채권 합산</td>
+<td><strong>약 671.8조원</strong></td>
+<td><strong>약 42.5%</strong></td>
+<td>(합산)</td>
+</tr>
+<tr>
+<td>해외대체투자 (별도)</td>
+<td>별도 비중</td>
+<td>(추가 노출)</td>
+<td>포트폴리오 다변화 진행<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>이 670조원대 자금 풀은 한국 내 어떤 단일 주체보다 해외 자산 노출 규모가 큽니다. 한국은행 외환 보유고 4,236.6억 달러를 회담 직전 환율 1,490원 기준으로 환산하면 약 631조원으로, 국민연금 해외주식·해외채권 합산보다 작습니다. <strong>외환 정책 도구의 규모보다 단일 자금 풀의 해외 노출 규모가 더 큰 셈</strong> 입니다.</p>
+<h3>4-4. 전달 경로 — 회담 결과가 670조에 도달하는 방식</h3>
+<p>미중 회담 결과가 국민연금 해외자산 평가가치에 도달하는 경로는 다음과 같이 정리할 수 있습니다.</p>
+<ol>
+<li><strong>회담 결과 발표</strong> — 무역·관세·통화 의제의 합의 또는 결렬</li>
+<li><strong>글로벌 외환시장 즉시 반응</strong> — 달러 인덱스·위안화·엔화 변동</li>
+<li><strong>원/달러 변동</strong> — 위 글로벌 반응에 한국은행의 시장 안정 도구가 더해진 결과</li>
+<li><strong>국민연금 해외자산 평가가치 변동</strong> — 보유 해외 자산은 외화 표시, 원화 환산 시 환율에 따라 평가가치가 즉각 변동</li>
+<li><strong>연금 수익률·시청자 일상 체감</strong> — 분기 운용 결과 공시·물가·해외 여행 비용</li>
+</ol>
+<p>이 다섯 단계가 한 주 안에 일어날 수 있다는 점이 환율 채널의 특징입니다. 반도체·이란/호르무즈 채널이 산업·사건 단위로 시간이 걸리는 것과 달리, 환율은 회담 발표 당일·다음 거래일에 즉시 변동이 나타납니다.</p>
+<h3>4-5. 670조의 환율 민감도 — 단순 시뮬레이션</h3>
+<p>국민연금 해외자산의 외환 노출은 환 헤지 비율과 통화 분산에 따라 실제 환율 민감도가 결정됩니다. 국민연금 기금운용본부는 "환 헤지되지 않는 해외자산의 경우 특정 통화에 집중되지 않도록 전략적 통화구성 방안" 을 운용하며, "총 외환 익스포저의 ±5% 이내" 에서 환율변동에 따라 외환 익스포저 규모가 조정된다고 명시합니다.<sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup></p>
+<p>단순 추정으로, 해외자산 약 671.8조원 가운데 일부가 환 헤지되지 않은 채 환율 변동에 노출돼 있다고 가정하면, 원/달러 환율 1원 변동마다 평가가치는 수천억 원 단위로 흔들리는 것으로 추정됩니다. 정확한 환 헤지 비율과 통화 분산은 국민연금 분기 공시에서 확인 가능합니다 — 본 리포트는 단순 시뮬레이션이며 확정 수치가 아님을 명시합니다.</p>
+<hr />
+<h2>⑤ 국민연금이라는 단일 관문 — 영상_072·076 과 어떻게 다른가</h2>
+<h3>5-1. 왜 국민연금이 단일 관문인가</h3>
+<p>본 리포트가 환율 채널의 단일 관문으로 국민연금을 지목하는 근거는 세 가지입니다.</p>
+<p><strong>(a) 자금 규모 — 한국 내 해외 노출 1위.</strong> 위 4-3 에서 본 것처럼 해외주식 573.1조 + 해외채권 98.7조 = 약 671.8조원 (별도 해외대체투자 추가) 의 외환 노출은 한국은행 외환 보유고(원화 환산 약 631조)보다 큽니다. 한국 내 어떤 기업·기관도 단일 주체로 이만한 외화 자산을 보유하지 않습니다.</p>
+<p><strong>(b) 시청자 일상 stake — 전 국민.</strong> 국민연금 가입자는 약 2,200만명 (가입자 + 수급자 포함 시 더 큼) 으로, 한국 인구 대다수가 직접 stake 를 갖습니다. 해외자산 평가가치 변동은 결국 기금 수익률을 통해 가입자의 연금 안정성으로 도달합니다.</p>
+<p><strong>(c) 회담 의제의 직접 노출.</strong> 회담 결과 → 글로벌 외환시장 → 원/달러 변동 → 670조 해외자산 평가가치 변동. 이 경로는 다른 어떤 한국 주체보다 짧고 직접적입니다.</p>
+<h3>5-2. 영상_072·076 과 차원 분리</h3>
+<p>이번 리포트의 단일 관문 시점은 영상_072(한미반도체)·076(코리안리)과 차원이 다릅니다.</p>
+<table>
+<thead>
+<tr>
+<th>영상</th>
+<th>표면 사건</th>
+<th>관문 차원</th>
+<th>단일 관문</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>영상_072</strong></td>
+<td>미중 외교 무대의 산업 의제</td>
+<td><strong>반도체 산업</strong> (HBM 후공정 ecosystem)</td>
+<td>한미반도체</td>
+</tr>
+<tr>
+<td><strong>영상_076</strong></td>
+<td>HMM 나무호 호르무즈 피격</td>
+<td><strong>해상보험</strong> (5 손보 → 재보험 단일 관문)</td>
+<td>코리안리재보험</td>
+</tr>
+<tr>
+<td><strong>영상_077</strong> (본 리포트)</td>
+<td>미중 통합 패키지 회담</td>
+<td><strong>외환</strong> (해외자산 단일 노출 풀)</td>
+<td>국민연금</td>
+</tr>
+</tbody>
+</table>
+<p>세 영상 모두 "한국 단일 관문" 시점을 적용했지만, 토픽 차원은 산업·해상보험·외환으로 완전히 분리됩니다. 동일 시점이 다른 토픽 영역에서 어떻게 작동하는지를 보여주는 세 번째 사례입니다.</p>
+<h3>5-3. 단일 관문의 양면 — 규모와 정책 의존성</h3>
+<p>국민연금이 단일 관문 자리에 있다는 사실은 두 측면을 동시에 만듭니다.</p>
+<p><strong>규모의 장점</strong> — 670조원대 단일 풀이 분산 운용되기 때문에 글로벌 충격에 대한 흡수력이 큽니다. 환 헤지 비율 조정·통화 분산·자산 재배분이 한 운용 주체 안에서 통합 결정됩니다.</p>
+<p><strong>정책 의존성의 약점</strong> — 단일 주체이므로 운용 정책 결정 (자산 배분 비율·환 헤지 비율·해외 비중)이 외부 환경 변화에 한 박자 늦게 반응할 위험이 늘 존재합니다. 또한 운용 결과의 변동이 가입자 한 명 한 명의 연금 안정성에 직접 도달하기 때문에 "단일 관문" 이라는 구조 자체가 시청자 일상 체감을 크게 만듭니다.</p>
+<p>본 리포트는 운용 정책의 적절성·수익률 평가 등을 다루지 않습니다 — 외환 노출의 구조적 위치만 다룹니다.</p>
+<hr />
+<h2>⑥ Day 2 시나리오 분기 — 1,490원이 어디로 움직일 수 있는가</h2>
+<p>회담 Day 2 결과는 본 리포트 발행 시점에서 아직 공개되지 않았으므로, 아래 매트릭스는 조심스러운 가설로 제시합니다.</p>
+<table>
+<thead>
+<tr>
+<th>시나리오</th>
+<th>확률 (가설)</th>
+<th>핵심 변수</th>
+<th>원/달러 (가정)</th>
+<th>국민연금 해외자산 평가 (방향)</th>
+<th>수입 물가</th>
+<th>해외 여행·구매</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>낙관</strong></td>
+<td>약 20%</td>
+<td>무역·관세·이란 의제 모두 진전</td>
+<td><strong>1,460원대</strong> (강세 폭 -30원)</td>
+<td>평가가치 원화 환산 감소 (환차손 가능)</td>
+<td>안정</td>
+<td>부담 ↓</td>
+</tr>
+<tr>
+<td><strong>중립 (base)</strong></td>
+<td>약 50%</td>
+<td>부분 합의, 일부 함구</td>
+<td><strong>1,490원 박스권</strong></td>
+<td>base case (변동성 잔존)</td>
+<td>base case</td>
+<td>base case</td>
+</tr>
+<tr>
+<td><strong>비관</strong></td>
+<td>약 30%</td>
+<td>의제 전반 답보·100% 관세 위협 발효</td>
+<td><strong>1,520원대</strong> (약세 +30원)</td>
+<td>평가가치 원화 환산 증가 (환차익 가능)</td>
+<td>압박 ↑</td>
+<td>부담 ↑</td>
+</tr>
+</tbody>
+</table>
+<p><strong>산식 메모</strong> — 위 환율 변동폭은 회담 직전 1,489.9원 기준 ±30원 가정에 따른 단순 시뮬레이션입니다.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> 실제 변동폭은 글로벌 외환시장·한국은행 시장 안정 도구 가동 여부 등에 따라 달라집니다.</p>
+<p><strong>면책</strong> — 위 시나리오는 외신·국내 매체 보도와 회담 직전 환율 수치를 기반으로 한 가능성 도출이며 확정 예측이 아닙니다. 확률 수치도 추정입니다. 정보 제공 목적이며 매수·매도 권유가 아닙니다.</p>
+<h3>6-1. 시나리오별 추가 변수</h3>
+<p><strong>낙관 시나리오의 추가 변수</strong> — 호르무즈 'Project Freedom' 에 한국이 단계적 기여를 검토한다는 5/13 한미 국방장관 회담 결과<sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup><sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup><sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup> 가 환율 안정에 부수적으로 작용할 수 있습니다. 안보 협력의 진전은 외국인 투자자의 한국 위험 프리미엄에 영향을 미칠 수 있는 변수입니다.</p>
+<p><strong>중립 시나리오의 base case</strong> — 미중이 무역·관세 의제 일부에서만 합의하고 안보·반도체 의제는 함구하는 패턴이 가장 가능성 큰 시나리오로 거론됩니다. 이 경우 1,490원대 박스권이 일정 기간 이어지면서 시장이 다음 신호 (Day 2 후속 발표·미 연준 회의·중국 경기지표) 를 기다리는 형태가 됩니다.</p>
+<p><strong>비관 시나리오의 트리거</strong> — 트럼프 행정부의 100% 관세 위협이 회담 결렬 후 실제로 발효되거나, 호르무즈 추가 사건이 일어나면 원/달러는 1,500원대를 회복할 수 있다는 분석이 회담 직전부터 거론돼 왔습니다.</p>
+<hr />
+<h2>⑦ Korean stake — 시청자 일상에서 만나는 부분</h2>
+<p>회담 결과가 시청자 일상에 도달하는 통로를 환율 채널 한정으로 정리하면 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>일상 항목</th>
+<th>환율 1원 변동 시 (단순 추정)</th>
+<th>시나리오별 비교</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>연금 수익률</strong></td>
+<td>670조 해외자산 평가가치 변동 (수천억 원 단위)</td>
+<td>낙관 시 평가가치 감소·비관 시 증가 (단, 환 헤지 비율에 따라 실제 영향 다름)</td>
+</tr>
+<tr>
+<td><strong>수입 물가</strong></td>
+<td>원유·곡물·반도체 장비 수입가 직접 영향</td>
+<td>비관 시 가공식품·휘발유·소비재 가격 추가 압박</td>
+</tr>
+<tr>
+<td><strong>해외 여행·해외 구매</strong></td>
+<td>1원 단위로 결제 금액 즉시 변동</td>
+<td>낙관 시 일본·동남아 여행 비용 완화·비관 시 부담</td>
+</tr>
+<tr>
+<td><strong>수출 대기업 환차익·환차손</strong></td>
+<td>매출 외화 환산 즉시 영향</td>
+<td>비관 시 단가 측면 환차익·낙관 시 환차손 가능</td>
+</tr>
+<tr>
+<td><strong>5월 ~ 6월 소비자물가지수</strong></td>
+<td>환율 → 수입 물가 → 1~2개월 시차로 CPI 반영</td>
+<td>base case 기준 다음 분기 발표에서 영향 일부 확인 가능</td>
+</tr>
+</tbody>
+</table>
+<p>가장 빠른 도달은 <strong>해외 여행·해외 구매</strong> 입니다 — 회담 결과 발표 당일·다음 거래일부터 환전 비용·해외 결제 금액에 즉시 반영됩니다. 가장 느린 도달은 <strong>연금 수익률</strong> 이며, 분기 공시 시점에서 평가가치 변동이 확인됩니다. 두 끝점 사이에 수입 물가·수출 환차·CPI 가 1~2개월 시차로 차례로 도달합니다.</p>
+<hr />
+<h2>⑧ 결론·시사점 + 향후 관전 포인트</h2>
+<h3>결론 — 본문 핵심 3가지 압축</h3>
+<ol>
+<li>
+<p><strong>세 갈래 중 환율이 가장 빠르고 광범위한 도달 통로다.</strong> 회담 결과 발표 당일·다음 거래일에 글로벌 외환시장이 즉시 반응하고, 그 반응이 원/달러 변동을 통해 한국 가계·기업·기금에 동시에 도달합니다. 반도체·이란/호르무즈 갈래는 한 산업·한 사건에 집중되는 반면, 환율 갈래는 전 국민이 동시에 만납니다.</p>
+</li>
+<li>
+<p><strong>그 환율 변동이 가장 크게 도달하는 한국 단일 자금 풀이 국민연금 해외자산이다.</strong> 해외주식 573.1조 + 해외채권 98.7조 = 약 671.8조원 (별도 해외대체투자 추가) 의 외환 노출은 한국은행 외환 보유고(원화 환산 약 631조)보다 크고, 한국 어떤 단일 주체보다 큽니다.</p>
+</li>
+<li>
+<p><strong>단일 관문 구조는 양면이다.</strong> 670조원대 단일 풀의 흡수력은 글로벌 충격에 대한 분산 운용 장점이 있지만, 단일 주체이므로 운용 정책 결정의 한 박자 차이가 가입자 한 명 한 명의 연금 안정성으로 직접 도달합니다. 외환 노출의 구조적 위치 자체가 시청자 일상 체감을 크게 만듭니다.</p>
+</li>
+</ol>
+<h3>향후 6개월 관전 포인트</h3>
+<ul>
+<li><strong>Day 2 결과 발표</strong> — 무역·관세·이란·반도체 의제 중 합의·답보·결렬의 갈래</li>
+<li><strong>회담 직후 1주일 원/달러 흐름</strong> — 1,490원 박스권 유지 vs 1,460원 또는 1,520원 이탈</li>
+<li><strong>국민연금 분기 운용 결과 공시</strong> — 해외자산 평가가치 변동 폭과 환 헤지 효과</li>
+<li><strong>한국은행 외환 보유고 추이</strong> — 시장 안정 도구 가동 여부와 그에 따른 보유고 변동</li>
+<li><strong>베센트 ↔ 허리펑 후속 회담</strong> — 5/13 서울 회동의 후속 진행 여부</li>
+<li><strong>한미 호르무즈 'Project Freedom' 단계적 기여 진전</strong> — 안보 협력이 환율 안정에 부수적으로 작용하는 통로</li>
+</ul>
+<hr />
+
+  </article>
+
+  <article class="references"><h2>⑨ 출처</h2>
+<hr />
+<blockquote>
+<p>↪ 관련 영상: 닉슨 이후 54년 만 — 미 국방장관이 트럼프 비행기에 — 영상_077</p>
+<p>본 리포트는 정보 제공 목적이며 투자 권유가 아닙니다. 종목·기금 매수·매도·가입·해지 결정은 본인 책임 하에 1차 자료(국민연금기금운용본부·한국은행·전자공시)를 추가 확인하시기 바랍니다. 시나리오 분기는 가능성 도출이며 확정적 예측이 아닙니다. 환율·평가가치 시뮬레이션은 단순 추정이며 실제 운용 결과와 다를 수 있습니다.</p>
+</blockquote>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>서울신문, "트럼프·시진핑 ‘세기의 담판’…대립·화해 거듭한 역대 회담 어땠길래", 2026-05-14. https://seoul.co.kr/news/plan/Washington-Now/2026/05/14/20260514500148&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>헤럴드경제, "“트럼프, 엔비디아·애플·엑손·보잉 CEO 中방문 동행 초청” [1일1트]", 2026. https://biz.heraldcorp.com/article/10733333&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>글로벌이코노믹, "트럼프-시진핑 회담, CEO 17명 동행…“대두·반도체·항공기 거래 추진”", 2026-05-13. https://www.g-enews.com/article/Global-Biz/2026/05/2026051307333310160c8c1c064d_1&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>이데일리, "원·달러 환율, 1490원대 등락…미·중 정상회담 이벤트 주시[외환브리핑]", 2026-05. https://edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=03240646645448920&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>국민연금기금운용본부, "자산군별 현황 &gt; 해외 주식". https://fund.nps.or.kr/oprtprcn/ivsmprcn/getOHED0005M0.do (2026-02 말 기준, 573.1조원)&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>국민연금기금운용본부, "자산군별 현황 &gt; 해외 채권". https://fund.nps.or.kr/oprtprcn/ivsmprcn/getOHED0006M0.do (2025-10 말 기준, 98.7조원)&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>한국은행, "2026년 3월말 외환보유액 4,236.6억 달러 — 전월말 대비 39.7억 달러 감소", 2026-04 보도. https://www.bok.or.kr/portal/main/main.do&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>VOA코리아, "트럼프 대통령 9년 만에 베이징 방문…‘무역·반도체·이란 전쟁’ 등 현안 산적", 2026-05-13. https://www.voakorea.com/a/president-trump-arrives-in-beijing-for-historic-summit-with-china-s-xi-051326/8149648.html&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>파이낸셜뉴스, "트럼프·시진핑, 오늘부터 연이틀 회담…무역·이란·대만 합의나올까[미중정상회담]", 2026-05-14. https://www.fnnews.com/news/202605140730553142&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>MBC, "트럼프 “중국 개방 요구할 것”‥젠슨 황·머스크 등 기업인 동행", 2026-05-14. https://imnews.imbc.com/news/2026/world/article/6822110_36925.html&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>뉴스타운, "트럼프 방중, 머스크 등 재계 거물 17명 동행", 2026-05. https://www.newstown.co.kr/news/articleView.html?idxno=703363&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>에포크타임스, "트럼프, 베이징서 시진핑과 ‘담판’…무역전쟁·이란 분쟁 등 산적", 2026-05. https://www.epochtimes.kr/2026/05/749494.html&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>중앙이코노미뉴스, "트럼프 방중 직전 서울 오는 美 베선트 재무장관...미중 담판 무대 된 한국", 2026-05. https://www.joongangenews.com/news/articleView.html?idxno=518147&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:13" title="Jump back to footnote 13 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>머니투데이, "美 재무장관 ‘내주 韓·日 방문…13일 서울서 中 허리펑과 회담’", 2026-05-10. https://www.mt.co.kr/world/2026/05/10/2026051022095783479&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:14" title="Jump back to footnote 14 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>뉴스핌, "베선트 美재무, 13일 한국 방문...‘中허리펑 부총리와 회담 위해’", 2026-05-11. https://www.newspim.com/news/view/20260511000025&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>서울신문, "안규백 국방장관, 美에 “호르무즈 단계적 기여 검토” 입장 전해", 2026-05-13. https://www.seoul.co.kr/news/international/2026/05/13/20260513500013&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>뉴스핌, "[뉴스분석] 한미 국방장관 회담, 전작권·핵잠은 ‘제자리’… 워싱턴 시선은 ‘호르무즈 파병’", 2026-05-12. https://www.newspim.com/news/view/20260512001137&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>뉴스1, "美 국방 ‘韓, 호르무즈 ‘프로젝트 프리덤’ 동참 강력 희망’(종합)", 2026-05. https://www.news1.kr/world/usa-canada/6157459&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>국민연금기금운용본부, "포트폴리오 현황 — 기금 운용자산 1,610.4조원 (2026-02 말)". https://fund.nps.or.kr/oprtprcn/ivsmprcn/getOHED0016M0.do&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>국민연금기금운용본부, "운용정책 — 외환관리 (전략적 통화구성·환 헤지 정책·총 외환 익스포저 ±5% 조정)". https://fund.nps.or.kr/oprtplcy/astaprtplcy/getOHEC0007M0.do&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
