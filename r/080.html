@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>분위기가 본성을 압도한다 — Sapolsky 비비 자연 실험 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="분위기가 본성을 압도한다 — Sapolsky 비비 자연 실험">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">분위기가 본성을 압도한다 — Sapolsky 비비 자연 실험</h1>
+    
+    <div class="hero-visual"><pre class="mermaid">flowchart TB
+    A[&quot;1983 Forest Troop 비비 무리&lt;br/&gt;(케냐 마사이 마라 인근)&quot;]
+    B[&quot;우연한 사건&lt;br/&gt;쓰레기장 결핵 outbreak&quot;]
+    C[&quot;거친 수컷 약 절반 사망&lt;br/&gt;지배적 행동 개체 집중 손실&quot;]
+    D[&quot;남은 무리 = 순한 수컷·암컷 위주&lt;br/&gt;싸움 ↓ · grooming ↑ · 스트레스 호르몬 ↓&quot;]
+    E[&quot;10년 후 모든 수컷이 외부 합류자로 교체&lt;br/&gt;그래도 평화로운 분위기 유지&quot;]
+    F[&quot;새 합류자가 무리 분위기를 학습&lt;br/&gt;= 공유된 행동 코드의 누적 전수&quot;]
+    G[&quot;갈등·평화는 본성이 아니라&lt;br/&gt;공유된 행동 코드의 누적&quot;]
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+    D --&gt; E
+    E --&gt; F
+    F --&gt; G
+
+    style B fill:#fff3e0
+    style D fill:#fff9c4
+    style F fill:#e8f5e9
+    style G fill:#e3f2fd
+</pre></div>
+    <div class="article-meta">2026-05-15 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#사회과학</span> <span class="tag">#영장류학</span> <span class="tag">#Sapolsky</span> <span class="tag">#문화전수</span> <span class="tag">#갈등과협력</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<hr />
+<h2>⓪ Executive Summary — 분위기가 본성을 압도하는 한 단계 한 단계</h2>
+
+<p>가장 사납던 수컷들이 한 사건으로 사라진 한 비비 무리는 한 세대 뒤에도 평화로운 분위기를 유지했습니다. 새로 합류한 외부 수컷들이 자기 본래 성향을 따르는 대신 무리 전체의 분위기를 학습한 결과입니다. 결국 갈등과 평화는 한 종의 고정된 본성이 아니라 무리가 공유하는 행동 코드가 누적된 결과로 관찰됐습니다.</p>
+<p><strong>KPI 5 — Forest Troop 자연 실험 한눈에</strong></p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>수치·내용</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>자연 실험 시점</td>
+<td><strong>1983년</strong></td>
+<td>케냐 Forest Troop 비비 무리 결핵 outbreak 발생 시점<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>사망한 수컷의 특성</td>
+<td><strong>공격성 상위 개체에 집중</strong></td>
+<td>인근 관광 숙소 쓰레기장까지 가서 오염된 고기를 먹은 건 가장 거친 수컷들이었음<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref9:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>사라진 수컷 비율</td>
+<td><strong>무리 성숙 수컷의 거의 절반</strong></td>
+<td>1983 outbreak 종결 시 무리 내 지배적 수컷이 약 절반 수준으로 감소<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>평화 유지 기간</td>
+<td><strong>약 20년 이상 (1983 → 2003 후속 관찰)</strong></td>
+<td>1993년경 모든 수컷이 외부 합류자로 교체된 뒤에도 동일한 분위기 유지<sup id="fnref10:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>1차 학술 보고</td>
+<td><strong>PLOS Biology, 2004</strong></td>
+<td>Sapolsky·Share, "A Pacific Culture among Wild Baboons: Its Emergence and Transmission"<sup id="fnref11:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>더 알고 싶다면 본문으로</strong> — 자연 실험과 일반 실험의 차이, 새 합류자가 분위기를 학습하는 구체 메커니즘, Bonobo·Chimpanzee 와의 비교, 한국 일상 (직장·가족·단톡방) 에 어떻게 적용되는지는 ① ~ ⑧ 본문에서 한 단계씩 따라갑니다.</p>
+</blockquote>
+<hr />
+<h2>① 도입 — "본성일까요, 분위기일까요?" 라는 질문의 자리</h2>
+<p>영상의 마지막 줄은 시청자에게 한 문장을 남겼습니다 — "우리 회사, 가족, 단톡방의 갈등도, 본성일까요, 분위기일까요?" 이 질문은 한 동물 행동 연구의 결과를 일상에 그대로 옮긴 것입니다. 본 리포트는 그 연구를 한 단계 한 단계 따라가면서 "분위기가 본성을 압도한다" 는 표현이 어떤 fact 위에 서 있는지를 정리합니다.</p>
+<p>대상은 1983년 케냐 마사이 마라 인근의 한 비비 (Olive baboon, Papio anubis) 무리입니다. 무리의 이름은 Forest Troop. 이 무리에서 우연히 발생한 결핵 outbreak 가 무리 내 가장 공격적인 수컷들을 집중적으로 솎아냈고, 그 이후 무리의 사회 분위기가 영구적으로 바뀌었다는 관찰이 1990년대 후반 매체 보도를 통해 알려졌고, 2004년 PLOS Biology 논문으로 정식 보고됐습니다.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>영장류학에서 이 사례가 자주 인용되는 이유는 두 가지입니다. 첫째, 인위적 개입 없이 자연적으로 발생한 사건이 무리 사회 구조의 영구 변화를 만든 드문 사례입니다. 둘째, 새 합류자가 본래 무리에서 어떻게 학습되는지에 대한 거의 유일한 장기 관찰이 동반된 사례입니다.</p>
+<hr />
+<h2>② 표면 사실 — 1983 Forest Troop 결핵 outbreak</h2>
+<p>영상에서 다룬 표면 fact 를 출처와 함께 정리합니다.</p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>내용</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>무리 이름·위치</td>
+<td>Forest Troop — 케냐 마사이 마라 자연보호구역 인근</td>
+<td>Sapolsky·Share 2004<sup id="fnref12:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>사건 시점</td>
+<td>1983년</td>
+<td>Sapolsky·Share 2004<sup id="fnref13:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>원인</td>
+<td>인근 관광 숙소(tourist lodge) 쓰레기장의 결핵균 오염 고기</td>
+<td>Sapolsky·Share 2004<sup id="fnref14:2"><a class="footnote-ref" href="#fn:2">2</a></sup> · Stanford Magazine 기사<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>사망 개체 특성</td>
+<td>쓰레기장까지 진입해 오염된 고기를 차지한 무리 내 지배적·공격적 수컷들에 집중</td>
+<td>Sapolsky·Share 2004<sup id="fnref15:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>사망 규모</td>
+<td>무리 성숙 수컷의 거의 절반 수준 (수년에 걸쳐 사망)</td>
+<td>Sapolsky·Share 2004<sup id="fnref16:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>결과 (단기)</td>
+<td>남은 무리는 상대적으로 순한 수컷과 암컷들로 구성, 1:2 (수컷:암컷) 성비로 회복</td>
+<td>Sapolsky·Share 2004<sup id="fnref17:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>결과 (장기)</td>
+<td>1993년경부터 모든 성체 수컷이 외부 합류자로 교체. 그래도 평화로운 분위기 유지</td>
+<td>Sapolsky·Share 2004<sup id="fnref18:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>1차 학술 보고</td>
+<td>PLOS Biology, 2004 — "A Pacific Culture among Wild Baboons"</td>
+<td>PLOS Biology<sup id="fnref19:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>영상의 narration 표현 ("쓰레기장 고기에서 결핵이 옮았는데, 거기까지 가서 먹는 건 가장 거친 수컷들뿐") 은 위 사실들의 요약입니다. "한꺼번에" 라는 표현은 시간 압축이며, 실제로는 수년에 걸친 사망 누적입니다 — 그러나 무리 구성에 미친 효과는 단일 사건과 유사하게 컸습니다.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p>여기까지가 표면 fact 입니다. 본 리포트는 이 다음 단계 — 왜 이 우연이 무리 분위기를 영구히 바꿨는가 — 부터 다룹니다.</p>
+<hr />
+<h2>③ 자연 실험 — 왜 이 사례가 특별한가</h2>
+<p>연구자가 무리 일부에 인위적 개입 없이, 자연 발생 사건이 비교군 역할을 한 관찰을 영장류학에서는 자연 실험 (natural experiment) 이라고 합니다. Forest Troop 사례가 영장류학 교과서에 인용되는 이유는 일반 실험으로는 결코 도달하기 어려운 세 가지 조건이 동시에 충족됐기 때문입니다.</p>
+<p><strong>(a) 윤리적 한계 없는 단일 그룹 사회 구조 충격.</strong> 인위적으로 무리 내 일부 개체를 제거하는 실험은 동물 윤리상 허용되지 않습니다. 1983 outbreak 는 사람의 의도와 무관한 사건이 같은 효과를 만든 것입니다.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<p><strong>(b) 사망의 비무작위성.</strong> 결핵에 노출된 개체는 무리 전체에서 무작위로 결정된 것이 아니라 "쓰레기장까지 진입해 오염된 고기를 차지하려는 행동" 을 한 개체로 한정됐습니다. 이는 무리 내 사회 위계상 가장 지배적이고 공격성이 강한 수컷들이었습니다. 따라서 outbreak 가 무리의 행동 유형 분포를 바꾸는 효과를 만들었습니다.<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p><strong>(c) 같은 연구자의 장기 관찰.</strong> Robert Sapolsky 와 Lisa Share 는 outbreak 전부터 이 무리를 관찰해왔고, outbreak 이후에도 약 20년 이상 같은 무리를 추적했습니다. 비교 가능한 baseline 데이터와 사후 데이터가 모두 같은 연구 프로토콜로 수집된 거의 유일한 장기 관찰 자료입니다.<sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>이 세 조건의 조합은 다른 영장류학 사례에서 거의 재현되지 않습니다. 그래서 이 사례는 "사회 문화의 영구 변화" 와 "그 문화의 새 구성원 학습" 이라는 두 질문 모두에 대해 가장 강한 사실 기반을 제공하는 자리에 있습니다.</p>
+<hr />
+<h2>④ 문화 전수 메커니즘 — 새 합류자가 어떻게 분위기를 학습하는가</h2>
+<p>이 리포트의 핵심 질문입니다. 사망이 만든 새 무리 구성이 자기 세대에서만 평화로웠다면 "우연한 인구학적 변화" 로 끝났을 것입니다. 그런데 약 10년 뒤 무리 내 모든 성체 수컷이 외부에서 합류한 개체로 교체됐는데도 같은 분위기가 유지됐습니다. 새 합류자들의 본래 무리는 평범하게 폭력적인 비비 무리였습니다. 그들이 Forest Troop 에 합류한 뒤 행동을 바꾼 것입니다.<sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p>Sapolsky·Share 2004 가 보고한 행동 변화의 주요 차원은 다음 세 가지입니다.</p>
+<h3>4-1. 행동 빈도의 변화</h3>
+<table>
+<thead>
+<tr>
+<th>행동</th>
+<th>Forest Troop (1983 후)</th>
+<th>인근 다른 비비 무리 (대조)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>수컷 ↔ 수컷 공격</td>
+<td>낮음</td>
+<td>높음 (일반 비비 baseline)</td>
+<td>Sapolsky·Share 2004<sup id="fnref20:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>수컷 ↔ 암컷 grooming</td>
+<td>빈번</td>
+<td>드묾</td>
+<td>Sapolsky·Share 2004<sup id="fnref21:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>수컷 ↔ 수컷 grooming</td>
+<td>종종 관찰</td>
+<td>일반 비비 무리에서는 매우 드묾</td>
+<td>Sapolsky·Share 2004<sup id="fnref22:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>무리 내 스트레스 호르몬 (글루코코르티코이드)</td>
+<td>낮음 (특히 사회적 약자 개체)</td>
+<td>높음</td>
+<td>Sapolsky·Share 2004<sup id="fnref23:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref5:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>수컷 사이 grooming 이 빈번하다는 점, 그리고 사회적 약자 개체의 스트레스 호르몬이 낮다는 점은 비비 무리에서 매우 이례적입니다. 일반적으로 비비 무리에서 사회적 약자는 상시 위협 환경에서 살아가기 때문에 만성 스트레스 지표가 높습니다.<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup></p>
+<h3>4-2. 합류자 학습의 시간 곡선</h3>
+<p>Sapolsky·Share 의 관찰에 따르면 외부에서 새로 합류한 수컷이 Forest Troop 의 행동 양식을 학습하는 데 걸린 시간은 평균 약 6개월입니다.<sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup> 이는 비비 수컷의 성년 후 다른 무리 합류 (출생 무리에서 분리 → 새 무리 진입) 가 일반적으로 1~수개월 안에 완료되는 점을 고려하면 결코 짧지 않은 적응 기간입니다.</p>
+<p>이 약 6개월 동안 새 합류자는 처음에는 본래 무리에서 가져온 평균적 공격성·서열 다툼 행동을 시도하지만, 무리 내 암컷·기존 수컷이 그러한 행동에 호응하지 않는 반복 경험을 통해 점진적으로 행동 양식을 조정합니다. 무리 차원에서의 "분위기" 는 이렇게 한 개체 한 개체의 행동을 차근차근 재설정하는 환경으로 작동합니다.<sup id="fnref7:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<h3>4-3. 문화 전수의 후보 메커니즘</h3>
+<p>영장류 사회 행동 연구에서 "사회 문화 (social culture)" 라는 표현이 사용될 때 그 전수의 메커니즘은 일반적으로 다음 셋의 조합으로 정리됩니다.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup></p>
+<ol>
+<li><strong>사회적 학습 (social learning)</strong> — 다른 개체의 행동을 관찰하고 모방</li>
+<li><strong>사회적 강화·억제 (social reinforcement)</strong> — 특정 행동에 대한 무리의 반응으로 그 행동의 빈도 조정</li>
+<li><strong>환경의 사회적 재구성</strong> — 무리 전체의 행동 패턴이 만든 사회적 환경 자체가 새 개체의 학습 신호</li>
+</ol>
+<p>Forest Troop 사례에서는 이 셋이 모두 작동한 것으로 추정됩니다. 특히 (3) 의 효과 — 새 합류자가 "이 무리에서는 이런 행동이 환영된다" 를 무리 분위기 자체로부터 학습하는 흐름 — 이 Sapolsky·Share 의 핵심 관찰입니다.<sup id="fnref8:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p>이 메커니즘이 본 리포트가 "분위기가 본성을 압도한다" 라는 표현 뒤에 두는 fact 입니다. 본성 (= 개체의 본래 성향) 이 무리의 평균을 결정하지 않고, 무리의 분위기 (= 공유된 행동 코드) 가 새 개체의 본래 성향을 차근차근 재설정합니다.</p>
+<hr />
+<h2>⑤ 영장류학 비교 — 본성은 한 방향이 아니다</h2>
+<p>"분위기가 본성을 압도한다" 는 표현이 한 비비 무리의 우연한 사례에만 기반한다면 일반화하기 어렵습니다. 다행히 영장류학은 같은 유전자를 공유하면서도 정반대 사회 양상을 보이는 종 비교 사례를 충분히 축적해 두었습니다. 본 섹션은 Forest Troop 사례를 Bonobo·Chimpanzee 비교 안에 배치합니다.</p>
+<table>
+<thead>
+<tr>
+<th>차원</th>
+<th>Bonobo (Pan paniscus)</th>
+<th>Chimpanzee (Pan troglodytes)</th>
+<th>Forest Troop 비비 (Papio anubis)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>유전적 거리</td>
+<td>인간과 약 98.7% DNA 공유</td>
+<td>인간과 약 98.8% DNA 공유</td>
+<td>(별도 속, 인간과 더 먼 친척)</td>
+</tr>
+<tr>
+<td>무리 내 사회 톤 (일반적 관찰)</td>
+<td>평화적·암컷 중심·갈등 해소를 친밀 행동으로</td>
+<td>위계적·수컷 중심·치명적 갈등 보고됨</td>
+<td>일반 비비 무리는 폭력적, Forest Troop 만 예외적으로 평화</td>
+</tr>
+<tr>
+<td>무리 간 만남</td>
+<td>평화로운 mingling 보고됨</td>
+<td>극단적 적대·치명적 공격 보고됨</td>
+<td>무리 간 적대가 일반적</td>
+</tr>
+<tr>
+<td>핵심 행동 양식</td>
+<td>grooming · 친밀 행동 빈번</td>
+<td>사냥·정치적 동맹·공격</td>
+<td>일반 무리는 공격, Forest Troop 은 grooming·낮은 공격</td>
+</tr>
+<tr>
+<td>1차 참고</td>
+<td>de Waal "Bonobo: The Forgotten Ape" (1997)<sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup> · Furuichi 등 영장류학 문헌<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></td>
+<td>Goodall "The Chimpanzees of Gombe" (1986)<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup> · Mitani 등<sup id="fnref2:11"><a class="footnote-ref" href="#fn:11">11</a></sup></td>
+<td>Sapolsky·Share PLOS Biology 2004<sup id="fnref24:2"><a class="footnote-ref" href="#fn:2">2</a></sup> · Sapolsky "Behave" (2017)<sup id="fnref6:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>이 표가 의미하는 바는 단순합니다. 인간과 거의 같은 유전자를 가진 Bonobo 와 Chimpanzee 가 정반대 사회 양상을 보입니다. 한 종(Chimpanzee) 안에서도 무리에 따라 행동 양식이 다르고, 한 무리(Forest Troop) 안에서도 시점에 따라 행동 양식이 영구적으로 바뀝니다. "본성이 한 방향" 이라는 통념을 영장류학은 여러 경로로 부정해왔습니다.<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup></p>
+<p>특히 Forest Troop 사례는 이 흐름의 가장 강한 케이스입니다 — 같은 종·같은 유전자·같은 자연 환경에서 무리 분위기가 정반대로 갈 수 있다는 점, 그리고 그 분위기가 새 구성원에게 학습돼 세대 거쳐 유지된다는 점을 한 사례 안에서 동시에 보여주기 때문입니다.</p>
+<hr />
+<h2>⑥ 한국 일상 적용 — 직장·가족·단톡방·세대 문화</h2>
+<p>영상에서 시청자에게 던진 마지막 질문은 비비 무리가 아닌 시청자 본인의 일상에 관한 것이었습니다. 본 섹션은 Forest Troop 사례에서 도출되는 관찰 두 가지를 한국 일상의 구조 관찰에 옮겨 봅니다. 사회 평가나 정치 평가가 아니라 구조 관찰입니다.</p>
+<h3>6-1. "분위기가 본성을 압도한다" 의 일상 사례</h3>
+<p><strong>(a) 직장 — 팀 분위기와 신입의 행동 변화.</strong> 신입이 새 팀에 합류했을 때 본래 자기 성향과 다른 행동 양식을 학습하는 사례는 흔합니다. 회의에서 의견을 적극 내는 본래 성향이 침묵하는 팀에서 점차 줄어들거나, 반대로 조용한 성향이 활기찬 팀에서 점차 적극화되는 경험은 비비 무리의 6개월 학습 곡선과 같은 메커니즘 — 사회적 강화·억제, 사회적 환경의 재구성 — 으로 설명됩니다.</p>
+<p><strong>(b) 가족 — 세대 간 분위기 전수.</strong> 부모 세대의 갈등 패턴이 자녀 세대에 학습되는 흐름은 행동 양식 (싸움 빈도·grooming 빈도·갈등 해소 방식) 의 무리 내 전수와 구조적으로 같습니다. 자녀가 본래 무리 (= 부모 세대 분위기) 를 떠나 새 무리 (= 결혼·룸메이트·새 가족) 에 합류할 때 자기 본래 학습된 양식을 가져가다가 점차 새 무리 분위기에 적응하는 과정이 관찰됩니다.</p>
+<p><strong>(c) 단톡방·온라인 커뮤니티 — 시작 분위기의 누적.</strong> 단톡방·온라인 커뮤니티의 초기 멤버 몇 명이 정한 분위기가 이후 합류자의 발언 양식을 결정하는 사례 역시 같은 흐름입니다. 처음 몇 주의 분위기가 누적되면 그 다음 합류자는 본래 자기 성향과 다른 발언 양식을 학습합니다.</p>
+<p>세 사례 모두 공통점은 "본성 vs 환경" 이분법이 답을 주지 못한다는 점입니다. 본성도 있고 환경도 있는데, 그 둘이 만나는 자리에서 누가 더 강한지는 무리의 공유된 행동 코드의 누적이 결정합니다.</p>
+<h3>6-2. 한 가지 한계 — 한 사례의 일반화는 조심스럽게</h3>
+<p>본 섹션의 일상 적용은 Forest Troop 사례에서 영감을 받은 구조 관찰이며 인과 단정이 아닙니다. 사람 사회와 비비 사회는 행동 양식의 복잡도가 다르고, 사람 사회에는 언어·제도·법·교육이라는 추가 채널이 있습니다. 다만 "본성이 한 방향이 아니다", "분위기가 누적되어 새 구성원의 행동을 재설정한다" 는 두 관찰은 영장류학·발달심리학·조직행동 연구에서 다양한 경로로 반복 관찰돼 왔습니다.<sup id="fnref4:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup><sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></p>
+<hr />
+<h2>⑦ 결론·시사점 — 본성과 환경 이분법 너머</h2>
+<h3>결론 — 본문 핵심 3가지 압축</h3>
+<ol>
+<li>
+<p><strong>갈등이 본성이라는 통념은 영장류 사례에서도 한 방향이 아니다.</strong> Bonobo·Chimpanzee 비교가 그 첫 증거이고, 한 종 안의 무리 비교 (Forest Troop vs 다른 비비 무리) 가 더 강한 증거입니다. 같은 유전자·같은 자연 환경에서 정반대 사회 양상이 가능합니다.</p>
+</li>
+<li>
+<p><strong>무리 분위기는 새 구성원에게 학습돼 세대 거쳐 유지된다.</strong> Forest Troop 의 1993년 이후 외부 합류자만으로 구성된 시점에도 같은 행동 양식이 유지된 약 20년 이상의 관찰이 그 증거입니다. 평균 약 6개월의 학습 곡선이 합류자 한 명 한 명의 본래 성향을 재설정합니다.</p>
+</li>
+<li>
+<p><strong>갈등과 평화는 본성 vs 환경 이분법으로는 잘 설명되지 않습니다. 공유된 행동 코드의 누적이 더 좋은 설명입니다.</strong> 본성은 한 개체의 행동 가능성을 결정하지만, 그 가능성 중 어느 쪽이 실현되는지는 무리 차원에서 공유된 행동 코드가 결정합니다. 이 코드는 우연한 사건으로 시작되고, 학습으로 전수되고, 누적으로 유지됩니다.</p>
+</li>
+</ol>
+<h3>시사점 — 일상에서 무엇이 가능한가</h3>
+<ul>
+<li><strong>첫 분위기가 누적된다.</strong> 새 팀·새 가족 구성·새 커뮤니티 출발 시점의 행동 양식 몇 가지가 이후 합류자의 행동을 결정하는 누적 효과를 만듭니다.</li>
+<li><strong>개체 한 명의 본성이 무리를 결정하지 않습니다.</strong> 한 사람의 본래 성향이 무리 평균을 정하지 못합니다. 무리의 공유된 행동 코드가 더 강합니다.</li>
+<li><strong>분위기는 행동의 결과이자 다음 행동의 원인입니다.</strong> 갈등 해소·grooming 류 행동의 누적이 분위기를 만들고, 그 분위기가 다음 행동을 다시 결정합니다. 이 순환이 한 무리의 사회 톤을 유지시킵니다.</li>
+</ul>
+<p>본 리포트는 "본성이 없다" 거나 "환경이 모든 것을 결정한다" 라는 단정을 하지 않습니다. 영장류학이 보여주는 fact 는 더 정교한 것입니다 — 본성은 한 방향이 아니고, 무리 분위기는 학습으로 전수되며, 두 차원의 만남에서 공유된 행동 코드의 누적이 더 강한 변수로 관찰됩니다.</p>
+<hr />
+
+  </article>
+
+  <article class="references"><h2>⑧ 출처</h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Stanford Magazine, "The Pacific Baboon — Robert Sapolsky's Forest Troop". https://stanfordmag.org/contents/the-pacific-baboon (1983 outbreak 일반 보도, Stanford 대학교 매거진 인터뷰 기사 기준)&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Sapolsky, R. M., &amp; Share, L. J. (2004). "A Pacific Culture among Wild Baboons: Its Emergence and Transmission." <em>PLOS Biology</em>, 2(4): e106. https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0020106 (Forest Troop 1차 학술 보고. 1983 outbreak·1993 후속 합류자 학습·grooming 행동 변화·스트레스 호르몬 등 핵심 fact 의 1차 출처)&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref16:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref17:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref18:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref19:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref20:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref21:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref22:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref23:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref24:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>New York Times, "No Time for Bullies: Baboons Retool Their Culture" (2004-04-13). https://www.nytimes.com/2004/04/13/science/no-time-for-bullies-baboons-retool-their-culture.html (PLOS Biology 2004 논문 보도)&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Sapolsky, R. M. (2017). <em>Behave: The Biology of Humans at Our Best and Worst</em>. Penguin Press. (Forest Troop 사례를 사회 행동·스트레스 호르몬 맥락에서 종합 정리한 단행본. Chapter 9 "A Culture of Stress" 일부)&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Sapolsky, R. M. (2005). "The Influence of Social Hierarchy on Primate Health." <em>Science</em>, 308(5722), 648-652. https://science.org/doi/10.1126/science.1106477 (비비 사회 위계와 스트레스 호르몬 일반 연구)&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Whiten, A., Horner, V., &amp; de Waal, F. B. M. (2005). "Conformity to Cultural Norms of Tool Use in Chimpanzees." <em>Nature</em>, 437, 737-740. https://nature.com/articles/nature04047 (영장류 사회 문화 전수의 사회적 학습 메커니즘 일반 보고)&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Laland, K. N., &amp; Janik, V. M. (2006). "The Animal Cultures Debate." <em>Trends in Ecology &amp; Evolution</em>, 21(10), 542-547. (동물 사회 문화의 정의·전수 메커니즘 일반 리뷰)&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>de Waal, F. B. M. (1997). <em>Bonobo: The Forgotten Ape</em>. University of California Press. (Bonobo 사회 행동 일반 보고. 인간과 가장 가까운 친척 중 평화로운 종으로서의 보노보 1차 학술 단행본)&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Furuichi, T. (2011). "Female Contributions to the Peaceful Nature of Bonobo Society." <em>Evolutionary Anthropology</em>, 20(4), 131-142. https://onlinelibrary.wiley.com/doi/10.1002/evan.20308&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Goodall, J. (1986). <em>The Chimpanzees of Gombe: Patterns of Behavior</em>. Harvard University Press. (Chimpanzee 사회 행동·갈등·위계의 1차 학술 단행본)&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>Mitani, J. C., Watts, D. P., &amp; Amsler, S. J. (2010). "Lethal Intergroup Aggression Leads to Territorial Expansion in Wild Chimpanzees." <em>Current Biology</em>, 20(12), R507-R508. https://cell.com/current-biology/fulltext/S0960-9822(10)00553-6 (Chimpanzee 무리 간 치명적 공격 관찰)&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>Bronfenbrenner, U. (1979). <em>The Ecology of Human Development: Experiments by Nature and Design</em>. Harvard University Press. (사회 환경이 개체 행동 발달을 결정하는 일반 이론)&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>Edmondson, A. C. (1999). "Psychological Safety and Learning Behavior in Work Teams." <em>Administrative Science Quarterly</em>, 44(2), 350-383. https://journals.sagepub.com/doi/10.2307/2666999 (조직 행동 연구의 팀 분위기·심리적 안전감 1차 보고)&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
