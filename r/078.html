@@ -302,18 +302,14 @@
     <p class="article-sub">반도체 1Q +43.7% → GDP 2.5% · 환율 1,475원 · 두바이유 91달러 → 물가 2.7% · 추경 X · 외환 강세 유도 X · 통화 정책 단일 잔여 채널</p>
     <div class="hero-visual"><pre class="mermaid">flowchart TD
     A[&quot;KDI 2026 상반기 경제전망&lt;br/&gt;성장률 2.5% · 물가 2.7% · 부양 거부&quot;]
-    B1[&quot;성장률 동력&lt;br/&gt;반도체 수출 1Q +43.7%&quot;]
-    B2[&quot;물가 동력&lt;br/&gt;두바이유 91달러 · 환율 1,475원&quot;]
-    B3[&quot;정책 결론&lt;br/&gt;경기 확장기에 부양 어울리지 않음&quot;]
-    C1[&quot;한국 GDP 위로&lt;br/&gt;주요국 1위 · 올해 2.5%&quot;]
-    C2[&quot;가계 일상 압력&lt;br/&gt;장보기 · 기름값 · 해외 직구&quot;]
-    C3[&quot;정책 도구 닫힘&lt;br/&gt;2차 추경 X · 외환 강세 유도 X&quot;]
-    D[&quot;한국은행 통화 정책 단일 결정자&lt;br/&gt;금리 동결 or 인상 외 다른 길 X&quot;]
-    A --&gt; B1 --&gt; C1
-    A --&gt; B2 --&gt; C2
-    A --&gt; B3 --&gt; C3
+    A --&gt;|성장률 동력| B1[&quot;반도체 수출 1Q +43.7%&quot;]
+    A --&gt;|물가 동력| B2[&quot;두바이유 91달러 · 환율 1,475원&quot;]
+    A --&gt;|정책 결론| B3[&quot;경기 확장기에 부양 어울리지 않음&quot;]
+    B1 --&gt; C1[&quot;한국 GDP 위로&lt;br/&gt;주요국 1위 · 올해 2.5%&quot;]
+    B2 --&gt; C2[&quot;가계 일상 압력&lt;br/&gt;장보기 · 기름값 · 해외 직구&quot;]
+    B3 --&gt; C3[&quot;추경·외환 강세 유도 닫힘&quot;]
     C1 -.괴리.-&gt; C2
-    C2 --&gt; D
+    C2 --&gt; D[&quot;한국은행 통화 정책 단일 결정자&lt;br/&gt;금리 동결 또는 인상 외 다른 길 X&quot;]
     C3 --&gt; D
 
     style A fill:#fff3e0
@@ -333,10 +329,10 @@
 
   <article class="article-body">
 <hr />
-<h2>⓪ Executive Summary — 한눈에 보는 KDI 발표의 양극 구조</h2>
+<h2>⓪ 한눈에 보는 KDI 발표의 종착지</h2>
 
-<p>KDI 발표는 세 결론을 한 자리에 묶었습니다 — 성장률은 올렸고, 물가도 올렸고, 부양은 안 한다고 했습니다. 반도체 한 축이 GDP를 끌어올리는 동안 정유·환율이 가계 일상을 압박하고, 그 사이 세 정책 도구 중 두 도구(추경·외환 강세 유도)가 닫히면서 <strong>한국은행 통화 정책 한 자리로 도구가 모이는 종착지</strong> 가 만들어진다는 것이 이번 발표의 진짜 결론입니다. 금리 인하 시점이 늦춰지는 만큼 한국은행 결정의 잔여 폭은 동결 또는 인상 방향으로 좁혀집니다.</p>
-<p><strong>KPI 5 — KDI 2026 상반기 전망 한눈에</strong></p>
+<p>KDI 발표는 한 자리에 세 결론을 묶었습니다 — 성장률은 올렸고, 물가도 올렸고, 부양은 안 한다고 했습니다. 반도체가 GDP를 끌어올리는 동안 정유·환율이 가계 일상을 압박하고, 추경과 외환 강세 유도가 닫힌 상태에서 가계 압력을 다룰 도구는 한국은행 한 자리로 모입니다. 금리 인하 시점이 늦춰지는 만큼 결정의 잔여 폭은 동결 또는 인상으로 좁혀집니다.</p>
+<p><strong>KPI 5</strong></p>
 <table>
 <thead>
 <tr>
@@ -349,12 +345,12 @@
 <tr>
 <td>올해 GDP 전망</td>
 <td><strong>2.5%</strong></td>
-<td>2월 전망 1.9% → 0.6%p 상향<sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>2월 1.9% → 0.6%p 상향<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
 <td>상반기 → 하반기</td>
 <td><strong>3.1% → 1.9%</strong></td>
-<td>두 분기 만에 절반으로 꺾이는 흐름<sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>두 분기 만에 절반 꺾이는 흐름<sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
 <td>1분기 반도체 수출</td>
@@ -364,63 +360,57 @@
 <tr>
 <td>소비자물가 · 환율 · 두바이유</td>
 <td><strong>2.7% · 1,475원 · 91달러</strong></td>
-<td>2월 전망 2.1% → 0.6%p 상향 (중동 전쟁 반영)<sup id="fnref9:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>2월 2.1% → 0.6%p 상향<sup id="fnref8:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
 <td>KDI 정규철 부장 발언</td>
-<td><strong>"경기 확장기에 경기 부양 어울리지 않음"</strong></td>
-<td>2차 추경 일축 — 정책 도구 사용 거부 신호<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+<td><strong>"경기 확장기에 부양 어울리지 않음"</strong></td>
+<td>2차 추경 일축<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>더 알고 싶다면 본문으로</strong> — 어떤 상향 항목이 어디서 왔는지, 양극 구조가 한국 정책 도구에 어떻게 도달했는지, 시청자 일상에서 어떤 항목으로 만나게 되는지는 ① ~ ⑨ 본문에서 한 단계씩 따라갑니다.</p>
+<p><strong>더 알고 싶다면 본문으로</strong> — 상향 폭이 어디서 왔고, 도구가 어떻게 한국은행 자리로 모이는지, 시청자 일상에 어떤 순서로 도달하는지 본문 ① ~ ⑨ 에서 한 단계씩 따라갑니다.</p>
 </blockquote>
 <hr />
 <h2>① 도입 — 같은 발표 안에 묶인 세 결론</h2>
-<p>2026년 5월 상반기 KDI 경제전망이 발표됐습니다. 이번 발표는 한 자리에 세 결론을 묶었습니다 — (1) 올해 성장률을 2.5%로 0.6%p 상향, (2) 올해 소비자물가도 2.7%로 0.6%p 상향, (3) 그럼에도 "경기 확장기에 경기 부양은 어울리지 않는다" 며 2차 추경에 선을 그었습니다.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
-<p>같은 발표 안에 좋은 신호(성장률 상향)와 부담 신호(고물가) 가 동시에 있고, 그에 대한 정책 처방은 "도구를 쓰지 않는다" 로 정리됐다는 점이 이번 발표의 특징입니다. 시청자 일상 입장에서 보면 — 영상에서 던진 질문 "이 어색한 조합이 한 자리에 묶인 이유는?" — 의 답을 본 리포트가 한 단계씩 따라갑니다.</p>
-<p>결론을 미리 말하면, 이번 발표는 <strong>한국 경제가 두 동력에 동시에 노출돼 있고(반도체 한 축이 GDP를 끌고, 정유·환율이 물가를 끌고), 그 사이 부양 도구는 묶였다</strong> 는 양극 구조를 그대로 옮긴 결과입니다. 어색해 보이는 조합이 사실은 현 시점 한국 경제 구조의 정확한 사진입니다.</p>
+<p>2026년 5월 KDI 경제전망이 발표됐습니다. 한 자리에 세 결론이 묶였습니다 — 올해 성장률 2.5% (2월 대비 0.6%p 상향), 올해 소비자물가 2.7% (역시 0.6%p 상향), 그럼에도 "경기 확장기에 경기 부양 어울리지 않음" 으로 2차 추경 일축.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>같은 발표 안에 좋은 신호(성장률)와 부담 신호(고물가)가 동시에 있고, 정책 처방은 "도구를 쓰지 않는다"로 정리됐다는 점이 이번 발표의 특징입니다. 시청자 입장에서는 영상에서 던진 질문 "이 어색한 조합이 한 자리에 묶인 이유는?" 의 답을 본 리포트가 한 단계씩 따라갑니다.</p>
+<p>미리 말하면 — 어색해 보이는 조합이 사실은 현 시점 한국 경제 구조의 정확한 사진입니다. 반도체 한 축이 GDP를 끌고, 정유·환율이 물가를 끌고, 가계 압력을 풀 도구가 한국은행 결정 자리로 모이는 그림이 같은 발표 안에 그대로 박혔습니다.</p>
 <hr />
-<h2>② 표면 사실 정리 — KDI 발표가 박은 13개 지표</h2>
+<h2>② 표면 사실 — KDI 발표의 핵심 지표</h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
 <th>값</th>
-<th>변화·비고</th>
+<th>비고</th>
 <th>출처</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>올해 GDP 전망</td>
+<td>올해 GDP</td>
 <td><strong>2.5%</strong></td>
-<td>2월 전망 1.9% → 0.6%p 상향</td>
+<td>2월 1.9% → +0.6%p</td>
+<td>KDI<sup id="fnref9:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td>내년 GDP</td>
+<td><strong>1.7%</strong></td>
+<td>둔화 전망</td>
 <td>KDI<sup id="fnref10:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>내년 GDP 전망</td>
-<td><strong>1.7%</strong></td>
-<td>올해 깜짝 → 내년 둔화</td>
+<td>상반기 / 하반기</td>
+<td><strong>3.1% / 1.9%</strong></td>
+<td>절반 꺾임</td>
 <td>KDI<sup id="fnref11:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>상반기 GDP</td>
-<td><strong>3.1%</strong></td>
-<td>—</td>
-<td>KDI<sup id="fnref12:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>하반기 GDP</td>
-<td><strong>1.9%</strong></td>
-<td>두 분기 만에 절반 꺾임</td>
-<td>KDI<sup id="fnref13:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>1분기 성장률</td>
-<td>주요국 1위</td>
-<td>반도체 수출 +43.7%</td>
+<td>1분기 반도체 수출</td>
+<td><strong>+43.7%</strong></td>
+<td>주요국 1위 동력</td>
 <td>디지털타임스<sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
 </tr>
 <tr>
@@ -436,75 +426,50 @@
 <td>헤럴드경제<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
 </tr>
 <tr>
-<td>1차 추경 영향</td>
+<td>1차 추경 효과</td>
 <td><strong>+0.2%p</strong></td>
-<td>상향 폭에 반영</td>
-<td>KDI<sup id="fnref14:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>이미 반영</td>
+<td>KDI<sup id="fnref12:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>경상수지 (올해)</td>
-<td><strong>2,390억 달러</strong></td>
-<td>사상 최대 — 2,000억 달러 첫 돌파</td>
-<td>KDI<sup id="fnref15:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>경상수지 (내년)</td>
-<td><strong>2,137억 달러</strong></td>
-<td>—</td>
-<td>KDI<sup id="fnref16:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>수출 증가율</td>
-<td><strong>4.6% (올해) / 2.2% (내년)</strong></td>
-<td>—</td>
-<td>KDI<sup id="fnref17:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>설비투자</td>
-<td><strong>3.3%</strong></td>
-<td>—</td>
-<td>KDI<sup id="fnref18:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>경상수지 (올해/내년)</td>
+<td><strong>2,390 / 2,137억 달러</strong></td>
+<td>사상 최대</td>
+<td>KDI<sup id="fnref13:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
 <td>소비자물가</td>
 <td><strong>2.7%</strong></td>
-<td>2월 전망 2.1% → 0.6%p 상향</td>
-<td>KDI<sup id="fnref19:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>2월 2.1% → +0.6%p</td>
+<td>KDI<sup id="fnref14:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>환율 전제</td>
-<td><strong>1,475원</strong></td>
+<td>환율 / 두바이유</td>
+<td><strong>1,475원 / 91달러</strong></td>
 <td>현 수준 유지 가정</td>
-<td>KDI<sup id="fnref20:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>KDI<sup id="fnref15:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>두바이유 전제</td>
-<td><strong>91달러</strong></td>
-<td>—</td>
-<td>KDI<sup id="fnref21:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+<td>취업자 증가</td>
+<td><strong>17만 명 (올해·내년)</strong></td>
+<td>폭 제한적</td>
+<td>KDI<sup id="fnref16:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
 </tr>
 <tr>
-<td>취업자 수</td>
-<td>올해·내년 각 <strong>17만 명</strong> 증가</td>
-<td>—</td>
-<td>KDI<sup id="fnref22:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
-</tr>
-<tr>
-<td>정규철 KDI 부장 발언</td>
-<td>"경기 확장기에 경기 부양 어울리지 않음"</td>
+<td>KDI 발언</td>
+<td><strong>"경기 확장기 + 부양 X"</strong></td>
 <td>2차 추경 일축</td>
 <td>서울경제<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
 </tr>
 </tbody>
 </table>
-<p>여기까지가 대다수 매체 헤드라인이 다루는 영역입니다. 본 리포트는 표면 사실을 넘어 — 이 13개 지표가 한국 정책 도구·시청자 일상에 어떻게 도달하는지를 한 단계씩 따라갑니다.</p>
 <hr />
-<h2>③ 상향 폭 분해 — 0.6%p가 어디서 왔는가</h2>
-<p>KDI는 올해 GDP 전망을 2월 1.9% 에서 5월 2.5% 로 0.6%p 상향했습니다. 이 0.6%p 의 구성 요소는 매체 보도와 KDI 발표 내용을 종합하면 다음 세 항목으로 분해됩니다.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<h2>③ 상향 폭 0.6%p가 어디서 왔는가</h2>
+<p>올해 GDP 전망 상향 0.6%p 의 구성은 매체 보도·KDI 발표 종합 시 다음과 같습니다.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
 <table>
 <thead>
 <tr>
-<th>상향 항목</th>
+<th>항목</th>
 <th>기여</th>
 <th>성격</th>
 </tr>
@@ -518,7 +483,7 @@
 <tr>
 <td>1차 추경 효과</td>
 <td><strong>+0.2%p</strong></td>
-<td>이미 집행 — 추가 효과 X</td>
+<td>이미 반영 — 추가 효과 X</td>
 </tr>
 <tr>
 <td>중동 전쟁 영향</td>
@@ -527,295 +492,158 @@
 </tr>
 </tbody>
 </table>
-<p>상향 폭 0.6%p 의 절반 이상이 <strong>반도체 한 산업</strong> 에서 왔다는 점이 이번 발표의 첫 번째 구조적 신호입니다. 한국 GDP가 한 산업·한 축에 점점 더 크게 노출돼 있다는 의미이고, 반도체 사이클이 꺾이는 순간 같은 폭으로 빠르게 빠질 수 있다는 의미이기도 합니다.</p>
-<p>KDI 가 상반기 3.1% → 하반기 1.9% 로 두 분기 만에 절반 꺾이는 전망을 동시에 박은 것도 이 점과 연결됩니다. 1분기 반도체 수출 +43.7% 의 기저 효과 (전년 동기 대비) 가 하반기로 갈수록 약화되고, 내년 1.7% 전망은 그 흐름의 연장입니다.<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+<p>상향 폭의 절반 이상이 반도체 한 산업에서 왔다는 점이 첫 신호입니다. 한국 GDP가 한 축에 점점 더 크게 노출돼 있다는 의미이고, 상반기 3.1% → 하반기 1.9% 라는 절반 꺾임 전망도 같은 점과 연결됩니다. 1분기 반도체 수출의 기저 효과가 하반기로 갈수록 약화되고, 내년 1.7% 전망은 그 흐름의 연장입니다.<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
 <hr />
-<h2>④ 양극 구조 — 동력 두 축이 정반대 방향으로 도달</h2>
-<h3>4-1. 동력 A — 반도체가 한국 GDP를 위로 끄는 채널</h3>
-<p>반도체 수출은 1분기에 전년 동기 대비 +43.7% 증가했고, 이것이 올해 GDP 전망 상향의 가장 큰 동력으로 작용했습니다.<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> 상반기 3.1% 라는 강한 수치도 이 흐름에 기반합니다.</p>
-<p>이 동력의 도달처는 명확합니다 — <strong>한국 GDP 통계, 주요국 비교 순위, 경상수지 (사상 최대 2,390억 달러)</strong>. 즉, 거시 지표 측면에서 한국이 보이는 위치 자체가 한 축 위에서 결정됩니다. 시청자가 매체 헤드라인에서 만나는 "주요국 1위", "사상 최대 경상수지" 같은 표현은 모두 이 채널의 결과입니다.</p>
-<p>다만 이 채널은 가계 일상 체감과 직접 연결되지 않습니다 — 반도체 수출 호황이 일반 가계의 실질 구매력으로 도달하는 데는 임금·고용·소비 등 추가 매개 단계가 필요하고, KDI 가 박은 취업자 17만 명 증가도 폭이 제한적입니다.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
-<h3>4-2. 동력 B — 환율·유가가 가계 일상을 압박하는 채널</h3>
-<p>같은 발표는 동시에 올해 소비자물가 전망을 2.1% 에서 2.7% 로 0.6%p 상향했습니다. KDI 는 환율 1,475원·두바이유 91달러를 전제로 잡았고, 이 두 변수가 물가 상향의 주된 배경입니다.<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
-<p>이 채널의 도달처는 가계 일상입니다 — <strong>장보기 영수증, 휘발유 가격, 해외 직구·해외 여행 비용, 수입 가공식품</strong>. 시청자가 매일 만나는 항목들이 정확히 이 채널의 결과입니다.</p>
-<p>영상에서 "장보기랑 기름값 같이 오르는 그림" 이라고 표현한 부분이 바로 이 지점입니다. 환율이 1,475원 박스권을 유지하고 두바이유가 91달러대를 이어간다면, 같은 압력이 5월 ~ 6월 소비자물가지수 발표에 1~2개월 시차로 차례로 반영됩니다.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
-<h3>4-3. 두 채널의 괴리 — 좋은 지표가 좋은 일상으로 도달하지 않는다</h3>
-<p>채널 A 와 채널 B 는 같은 발표 안에 동시에 박혀 있고, 동시에 진행 중입니다. 그런데 이 두 채널의 도달처는 서로 다른 시청자 영역입니다 — A 는 거시 지표·시장 평가에, B 는 가계 일상에. </p>
-<p>이 괴리가 이번 KDI 발표의 핵심 frame 입니다. <strong>GDP가 올라도 일상이 같이 가벼워지지 않는 구조</strong> 가 같은 보고서 안에 그대로 박혔다는 의미입니다. 그리고 이 괴리를 줄여줄 수 있는 도구는 다음 단계 — 정책 도구 — 에 있습니다. 그런데 KDI 는 그 도구를 "지금은 쓸 때가 아니다" 라고 박았습니다.</p>
+<h2>④ 좋은 지표와 가계 압력이 같이 가는 이유</h2>
+<p>반도체 수출 호황은 한국 GDP·주요국 비교 순위·경상수지 사상 최대 2,390억 달러 같은 거시 지표를 만듭니다. 시청자가 매체 헤드라인에서 만나는 영역입니다.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup> 다만 가계 실질 구매력까지는 임금·고용·소비를 거치는 매개가 필요하고, 취업자 17만 명 증가 폭은 제한적입니다.</p>
+<p>같은 발표는 동시에 소비자물가 전망을 2.1% → 2.7% 로 올렸습니다. 환율 1,475원·두바이유 91달러 가 물가 상향의 주된 배경이고, 이 채널의 도달처는 가계 일상입니다 — 장보기, 휘발유, 해외 직구·여행, 수입 가공식품. 영상에서 "장보기랑 기름값 같이 오르는 그림" 이라고 표현한 부분이 정확히 이 자리입니다.<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>두 흐름은 같은 발표 안에 동시에 있지만 도달처가 다른 영역입니다 — 한쪽은 거시 지표, 한쪽은 가계 일상. <strong>GDP가 올라도 일상이 같이 가벼워지지 않는 구조</strong> 가 같은 보고서 안에 박혔습니다. 그 괴리를 줄여줄 수 있는 자리는 다음 ⑤ 정책 도구 매트릭스입니다.</p>
 <hr />
-<h2>⑤ 정책 도구가 모이는 자리 — 한국 통화 정책의 단일 결정자</h2>
+<h2>⑤ 정책 도구가 모이는 자리 — 한국은행 결정</h2>
 <h3>5-1. 세 도구 중 두 도구가 닫혀 있다</h3>
-<p>KDI 발표가 의미하는 "어색한 조합" 을 풀 수 있는 한국 정책 도구는 원칙적으로 세 가지입니다 — <strong>(a) 재정 도구 (추경)</strong>, <strong>(b) 외환 도구 (시장 개입·통화 스왑)</strong>, <strong>(c) 통화 도구 (기준금리·통화량)</strong>. 이번 발표 시점에 이 세 도구 중 두 개는 사실상 닫혀 있는 상태입니다.</p>
+<p>한국이 들고 있는 정책 도구는 세 가지입니다 — 재정(추경), 외환 시장 개입, 통화 정책(기준금리). 이번 발표 시점에 세 도구 중 두 개는 사실상 닫혀 있는 상태입니다.</p>
 <table>
 <thead>
 <tr>
 <th>도구</th>
 <th>결정 주체</th>
-<th>현 시점 상태</th>
+<th>현 상태</th>
 <th>근거</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>(a) 추경·재정</td>
+<td>추경·재정</td>
 <td>기획재정부·국회</td>
 <td><strong>사실상 닫힘</strong></td>
-<td>KDI "경기 확장기에 부양 어울리지 않음" 으로 정당성 근거 약화<sup id="fnref23:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
+<td>KDI "부양 어울리지 않음" 으로 정당성 약화<sup id="fnref17:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup></td>
 </tr>
 <tr>
-<td>(b) 외환 시장 개입</td>
+<td>외환 시장 적극 강세 유도</td>
 <td>한국은행</td>
 <td><strong>방향성 제약</strong></td>
-<td>환율 1,475원이 약세이지만 적극 강세 유도 시 수출 동력 약화·반도체 환차익 축소 우려 — 약세 유지 정책 측면에서 개입 폭 제약</td>
+<td>강세 유도 시 수출 동력·반도체 환차익 약화 우려</td>
 </tr>
 <tr>
-<td>(c) 통화 정책 (기준금리)</td>
+<td>통화 정책 (기준금리)</td>
 <td>한국은행 금융통화위원회</td>
 <td><strong>단일 잔여 도구</strong></td>
-<td>가계 일상 압력 (물가·대출·환율) 을 다룰 수 있는 정책 채널이 이 한 자리로 모임</td>
+<td>가계 압력을 다룰 정책 채널</td>
 </tr>
 </tbody>
 </table>
-<p>추경은 KDI 가 직접 일축했고, 외환 시장 개입은 한국 수출 동력 (반도체 환차익) 측면에서 적극 강세 유도가 어렵습니다. 결과적으로 가계 일상 압력을 다룰 수 있는 정책 도구는 <strong>한국은행 통화 정책 한 자리</strong> 로 모입니다.</p>
-<h3>5-2. 한국은행 — 정책 도구가 모이는 단일 결정자</h3>
-<p>한국은행은 이번 KDI 발표에 직접 등장하지 않습니다. KDI 발언은 "경기 확장기와 경기 부양 어울리지 않음" 으로 추경에 선을 그은 것이지, 한국은행 금리 정책을 직접 언급한 것은 아닙니다.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup> 그런데 이번 발표가 만드는 정책 도구 매트릭스를 펼쳐 보면, <strong>한국은행이 발표 안에서는 등장하지 않으면서 정책 도구가 가장 많이 모이는 단일 결정자</strong> 자리에 있습니다.</p>
-<table>
-<thead>
-<tr>
-<th>한국은행이 들고 있는 도구</th>
-<th>현 시점 의미</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>기준금리 (금융통화위원회)</td>
-<td>KDI 신호 ("경기 확장기") 가 인하 시점을 늦추는 방향으로 작용</td>
-</tr>
-<tr>
-<td>외환 시장 개입</td>
-<td>보유고 4,236.6억 달러 (2026-03 말)<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> — 환율 1,475원 박스권에서 단기 변동성만 흡수</td>
-</tr>
-<tr>
-<td>통화 스왑·유동성 정책</td>
-<td>글로벌 변수 (미 연준·중국 경기) 대응 채널</td>
-</tr>
-<tr>
-<td>외환 보유고 운영</td>
-<td>가계 일상 압력의 1차 흡수 도구가 아님</td>
-</tr>
-</tbody>
-</table>
-<p>세 도구 중 두 도구가 닫힌 상태에서, 한국 통화 정책의 단일 결정자가 손에 들고 있는 <strong>금리 도구가 정책 매트릭스의 단일 잔여 채널</strong> 로 남았습니다. 영상에서 "어색한 조합이 한 자리에 묶인 이유" 라고 표현한 부분의 정확한 종착지가 이 자리입니다.</p>
-<h3>5-3. 같은 도구의 양면 — 풀면 환율, 묶으면 일상</h3>
+<p>추경은 KDI 가 일축했고, 외환 적극 강세 유도는 반도체 수출 측면에서 제약을 받습니다. 결과적으로 가계 압력을 다룰 도구는 한국은행 통화 정책 한 자리로 모입니다.</p>
+<h3>5-2. 발표 안에 등장하지 않는데 도구가 모이는 자리</h3>
+<p>한국은행은 이번 KDI 발표에 직접 등장하지 않습니다. KDI 발언은 추경에 선을 그은 것이지 한국은행 금리 정책을 직접 언급한 것은 아닙니다.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup> 그런데 도구 매트릭스를 펼쳐 보면 <strong>발표 안에 등장하지 않으면서 정책 도구가 가장 많이 모이는 단일 결정자</strong> 자리에 한국은행이 있습니다.</p>
+<p>한국은행이 손에 들고 있는 도구는 기준금리 (금융통화위원회), 외환 시장 개입 (보유고 4,236.6억 달러, 2026-03 말<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup>), 통화 스왑·유동성 정책 — 세 가지입니다. 세 도구 중 두 도구가 닫힌 상태에서 잔여 도구는 금리 결정 한 자리에 모입니다.</p>
+<h3>5-3. 같은 도구의 양면 — 풀면 환율, 묶으면 대출</h3>
 <p>한국은행 금리 도구의 특징은 <strong>같은 결정이 환율과 가계 일상에 정반대 방향으로 도달한다</strong> 는 점입니다.</p>
 <table>
 <thead>
 <tr>
-<th>한국은행 금리 결정</th>
-<th>환율 채널</th>
-<th>가계 일상 채널</th>
+<th>결정</th>
+<th>환율</th>
+<th>가계 일상</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>인하</td>
-<td>원/달러 약세 (1,475원 → 1,500원대 가능성) → 수입 물가·해외 결제 비용 추가 압박</td>
-<td>가계대출 금리 부담 ↓</td>
+<td>약세 (1,475→1,500원대 가능) → 수입 물가·해외 결제 추가 압박</td>
+<td>가계대출 부담 ↓</td>
 </tr>
 <tr>
 <td>동결</td>
-<td>1,475원 박스권 유지</td>
-<td>가계대출 금리 부담 base case</td>
+<td>1,475원 박스권</td>
+<td>대출 부담 base case</td>
 </tr>
 <tr>
 <td>인상</td>
-<td>원/달러 강세 가능성 → 수입 물가·해외 결제 비용 완화</td>
-<td>가계대출 금리 부담 ↑</td>
+<td>강세 가능 → 수입 물가 완화</td>
+<td>대출 부담 ↑</td>
 </tr>
 </tbody>
 </table>
-<p>이 매트릭스가 한국은행이 들고 있는 도구의 본질입니다 — <strong>풀면 환율로 도달하고, 묶으면 가계 대출로 도달</strong>. 어느 방향으로 결정해도 가계 일상의 한 채널은 압력을 받게 되는 구조입니다. KDI 발표가 "경기 확장기에 부양 어울리지 않음" 으로 인하 시점을 늦추는 신호를 박은 결과, 한국은행 결정은 동결 또는 인하 지연 방향으로 기울어 있고, 이 경우 가계 일상 압력은 환율·물가 채널에서 지속됩니다.</p>
-<h3>5-4. KDI 발표가 도달하는 단일 종착지</h3>
-<p>요약하면 — 이번 KDI 발표의 세 결론(성장률 상향·물가 상향·부양 거부) 은 한국 정책 도구 매트릭스 안에서 <strong>한국은행 통화 정책 한 자리로 모이는 종착지</strong> 를 만들었습니다. 추경이 닫히고 외환 시장 적극 강세 유도가 제약된 상태에서, 가계 일상 압력을 다룰 수 있는 정책 채널이 통화 정책 단일 결정자에게 집중됩니다.</p>
-<p>영상에서 "이 어색한 조합이 한 자리에 묶인 이유" 의 답은 — <strong>KDI 발표 자체가 한국 통화 정책 도구가 모이는 단일 종착지의 위치를 그대로 보여주는 사진</strong> 이라는 점입니다. 발표 안에 한국은행이 직접 등장하지 않지만, 발표의 결과는 한국은행 결정 자리로 모입니다.</p>
-<h3>5-5. 금리 결정의 잔여 방향 — 동결 또는 인상으로 좁혀지는 자리</h3>
-<p>5-3 에서 정리한 금리 결정 매트릭스(인하·동결·인상 세 방향) 에 이번 KDI 신호가 미치는 영향을 다시 박으면, 한국은행이 손에 들고 있는 잔여 결정 폭은 다음과 같이 좁혀집니다.</p>
+<p>어느 방향이든 가계의 한 채널은 압력을 받는 구조입니다. KDI "경기 확장기" 신호는 인하 시점을 늦추는 방향으로 작용하므로, 잔여 방향은 동결 또는 인상으로 좁혀집니다.</p>
+<h3>5-4. 잔여 방향이 동결 또는 인상으로 좁혀지는 자리</h3>
 <table>
 <thead>
 <tr>
-<th>결정 방향</th>
-<th>KDI 신호 반영 시 가능성</th>
+<th>방향</th>
+<th>가능성</th>
 <th>근거</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>금리 인하</strong></td>
+<td><strong>인하</strong></td>
 <td><strong>사실상 닫힘</strong></td>
-<td>KDI "경기 확장기" 진단이 인하 정당성 근거를 약화 — 인하 시점 X 신호로 작용</td>
+<td>KDI "경기 확장기" 진단이 인하 정당성 약화</td>
 </tr>
 <tr>
-<td><strong>금리 동결</strong></td>
+<td><strong>동결</strong></td>
 <td><strong>잔여 1순위</strong></td>
-<td>"경기 확장기 + 부양 X" 신호와 가장 정합 — 박스권 시나리오</td>
+<td>"확장기 + 부양 X" 신호와 가장 정합</td>
 </tr>
 <tr>
-<td><strong>금리 인상</strong></td>
+<td><strong>인상</strong></td>
 <td><strong>잔여 2순위</strong></td>
-<td>환율 1,475원 약세·물가 2.7% 압력 지속 시 발동 가능 — 가계 일상 압력 추가 확대</td>
+<td>환율 약세·물가 압력 지속 시 발동 가능</td>
 </tr>
 </tbody>
 </table>
-<p>KDI 발표 시점 기준으로 한국은행 결정의 잔여 폭은 <strong>동결 또는 인상 방향</strong> 으로 좁혀집니다. 영상에서 던진 "어색한 조합이 한 자리에 묶인 이유" 의 정확한 종착지가 이 자리입니다 — 부양 도구가 닫힌 상태에서 통화 정책 결정 자리에 모인 도구의 잔여 방향이 "인하 외" 로 좁혀지는 구조입니다.</p>
-<p>이 결론은 한국은행 결정에 대한 단정이 아닙니다 — 한국은행 금융통화위원회는 KDI 외에도 한국은행 자체 전망·금융시장 안정·미 연준 정책·중국 경기지표 등 다수 변수를 종합 고려해 결정합니다. 본 리포트는 KDI 발표 시점에 보이는 정책 도구 매트릭스의 잔여 방향을 정리한 것입니다.</p>
+<p>영상에서 던진 "어색한 조합이 한 자리에 묶인 이유" 의 정확한 종착지가 이 자리입니다 — 부양 도구가 닫힌 상태에서 통화 정책 결정 자리에 모인 도구의 잔여 방향이 "인하 외" 로 좁혀지는 그림입니다.</p>
+<p>이 결론은 한국은행 결정에 대한 단정이 아닙니다 — 금융통화위원회는 KDI 외에도 한국은행 자체 전망·금융시장 안정·미 연준 정책·중국 경기지표를 종합 고려해 결정합니다. 본 리포트는 KDI 발표 시점에 보이는 정책 도구 매트릭스의 잔여 방향을 정리한 것입니다.</p>
 <hr />
-<h2>⑥ Korean stake — 시청자 일상에서 만나는 부분 + 한국은행 결정 시간표</h2>
-<h3>6-1. 도달 채널·시차 매트릭스</h3>
-<p>KDI 발표가 시청자 일상에 도달하는 통로를 정리하면 다음과 같습니다.</p>
-<table>
-<thead>
-<tr>
-<th>일상 항목</th>
-<th>도달 채널</th>
-<th>시차</th>
-<th>시나리오별 비교</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>장보기 영수증</strong></td>
-<td>환율·수입 물가 → 가공식품·곡물·식품 가격</td>
-<td>1~2개월</td>
-<td>환율 1,475원 박스권 유지 시 압력 지속</td>
-</tr>
-<tr>
-<td><strong>휘발유·기름값</strong></td>
-<td>두바이유 91달러 + 환율 → 정유사 공급가</td>
-<td>2~4주</td>
-<td>두바이유 90달러대 유지 시 휘발유 1,700~1,800원대</td>
-</tr>
-<tr>
-<td><strong>해외 직구·해외 여행</strong></td>
-<td>환율 1원 단위 즉시 반영</td>
-<td>당일~다음 거래일</td>
-<td>1,475원 유지 시 부담 지속</td>
-</tr>
-<tr>
-<td><strong>가계대출 금리</strong></td>
-<td>한국은행 기준금리 → 시중은행 금리</td>
-<td>1~3개월</td>
-<td>KDI 신호로 인하 시점 지연 가능성</td>
-</tr>
-<tr>
-<td><strong>임금·고용</strong></td>
-<td>반도체 호황 → 산업 전반 임금·고용</td>
-<td>6~12개월</td>
-<td>17만 명 증가 폭 제한적</td>
-</tr>
-<tr>
-<td><strong>연금·기금 수익률</strong></td>
-<td>GDP·반도체 → 국내 자산 평가</td>
-<td>분기 공시</td>
-<td>채널 A 의 결과가 지표로 도달</td>
-</tr>
-</tbody>
-</table>
-<p>가장 빠른 도달은 <strong>해외 직구·해외 여행</strong> 입니다 — 환율 변동이 결제 금액에 즉시 반영됩니다. 가장 느린 도달은 <strong>임금·고용</strong> 이며, 반도체 호황이 산업 전반으로 퍼지는 데는 시간이 걸립니다.</p>
-<p>시청자가 매일 만나는 영역(장보기·기름값·해외 결제) 은 채널 B 의 압력 영역이고, 매체 헤드라인에서 만나는 영역(GDP·경상수지·반도체) 은 채널 A 의 동력 영역입니다. 같은 시청자가 두 영역을 동시에 경험하기 때문에 "어색하다" 는 체감이 발생합니다.</p>
-<h3>6-2. 한국은행 결정 시간표 — 정책 도구의 단일 종착지가 일상에 도달하는 순서</h3>
-<p>⑤ 에서 정리한 <strong>한국은행 통화 정책 단일 결정자</strong> 자리가 시청자 일상에 도달하는 시간표는 일상 항목 간에 순서가 다릅니다. 같은 금리 결정이 다음 항목들에 차례로 도달합니다.</p>
+<h2>⑥ Korean stake — 시청자 일상에 도달하는 순서</h2>
+<p>한국은행 한 결정이 시청자 일상에 도달하는 시간표는 항목별로 다릅니다.</p>
 <table>
 <thead>
 <tr>
 <th>시점</th>
-<th>한국은행 결정 → 일상 도달 항목</th>
-<th>의미</th>
+<th>일상 도달 항목</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>결정 당일·다음 거래일</td>
-<td>원/달러 환율 즉시 반응</td>
-<td>해외 직구·해외 여행 결제 비용 즉시 변동</td>
+<td>당일·다음 거래일</td>
+<td>원/달러 → 해외 직구·여행 결제 즉시 변동</td>
 </tr>
 <tr>
-<td>결정 후 1~2주</td>
-<td>시중은행 예금·대출 금리 안내 시작</td>
-<td>신규 가계대출 금리 노출</td>
+<td>1~2주</td>
+<td>신규 가계대출 금리 안내 시작</td>
 </tr>
 <tr>
-<td>결정 후 1개월</td>
+<td>1개월</td>
 <td>수입 물가 → 가공식품·곡물 가격 차례로 반영</td>
-<td>장보기 영수증 체감 시작</td>
 </tr>
 <tr>
-<td>결정 후 2~3개월</td>
-<td>기존 가계대출 변동금리 반영</td>
-<td>가구 단위 월 상환액 변화</td>
+<td>2~3개월</td>
+<td>기존 변동금리 대출 월 상환액 변화</td>
 </tr>
 <tr>
-<td>결정 후 3~6개월</td>
-<td>소비자물가지수 (CPI) 에 환율·금리 효과 반영</td>
-<td>통계청 월간 발표 항목</td>
+<td>3~6개월</td>
+<td>CPI 에 환율·금리 효과 반영</td>
 </tr>
 <tr>
-<td>결정 후 6~12개월</td>
+<td>6~12개월</td>
 <td>임금·고용·내수 소비 사이클 반영</td>
-<td>거시 통계 항목</td>
 </tr>
 </tbody>
 </table>
-<p>한국은행 통화 정책 단일 결정자 자리에서 한 결정이 나오면 — 환율은 당일·가계대출은 한 달·CPI는 한 분기·임금은 반년~1년의 시간 차이로 시청자 일상의 각기 다른 영역에 도달합니다. 같은 결정이 같은 시점에 같은 방향으로 도달하지 않는다는 점이 통화 정책 도구의 특징입니다.</p>
-<h3>6-3. 잔여 방향별 시청자 도달 — 동결 vs 인상</h3>
-<p>⑤-5 에서 정리한 한국은행 결정의 잔여 방향(인하 사실상 닫힘, 동결 1순위, 인상 2순위) 별로 시청자가 일상에서 만나는 자리는 다음과 같이 갈립니다.</p>
-<table>
-<thead>
-<tr>
-<th>잔여 방향</th>
-<th>환율</th>
-<th>가계대출 금리</th>
-<th>장보기·기름값</th>
-<th>시청자 체감</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>동결 (1순위)</strong></td>
-<td>1,475원 박스권 유지</td>
-<td>base case (인하 기대 약화)</td>
-<td>두바이유 91 + 환율 1,475 효과 1~2개월 시차 지속</td>
-<td>가계 일상 압력 박스권</td>
-</tr>
-<tr>
-<td><strong>인상 (2순위)</strong></td>
-<td>강세 가능 (1,460원대 등)</td>
-<td>가계대출 부담 ↑</td>
-<td>환율 강세로 수입 물가 일부 완화 가능</td>
-<td>대출 항목으로 압력 이동</td>
-</tr>
-<tr>
-<td><strong>인하 (사실상 닫힘)</strong></td>
-<td>약세 가능 (1,500원대 등)</td>
-<td>부담 ↓</td>
-<td>환율 약세로 수입 물가 추가 압박</td>
-<td>(현 시점 시나리오 X)</td>
-</tr>
-</tbody>
-</table>
-<p>KDI 신호로 인하가 사실상 닫혀 있는 상태에서 시청자가 만나는 자리는 <strong>동결 → 가계 일상 압력 박스권 유지</strong> 또는 <strong>인상 → 압력이 환율에서 가계대출 항목으로 이동</strong> 의 두 갈래입니다. 어느 방향이든 가계 일상의 한 영역은 압력을 받게 되는 구조이고, 한국은행 결정의 무게가 환율·물가·대출 영역에 시차를 두고 차례로 도달합니다.</p>
-<p>이 자리에서 시청자가 직접 만나는 항목들이 채널 B 의 압력 영역과 정확히 일치합니다. <strong>한국은행 결정의 무게가 가장 크게 도달하는 자리가 가계의 환율·물가·대출 영역</strong> 이라는 점이 이번 KDI 발표가 만든 정책 매트릭스의 의미입니다.</p>
+<p>KDI 신호로 인하가 사실상 닫혀 있는 현 시점에서, 동결 시나리오는 환율 박스권 + 가계 압력 박스권 유지, 인상 시나리오는 압력이 환율에서 가계대출로 이동하는 그림입니다. 어느 쪽이든 가계의 한 영역은 압력을 받는 구조입니다. <strong>한국은행 결정의 무게가 가장 크게 도달하는 자리가 가계의 환율·물가·대출 영역</strong> 이라는 점이 이번 발표가 만든 매트릭스의 의미입니다.</p>
 <hr />
-<h2>⑦ 시나리오 분기 — 6개월 ~ 1년 관전 매트릭스</h2>
-<p>본 시나리오는 KDI 발표 시점의 변수들을 기반으로 한 가설입니다 — 확정 예측이 아니며, 실제 진행은 회담·유가·외환·연준·중국 경기지표·반도체 사이클 등 다수 변수에 따라 달라집니다.</p>
+<h2>⑦ 시나리오 분기 — 6개월 ~ 1년</h2>
+<p>본 시나리오는 KDI 발표 시점 기준 가설이며 확정 예측이 아닙니다.</p>
 <table>
 <thead>
 <tr>
 <th>시나리오</th>
 <th>확률 (가설)</th>
 <th>핵심 변수</th>
-<th>반도체 동력</th>
-<th>물가 압력</th>
-<th>정책 도구</th>
+<th>반도체</th>
+<th>물가</th>
+<th>한국은행 결정</th>
 <th>가계 일상</th>
 </tr>
 </thead>
@@ -826,61 +654,56 @@
 <td>호르무즈 종결 + 환율 안정 + 반도체 호황 지속</td>
 <td>지속</td>
 <td>완화</td>
-<td>금리 인하 검토 가능</td>
+<td>인하 검토 가능</td>
 <td>부담 ↓</td>
 </tr>
 <tr>
 <td><strong>중립 (base)</strong></td>
 <td>약 50%</td>
-<td>환율 1,475원 박스권 + 반도체 H2 둔화 + 부양 도구 묶임</td>
+<td>환율 1,475 박스권 + 하반기 둔화 + 부양 X</td>
 <td>H1 강 → H2 약</td>
-<td>박스권 압력 지속</td>
-<td>추경 X · 금리 동결</td>
+<td>박스권 압력</td>
+<td>동결</td>
 <td>base case</td>
 </tr>
 <tr>
 <td><strong>비관</strong></td>
 <td>약 25%</td>
-<td>호르무즈 추가 사건 + 환율 1,500원대 + 반도체 사이클 꺾임</td>
+<td>호르무즈 추가 사건 + 환율 1,500대 + 반도체 꺾임</td>
 <td>약화</td>
 <td>압력 확대</td>
-<td>외환 보유고 가동·금리 인상 검토 가능</td>
+<td>외환 가동 + 인상 검토</td>
 <td>부담 ↑</td>
 </tr>
 </tbody>
 </table>
-<p><strong>산식 메모</strong> — KDI 의 상반기 3.1% → 하반기 1.9% 분기 전망과 환율 1,475원·두바이유 91달러 전제가 위 매트릭스의 기본 입력값입니다.<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup> 환율·유가 변동 시 시나리오 확률은 빠르게 재편될 수 있습니다.</p>
-<p><strong>면책</strong> — 위 시나리오는 KDI 1차 자료와 매체 보도를 종합한 가능성 도출이며, 확정 예측이 아닙니다. 확률 수치는 추정입니다. 정보 제공 목적이며 매수·매도·정책 찬반 권유가 아닙니다.</p>
-<h3>7-1. 시나리오별 추가 변수</h3>
-<p><strong>낙관 시나리오의 추가 변수</strong> — 미중 회담(영상_077 다룬 의제) 의 환율·관세 의제가 진전되면 원/달러가 1,460원대로 강세 전환하면서 채널 B 의 물가 압력이 부분 완화될 수 있습니다. 한국은행은 이 흐름을 보면서 금리 인하 시점을 앞당기는 검토를 시작할 수 있습니다.</p>
-<p><strong>중립 시나리오의 base case</strong> — 환율 1,475원 박스권이 일정 기간 이어지고 반도체 호황의 기저 효과가 하반기에 약화되는 패턴이 가장 가능성 큰 시나리오로 거론됩니다. 이 경우 채널 A 의 GDP 수치는 KDI 전망 그대로 진행되고, 채널 B 의 가계 일상 압력도 완만하게 지속됩니다. 정책 도구는 묶인 상태가 유지됩니다.</p>
-<p><strong>비관 시나리오의 트리거</strong> — 호르무즈 추가 사건으로 두바이유가 95~100달러대로 진입하거나, 미중 회담 결과가 결렬되면서 원/달러가 1,500원대를 회복하면, 채널 B 의 물가 압력이 급격히 확대됩니다. 이 경우 한국은행은 외환 보유고 가동과 함께 금리 인상 검토를 시작할 수 있고, 시청자 일상 압력은 한 단계 더 커집니다.</p>
+<p>낙관 시나리오에서는 미중 회담의 환율 의제 진전이 원/달러 1,460원대로 강세 전환을 만들면 물가 압력이 부분 완화되고 한국은행이 인하 검토 시점을 앞당길 수 있습니다. 중립은 환율 박스권 + 반도체 기저 효과 약화의 가장 가능성 큰 그림입니다. 비관에서는 호르무즈 추가 사건으로 두바이유 95~100달러 진입 또는 회담 결렬로 원/달러 1,500원대 진입 시 외환 보유고 가동·금리 인상 검토가 시작될 수 있습니다.</p>
+<p><strong>면책</strong> — 위 시나리오는 매체 보도·KDI 자료 기반 가능성 도출이며 확정 예측이 아닙니다. 확률 수치는 추정입니다. 정보 제공 목적이며 매수·매도·정책 찬반 권유가 아닙니다.</p>
 <hr />
 <h2>⑧ 결론·시사점 + 향후 6개월 관전 포인트</h2>
-<h3>결론 — 본문 핵심 3가지 압축</h3>
+<h3>결론</h3>
 <ol>
 <li>
-<p><strong>상향 폭 0.6%p 의 절반 이상이 반도체 한 산업에서 왔다.</strong> 한국 GDP가 한 축에 점점 더 크게 노출돼 있다는 의미이고, 상반기 3.1% → 하반기 1.9% 라는 두 분기 만에 절반 꺾이는 전망도 같은 점과 연결됩니다. 거시 지표 측면의 좋은 수치는 한 산업 사이클의 기저 효과가 동력입니다.</p>
+<p><strong>상향 폭 0.6%p 의 절반 이상이 반도체 한 산업에서 왔다.</strong> 한국 GDP가 한 축에 점점 더 크게 노출돼 있고, 상반기 3.1% → 하반기 1.9% 절반 꺾임 전망도 기저 효과 약화와 연결됩니다.</p>
 </li>
 <li>
-<p><strong>같은 발표 안에 동력 A(반도체 → GDP) 와 압력 B(환율·유가 → 가계 일상) 가 동시에 있다.</strong> GDP가 올라도 일상이 같이 가벼워지지 않는 구조가 KDI 보고서 안에 그대로 박혔습니다. 시청자가 매일 만나는 장보기·기름값·해외 결제 항목은 채널 B 의 결과이고, 매체 헤드라인에서 만나는 "주요국 1위" 는 채널 A 의 결과입니다.</p>
+<p><strong>같은 발표 안에 좋은 거시 지표와 가계 압력이 동시에 있다.</strong> GDP가 올라도 일상이 같이 가벼워지지 않는 구조입니다. 시청자가 매일 만나는 장보기·기름값·해외 결제는 압력 채널, 헤드라인의 "주요국 1위" 는 동력 채널입니다.</p>
 </li>
 <li>
-<p><strong>세 정책 도구 중 두 도구가 닫힌 상태에서, 한국 통화 정책 단일 결정자에게 도구가 모인다.</strong> 추경은 KDI 일축으로 정당성 근거가 약화됐고, 외환 시장 적극 강세 유도는 수출 동력 측면에서 제약을 받습니다. 가계 일상 압력을 다룰 수 있는 정책 채널은 한국은행 통화 정책 한 자리로 모이고, 발표 안에 한국은행이 직접 등장하지 않으면서도 발표 결과는 한국은행 결정 자리에 모이는 종착지를 만듭니다. 영상이 던진 "어색한 조합이 한 자리에 묶인 이유" 의 정확한 종착지가 이 자리입니다.</p>
+<p><strong>세 도구 중 두 도구가 닫힌 상태에서 한국은행 한 자리로 도구가 모인다.</strong> 추경은 KDI 일축으로 정당성이 약화됐고, 외환 적극 강세 유도는 수출 동력 측면에서 제약을 받습니다. 발표 안에 한국은행이 직접 등장하지 않으면서도 결과는 한국은행 결정 자리로 모입니다. 영상이 던진 "어색한 조합이 한 자리에 묶인 이유" 의 정확한 종착지입니다.</p>
 </li>
 <li>
-<p><strong>한국은행 결정의 잔여 방향이 동결 또는 인상으로 좁혀진다.</strong> KDI "경기 확장기" 신호가 인하 정당성 근거를 약화시키는 만큼, 잔여 결정 폭은 <strong>동결(1순위) 또는 인상(2순위)</strong> 방향으로 정리됩니다. 어느 방향이든 가계 일상에는 — 동결이면 환율·물가 압력 박스권 유지, 인상이면 압력이 환율에서 가계대출 항목으로 이동 — 한 영역이 압력을 받는 구조입니다. 본 결론은 한국은행 결정에 대한 단정이 아니라, KDI 발표 시점 정책 도구 매트릭스의 잔여 방향 정리입니다.</p>
+<p><strong>잔여 방향이 동결 또는 인상으로 좁혀진다.</strong> KDI "경기 확장기" 신호가 인하 정당성을 약화시키는 만큼, 결정의 잔여 폭은 동결(1순위) 또는 인상(2순위) 으로 정리됩니다. 어느 방향이든 가계 일상의 한 영역은 압력을 받는 구조입니다.</p>
 </li>
 </ol>
 <h3>향후 6개월 관전 포인트</h3>
 <ul>
-<li><strong>한국은행 금융통화위원회</strong> — KDI "경기 확장기" 신호 반영 시점 · 금리 결정의 단일 종착지 변화</li>
-<li><strong>하반기 반도체 수출 흐름</strong> — H1 강세의 기저 효과가 H2 에 어떻게 약화되는지</li>
-<li><strong>두바이유 90달러대 유지 여부</strong> — 호르무즈 변수·OPEC+ 결정</li>
+<li><strong>한국은행 금융통화위원회</strong> — KDI "경기 확장기" 신호 반영 시점 · 결정의 잔여 방향</li>
+<li><strong>하반기 반도체 수출</strong> — H1 강세의 기저 효과가 H2 에 어떻게 약화되는지</li>
+<li><strong>두바이유 90달러대 유지</strong> — 호르무즈 변수·OPEC+ 결정</li>
 <li><strong>원/달러 1,475원 박스권</strong> — 미중 회담 결과·연준 정책·중국 경기지표</li>
-<li><strong>국회 2차 추경 논의</strong> — KDI 일축 발언 이후 정치권 흐름 (재정 도구 닫힘 유지 여부)</li>
-<li><strong>상반기·하반기 분기 실제 진행</strong> — KDI 의 3.1% → 1.9% 전망이 실제로 그대로 진행되는지</li>
-<li><strong>시중은행 안내 금리</strong> — 한국은행 결정 신호가 가계대출 금리에 도달하는 1~2주 흐름</li>
+<li><strong>국회 2차 추경 논의</strong> — KDI 일축 이후 재정 도구 닫힘 유지 여부</li>
+<li><strong>시중은행 안내 금리</strong> — 한국은행 신호가 가계대출 금리에 도달하는 1~2주 흐름</li>
 </ul>
 <hr />
 
@@ -890,13 +713,13 @@
 <hr />
 <blockquote>
 <p>↪ 관련 영상: 올해 성장률 2.5%, 그런데 KDI는 부양 안 한다고 말했다 — 영상_078</p>
-<p>본 리포트는 정보 제공 목적이며 정책·투자 권유가 아닙니다. 종목·정책 결정은 본인 책임 하에 1차 자료(KDI·한국은행·통계청·기획재정부 공시)를 추가 확인하시기 바랍니다. 시나리오 분기는 가능성 도출이며 확정적 예측이 아닙니다.</p>
+<p>본 리포트는 정보 제공 목적이며 정책·투자 권유가 아닙니다. 결정은 본인 책임 하에 1차 자료(KDI·한국은행·통계청·기획재정부 공시)를 추가 확인하시기 바랍니다. 시나리오 분기는 가능성 도출이며 확정적 예측이 아닙니다.</p>
 </blockquote>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>KDI, "경제전망 2026 상반기". https://www.kdi.re.kr/research/economy&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref16:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref17:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref18:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref19:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref20:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref21:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref22:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref23:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>KDI, "경제전망 2026 상반기". https://www.kdi.re.kr/research/economy&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref10:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref11:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref12:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref13:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref14:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref15:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref16:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref17:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
 <p>디지털타임스, "올해 성장률 2.5%로 상향… 반도체가 중동 충격 상쇄", 2026-05. https://www.dt.co.kr/&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
