@@ -276,6 +276,30 @@
     filter: drop-shadow(0 8px 22px rgba(0,0,0,0.18));
     margin-bottom: -0.05em;
   }
+  .character-img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    filter: drop-shadow(0 8px 22px rgba(0,0,0,0.18));
+    display: none;
+  }
+  .character-img.loaded { display: block; }
+  .character-img.loaded + .character-emoji,
+  .character-emoji.hidden { display: none; }
+  .character.has-image .character-emoji { display: none; }
+  .scene-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: none;
+    z-index: 0;
+  }
+  .scene-bg.has-image .scene-bg-img { display: block; }
+  .scene-bg.has-image .scene-bg-icon { display: none; }
   .scene-badge {
     position: absolute;
     top: 0.7em;
@@ -613,9 +637,11 @@
       <div class="scene-badge"><span id="scene-label">SCENE 1</span> · <span class="progress" id="scene-progress">1 / 22</span></div>
       <div class="scene-bg bg-office" id="scene-bg">
         <div class="scene-bg-icon" id="scene-bg-icon">🏢</div>
+        <img class="scene-bg-img" id="scene-bg-img" alt="" />
       </div>
       <div class="character" id="character-display">
         <div class="character-emoji" id="character-emoji">🌸</div>
+        <img class="character-img" id="character-img" alt="" />
       </div>
       <div class="toast" id="toast"></div>
     </div>
@@ -672,7 +698,7 @@ const GAME = {
   start_kospi: 2750
 };
 
-// 캐릭터 표정 (nano banana 일러스트 자리, MVP 단계는 emoji placeholder)
+// 캐릭터 표정 (nano banana 일러스트 자리, fallback emoji)
 const FACE = {
   default: "🌸",
   smile:   "😊",
@@ -686,6 +712,44 @@ const FACE = {
   thinking:"🤔",
   embarrassed: "🙈"
 };
+
+// 일러스트 path resolver — nano banana 자산 박힌 후 sim/assets/ 에 deploy 되면 자동 swap.
+// 파일 없으면 onerror 로 graceful fallback to emoji.
+const ASSET_BASE = "assets/";  // sim/assets/scene_NN_xxx.png + bg_NN_xxx.png
+function imgUrl(name) {
+  if (!name) return null;
+  return ASSET_BASE + name + ".png";
+}
+
+// scene index → 일러스트 매핑 (CHAPTER_1 의 인덱스와 1:1).
+// nano banana 일러스트 박힌 후 sim/assets/ 에 PNG deploy → 자동 표시.
+// PNG 없으면 emoji + CSS gradient 로 graceful fallback.
+const ASSET_MAP = [
+  { bg: "bg_01_office",            scene: "scene_01_meet_office_morning" },        //  0 SCENE 1
+  { bg: "bg_01_office",            scene: "scene_02_help_vba_desk" },               //  1 SCENE 2
+  { bg: "bg_03_cafe",              scene: "scene_03_cafe_lunch_thanks" },           //  2 SCENE 3
+  { bg: "bg_03_cafe",              scene: "scene_04_cafe_confide" },                //  3 SCENE 4
+  { bg: "bg_01_office",            scene: "scene_05_boss_recommendation" },         //  4 SCENE 5
+  { bg: "bg_01_office",            scene: null },                                    //  5 MARKET 1
+  { bg: "bg_04_pub",               scene: "scene_06_pub_drunk" },                   //  6 SCENE 6
+  { bg: "bg_04_pub",               scene: "scene_07_pub_family_talk" },             //  7 SCENE 7
+  { bg: "bg_05_taxi_night",        scene: "scene_08_taxi_night" },                  //  8 SCENE 8
+  { bg: "bg_01_office",            scene: "scene_09_office_next_morning" },         //  9 SCENE 9
+  { bg: "bg_02_meeting",           scene: "scene_10_team_presentation" },           // 10 SCENE 10
+  { bg: "bg_03_cafe",              scene: "scene_11_sandwich_lunch" },              // 11 SCENE 11
+  { bg: "bg_06_rooftop",           scene: "scene_12_rooftop_coffee" },              // 12 SCENE 12
+  { bg: "bg_09_night_office",      scene: "scene_13_night_market_news" },           // 13 SCENE 13 (MARKET 2)
+  { bg: "bg_07_han_river_sunset",  scene: "scene_14_han_walk" },                    // 14 SCENE 14
+  { bg: "bg_07_han_river_sunset",  scene: "scene_15_han_bench_serious" },           // 15 SCENE 15
+  { bg: "bg_07_han_river_sunset",  scene: "scene_16_han_bench_confession_setup" },  // 16 SCENE 16
+  { bg: "bg_08_rain_morning",      scene: "scene_17_monday_rain" },                 // 17 SCENE 17
+  { bg: "bg_01_office",            scene: "scene_18_office_panic_open" },           // 18 SCENE 18
+  { bg: "bg_01_office",            scene: null },                                    // 19 MARKET 3
+  { bg: "bg_03_cafe",              scene: "scene_19_cafe_thank_you" },              // 20 SCENE 19
+  { bg: "bg_07_han_river_sunset",  scene: "scene_20_han_confess_intro" },           // 21 SCENE 20
+  { bg: "bg_07_han_river_sunset",  scene: "scene_21_han_confess_reply" },           // 22 SCENE 21
+  { bg: "bg_07_han_river_sunset",  scene: "scene_22_han_chapter_close" }            // 23 SCENE 22
+];
 
 // ============================================================
 // CHAPTER 1 — 22 scenes
@@ -1002,17 +1066,38 @@ const game = {
       return;
     }
 
-    // 배경
+    // 배경 — gradient fallback + 일러스트 PNG swap (있으면)
     const bg = document.getElementById("scene-bg");
     bg.className = "scene-bg " + scene.bg;
     document.getElementById("scene-bg-icon").textContent = scene.bgIcon || "";
+
+    const asset = ASSET_MAP[s.sceneIdx] || {};
+    const bgImgEl = document.getElementById("scene-bg-img");
+    if (asset.bg) {
+      bgImgEl.onerror = () => { bg.classList.remove("has-image"); bgImgEl.removeAttribute("src"); };
+      bgImgEl.onload = () => { bg.classList.add("has-image"); };
+      bgImgEl.src = imgUrl(asset.bg);
+    } else {
+      bg.classList.remove("has-image");
+      bgImgEl.removeAttribute("src");
+    }
 
     // scene 라벨·progress
     document.getElementById("scene-label").textContent = scene.label || `SCENE ${s.sceneIdx + 1}`;
     document.getElementById("scene-progress").textContent = (s.sceneIdx + 1) + " / " + CHAPTER_1.length;
 
-    // 캐릭터
+    // 캐릭터 — emoji fallback + 일러스트 PNG swap (있으면)
     document.getElementById("character-emoji").textContent = FACE[scene.face] || FACE.default;
+    const charEl = document.getElementById("character-display");
+    const charImg = document.getElementById("character-img");
+    if (asset.scene) {
+      charImg.onerror = () => { charEl.classList.remove("has-image"); charImg.removeAttribute("src"); };
+      charImg.onload = () => { charEl.classList.add("has-image"); };
+      charImg.src = imgUrl(asset.scene);
+    } else {
+      charEl.classList.remove("has-image");
+      charImg.removeAttribute("src");
+    }
 
     // 헤더
     this.refreshHeader();
