@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>유나와의 봄 — ONGLE 미연시 투자 시뮬</title>
-<meta name="description" content="같은 팀 동료 유나와의 한 챕터. 대화와 투자 결정이 엔딩을 만든다.">
+<meta name="description" content="같은 팀 동료 유나와의 한 주. 대화와 투자 결정이 결말을 만든다.">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="유나와의 봄">
-<meta property="og:description" content="같은 팀 동료 유나와의 한 챕터. 대화와 투자 결정이 엔딩을 만든다.">
+<meta property="og:description" content="같은 팀 동료 유나와의 한 주. 대화와 투자 결정이 결말을 만든다.">
 <link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
 <script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE/sim] dev mode — GA disabled (G-L02KZS89M1)');}})();</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -67,15 +67,16 @@
   /* game·ending 화면은 페이지 스크롤 허용. cover·tutorial 은 viewport fit */
   #screen-cover.active, #screen-tutorial.active { min-height: 100vh; }
 
-  /* ===== Cover — 벚꽃 흩날림 + 골든 hour 미연시 톤 ===== */
+  /* ===== Cover — 벚꽃 흩날림 + 골든 hour, viewport fit ===== */
   #screen-cover {
     background:
       radial-gradient(ellipse at 50% 0%, rgba(255, 220, 180, 0.55) 0%, transparent 55%),
       radial-gradient(ellipse at 80% 110%, rgba(255, 150, 180, 0.35) 0%, transparent 60%),
       linear-gradient(175deg, #ffd9a8 0%, #ffb3c8 50%, #d98ab3 100%);
-    padding: 4vh 6vw 3vh;
+    padding: 3vh 5vw;
+    height: 100vh;
     min-height: 100vh;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     text-align: center;
     user-select: none;
@@ -105,21 +106,20 @@
     100% { transform: translate(-30px, 110vh) rotate(720deg); opacity: 0; }
   }
   .cover-art {
-    width: 38vh; height: 38vh;
-    max-width: 280px; max-height: 280px;
-    min-width: 180px; min-height: 180px;
+    width: 32vh; height: 32vh;
+    max-width: 240px; max-height: 240px;
+    min-width: 150px; min-height: 150px;
     border-radius: 50%;
     background: linear-gradient(160deg, #fff5d4 0%, #ffd9a8 100%);
-    margin: 0 auto;
+    margin: 2vh auto 2.5vh;
     display: flex; align-items: center; justify-content: center;
     font-size: 5.4em;
     color: #d98ab3;
     overflow: hidden;
     border: 4px solid rgba(255, 255, 255, 0.85);
     box-shadow:
-      0 0 80px rgba(255, 180, 120, 0.55),
-      0 18px 60px rgba(170, 60, 100, 0.35),
-      inset 0 0 30px rgba(255, 200, 150, 0.25);
+      0 0 60px rgba(255, 180, 120, 0.55),
+      0 14px 40px rgba(170, 60, 100, 0.35);
     position: relative;
     z-index: 2;
   }
@@ -131,34 +131,12 @@
   }
   .cover-art img.loaded { display: block; }
   .cover-art.has-image .cover-art-emoji { display: none; }
-  .cover-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative; z-index: 2;
-  }
-  .cover-tag {
-    font-size: 0.74em;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.95);
-    letter-spacing: 0.18em;
-    margin-bottom: 0.4em;
-    position: relative; z-index: 2;
-    text-shadow: 0 2px 12px rgba(170, 60, 100, 0.5);
-  }
-  .cover-middle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative; z-index: 2;
-    width: 100%;
-  }
   .cover-title {
-    font-size: 3.2em;
+    font-size: 6.5vh;
     font-weight: 900;
     letter-spacing: -0.025em;
     color: #fff;
-    margin: 0.6em 0 0.25em;
+    margin: 0 0 0.25em;
     line-height: 1.0;
     position: relative; z-index: 2;
     text-shadow: 0 4px 28px rgba(170, 60, 100, 0.55), 0 2px 8px rgba(0,0,0,0.25);
@@ -172,10 +150,10 @@
   }
   .cover-sub {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 1.05em;
+    font-size: 2.2vh;
     font-weight: 500;
-    margin: 0.4em auto 0;
-    max-width: 320px;
+    margin: 0 auto 4vh;
+    max-width: 88vw;
     line-height: 1.5;
     letter-spacing: -0.005em;
     position: relative; z-index: 2;
@@ -186,19 +164,12 @@
     font-weight: 700;
     text-shadow: 0 0 18px rgba(255, 220, 150, 0.7);
   }
-  .cover-bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    position: relative; z-index: 2;
-  }
   .cover-cta {
     background: linear-gradient(180deg, #fff5d4 0%, #ffba76 55%, #ff7aab 100%);
     color: #6b1a3a;
-    font-size: 1.18em;
+    font-size: 2.4vh;
     font-weight: 900;
-    padding: 1em 3.4em;
+    padding: 1.4vh 9vw;
     border-radius: 999px;
     box-shadow:
       0 0 0 2px rgba(255,255,255,0.65),
@@ -210,19 +181,13 @@
     position: relative; z-index: 2;
   }
   .cover-cta:active { transform: scale(0.97); }
-  .cover-cta:hover { box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 18px 40px rgba(170, 60, 100, 0.65); }
   .cover-foot {
-    margin-top: 1em;
-    font-size: 0.72em;
-    color: rgba(255, 255, 255, 0.65);
+    margin-top: 2.5vh;
+    font-size: 1.4vh;
+    color: rgba(255, 255, 255, 0.7);
     position: relative; z-index: 2;
   }
-  .cover-foot a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
-  @media (max-height: 640px) {
-    .cover-title { font-size: 2.5em; }
-    .cover-art { width: 30vh; height: 30vh; min-width: 150px; min-height: 150px; }
-    .cover-sub { font-size: 0.95em; }
-  }
+  .cover-foot a { color: rgba(255, 255, 255, 0.88); text-decoration: none; }
 
   /* ===== Tutorial ===== */
   #screen-tutorial {
@@ -691,7 +656,118 @@
     display: inline-block;
   }
 
-  /* ===== Market mini-game ===== */
+  /* ===== Market decision — 트레이딩 dashboard 톤 (연애 분홍과 구분) ===== */
+  .market-decision {
+    background: linear-gradient(180deg, #1a1f2e 0%, #0e1320 100%);
+    border-radius: 14px;
+    margin-top: 0.6em;
+    padding: 0.9em 0.9em 1em;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    color: #e8eaf2;
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Menlo", monospace;
+  }
+  .market-decision .md-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(255,215,120,0.18);
+    padding-bottom: 0.5em;
+    margin-bottom: 0.6em;
+  }
+  .market-decision .md-symbol {
+    font-size: 0.95em;
+    font-weight: 800;
+    color: #ffd093;
+    letter-spacing: 0.1em;
+  }
+  .market-decision .md-price {
+    display: flex; align-items: baseline; gap: 0.4em;
+  }
+  .market-decision .md-price .px {
+    font-size: 1.7em;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .market-decision .md-price .delta.up { color: #29d97c; font-weight: 700; }
+  .market-decision .md-price .delta.down { color: #ff5a6b; font-weight: 700; }
+  .market-decision .md-ctx {
+    background: rgba(255,215,120,0.08);
+    border-left: 3px solid #ffd093;
+    padding: 0.55em 0.7em;
+    border-radius: 6px;
+    font-size: 0.85em;
+    color: #cfd5e3;
+    margin: 0.5em 0 0.7em;
+    line-height: 1.5;
+    font-family: inherit;
+  }
+  .market-decision .md-portfolio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+    margin-bottom: 0.7em;
+  }
+  .market-decision .md-portfolio .kpi {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 0.5em 0.65em;
+  }
+  .market-decision .md-portfolio .kpi .lbl {
+    font-size: 0.74em; color: #8b93a7; letter-spacing: 0.04em;
+  }
+  .market-decision .md-portfolio .kpi .val {
+    font-size: 1.02em; font-weight: 700; color: #ffffff;
+    margin-top: 0.15em;
+  }
+  .market-decision .md-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45em;
+  }
+  .md-option {
+    background: linear-gradient(180deg, #2a2f44 0%, #1a1f30 100%);
+    border: 1px solid rgba(255,215,120,0.25);
+    border-radius: 10px;
+    padding: 0.85em 0.95em;
+    color: #e8eaf2;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.12s;
+    position: relative;
+    z-index: 5;
+  }
+  .md-option:hover, .md-option:active {
+    background: linear-gradient(180deg, #ffd093 0%, #ffba76 100%);
+    color: #1a1f2e;
+    border-color: #ffd093;
+    transform: translateX(2px);
+  }
+  .md-option .md-option-text {
+    font-size: 0.94em;
+    line-height: 1.35;
+    display: block;
+  }
+  .md-option .md-option-hint {
+    font-size: 0.74em;
+    color: #8b93a7;
+    margin-top: 0.25em;
+    letter-spacing: 0.02em;
+    font-family: inherit;
+  }
+  .md-option:hover .md-option-hint, .md-option:active .md-option-hint {
+    color: #6b3a0f;
+  }
+  .md-option.tone-trust { border-color: rgba(41,217,124,0.3); }
+  .md-option.tone-betray { border-color: rgba(255,90,107,0.3); }
+  .md-option.tone-sacrifice { border-color: rgba(120,180,255,0.3); }
+  .md-option.tone-trust:hover    { background: linear-gradient(180deg, #2adf85 0%, #1bb86c 100%); color: #fff; }
+  .md-option.tone-betray:hover   { background: linear-gradient(180deg, #ff5a6b 0%, #d63a4b 100%); color: #fff; }
+  .md-option.tone-sacrifice:hover{ background: linear-gradient(180deg, #78b4ff 0%, #4f8edc 100%); color: #fff; }
+
+  /* ===== Market mini-game (legacy) ===== */
   .market-card {
     background: white;
     border-radius: 16px;
@@ -970,22 +1046,15 @@
     <span class="petal" style="left: 46%; animation-duration: 13s; animation-delay: 7s;  width: 11px; height: 11px;"></span>
     <span class="petal" style="left: 75%; animation-duration: 11s; animation-delay: 4.5s; width: 15px; height: 15px;"></span>
 
-    <div class="cover-top">
-      <div class="cover-tag">ONGLE SIM · CHAPTER 1</div>
-      <div class="cover-art" id="cover-art">
-        <span class="cover-art-emoji">🌸</span>
-        <img id="cover-art-img" alt="" />
-      </div>
+    <div class="cover-art" id="cover-art">
+      <span class="cover-art-emoji">🌸</span>
+      <img id="cover-art-img" alt="" />
     </div>
-    <div class="cover-middle">
-      <h1 class="cover-title"><span class="accent">유나</span>와의 봄</h1>
-      <p class="cover-sub"><span class="em">그녀의 미소</span>일까, <span class="em">너의 통장</span>일까.<br/>둘 다 가질 수 있을까?</p>
-    </div>
-    <div class="cover-bottom">
-      <button class="cover-cta" onclick="game.start()">시작하기</button>
-      <div class="cover-foot">
-        <a href="https://cornbee.github.io/ongle/" target="_blank">← ONGLE 메인</a>
-      </div>
+    <h1 class="cover-title"><span class="accent">유나</span>와의 봄</h1>
+    <p class="cover-sub"><span class="em">그녀의 미소</span>일까, <span class="em">너의 통장</span>일까.<br/>둘 다 가질 수 있을까?</p>
+    <button class="cover-cta" onclick="game.start()">시작하기</button>
+    <div class="cover-foot">
+      <a href="https://cornbee.github.io/ongle/" target="_blank">← ONGLE 메인</a>
     </div>
   </section>
 
@@ -1412,7 +1481,7 @@ const CHAPTER_1 = [
   {
     bg: "bg-office", bgIcon: "📊", label: "MARKET 3 · 마지막 결정",
     face: "thinking", speaker: "narrator",
-    text: "시장 패닉. 유나 어머니 회사 협상 직전. 이번 한 결정이 챕터를 정한다.",
+    text: "시장은 패닉. 유나 어머니 회사 협상 직전. 이번 한 번의 선택이 이 봄을 정한다.",
     market_choice: {
       ctx: "[마지막 결정] 패닉장 후 반등 시그널. 단독 풀투자 = 인생 트레이드 가능. 매도 = 유나 어머니 협상에 자금 보태기 (자기희생).",
       choices: [
@@ -1448,7 +1517,7 @@ const CHAPTER_1 = [
   {
     bg: "bg-han", bgIcon: "🌸", label: "SCENE 20 · 한강 · 저녁",
     face: "blush", speaker: "유나",
-    text: "있잖아… 이 챕터 끝나기 전에 너한테 할 말이 있어. 들어줄래?",
+    text: "있잖아… 오늘 가기 전에 너한테 할 말이 있어. 들어줄래?",
     choices: [
       { text: "응, 말해.", aff: +4, reply: "응. (심호흡) 나, 너 좋아해. 동료로 말고. 진심으로." },
       { text: "분위기가 진지하네. 천천히 말해도 돼.", aff: +7, reply: "고마워. 그래도 미루면 못 할 것 같아서. 나, 너 좋아해." }
@@ -1475,14 +1544,14 @@ const CHAPTER_1 = [
     if_affinity_below: {
       min: 40,
       face: "smile", speaker: "narrator",
-      text: "(고백은 일어나지 않았다. 두 사람은 회사 동료로서 한 챕터를 마친다.)",
+      text: "(고백은 일어나지 않았다. 두 사람은 회사 동료로 봄을 마쳤다.)",
       next: true
     }
   },
   {
-    bg: "bg-han", bgIcon: "🌅", label: "SCENE 22 · 챕터 마지막",
+    bg: "bg-han", bgIcon: "🌅", label: "SCENE 22 · 마지막 저녁",
     face: "smile", speaker: "narrator",
-    text: "봄바람이 분다. 한강의 노을이 길게 누웠다. 너의 한 챕터가 여기서 닫힌다.\n\n호감도와 수익률이 너의 결말을 정한다.",
+    text: "봄바람이 분다. 한강의 노을이 길게 누웠다. 이 봄이 여기서 끝난다.\n\n호감도와 수익률이 너의 결말을 정한다.",
     next: true, end: true
   }
 ];
@@ -1668,27 +1737,57 @@ const game = {
     const mc = scene.market_choice;
     const mount = document.getElementById("market-mount");
 
-    // 시장 컨텍스트 미니 카드
+    // 트레이딩 dashboard — 검정·골드·green/red
     const card = document.createElement("div");
-    card.className = "market-card";
+    card.className = "market-decision";
+    const delta = (s.kospi - s.kospi_start) / s.kospi_start * 100;
+    const deltaCls = delta >= 0 ? "up" : "down";
+    const deltaTxt = (delta >= 0 ? "▲ +" : "▼ ") + Math.abs(delta).toFixed(1) + "%";
     card.innerHTML = `
-      <div class="market-head">
-        <span class="market-title">📊 KOSPI</span>
-        <span class="market-date">${this.fmt(s.kospi)} · 현금 ${this.fmt(Math.round(s.cash))}원 · 주식 ${this.fmt(Math.round(s.shares * s.kospi))}원</span>
+      <div class="md-head">
+        <span class="md-symbol">KOSPI</span>
+        <span class="md-price">
+          <span class="px">${this.fmt(s.kospi)}</span>
+          <span class="delta ${deltaCls}">${deltaTxt}</span>
+        </span>
       </div>
-      <div class="market-context">${mc.ctx}</div>
+      <div class="md-ctx">${mc.ctx}</div>
+      <div class="md-portfolio">
+        <div class="kpi"><div class="lbl">CASH</div><div class="val">₩${this.fmt(Math.round(s.cash))}</div></div>
+        <div class="kpi"><div class="lbl">HOLDINGS</div><div class="val">₩${this.fmt(Math.round(s.shares * s.kospi))}</div></div>
+      </div>
+      <div class="md-options" id="md-options"></div>
     `;
     mount.appendChild(card);
 
-    // 선택지 박음
-    const choicesEl = document.getElementById("choices");
+    // 선택지 박음 — 톤 분기 (trust·betray·sacrifice)
+    const optsEl = card.querySelector("#md-options");
     mc.choices.forEach((c, i) => {
+      let tone = "";
+      const flag = (c.flag || "").toLowerCase();
+      if (flag.includes("trust") || flag.includes("honest")) tone = "tone-trust";
+      else if (flag.includes("betray") || flag.includes("alone") || flag.includes("sneaky")) tone = "tone-betray";
+      else if (flag.includes("sacrifice") || flag.includes("help_yuna")) tone = "tone-sacrifice";
+
+      // hint — alloc + 예상 change_pct
+      let hintParts = [];
+      if (c.alloc > 0) hintParts.push("매수 " + Math.round(c.alloc * 100) + "%");
+      else if (c.alloc < 0) hintParts.push("전량 매도");
+      else hintParts.push("관망");
+      if (c.aff > 0) hintParts.push("호감도 +" + c.aff);
+      else if (c.aff < 0) hintParts.push("호감도 " + c.aff);
+
       const btn = document.createElement("button");
-      btn.className = "choice-btn";
-      btn.textContent = c.text;
+      btn.className = "md-option " + tone;
+      btn.innerHTML =
+        '<span class="md-option-text">' + c.text + '</span>' +
+        '<span class="md-option-hint">' + hintParts.join(" · ") + '</span>';
       btn.onclick = () => this.executeMarketChoice(i);
-      choicesEl.appendChild(btn);
+      optsEl.appendChild(btn);
     });
+
+    // 기본 choices 영역 비워둠 (market-decision 안에 박힘)
+    document.getElementById("choices").innerHTML = "";
   },
 
   executeMarketChoice(i) {
@@ -1970,7 +2069,7 @@ const game = {
         tag: "TRUE ENDING",
         mascot: "🥰",
         title: "유나와 봄, 그리고 첫 수익",
-        body: "유나는 너의 손을 잡았다. KOSPI 차트도 너의 손을 들어주었다. 회사 안에서는 동료, 회사 밖에서는 연인. 다음 주 월요일 — 유나는 너에게 어머니 회사 IR에 같이 가달라고 했다. 챕터 1, 완벽한 마침."
+        body: "유나는 너의 손을 잡았다. KOSPI 차트도 너의 손을 들어주었다. 회사 안에서는 동료, 회사 밖에서는 연인. 다음 주 월요일 — 유나는 너에게 어머니 회사 IR에 같이 가달라고 했다. 완벽한 봄."
       };
     } else if (confessYes && aff >= 40) {
       ending = {
@@ -1993,14 +2092,14 @@ const game = {
         tag: "FRIEND ENDING",
         mascot: "☺️",
         title: "잘 지내는 두 사람",
-        body: "고백은 일어나지 않았지만 유나와는 여전히 가까운 동료다. 다음 주 점심도 같이 먹기로 했다. 회사 안의 작은 봄은 조용히 이어진다. 한 챕터 더 두고 봐도 좋은 사이."
+        body: "고백은 일어나지 않았지만 유나와는 여전히 가까운 동료다. 다음 주 점심도 같이 먹기로 했다. 회사 안의 작은 봄은 조용히 이어진다. 조금 더 두고 봐도 좋은 사이."
       };
     } else if (finalAsset < GAME.start_cash * 0.8) {
       ending = {
         tag: "WIPED OUT",
         mascot: "💸",
         title: "통장도 봄도, 잃었다",
-        body: "자산은 시작 시점의 80% 아래로 떨어졌다. 유나도 멀어졌다. 회사 점심 — 너는 혼자 편의점 김밥을 먹는다. KOSPI 차트는 무심하게 흘러간다. 다음 챕터에서는 다른 선택이 가능하다."
+        body: "자산은 시작 시점의 80% 아래로 떨어졌다. 유나도 멀어졌다. 회사 점심 — 너는 혼자 편의점 김밥을 먹는다. KOSPI 차트는 무심하게 흘러간다. 다음 봄엔 다른 선택이 가능하다."
       };
     } else {
       ending = {
