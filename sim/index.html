@@ -1810,6 +1810,9 @@ const game = {
 
     // BGM scene 별 switch
     this.switchBgmFor(scene, s.sceneIdx);
+
+    // Voice narration — scene 진입 시 wav 재생 (없으면 graceful catch)
+    this.playNarration(s.sceneIdx);
     const charEl = document.getElementById("character-display");
     const charImg = document.getElementById("character-img");
     if (asset.scene) {
