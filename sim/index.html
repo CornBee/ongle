@@ -10,6 +10,7 @@
 <meta property="og:description" content="같은 팀 동료 유나와의 한 챕터. 대화와 투자 결정이 엔딩을 만든다.">
 <link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
 <script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE/sim] dev mode — GA disabled (G-L02KZS89M1)');}})();</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
 <style>
@@ -524,6 +525,29 @@
   }
   .ending-stat .lbl { font-size: 0.76em; color: var(--muted); }
   .ending-stat .val { font-size: 1.25em; font-weight: 800; color: var(--ink); margin-top: 0.15em; }
+  .ending-chart-wrap {
+    margin: 0.9em 0 0.4em;
+    text-align: left;
+  }
+  .ending-chart-title {
+    font-size: 0.86em;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 0.35em;
+    padding-left: 0.2em;
+    letter-spacing: -0.01em;
+  }
+  .ending-chart-box {
+    background: #fff5f5;
+    border-radius: 12px;
+    padding: 0.5em 0.4em 0.3em;
+    height: 160px;
+    position: relative;
+  }
+  .ending-chart-box canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
   .ending-cta {
     background: var(--accent);
     color: white;
@@ -673,6 +697,17 @@
           <div class="val" id="end-return">0%</div>
         </div>
       </div>
+
+      <!-- 회고 차트 — 호감도·자산 추이 -->
+      <div class="ending-chart-wrap">
+        <div class="ending-chart-title">💖 호감도 추이</div>
+        <div class="ending-chart-box"><canvas id="chart-affinity"></canvas></div>
+      </div>
+      <div class="ending-chart-wrap">
+        <div class="ending-chart-title">💰 자산 추이</div>
+        <div class="ending-chart-box"><canvas id="chart-asset"></canvas></div>
+      </div>
+
       <button class="ending-cta" onclick="game.restart()">다시 하기</button>
       <button class="ending-cta ghost" onclick="game.share()">결과 공유</button>
       <div class="ending-foot">
@@ -1062,7 +1097,10 @@ const game = {
       kospi_start: GAME.start_kospi,
       shares: 0,
       avg_buy: 0,
-      flags: {}
+      flags: {},
+      timeline: [
+        { idx: 0, aff: GAME.start_affinity, asset: GAME.start_cash, label: "시작", kind: "start" }
+      ]
     };
     this.show("screen-game");
     // 게임 시작 marker — 뒤로가기 시 cover 페이지 가지 말고 시작 scene 유지
@@ -1247,6 +1285,10 @@ const game = {
     // 시장 변동 반영
     s.kospi = s.kospi * (1 + mkt.change_pct / 100);
 
+    // timeline — 매매 후 자산 변동 (호감도는 그대로)
+    const totalAfterTrade = Math.round(s.cash + s.shares * s.kospi);
+    s.timeline.push({ idx: s.sceneIdx + 1, aff: s.affinity, asset: totalAfterTrade, label: (scene.label || "MARKET"), kind: "market" });
+
     // 도파민 toast — 매매 결과 자산 변동
     const totalAfter = s.cash + s.shares * s.kospi;
     const delta = totalAfter - totalBefore;
@@ -1284,9 +1326,16 @@ const game = {
   pickChoice(i) {
     const s = this.state;
     const scene = CHAPTER_1[s.sceneIdx];
-    const choice = scene.choices[i];
+    // affinity_gate 적용된 alt scene 일 수 있음 — 그 경우 alt.choices 박음
+    const useAlt = scene.if_affinity_below && s.affinity < scene.if_affinity_below.min;
+    const choiceList = useAlt ? scene.if_affinity_below.choices : scene.choices;
+    const choice = choiceList[i];
     s.affinity = Math.max(0, Math.min(100, s.affinity + choice.aff));
     if (choice.flag) s.flags[choice.flag] = true;
+
+    // timeline 박음 — 호감도 변동
+    const asset = Math.round(s.cash + s.shares * s.kospi);
+    s.timeline.push({ idx: s.sceneIdx + 1, aff: s.affinity, asset: asset, label: scene.label || ("Scene " + (s.sceneIdx+1)), kind: "choice" });
 
     // toast
     this.toast((choice.aff >= 0 ? "+" : "") + choice.aff + " 호감도", choice.aff >= 0 ? "gain" : "loss");
@@ -1402,6 +1451,9 @@ const game = {
 
     this.show("screen-ending");
 
+    // 회고 차트 그리기 — Chart.js 로드된 후
+    this.drawEndingCharts();
+
     try {
       gtag('event', 'sim_ending', {
         event_category: 'sim',
@@ -1409,6 +1461,121 @@ const game = {
         value: Math.round(aff)
       });
     } catch (e) {}
+  },
+
+  drawEndingCharts() {
+    if (typeof Chart === "undefined") return;  // Chart.js 미로드 시 graceful
+    const tl = (this.state && this.state.timeline) || [];
+    if (tl.length < 2) return;
+
+    // 기존 차트 정리
+    if (this._affChart) { this._affChart.destroy(); this._affChart = null; }
+    if (this._assetChart) { this._assetChart.destroy(); this._assetChart = null; }
+
+    const labels = tl.map((p, i) => i === 0 ? "시작" : ("S" + p.idx));
+    const affs = tl.map(p => p.aff);
+    const assets = tl.map(p => Math.round(p.asset / 10000));  // 만원 단위
+
+    // MARKET 결정 지점 (kind === "market")
+    const marketIdx = tl.map((p, i) => p.kind === "market" ? i : -1).filter(i => i >= 0);
+
+    const baseOpts = {
+      responsive: true, maintainAspectRatio: false,
+      animation: { duration: 1200 },
+      plugins: { legend: { display: false }, tooltip: { enabled: true } },
+      scales: {
+        x: { ticks: { font: { size: 9 }, color: "#999", maxRotation: 0, autoSkip: true, autoSkipPadding: 8 }, grid: { display: false } },
+        y: { ticks: { font: { size: 10 }, color: "#666" }, grid: { color: "#ffe0e0", lineWidth: 1 } }
+      }
+    };
+
+    // 호감도 차트 — 임계값 40·60 가로선 + market 세로 marker
+    const affCtx = document.getElementById("chart-affinity");
+    if (affCtx) {
+      // 임계값 선용 dataset (배경)
+      const aff40 = labels.map(() => 40);
+      const aff60 = labels.map(() => 60);
+      this._affChart = new Chart(affCtx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "TRUE 임계 (60)",
+              data: aff60,
+              borderColor: "rgba(255, 107, 107, 0.35)",
+              borderWidth: 1, borderDash: [4, 4],
+              pointRadius: 0, fill: false
+            },
+            {
+              label: "ROMANCE 임계 (40)",
+              data: aff40,
+              borderColor: "rgba(255, 168, 168, 0.5)",
+              borderWidth: 1, borderDash: [4, 4],
+              pointRadius: 0, fill: false
+            },
+            {
+              label: "호감도",
+              data: affs,
+              borderColor: "#ff6b6b",
+              backgroundColor: "rgba(255, 107, 107, 0.15)",
+              borderWidth: 2.5, fill: true, tension: 0.25,
+              pointRadius: (ctx) => marketIdx.includes(ctx.dataIndex) ? 4 : 2.5,
+              pointBackgroundColor: (ctx) => marketIdx.includes(ctx.dataIndex) ? "#0984e3" : "#ff6b6b",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 1.5
+            }
+          ]
+        },
+        options: Object.assign({}, baseOpts, {
+          scales: {
+            x: baseOpts.scales.x,
+            y: Object.assign({}, baseOpts.scales.y, { min: 0, max: 100, ticks: Object.assign({}, baseOpts.scales.y.ticks, { stepSize: 20 }) })
+          }
+        })
+      });
+    }
+
+    // 자산 차트 — 시작선 1000만 가로 marker + market 세로 marker
+    const assetCtx = document.getElementById("chart-asset");
+    if (assetCtx) {
+      const startLine = labels.map(() => Math.round(GAME.start_cash / 10000));
+      this._assetChart = new Chart(assetCtx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "시작 자산",
+              data: startLine,
+              borderColor: "rgba(150, 150, 150, 0.5)",
+              borderWidth: 1, borderDash: [4, 4],
+              pointRadius: 0, fill: false
+            },
+            {
+              label: "자산 (만원)",
+              data: assets,
+              borderColor: "#00b894",
+              backgroundColor: "rgba(0, 184, 148, 0.15)",
+              borderWidth: 2.5, fill: true, tension: 0.15,
+              pointRadius: (ctx) => marketIdx.includes(ctx.dataIndex) ? 5 : 2,
+              pointBackgroundColor: (ctx) => marketIdx.includes(ctx.dataIndex) ? "#d63031" : "#00b894",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 1.5
+            }
+          ]
+        },
+        options: Object.assign({}, baseOpts, {
+          plugins: Object.assign({}, baseOpts.plugins, {
+            tooltip: {
+              callbacks: {
+                label: (ctx) => ctx.dataset.label + ": " + ctx.parsed.y.toLocaleString("ko-KR") + "만원"
+              }
+            }
+          })
+        })
+      });
+    }
   },
 
   restart() { this.show("screen-cover"); },
