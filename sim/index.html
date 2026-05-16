@@ -28,7 +28,8 @@
     --loss: #d63031;
   }
   *, *:before, *:after { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
+  body { overflow-x: hidden; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
                  "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -50,20 +51,20 @@
   #app {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     max-width: 540px;
     margin: 0 auto;
     background: #fff;
-    overflow: hidden;
   }
 
   .screen {
-    position: absolute;
-    inset: 0;
     display: none;
     flex-direction: column;
+    min-height: 100vh;
   }
   .screen.active { display: flex; }
+  /* game·ending 화면은 페이지 스크롤 허용. cover·tutorial 은 viewport fit */
+  #screen-cover.active, #screen-tutorial.active { min-height: 100vh; }
 
   /* ===== Cover ===== */
   #screen-cover {
@@ -238,14 +239,17 @@
 
   .scene-area {
     position: relative;
-    flex: 1;
+    flex: 0 0 auto;
     background: #ffe0d4;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    min-height: 0;
+    /* viewport 의 일정 비율로 박음. 너무 크면 dialog 아래로 밀려나옴 — 페이지 스크롤 OK */
+    height: 55vh;
+    min-height: 280px;
   }
+  @media (min-height: 720px) { .scene-area { height: 60vh; } }
   .scene-bg {
     position: absolute;
     inset: 0;
@@ -322,11 +326,9 @@
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
     border-top: 3px solid var(--accent);
-    padding: 0.9em 1.1em 1em;
-    margin-top: auto;
-    flex-shrink: 0;
-    max-height: 60%;
-    overflow-y: auto;
+    padding: 1em 1.1em 1.4em;
+    flex: 1 0 auto;
+    /* max-height 폐기 — 자연 높이. 페이지 스크롤로 선택지 다 도달. */
   }
   .speaker {
     font-weight: 800;
@@ -595,7 +597,7 @@
     <div class="cover-tag">ONGLE SIM · CHAPTER 1</div>
     <div class="cover-art">🌸</div>
     <h1 class="cover-title"><span class="accent">유나</span>와의 봄</h1>
-    <p class="cover-sub">같은 팀 동료 유나와의 한 챕터.<br/>대화 선택과 KOSPI 결정이 결말을 만든다.</p>
+    <p class="cover-sub">같은 팀 동료 유나와의 한 챕터.<br/>대화로 호감도, KOSPI로 수익률 — 둘이 엔딩을 만든다.</p>
     <button class="cover-cta" onclick="game.start()">시작하기</button>
     <div class="cover-meta">
       <span>약 15분</span><span class="dot"></span><span>3 엔딩</span><span class="dot"></span><span>24 scenes</span>
@@ -1018,17 +1020,13 @@ const game = {
   ],
 
   start() {
-    this.show("screen-tutorial");
-    this.tutIdx = 0;
-    this.renderTut();
+    // 인트로 페이지 폐기 — cover-sub 한 줄에 핵심 룰 박힘. 즉시 게임 진입.
     try { gtag('event', 'sim_start', { event_category: 'sim' }); } catch (e) {}
+    this.beginChapter();
   },
 
-  tutorialNext() {
-    this.tutIdx++;
-    if (this.tutIdx >= this.tutPages.length) this.beginChapter();
-    else this.renderTut();
-  },
+  // (legacy — tutorial 페이지 호환용. 호출 안 됨)
+  tutorialNext() { this.beginChapter(); },
   skipTutorial() { this.beginChapter(); },
 
   renderTut() {
