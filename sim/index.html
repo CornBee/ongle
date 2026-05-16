@@ -224,7 +224,7 @@
 
   .affinity-bar {
     position: relative;
-    height: 5px;
+    height: 6px;
     background: #ffe0e0;
     border-radius: 999px;
     overflow: hidden;
@@ -234,9 +234,144 @@
   .affinity-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--accent-2), var(--accent));
-    transition: width 0.4s;
+    transition: width 0.55s cubic-bezier(.34,1.56,.64,1);
     border-radius: 999px;
+    position: relative;
   }
+  .affinity-fill.pulse-up { animation: barFlashUp 0.7s ease; }
+  .affinity-fill.pulse-down { animation: barFlashDown 0.7s ease; }
+  @keyframes barFlashUp {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+    40%  { box-shadow: 0 0 14px 4px rgba(255, 107, 107, 0.9); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+  }
+  @keyframes barFlashDown {
+    0%   { box-shadow: 0 0 0 0 rgba(9, 132, 227, 0); }
+    40%  { box-shadow: 0 0 14px 4px rgba(9, 132, 227, 0.9); }
+    100% { box-shadow: 0 0 0 0 rgba(9, 132, 227, 0); }
+  }
+  .stat-pill.pulse-up { animation: pillBounce 0.55s ease; }
+  .stat-pill.pulse-down { animation: pillShake 0.55s ease; }
+  @keyframes pillBounce {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.18); }
+  }
+  @keyframes pillShake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-3px); }
+    40%      { transform: translateX(3px); }
+    60%      { transform: translateX(-2px); }
+    80%      { transform: translateX(2px); }
+  }
+
+  /* === Affinity popup — 큰 숫자 떠오름 === */
+  .aff-popup {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4.4em;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  }
+  .aff-popup.show { animation: affPopFloat 1.6s ease forwards; }
+  .aff-popup.big  { font-size: 5.4em; }
+  .aff-popup.huge { font-size: 6.4em; }
+  .aff-popup.pos { color: #ff3b6b; }
+  .aff-popup.huge.pos { color: #ffb300; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 4px 24px rgba(255, 100, 0, 0.5); }
+  .aff-popup.neg { color: #0984e3; }
+  .aff-popup.huge.neg { color: #2c3e50; text-shadow: 0 4px 24px rgba(9, 132, 227, 0.8); }
+  @keyframes affPopFloat {
+    0%   { opacity: 0; transform: translate(-50%, -30%) scale(0.5); }
+    20%  { opacity: 1; transform: translate(-50%, -50%) scale(1.18); }
+    35%  { transform: translate(-50%, -52%) scale(1); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -90%) scale(0.92); }
+  }
+
+  /* === Screen flash + shake === */
+  .scene-area.flash-up::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.32) 0%, transparent 70%);
+    z-index: 9; pointer-events: none;
+    animation: flashFade 0.55s ease;
+  }
+  .scene-area.flash-down::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle, rgba(9, 132, 227, 0.38) 0%, transparent 70%);
+    z-index: 9; pointer-events: none;
+    animation: flashFade 0.55s ease;
+  }
+  @keyframes flashFade {
+    0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; }
+  }
+  .scene-area.shake { animation: sceneShake 0.4s ease; }
+  @keyframes sceneShake {
+    0%, 100% { transform: translateX(0); }
+    15%      { transform: translateX(-8px); }
+    30%      { transform: translateX(7px); }
+    45%      { transform: translateX(-5px); }
+    60%      { transform: translateX(4px); }
+    75%      { transform: translateX(-2px); }
+  }
+
+  /* === Threshold confetti === */
+  .confetti-burst {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .confetti-piece {
+    position: absolute;
+    top: 40%; left: 50%;
+    width: 10px; height: 14px;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confettiFly 1.7s ease forwards;
+  }
+  @keyframes confettiFly {
+    0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(0.5); }
+    20%  { transform: translate(var(--dx), -120px) rotate(180deg) scale(1.1); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(540deg) scale(0.7); }
+  }
+
+  /* === Yuna portrait inset (dialog box 옆 — 표정 swap) === */
+  .yuna-portrait {
+    position: absolute;
+    top: -38px;
+    left: 0.9em;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: #fff5f5;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2em;
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.3s ease;
+  }
+  .yuna-portrait.bump { animation: portraitBump 0.45s ease; }
+  @keyframes portraitBump {
+    0%, 100% { transform: scale(1); }
+    40%      { transform: scale(1.22); }
+  }
+  .yuna-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: none;
+  }
+  .yuna-portrait.has-image img.loaded { display: block; }
+  .yuna-portrait.has-image .yuna-portrait-emoji { display: none; }
 
   .scene-area {
     position: relative;
@@ -327,7 +462,7 @@
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
     border-top: 3px solid var(--accent);
-    padding: 1em 1.1em 1.4em;
+    padding: 2.2em 1.1em 1.4em;  /* portrait inset 자리 박음 */
     flex: 1 0 auto;
     /* max-height 폐기 — 자연 높이. 페이지 스크롤로 선택지 다 도달. */
   }
@@ -670,9 +805,15 @@
         <img class="character-img" id="character-img" alt="" />
       </div>
       <div class="toast" id="toast"></div>
+      <div class="aff-popup" id="aff-popup"></div>
+      <div class="confetti-burst" id="confetti-burst"></div>
     </div>
 
     <div class="dialog-box" id="dialog-box">
+      <div class="yuna-portrait" id="yuna-portrait">
+        <span class="yuna-portrait-emoji" id="yuna-portrait-emoji">🌸</span>
+        <img id="yuna-portrait-img" alt="" />
+      </div>
       <div class="speaker" id="speaker">유나</div>
       <p class="dialog-text" id="dialog-text">…</p>
       <div id="market-mount"></div>
@@ -801,9 +942,9 @@ const CHAPTER_1 = [
     face: "smile", speaker: "유나",
     text: "안녕하세요. 저… 옆자리 새로 온 박유나입니다. 같은 팀이라고 들었어요. 잘 부탁드려요!",
     choices: [
-      { text: "반가워요. 옆자리니까 자주 봐요.", aff: +4, reply: "감사해요. 첫 출근이라 좀 긴장했는데, 옆자리가 따뜻해서 다행." },
-      { text: "박유나… 어디서 들은 이름인데. 어쨌든 잘 부탁해요.", aff: +2, reply: "어… 그래요? 흔한 이름이긴 한데." },
-      { text: "(가볍게 고개만 끄덕인다)", aff: -2, reply: "아… 네. (조금 어색하게 자리에 앉는다)" }
+      { text: "반가워요. 옆자리니까 자주 봐요.", aff: +10, reply: "감사해요. 첫 출근이라 좀 긴장했는데, 옆자리가 따뜻해서 다행." },
+      { text: "박유나… 어디서 들은 이름인데. 어쨌든 잘 부탁해요.", aff: +4, reply: "어… 그래요? 흔한 이름이긴 한데." },
+      { text: "(가볍게 고개만 끄덕인다)", aff: -5, reply: "아… 네. (조금 어색하게 자리에 앉는다)" }
     ]
   },
   {
@@ -811,9 +952,9 @@ const CHAPTER_1 = [
     face: "worry", speaker: "유나",
     text: "저… 죄송한데, KOSPI 시가총액 상위 50종목 정리 매크로 좀 도와주실 수 있어요? Excel은 어느 정도 하는데, VBA는 자신이 없어서요.",
     choices: [
-      { text: "그거 어렵지 않아요. 같이 봐줄게요.", aff: +5, reply: "정말요? 진짜 감사해요. 점심이라도 살게요!" },
-      { text: "지금은 좀 바빠요. 퇴근 전에 같이 보자.", aff: +3, reply: "아, 네! 시간 될 때 부탁드려요." },
-      { text: "VBA 정도는 검색하면 나와요.", aff: -3, reply: "아… 네. 죄송해요, 바쁜데 괜한 거 물어봐서." }
+      { text: "그거 어렵지 않아요. 같이 봐줄게요.", aff: +15, reply: "정말요? 진짜 감사해요. 점심이라도 살게요!" },
+      { text: "지금은 좀 바빠요. 퇴근 전에 같이 보자.", aff: +7, reply: "아, 네! 시간 될 때 부탁드려요." },
+      { text: "VBA 정도는 검색하면 나와요.", aff: -10, reply: "아… 네. 죄송해요, 바쁜데 괜한 거 물어봐서." }
     ]
   },
   {
@@ -821,9 +962,9 @@ const CHAPTER_1 = [
     face: "blush", speaker: "유나",
     text: "오전에 도와주셔서 정말 고마웠어요. 그래서 점심 산다고 했잖아요. 그… 카페라떼 좋아하시나요?",
     choices: [
-      { text: "라떼 좋아해요. 잘 마실게요.", aff: +3, reply: "다행이에요. 제가 살 수 있어서 더 좋아요." },
-      { text: "라떼는 좀… 아메리카노로 부탁해요.", aff: +2, reply: "앗 그렇구나. 다음엔 미리 물어봐야겠다." },
-      { text: "마음만 받을게요. 안 사도 돼요.", aff: +5, reply: "어… 아니에요. 그래도 한 잔은 사고 싶어요. (살짝 웃는다)" }
+      { text: "라떼 좋아해요. 잘 마실게요.", aff: +7, reply: "다행이에요. 제가 살 수 있어서 더 좋아요." },
+      { text: "라떼는 좀… 아메리카노로 부탁해요.", aff: +4, reply: "앗 그렇구나. 다음엔 미리 물어봐야겠다." },
+      { text: "마음만 받을게요. 안 사도 돼요.", aff: +15, reply: "어… 아니에요. 그래도 한 잔은 사고 싶어요. (살짝 웃는다)" }
     ]
   },
   {
@@ -831,9 +972,9 @@ const CHAPTER_1 = [
     face: "thinking", speaker: "유나",
     text: "사실… 저, 분석가 일이 처음이라 무서워요. 우리 회사 분석팀이 KOSPI 종목 리포트 쓰잖아요. 잘 할 수 있을지 모르겠어요.",
     choices: [
-      { text: "처음엔 다 그래요. 6개월 지나면 익숙해져요.", aff: +4, reply: "그렇게 말해주시니까 마음이 좀 놓여요." },
-      { text: "유나 씨 똑똑해 보여요. 잘 할 거예요.", aff: +5, reply: "어… 그렇게 보여요? (얼굴 빨개진다)" },
-      { text: "현실은 생각보다 빡셀 거예요. 각오 단단히 하세요.", aff: -3, reply: "아… 네. 마음 단단히 먹을게요." }
+      { text: "처음엔 다 그래요. 6개월 지나면 익숙해져요.", aff: +10, reply: "그렇게 말해주시니까 마음이 좀 놓여요." },
+      { text: "유나 씨 똑똑해 보여요. 잘 할 거예요.", aff: +15, reply: "어… 그렇게 보여요? (얼굴 빨개진다)" },
+      { text: "현실은 생각보다 빡셀 거예요. 각오 단단히 하세요.", aff: -10, reply: "아… 네. 마음 단단히 먹을게요." }
     ]
   },
   {
@@ -866,9 +1007,9 @@ const CHAPTER_1 = [
     face: "embarrassed", speaker: "유나",
     text: "(살짝 취해서) 회식 처음인데… 다들 너무 잘 마시는 거 아니에요? 저는 맥주 한 잔에 이렇게 됐는데…",
     choices: [
-      { text: "물 챙겨드릴게요. 천천히 마셔요.", aff: +5, reply: "감사해요… 챙겨주는 사람이 있어서 다행이에요." },
-      { text: "사회생활 첫 회식은 다 그래요.", aff: +3, reply: "그렇구나. 다들 이런 식으로 적응하는구나." },
-      { text: "그 정도면 약하시네요.", aff: -3, reply: "아… 네. 약한가요. (조금 시무룩)" }
+      { text: "물 챙겨드릴게요. 천천히 마셔요.", aff: +15, reply: "감사해요… 챙겨주는 사람이 있어서 다행이에요." },
+      { text: "사회생활 첫 회식은 다 그래요.", aff: +7, reply: "그렇구나. 다들 이런 식으로 적응하는구나." },
+      { text: "그 정도면 약하시네요.", aff: -10, reply: "아… 네. 약한가요. (조금 시무룩)" }
     ]
   },
   {
@@ -876,9 +1017,9 @@ const CHAPTER_1 = [
     face: "sad", speaker: "유나",
     text: "사실… 우리 엄마가 작은 KOSPI 상장사 대표예요. 화장품 회사. 요즘 시장이 안 좋아서 엄마가 매일 한숨 쉬셔요. 그래서 제가 분석가가 됐어요. 시장을 더 이해하고 싶어서.",
     choices: [
-      { text: "어머니 회사… 진짜 응원해주고 싶어요.", aff: +5, reply: "감사해요. 다른 사람한테 처음 말한 건데… 듣고 흘려주지 않아서 좋아요." },
-      { text: "분석가 동기가 그래서 강한 거구나.", aff: +4, reply: "동기가 강하다는 표현, 처음 들어봤어요. 좋네요." },
-      { text: "회사일은 회사일이죠. 너무 짊어지지 마세요.", aff: +1, reply: "…그렇긴 한데. 그래도 엄마니까요." }
+      { text: "어머니 회사… 진짜 응원해주고 싶어요.", aff: +15, reply: "감사해요. 다른 사람한테 처음 말한 건데… 듣고 흘려주지 않아서 좋아요." },
+      { text: "분석가 동기가 그래서 강한 거구나.", aff: +10, reply: "동기가 강하다는 표현, 처음 들어봤어요. 좋네요." },
+      { text: "회사일은 회사일이죠. 너무 짊어지지 마세요.", aff: +2, reply: "…그렇긴 한데. 그래도 엄마니까요." }
     ]
   },
   {
@@ -886,9 +1027,9 @@ const CHAPTER_1 = [
     face: "blush", speaker: "유나",
     text: "(택시 안에서 조용히) 같이 택시 잡아주셔서 감사해요. 그… 다음에 또 점심 같이 먹어도 돼요? 회사 안 동기 빼면 친한 사람이 없어서.",
     choices: [
-      { text: "당연하죠. 매일 같이 먹어도 돼요.", aff: +5, reply: "어… 매일이요? (살짝 웃으며 창밖을 본다)" },
-      { text: "내일도 같이 먹어요.", aff: +4, reply: "네! 약속이에요!" },
-      { text: "팀 분위기 봐가면서요.", aff: -2, reply: "아… 그렇네요. 신경 쓰셔야 하는구나." }
+      { text: "당연하죠. 매일 같이 먹어도 돼요.", aff: +15, reply: "어… 매일이요? (살짝 웃으며 창밖을 본다)" },
+      { text: "내일도 같이 먹어요.", aff: +10, reply: "네! 약속이에요!" },
+      { text: "팀 분위기 봐가면서요.", aff: -5, reply: "아… 그렇네요. 신경 쓰셔야 하는구나." }
     ]
   },
   {
@@ -896,9 +1037,9 @@ const CHAPTER_1 = [
     face: "embarrassed", speaker: "유나",
     text: "어제… 너무 마신 건 아닌지 모르겠어요. 기억은 다 나는데 부끄러워서. 어머니 회사 얘기까지 했잖아요. 좀… 잊어주실래요?",
     choices: [
-      { text: "안 잊을게요. 중요한 얘기였으니까.", aff: +5, reply: "…그렇게 들어주시는 게 더 부끄러워요. 근데 좀 든든해요." },
-      { text: "걱정 마세요. 회사 안에선 비밀이에요.", aff: +3, reply: "감사해요. 그렇게 말해주셔서 마음이 놓여요." },
-      { text: "기억 안 나요. 신경 쓰지 말아요.", aff: +2, reply: "어… 그래요? (안도 반 서운함 반)" }
+      { text: "안 잊을게요. 중요한 얘기였으니까.", aff: +15, reply: "…그렇게 들어주시는 게 더 부끄러워요. 근데 좀 든든해요." },
+      { text: "걱정 마세요. 회사 안에선 비밀이에요.", aff: +7, reply: "감사해요. 그렇게 말해주셔서 마음이 놓여요." },
+      { text: "기억 안 나요. 신경 쓰지 말아요.", aff: +4, reply: "어… 그래요? (안도 반 서운함 반)" }
     ]
   },
   {
@@ -906,9 +1047,9 @@ const CHAPTER_1 = [
     face: "serious", speaker: "narrator",
     text: "팀 정기 회의. 유나가 첫 종목 리포트를 발표한다. 손이 떨리는 게 보인다. 발표가 어색하게 시작하자 팀장이 시계를 본다. 너의 자리는?",
     choices: [
-      { text: "(질문 타이밍에 일부러 친근한 질문을 던져 분위기를 푼다)", aff: +5, reply: "(발표 후) 그 질문… 진짜 살았어요. 감사해요." },
-      { text: "(가만히 듣고 발표 끝나고 따로 격려한다)", aff: +3, reply: "(발표 후) 끝나고 와주셔서 다행. 손이 너무 떨렸어요." },
-      { text: "(평가는 평가. 끝나고 솔직히 피드백한다)", aff: -2, reply: "(발표 후) 네… 맞는 말씀이에요. 더 준비할게요. (씁쓸한 미소)" }
+      { text: "(질문 타이밍에 일부러 친근한 질문을 던져 분위기를 푼다)", aff: +15, reply: "(발표 후) 그 질문… 진짜 살았어요. 감사해요." },
+      { text: "(가만히 듣고 발표 끝나고 따로 격려한다)", aff: +7, reply: "(발표 후) 끝나고 와주셔서 다행. 손이 너무 떨렸어요." },
+      { text: "(평가는 평가. 끝나고 솔직히 피드백한다)", aff: -5, reply: "(발표 후) 네… 맞는 말씀이에요. 더 준비할게요. (씁쓸한 미소)" }
     ]
   },
   {
@@ -916,9 +1057,9 @@ const CHAPTER_1 = [
     face: "happy", speaker: "유나",
     text: "오늘 발표 끝났으니까… 제가 점심 살게요! 이번엔 진짜 거하게. 샌드위치 + 라떼 + 디저트까지.",
     choices: [
-      { text: "유나 씨가 사면 거절 못 하지. 잘 먹을게요.", aff: +3, reply: "후훗, 거절 못 하게 말한 거예요." },
-      { text: "디저트는 제가 살게요. 1:1 교환.", aff: +5, reply: "어… 그런 거 좋아해요. 1:1 교환 받아들일게요." },
-      { text: "발표 무사히 끝났는데 굳이 살 필요는…", aff: +2, reply: "그래도 사고 싶었어요. 받아주세요." }
+      { text: "유나 씨가 사면 거절 못 하지. 잘 먹을게요.", aff: +7, reply: "후훗, 거절 못 하게 말한 거예요." },
+      { text: "디저트는 제가 살게요. 1:1 교환.", aff: +15, reply: "어… 그런 거 좋아해요. 1:1 교환 받아들일게요." },
+      { text: "발표 무사히 끝났는데 굳이 살 필요는…", aff: +4, reply: "그래도 사고 싶었어요. 받아주세요." }
     ]
   },
   {
@@ -926,9 +1067,9 @@ const CHAPTER_1 = [
     face: "thinking", speaker: "유나",
     text: "(옥상에서 같이 커피) 있잖아요… 엄마 회사 주가가 또 빠지고 있어요. 어제 -7%. 외국 사모펀드 매도 물량이라고 하던데, 무슨 의미인지 잘 모르겠어요. 분석가인데 부끄럽네.",
     choices: [
-      { text: "사모펀드 매도는 보통 단기 충격. 6개월 보고 판단해요.", aff: +4, reply: "…그래요? 다행이에요. 엄마한테 그렇게 전해드려도 돼요?" },
-      { text: "회사 펀더멘털을 봐야지, 수급만 봐선 답 안 나와요.", aff: +3, reply: "맞아요. 펀더멘털… 제가 한 번 정리해볼게요." },
-      { text: "단기 매매면 손절도 옵션이에요.", aff: -2, reply: "어… 그렇게까지요? (얼굴이 굳는다)" }
+      { text: "사모펀드 매도는 보통 단기 충격. 6개월 보고 판단해요.", aff: +10, reply: "…그래요? 다행이에요. 엄마한테 그렇게 전해드려도 돼요?" },
+      { text: "회사 펀더멘털을 봐야지, 수급만 봐선 답 안 나와요.", aff: +7, reply: "맞아요. 펀더멘털… 제가 한 번 정리해볼게요." },
+      { text: "단기 매매면 손절도 옵션이에요.", aff: -5, reply: "어… 그렇게까지요? (얼굴이 굳는다)" }
     ]
   },
 
@@ -951,9 +1092,9 @@ const CHAPTER_1 = [
     face: "smile", speaker: "유나",
     text: "주말에 시간 내주셔서 감사해요. 회사 밖에서 보니까 좀 다른 느낌이에요. 사복도 잘 어울리시네요.",
     choices: [
-      { text: "유나 씨도요. 회사 밖에선 더 편해 보여요.", aff: +5, reply: "어… 그래요? (살짝 머리를 만지작거린다)" },
-      { text: "둘이 회사 밖에서 만나도 이상하지 않네요.", aff: +4, reply: "그렇죠. 이상하지 않네요. (의외로 차분히)" },
-      { text: "그냥 산책일 뿐이죠.", aff: -2, reply: "아… 네. 그렇긴 하죠. (조용해진다)" }
+      { text: "유나 씨도요. 회사 밖에선 더 편해 보여요.", aff: +15, reply: "어… 그래요? (살짝 머리를 만지작거린다)" },
+      { text: "둘이 회사 밖에서 만나도 이상하지 않네요.", aff: +10, reply: "그렇죠. 이상하지 않네요. (의외로 차분히)" },
+      { text: "그냥 산책일 뿐이죠.", aff: -5, reply: "아… 네. 그렇긴 하죠. (조용해진다)" }
     ]
   },
   {
@@ -961,9 +1102,9 @@ const CHAPTER_1 = [
     face: "serious", speaker: "유나",
     text: "사실… 엄마 회사를 매각할지 말지 결정해야 한대요. 사모펀드 쪽에서 인수 제안이 들어왔거든요. 엄마는 자존심 때문에 안 팔고 싶어해요. 저는… 솔직히 잘 모르겠어요. 너는 어떻게 생각해?",
     choices: [
-      { text: "팔지 말지는 어머니 결정. 다만 시장 가치는 객관적으로 봐야.", aff: +4, reply: "그래요. 객관적인 눈… 제가 부족했네요." },
-      { text: "사모펀드 인수면 통상 가격 후려치기. 협상은 길게 가져가요.", aff: +5, reply: "와… 진짜 분석가네. 도움이 돼요. 진심으로." },
-      { text: "어른들 일이니까 끼지 말자.", aff: -3, reply: "…그래. 미안해, 괜한 거 꺼냈네." }
+      { text: "팔지 말지는 어머니 결정. 다만 시장 가치는 객관적으로 봐야.", aff: +10, reply: "그래요. 객관적인 눈… 제가 부족했네요." },
+      { text: "사모펀드 인수면 통상 가격 후려치기. 협상은 길게 가져가요.", aff: +15, reply: "와… 진짜 분석가네. 도움이 돼요. 진심으로." },
+      { text: "어른들 일이니까 끼지 말자.", aff: -10, reply: "…그래. 미안해, 괜한 거 꺼냈네." }
     ]
   },
   {
@@ -972,8 +1113,8 @@ const CHAPTER_1 = [
     text: "(잠깐 침묵 후) 있잖아… 너랑 같이 있으면 회사 일이 회사 일로만 안 느껴져. 그게 좋은 건지 무서운 건지 잘 모르겠어. 그… 우리, 회사 밖에서도 자주 봐도 돼?",
     choices: [
       { text: "응. 자주 봐도 돼. 솔직히 나도 그랬으면 좋겠어.", aff: +6, reply: "어… (한참 말 못 잇다가) 응. 그럼 자주 봐." },
-      { text: "회사 안에서도 좋으니까, 밖에서도 좋아.", aff: +5, reply: "그런 식으로 말하는 거… 좀 반칙인 거 알지?" },
-      { text: "음… 회사 안에서만 보는 게 깔끔하지 않을까?", aff: -3, reply: "아… 그래. 그게 맞지. 미안, 분위기 깼네." }
+      { text: "회사 안에서도 좋으니까, 밖에서도 좋아.", aff: +15, reply: "그런 식으로 말하는 거… 좀 반칙인 거 알지?" },
+      { text: "음… 회사 안에서만 보는 게 깔끔하지 않을까?", aff: -10, reply: "아… 그래. 그게 맞지. 미안, 분위기 깼네." }
     ]
   },
   {
@@ -987,9 +1128,9 @@ const CHAPTER_1 = [
     face: "sad", speaker: "유나",
     text: "(자리에서 폰을 보며) 엄마 회사 -9% 출발했어… 매각 협상 중인데, 이 가격이면 후려치기 더 심해질 거예요. 어떡하지.",
     choices: [
-      { text: "지금이 진짜 마지막 라운드. 펀더멘털 자료 정리해서 같이 가요.", aff: +5, flag: "help_yuna", reply: "…진짜? 같이 가줄 거예요? (눈가 촉촉)" },
-      { text: "오늘은 일단 시장 관망. 패닉장에서 결정하면 후회만 남아요.", aff: +4, reply: "그래요. 차분하게. 고마워요." },
-      { text: "어차피 어머니 결정. 우린 관여하지 말자.", aff: -4, reply: "…그래. 알겠어. (눈을 피한다)" }
+      { text: "지금이 진짜 마지막 라운드. 펀더멘털 자료 정리해서 같이 가요.", aff: +15, flag: "help_yuna", reply: "…진짜? 같이 가줄 거예요? (눈가 촉촉)" },
+      { text: "오늘은 일단 시장 관망. 패닉장에서 결정하면 후회만 남아요.", aff: +10, reply: "그래요. 차분하게. 고마워요." },
+      { text: "어차피 어머니 결정. 우린 관여하지 말자.", aff: -15, reply: "…그래. 알겠어. (눈을 피한다)" }
     ]
   },
 
@@ -1010,9 +1151,9 @@ const CHAPTER_1 = [
     face: "smile", speaker: "유나",
     text: "어제 도와줘서 진심으로 감사해. 엄마 협상 자리에 동행해줘서… 인수가격 18% 더 받아냈어. 변호사도 놀라더라. (살짝 웃음) 너 진짜 멋있더라.",
     choices: [
-      { text: "멋있다는 말은 처음 들어보는 것 같아.", aff: +3, reply: "처음이라니, 의외네. 내가 처음 말한 사람이라서 좋아." },
-      { text: "당연한 거지. 친구 일이니까.", aff: +3, reply: "친구… 그래, 친구지. (살짝 시무룩)" },
-      { text: "유나 씨한테 도움 됐다면 다행.", aff: +5, reply: "유나 씨 말고 그냥 유나라고 불러줘. 우리, 이 정도 사이잖아." }
+      { text: "멋있다는 말은 처음 들어보는 것 같아.", aff: +7, reply: "처음이라니, 의외네. 내가 처음 말한 사람이라서 좋아." },
+      { text: "당연한 거지. 친구 일이니까.", aff: +7, reply: "친구… 그래, 친구지. (살짝 시무룩)" },
+      { text: "유나 씨한테 도움 됐다면 다행.", aff: +15, reply: "유나 씨 말고 그냥 유나라고 불러줘. 우리, 이 정도 사이잖아." }
     ]
   },
   // SCENE 20·21 — 호감도 ≥ 40 일 때만 고백 등장. < 40 이면 alt (친구 작별).
@@ -1021,16 +1162,16 @@ const CHAPTER_1 = [
     face: "blush", speaker: "유나",
     text: "있잖아… 이 챕터 끝나기 전에 너한테 할 말이 있어. 들어줄래?",
     choices: [
-      { text: "응, 말해.", aff: +2, reply: "응. (심호흡) 나, 너 좋아해. 동료로 말고. 진심으로." },
-      { text: "분위기가 진지하네. 천천히 말해도 돼.", aff: +3, reply: "고마워. 그래도 미루면 못 할 것 같아서. 나, 너 좋아해." }
+      { text: "응, 말해.", aff: +4, reply: "응. (심호흡) 나, 너 좋아해. 동료로 말고. 진심으로." },
+      { text: "분위기가 진지하네. 천천히 말해도 돼.", aff: +7, reply: "고마워. 그래도 미루면 못 할 것 같아서. 나, 너 좋아해." }
     ],
     if_affinity_below: {
       min: 40,
       face: "default", speaker: "유나",
       text: "있잖아… 이번 한 주, 같이 보내줘서 고마워. 회사 동료로 와서 말 트고 점심도 같이 먹어줬잖아. 그게 큰 도움이 됐어.",
       choices: [
-        { text: "응, 잘 지내자. 회사에서 또 봐.", aff: +1, flag: "chapter_friend_close", reply: "응. 잘 지내. (작게 손 흔든다)" },
-        { text: "다음 주에도 점심 같이 먹자.", aff: +2, flag: "chapter_friend_close", reply: "그래. 동료끼리 점심은 자주 먹어야지." }
+        { text: "응, 잘 지내자. 회사에서 또 봐.", aff: +2, flag: "chapter_friend_close", reply: "응. 잘 지내. (작게 손 흔든다)" },
+        { text: "다음 주에도 점심 같이 먹자.", aff: +4, flag: "chapter_friend_close", reply: "그래. 동료끼리 점심은 자주 먹어야지." }
       ]
     }
   },
@@ -1039,8 +1180,8 @@ const CHAPTER_1 = [
     face: "embarrassed", speaker: "유나",
     text: "(잠시 후) 대답 안 해도 돼. 답이 어떻든 이 봄을 너와 함께 보낸 거 후회 안 해. 그래도… 답해줄래?",
     choices: [
-      { text: "나도 좋아해. 우리 사귀자.", aff: +8, flag: "confess_yes", reply: "…진짜? (한 박자 후) 응. 응!" },
-      { text: "동료로 더 지내고 싶어. 미안.", aff: -2, flag: "confess_no", reply: "…응. 알겠어. (살짝 미소) 그래도 들어줘서 고마워." },
+      { text: "나도 좋아해. 우리 사귀자.", aff: +20, flag: "confess_yes", reply: "…진짜? (한 박자 후) 응. 응!" },
+      { text: "동료로 더 지내고 싶어. 미안.", aff: -5, flag: "confess_no", reply: "…응. 알겠어. (살짝 미소) 그래도 들어줘서 고마워." },
       { text: "지금은 답 못 하겠어. 시간을 좀.", aff: -1, flag: "confess_wait", reply: "응, 천천히 생각해. 답이 늦어도 괜찮아." }
     ],
     if_affinity_below: {
@@ -1174,8 +1315,9 @@ const game = {
     document.getElementById("scene-label").textContent = scene.label || `SCENE ${s.sceneIdx + 1}`;
     document.getElementById("scene-progress").textContent = (s.sceneIdx + 1) + " / " + CHAPTER_1.length;
 
-    // 캐릭터 — emoji fallback + 일러스트 PNG swap (있으면)
+    // 캐릭터 — emoji fallback + 일러스트 PNG swap (있으면) + portrait 동기화
     document.getElementById("character-emoji").textContent = FACE[scene.face] || FACE.default;
+    this.setPortrait(scene.face || "default");
     const charEl = document.getElementById("character-display");
     const charImg = document.getElementById("character-img");
     if (asset.scene) {
@@ -1297,9 +1439,15 @@ const game = {
     if (delta > 100000) {
       toastText = "🚀 +" + this.fmt(Math.round(delta)) + "원 (" + deltaPct.toFixed(1) + "%)";
       toastCls = "money-up";
+      // 진동 — 큰 수익
+      if (deltaPct >= 30) this.vibe([100, 50, 100, 50, 100]);
+      else if (deltaPct >= 10) this.vibe(60);
+      else this.vibe(30);
     } else if (delta < -100000) {
       toastText = "💸 " + this.fmt(Math.round(delta)) + "원 (" + deltaPct.toFixed(1) + "%)";
       toastCls = "money-down";
+      // 진동 — 큰 손실
+      this.vibe([200, 80, 200]);
     } else {
       toastText = action === "hold" ? "📊 시장 통과" : "✓ 체결";
       toastCls = "gain";
@@ -1330,6 +1478,7 @@ const game = {
     const useAlt = scene.if_affinity_below && s.affinity < scene.if_affinity_below.min;
     const choiceList = useAlt ? scene.if_affinity_below.choices : scene.choices;
     const choice = choiceList[i];
+    const affBefore = s.affinity;
     s.affinity = Math.max(0, Math.min(100, s.affinity + choice.aff));
     if (choice.flag) s.flags[choice.flag] = true;
 
@@ -1337,8 +1486,19 @@ const game = {
     const asset = Math.round(s.cash + s.shares * s.kospi);
     s.timeline.push({ idx: s.sceneIdx + 1, aff: s.affinity, asset: asset, label: scene.label || ("Scene " + (s.sceneIdx+1)), kind: "choice" });
 
-    // toast
-    this.toast((choice.aff >= 0 ? "+" : "") + choice.aff + " 호감도", choice.aff >= 0 ? "gain" : "loss");
+    // ========== 도파민 효과 ==========
+    // 1. 큰 popup
+    this.showAffPopup(choice.aff);
+    // 2. 진동 (Web Vibration API — iOS Safari graceful)
+    this.vibeForAff(choice.aff);
+    // 3. screen flash + shake
+    this.flashScene(choice.aff);
+    // 4. bar / pill pulse
+    this.pulseHeader(choice.aff);
+    // 5. 표정 portrait swap
+    this.swapFaceForAff(choice.aff);
+    // 6. 임계값 도달 confetti
+    this.checkThreshold(affBefore, s.affinity);
 
     // reply 보여주고 next 버튼
     document.getElementById("speaker").className = "speaker";
@@ -1450,6 +1610,14 @@ const game = {
     document.getElementById("end-return").textContent = (returnPct >= 0 ? "+" : "") + returnPct.toFixed(1) + "%";
 
     this.show("screen-ending");
+
+    // 엔딩 진동 cue
+    if (ending.tag === "TRUE ENDING") this.vibe([300, 100, 300, 100, 300]);
+    else if (ending.tag === "JACKPOT ENDING") this.vibe([500, 100, 500]);
+    else if (ending.tag === "ROMANCE ENDING") this.vibe([200, 100, 200]);
+    else if (ending.tag === "BULL RUN ENDING") this.vibe([200, 100, 200]);
+    else if (ending.tag === "FRIEND ENDING") this.vibe(150);
+    else this.vibe(500);  // SOLO / WIPED — 무거운 한 번
 
     // 회고 차트 그리기 — Chart.js 로드된 후
     this.drawEndingCharts();
@@ -1603,6 +1771,137 @@ const game = {
     t.textContent = text;
     t.className = "toast show " + (cls || "");
     setTimeout(() => { t.classList.remove("show"); }, 1600);
+  },
+
+  // ========== 도파민 도구 박음 ==========
+  vibe(pattern) {
+    try { if (navigator.vibrate) navigator.vibrate(pattern); } catch (e) {}
+  },
+  vibeForAff(aff) {
+    if (aff >= 20) this.vibe([60, 30, 60]);
+    else if (aff >= 15) this.vibe(60);
+    else if (aff >= 10) this.vibe(40);
+    else if (aff >= 5)  this.vibe(25);
+    else if (aff >= 2)  this.vibe(15);
+    else if (aff <= -15) this.vibe([100, 60, 100, 60, 100]);
+    else if (aff <= -10) this.vibe([80, 50, 80]);
+    else if (aff <= -5)  this.vibe([60, 40, 60]);
+  },
+  showAffPopup(aff) {
+    const p = document.getElementById("aff-popup");
+    if (!p) return;
+    const sign = aff >= 0 ? "+" : "";
+    const absV = Math.abs(aff);
+    let cls = aff >= 0 ? "pos" : "neg";
+    if (absV >= 15) cls += " huge";
+    else if (absV >= 8) cls += " big";
+    p.textContent = sign + aff + " 💖";
+    if (aff < 0) p.textContent = aff + " 💔";
+    p.className = "aff-popup";
+    void p.offsetWidth;  // reflow trigger restart
+    p.className = "aff-popup show " + cls;
+  },
+  flashScene(aff) {
+    const area = document.getElementById("scene-area");
+    if (!area) return;
+    const absV = Math.abs(aff);
+    area.classList.remove("flash-up","flash-down","shake");
+    void area.offsetWidth;
+    if (aff >= 8) area.classList.add("flash-up");
+    else if (aff <= -8) { area.classList.add("flash-down","shake"); }
+    else if (aff <= -3) area.classList.add("shake");
+  },
+  pulseHeader(aff) {
+    const fill = document.getElementById("affinity-fill");
+    const pill = fill && fill.closest(".game-header") ? fill.closest(".game-header").querySelector(".stat-pill") : document.querySelector(".game-header .stat-pill");
+    [fill, pill].forEach(el => {
+      if (!el) return;
+      el.classList.remove("pulse-up","pulse-down");
+      void el.offsetWidth;
+      el.classList.add(aff >= 0 ? "pulse-up" : "pulse-down");
+    });
+  },
+  swapFaceForAff(aff) {
+    // 호감도 변동에 따른 표정 — emoji portrait + scene character emoji 양쪽 swap
+    let face;
+    if (aff >= 15)      face = "happy";
+    else if (aff >= 8)  face = "smile";
+    else if (aff >= 2)  face = "default";
+    else if (aff >= -3) face = "thinking";
+    else if (aff >= -10) face = "sad";
+    else                face = "surprise";   // 큰 -, 충격
+    this.setPortrait(face);
+  },
+  setPortrait(faceKey) {
+    const emoji = (typeof FACE !== "undefined" && FACE[faceKey]) || "🌸";
+    const portrait = document.getElementById("yuna-portrait");
+    const e = document.getElementById("yuna-portrait-emoji");
+    const img = document.getElementById("yuna-portrait-img");
+    if (!portrait) return;
+    if (e) e.textContent = emoji;
+    // 일러스트 PNG 박혔으면 (yuna_face_<key>.png) swap, 없으면 emoji
+    if (img) {
+      img.onerror = () => { portrait.classList.remove("has-image"); img.removeAttribute("src"); img.classList.remove("loaded"); };
+      img.onload = () => { portrait.classList.add("has-image"); img.classList.add("loaded"); };
+      // 매핑 — character_bible_yuna.md 의 face key → 일러스트 파일명
+      const fileMap = {
+        default: "_01_yuna_face_default",
+        smile:   "_02_yuna_face_smile",
+        surprise:"_03_yuna_face_surprise",
+        embarrassed: "_04_yuna_face_embarrassed",
+        sad:     "_05_yuna_face_aversion",
+        happy:   "_02_yuna_face_smile",
+        thinking:"_01_yuna_face_default",
+        worry:   "_05_yuna_face_aversion",
+        serious: "_01_yuna_face_default",
+        blush:   "_04_yuna_face_embarrassed",
+        laugh:   "_02_yuna_face_smile"
+      };
+      const fileName = fileMap[faceKey] || "_01_yuna_face_default";
+      img.src = "assets/" + fileName + ".png";
+    }
+    portrait.classList.remove("bump");
+    void portrait.offsetWidth;
+    portrait.classList.add("bump");
+  },
+  checkThreshold(before, after) {
+    const s = this.state;
+    if (!s._thresholdsHit) s._thresholdsHit = {};
+    const ts = [40, 60, 80];
+    ts.forEach(t => {
+      if (before < t && after >= t && !s._thresholdsHit[t]) {
+        s._thresholdsHit[t] = true;
+        this.fireConfetti(t);
+      }
+    });
+  },
+  fireConfetti(level) {
+    const burst = document.getElementById("confetti-burst");
+    if (!burst) return;
+    burst.innerHTML = "";
+    const colors = level >= 80 ? ["#ff3b6b","#ffb300","#ff6b6b","#ffd93d","#ff8e3c"]
+                 : level >= 60 ? ["#ff6b6b","#ffa8a8","#ff3b6b","#ffd93d"]
+                                : ["#ff6b6b","#ffa8a8","#ffd4d4"];
+    const count = level >= 80 ? 36 : level >= 60 ? 24 : 16;
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti-piece";
+      const angle = (Math.random() * Math.PI * 2);
+      const dist = 120 + Math.random() * 160;
+      piece.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+      piece.style.setProperty("--dy", Math.sin(angle) * dist + Math.abs(Math.sin(angle)) * 200 + "px");
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = (Math.random() * 0.2) + "s";
+      burst.appendChild(piece);
+    }
+    // vibrate cue
+    if (level >= 80) this.vibe([200, 100, 200, 100, 200]);
+    else if (level >= 60) this.vibe([150, 80, 150]);
+    else this.vibe([100, 50, 100]);
+    // toast
+    const msg = level >= 80 ? "🔥 호감도 80 돌파! 진엔딩 임박" : level >= 60 ? "✨ 호감도 60 — TRUE 가능권" : "💖 호감도 40 — ROMANCE 가능";
+    this.toast(msg, "gain");
+    setTimeout(() => { burst.innerHTML = ""; }, 2000);
   },
 
   fmt(n) { return Math.round(n).toLocaleString("ko-KR"); },
