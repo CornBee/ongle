@@ -1896,13 +1896,13 @@ const game = {
       else if (flag.includes("betray") || flag.includes("alone") || flag.includes("sneaky")) tone = "tone-betray";
       else if (flag.includes("sacrifice") || flag.includes("help_yuna")) tone = "tone-sacrifice";
 
-      // hint — alloc + 예상 change_pct
+      // hint — alloc 박음. 호감도 음수 박지 X (예측 차단·서프라이즈)
       let hintParts = [];
       if (c.alloc > 0) hintParts.push("매수 " + Math.round(c.alloc * 100) + "%");
       else if (c.alloc < 0) hintParts.push("전량 매도");
       else hintParts.push("관망");
       if (c.aff > 0) hintParts.push("호감도 +" + c.aff);
-      else if (c.aff < 0) hintParts.push("호감도 " + c.aff);
+      // 음수 박지 X — 사용자 예측 X·선택 후 reaction 으로만 reveal
 
       const btn = document.createElement("button");
       btn.className = "md-option " + tone;
@@ -2495,14 +2495,15 @@ const game = {
     else if (aff <= -5)  this.vibe([60, 40, 60]);
   },
   showAffPopup(aff) {
+    // 음수 변동 popup 박지 X — 표정·reaction·진동·screen flash 만으로 reveal.
+    if (aff <= 0) return;
     const p = document.getElementById("aff-popup");
     if (!p) return;
-    const absV = Math.abs(aff);
-    let cls = aff >= 0 ? "pos" : "neg";
+    const absV = aff;
+    let cls = "pos";
     if (absV >= 15) cls += " huge";
     else if (absV >= 8) cls += " big";
-    // 큰 숫자만. emoji·부연 X.
-    p.textContent = (aff >= 0 ? "+" : "") + aff;
+    p.textContent = "+" + aff;
     p.className = "aff-popup";
     void p.offsetWidth;
     p.className = "aff-popup show " + cls;
