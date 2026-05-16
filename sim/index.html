@@ -1117,6 +1117,7 @@
 <!-- Audio (graceful — wav/mp3 없으면 catch) -->
 <audio id="bgm-audio" loop preload="none"></audio>
 <audio id="narration-audio" preload="none"></audio>
+<audio id="greeting-audio" preload="auto" src="voices/greeting.wav"></audio>
 
 <!-- 햄버거 메뉴 (fixed top-right — cover·game·ending 항상 표시) -->
 <button class="menu-toggle" onclick="game.toggleMenu(event)" aria-label="메뉴">
@@ -1134,9 +1135,6 @@
     <span class="icon">🏠</span><span>처음부터 다시</span>
   </button>
 </div>
-
-<!-- BGM hint — 첫 터치 유도 (cover 진입 후 1.5s fade in, 첫 user gesture 시 fade out) -->
-<div class="bgm-hint" id="bgm-hint">🔊 화면을 한 번 터치하면 음악이 시작돼요</div>
 
 <!-- Portrait reaction overlay — 큰 zoom 시 viewport 중앙 표시 -->
 <div class="reaction-overlay" id="reaction-overlay">
@@ -1696,8 +1694,9 @@ const game = {
       history.replaceState({ type: "cover" }, "", "#cover");
     } catch (e) {}
     try { gtag('event', 'sim_start', { event_category: 'sim' }); } catch (e) {}
-    // 첫 사용자 interaction — BGM autoplay (모바일 제약 해소)
+    // 첫 사용자 interaction — BGM autoplay (모바일 제약 해소) + greeting 동시 재생
     this.playBgm();
+    this.playGreeting();
     this.beginChapter();
   },
 
@@ -2721,6 +2720,19 @@ const game = {
     narr.volume = 0.92;
     narr.play().catch(()=>{});
   },
+  _greetingPlayed: false,
+  playGreeting() {
+    if (this._greetingPlayed) return;
+    if (!this.voiceEnabled) { this._greetingPlayed = true; return; }
+    const g = document.getElementById("greeting-audio");
+    if (!g) return;
+    g.volume = 0.95;
+    const p = g.play();
+    if (p && p.catch) {
+      p.catch(() => {});
+    }
+    this._greetingPlayed = true;
+  },
   toggleBgm() {
     this.bgmEnabled = !this.bgmEnabled;
     const bgm = document.getElementById("bgm-audio");
@@ -2807,56 +2819,65 @@ const game = {
 
 window.game = game;
 
-// Cover BGM autoplay — 페이지 진입 후 첫 user gesture (어디든 click·터치) 시 BGM 시작
-// 모바일 autoplay 정책 우회 — user gesture 시 audio.play() Promise resolved.
-(function bootBgmOnFirstGesture() {
-  let hintTimer = null;
-  function showHint() {
-    const hint = document.getElementById("bgm-hint");
-    if (hint) hint.classList.add("show");
-    // 자동 fade-out (5s)
-    hintTimer = setTimeout(() => {
-      if (hint) hint.classList.remove("show");
-    }, 5000);
-  }
-  function hideHint() {
-    if (hintTimer) { clearTimeout(hintTimer); hintTimer = null; }
-    const hint = document.getElementById("bgm-hint");
-    if (hint) hint.classList.remove("show");
-  }
-  function bootBgm() {
-    hideHint();
+// Cover BGM + greeting autoplay
+//  - 페이지 로드 즉시 play() 시도 (PWA standalone·이전 권한 부여 시 동작)
+//  - 모바일 autoplay 차단 시 silent fallback — 첫 user gesture (click·touch·scroll·key) 시 시작
+//  - 시각 hint 없음 (사용자 요청)
+(function bootBgmAutoOrFirstGesture() {
+  let booted = false;
+  function tryBoot(triggerLabel) {
+    if (booted) return;
     if (!window.game) {
-      console.log("[BGM boot] game not ready yet");
-      return;
-    }
-    if (!window.game.bgmEnabled) {
-      console.log("[BGM boot] muted by user");
+      console.log("[BGM boot] game not ready yet — " + triggerLabel);
       return;
     }
     const bgm = document.getElementById("bgm-audio");
-    if (!bgm) {
-      console.log("[BGM boot] no audio element");
-      return;
-    }
-    console.log("[BGM boot] user gesture detected, starting BGM");
-    if (bgm.paused) {
+    if (!bgm) return;
+    const wantBgm = !!window.game.bgmEnabled;
+    let bgmPromise = null;
+    if (wantBgm && bgm.paused) {
       try {
-        const p = window.game.playBgm();
-        if (p && p.catch) p.catch(err => console.log("[BGM boot] play() rejected:", err.message));
+        bgmPromise = window.game.playBgm();
       } catch (e) {
         console.log("[BGM boot] playBgm error:", e.message);
       }
     }
-    document.removeEventListener("click", bootBgm);
-    document.removeEventListener("touchstart", bootBgm);
-    document.removeEventListener("keydown", bootBgm);
+    // greeting 같이 시도 (한 번만)
+    try { window.game.playGreeting(); } catch (e) {}
+    if (bgmPromise && bgmPromise.then) {
+      bgmPromise.then(() => {
+        booted = true;
+        console.log("[BGM boot] autoplay success (" + triggerLabel + ")");
+        detach();
+      }).catch(err => {
+        console.log("[BGM boot] autoplay rejected (" + triggerLabel + "):", err && err.message);
+      });
+    } else {
+      // play() 동기 호출만 끝나도 booted 마킹 (gesture 경로)
+      booted = true;
+      detach();
+    }
   }
-  document.addEventListener("click", bootBgm, { once: true, passive: true });
-  document.addEventListener("touchstart", bootBgm, { once: true, passive: true });
-  document.addEventListener("keydown", bootBgm, { once: true });
-  // 1.5s 후 hint fade-in
-  setTimeout(showHint, 1500);
+  function onGesture() { tryBoot("gesture"); }
+  function detach() {
+    document.removeEventListener("click", onGesture);
+    document.removeEventListener("touchstart", onGesture);
+    document.removeEventListener("keydown", onGesture);
+    document.removeEventListener("scroll", onGesture);
+    window.removeEventListener("scroll", onGesture);
+  }
+  // (1) 즉시 시도 — DOM ready 직후
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(() => tryBoot("immediate"), 50);
+  } else {
+    document.addEventListener("DOMContentLoaded", () => setTimeout(() => tryBoot("immediate"), 50));
+  }
+  // (2) silent fallback — 첫 user gesture
+  document.addEventListener("click", onGesture, { passive: true });
+  document.addEventListener("touchstart", onGesture, { passive: true });
+  document.addEventListener("keydown", onGesture);
+  document.addEventListener("scroll", onGesture, { passive: true });
+  window.addEventListener("scroll", onGesture, { passive: true });
 })();
 
 // BGM auto-stop — 페이지 leave·hidden·엔딩 시 자동 정지
