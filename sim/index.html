@@ -1095,8 +1095,11 @@
       <div class="stat-pill" id="stat-asset-pill">
         💰 <span id="stat-asset">10,000,000</span>원
       </div>
-      <button class="audio-toggle" onclick="game.toggleAudio()" aria-label="음소거 토글">
-        <span id="audio-toggle-icon">🔊</span>
+      <button class="audio-toggle" onclick="game.toggleBgm()" aria-label="BGM 토글" id="audio-toggle-bgm">
+        <span id="audio-toggle-bgm-icon">🎵</span>
+      </button>
+      <button class="audio-toggle" onclick="game.toggleVoice()" aria-label="음성 토글" id="audio-toggle-voice">
+        <span id="audio-toggle-voice-icon">🎤</span>
       </button>
     </header>
 
@@ -1564,7 +1567,7 @@ const game = {
   tutIdx: 0,
   tutPages: [
     { icon: "💬", title: "대화로 호감도가 오릅니다", body: "유나와의 대화에서 어떤 선택지를 고르냐에 따라 호감도가 변합니다.\n호감도가 일정 수준 넘어야 진엔딩에 도달합니다." },
-    { icon: "📊", title: "KOSPI 결정이 챕터에 3회 등장", body: "상사 추천 매수·시장 패닉·마지막 결정. 매수·홀드·매도 중 하나를 선택.\n수익률이 엔딩 분기에 영향." },
+    { icon: "📊", title: "KOSPI 결정 3회 등장", body: "상사 추천 매수·시장 패닉·마지막 결정. 매수·홀드·매도 중 하나를 선택.\n수익률이 결말에 영향." },
     { icon: "🌸", title: "3가지 엔딩", body: "호감도 + 수익률 매트릭스로 엔딩 결정.\nTRUE / ROMANCE / SOLO 엔딩 중 하나." }
   ],
 
@@ -1637,11 +1640,22 @@ const game = {
     }
 
     // affinity_gate — SCENE 20·21 고백 임계값. 호감도 < min 이면 alt scene 박음.
+    // 박힘 정정: Object.assign 박으면 alt 박지 X 키 (choices·next 등) 가 원본 박힘 — narrative mismatch archetype.
+    // 명시적 override 박음: alt 박힌 키만 박음, 그 외 (choices·next·market·market_choice) 는 alt 박지 X 면 undefined.
     if (scene.if_affinity_below && s.affinity < scene.if_affinity_below.min) {
       const alt = scene.if_affinity_below;
-      // alt 박힌 임시 scene 으로 진행 (원본 scene 의 bg·bgIcon 유지)
-      scene = Object.assign({}, scene, alt);
-      // alt 가 choices 또는 next 박음 — 원본 if_affinity_below 키는 그대로 두되 사용 X
+      scene = {
+        bg: scene.bg, bgIcon: scene.bgIcon, label: scene.label,
+        face: alt.face !== undefined ? alt.face : scene.face,
+        speaker: alt.speaker !== undefined ? alt.speaker : scene.speaker,
+        text: alt.text !== undefined ? alt.text : scene.text,
+        choices: alt.choices,        // alt 박지 X 면 undefined (원본 choices 폐기)
+        next: alt.next,              // alt 박지 X 면 undefined
+        end: scene.end,
+        market: alt.market,
+        market_choice: alt.market_choice,
+        _is_alt: true                // 분기 marker
+      };
     }
 
     // History API — 뒤로가기 시 이전 scene 복원 가능. restoring 중에는 push X.
@@ -1978,11 +1992,15 @@ const game = {
 
   pickChoice(i) {
     const s = this.state;
-    const scene = CHAPTER_1[s.sceneIdx];
-    // affinity_gate 적용된 alt scene 일 수 있음 — 그 경우 alt.choices 박음
-    const useAlt = scene.if_affinity_below && s.affinity < scene.if_affinity_below.min;
-    const choiceList = useAlt ? scene.if_affinity_below.choices : scene.choices;
+    const sceneRaw = CHAPTER_1[s.sceneIdx];
+    // affinity_gate 박힐 때 — alt.choices 박음 (alt.choices 박지 X 면 fallback 원본)
+    const useAlt = sceneRaw.if_affinity_below && s.affinity < sceneRaw.if_affinity_below.min;
+    const choiceList = useAlt
+      ? (sceneRaw.if_affinity_below.choices || sceneRaw.choices)
+      : sceneRaw.choices;
+    if (!choiceList || !choiceList[i]) return;  // safety
     const choice = choiceList[i];
+    const scene = sceneRaw;  // 원본 scene 박음 (label 등 reference)
     const affBefore = s.affinity;
     s.affinity = Math.max(0, Math.min(100, s.affinity + choice.aff));
     if (choice.flag) s.flags[choice.flag] = true;
@@ -2522,14 +2540,15 @@ const game = {
     setTimeout(() => { burst.innerHTML = ""; }, 2000);
   },
 
-  // ========== Audio (BGM + narration) ==========
-  audioEnabled: true,
+  // ========== Audio (BGM + voice 각각 독립 toggle) ==========
+  bgmEnabled: true,
+  voiceEnabled: true,
   bgmUrl: "audio/sim_chapter_romance.wav",
   bgmTensionUrl: "audio/sim_chapter_tension.wav",
   bgmClimaxUrl: "audio/sim_chapter_climax.wav",
 
   playBgm(url) {
-    if (!this.audioEnabled) return;
+    if (!this.bgmEnabled) return;
     const bgm = document.getElementById("bgm-audio");
     if (!bgm) return;
     const target = url || this.bgmUrl;
@@ -2542,7 +2561,6 @@ const game = {
     bgm.play().catch(()=>{});
   },
   switchBgmFor(scene, sceneIdx) {
-    // MARKET = tension BGM. 후반 (SCENE 17+) climax. 그 외 romance.
     if (!scene) return;
     if (scene.market_choice || scene.market) {
       this.playBgm(this.bgmTensionUrl);
@@ -2553,29 +2571,39 @@ const game = {
     }
   },
   playNarration(sceneIdx) {
-    if (!this.audioEnabled) return;
+    if (!this.voiceEnabled) return;
     const narr = document.getElementById("narration-audio");
     if (!narr) return;
-    // 파일명 패턴 — voices/scene_NN.wav (없으면 graceful catch)
     const id = String(sceneIdx).padStart(2, "0");
     narr.src = "voices/scene_" + id + ".wav";
     narr.volume = 0.92;
     narr.play().catch(()=>{});
   },
-  toggleAudio() {
-    this.audioEnabled = !this.audioEnabled;
+  toggleBgm() {
+    this.bgmEnabled = !this.bgmEnabled;
     const bgm = document.getElementById("bgm-audio");
-    const narr = document.getElementById("narration-audio");
-    const icon = document.getElementById("audio-toggle-icon");
-    if (!this.audioEnabled) {
+    const icon = document.getElementById("audio-toggle-bgm-icon");
+    if (!this.bgmEnabled) {
       if (bgm) bgm.pause();
-      if (narr) narr.pause();
       if (icon) icon.textContent = "🔇";
     } else {
-      if (icon) icon.textContent = "🔊";
+      if (icon) icon.textContent = "🎵";
       this.playBgm();
     }
   },
+  toggleVoice() {
+    this.voiceEnabled = !this.voiceEnabled;
+    const narr = document.getElementById("narration-audio");
+    const icon = document.getElementById("audio-toggle-voice-icon");
+    if (!this.voiceEnabled) {
+      if (narr) narr.pause();
+      if (icon) icon.textContent = "🔇";
+    } else {
+      if (icon) icon.textContent = "🎤";
+    }
+  },
+  // legacy alias — 기존 호출 호환
+  toggleAudio() { this.toggleBgm(); },
 
   fmt(n) { return Math.round(n).toLocaleString("ko-KR"); },
   fmtPct(p) { return (p >= 0 ? "+" : "") + p.toFixed(1) + "%"; }
