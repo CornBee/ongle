@@ -2261,6 +2261,12 @@ const game = {
 
     this.show("screen-ending");
 
+    // 엔딩 도달 — BGM·narration 정지 (자동 stop)
+    const bgmEl = document.getElementById("bgm-audio");
+    const narrEl = document.getElementById("narration-audio");
+    if (bgmEl) bgmEl.pause();
+    if (narrEl) narrEl.pause();
+
     // 엔딩 진동 cue
     if (ending.tag === "TRUE ENDING") this.vibe([300, 100, 300, 100, 300]);
     else if (ending.tag === "JACKPOT ENDING") this.vibe([500, 100, 500]);
@@ -2781,6 +2787,34 @@ const game = {
 };
 
 window.game = game;
+
+// BGM auto-stop — 페이지 leave·hidden·엔딩 시 자동 정지
+window.addEventListener("beforeunload", function() {
+  const bgm = document.getElementById("bgm-audio");
+  const narr = document.getElementById("narration-audio");
+  if (bgm) bgm.pause();
+  if (narr) narr.pause();
+});
+window.addEventListener("pagehide", function() {
+  const bgm = document.getElementById("bgm-audio");
+  const narr = document.getElementById("narration-audio");
+  if (bgm) bgm.pause();
+  if (narr) narr.pause();
+});
+document.addEventListener("visibilitychange", function() {
+  const bgm = document.getElementById("bgm-audio");
+  const narr = document.getElementById("narration-audio");
+  if (document.hidden) {
+    if (bgm) bgm.pause();
+    if (narr) narr.pause();
+  } else {
+    // 다시 보임 — game 화면 진행 중이면 BGM 재생 (cover·ending 박힌 자리는 X)
+    const isGame = document.getElementById("screen-game") && document.getElementById("screen-game").classList.contains("active");
+    if (isGame && window.game && window.game.bgmEnabled) {
+      try { window.game.playBgm(); } catch (e) {}
+    }
+  }
+});
 
 // 브라우저 뒤로가기 / 앞으로가기 — cover · game scene 복원
 window.addEventListener("popstate", function(e) {
