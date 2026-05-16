@@ -2148,6 +2148,7 @@ const game = {
     speakerEl.className = isNarrator ? "speaker narrator" : "speaker";
     speakerEl.textContent = isNarrator ? "(나레이션)" : GAME.name;
     document.getElementById("dialog-text").textContent = choice.reply || "";
+    this.playReplyVoice(s.sceneIdx, i);
     const choicesEl = document.getElementById("choices");
     choicesEl.innerHTML = "";
 
@@ -2701,6 +2702,15 @@ const game = {
     if (!narr) return;
     const id = String(sceneIdx).padStart(2, "0");
     narr.src = "voices/scene_" + id + ".wav";
+    narr.volume = 0.92;
+    narr.play().catch(()=>{});
+  },
+  playReplyVoice(sceneIdx, choiceIdx) {
+    if (!this.voiceEnabled) return;
+    const narr = document.getElementById("narration-audio");
+    if (!narr) return;
+    const id = String(sceneIdx).padStart(2, "0");
+    narr.src = "voices/reply_" + id + "_" + choiceIdx + ".wav";
     narr.volume = 0.92;
     narr.play().catch(()=>{});
   },
