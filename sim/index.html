@@ -263,35 +263,37 @@
     flex-shrink: 0;
     z-index: 5;
   }
-  /* === Hamburger menu (자산 옆 inline) — 햄버거·dropdown·confirm === */
+  /* === Hamburger menu (fixed top-right — cover·game·ending 항상 표시) === */
   .menu-toggle {
-    width: 30px; height: 30px;
+    position: fixed;
+    top: 0.8em; right: 0.8em;
+    width: 46px; height: 46px;  /* 모바일 친화 44px+ */
     border-radius: 50%;
-    background: #fff5f5;
-    border: 1px solid #ffe0e0;
-    font-size: 1em;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 224, 224, 0.6);
+    font-size: 1.2em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.1s;
-    margin-left: 0.3em;
-    flex-shrink: 0;
+    transition: transform 0.1s, box-shadow 0.2s;
     padding: 0;
-    position: relative;
+    z-index: 250;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18);
   }
-  .menu-toggle:active { transform: scale(0.88); }
+  .menu-toggle:active { transform: scale(0.92); }
   .menu-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0.7em;
+    position: fixed;
+    top: calc(0.8em + 46px + 0.4em);
+    right: 0.8em;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
     border: 1px solid var(--rule);
     padding: 0.4em;
-    min-width: 200px;
-    z-index: 80;
+    min-width: 210px;
+    z-index: 251;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-4px);
@@ -1116,6 +1118,26 @@
 <audio id="bgm-audio" loop preload="none"></audio>
 <audio id="narration-audio" preload="none"></audio>
 
+<!-- 햄버거 메뉴 (fixed top-right — cover·game·ending 항상 표시) -->
+<button class="menu-toggle" onclick="game.toggleMenu(event)" aria-label="메뉴">
+  <span>☰</span>
+</button>
+<div class="menu-dropdown" id="menu-dropdown">
+  <button class="menu-item" onclick="game.toggleBgm()" id="menu-bgm">
+    <span class="icon">🎵</span><span>BGM</span><span class="state" id="menu-bgm-state">켜짐</span>
+  </button>
+  <button class="menu-item" onclick="game.toggleVoice()" id="menu-voice">
+    <span class="icon">🎤</span><span>음성</span><span class="state" id="menu-voice-state">켜짐</span>
+  </button>
+  <div class="menu-divider"></div>
+  <button class="menu-item danger" onclick="game.confirmRestart()">
+    <span class="icon">🏠</span><span>처음부터 다시</span>
+  </button>
+</div>
+
+<!-- BGM hint — 첫 터치 유도 (cover 진입 후 1.5s fade in, 첫 user gesture 시 fade out) -->
+<div class="bgm-hint" id="bgm-hint">🔊 화면을 한 번 터치하면 음악이 시작돼요</div>
+
 <!-- Portrait reaction overlay — 큰 zoom 시 viewport 중앙 표시 -->
 <div class="reaction-overlay" id="reaction-overlay">
   <span class="reaction-overlay-emoji" id="reaction-overlay-emoji">🌸</span>
@@ -1198,21 +1220,6 @@
       <div class="affinity-bar"><div class="affinity-fill" id="affinity-fill" style="width:30%"></div></div>
       <div class="stat-pill" id="stat-asset-pill">
         💰 <span id="stat-asset">10,000,000</span>원
-      </div>
-      <button class="menu-toggle" onclick="game.toggleMenu(event)" aria-label="메뉴">
-        <span>☰</span>
-      </button>
-      <div class="menu-dropdown" id="menu-dropdown">
-        <button class="menu-item" onclick="game.toggleBgm()" id="menu-bgm">
-          <span class="icon">🎵</span><span>BGM</span><span class="state" id="menu-bgm-state">켜짐</span>
-        </button>
-        <button class="menu-item" onclick="game.toggleVoice()" id="menu-voice">
-          <span class="icon">🎤</span><span>음성</span><span class="state" id="menu-voice-state">켜짐</span>
-        </button>
-        <div class="menu-divider"></div>
-        <button class="menu-item danger" onclick="game.confirmRestart()">
-          <span class="icon">🏠</span><span>처음부터 다시</span>
-        </button>
       </div>
     </header>
 
@@ -2801,15 +2808,45 @@ const game = {
 window.game = game;
 
 // Cover BGM autoplay — 페이지 진입 후 첫 user gesture (어디든 click·터치) 시 BGM 시작
-// 모바일 autoplay 정책 우회 — user gesture 박힌 자리 audio.play() Promise resolved.
+// 모바일 autoplay 정책 우회 — user gesture 시 audio.play() Promise resolved.
 (function bootBgmOnFirstGesture() {
+  let hintTimer = null;
+  function showHint() {
+    const hint = document.getElementById("bgm-hint");
+    if (hint) hint.classList.add("show");
+    // 자동 fade-out (5s)
+    hintTimer = setTimeout(() => {
+      if (hint) hint.classList.remove("show");
+    }, 5000);
+  }
+  function hideHint() {
+    if (hintTimer) { clearTimeout(hintTimer); hintTimer = null; }
+    const hint = document.getElementById("bgm-hint");
+    if (hint) hint.classList.remove("show");
+  }
   function bootBgm() {
-    if (!window.game) return;
-    if (!window.game.bgmEnabled) return;
+    hideHint();
+    if (!window.game) {
+      console.log("[BGM boot] game not ready yet");
+      return;
+    }
+    if (!window.game.bgmEnabled) {
+      console.log("[BGM boot] muted by user");
+      return;
+    }
     const bgm = document.getElementById("bgm-audio");
-    if (!bgm) return;
+    if (!bgm) {
+      console.log("[BGM boot] no audio element");
+      return;
+    }
+    console.log("[BGM boot] user gesture detected, starting BGM");
     if (bgm.paused) {
-      try { window.game.playBgm(); } catch (e) {}
+      try {
+        const p = window.game.playBgm();
+        if (p && p.catch) p.catch(err => console.log("[BGM boot] play() rejected:", err.message));
+      } catch (e) {
+        console.log("[BGM boot] playBgm error:", e.message);
+      }
     }
     document.removeEventListener("click", bootBgm);
     document.removeEventListener("touchstart", bootBgm);
@@ -2818,6 +2855,8 @@ window.game = game;
   document.addEventListener("click", bootBgm, { once: true, passive: true });
   document.addEventListener("touchstart", bootBgm, { once: true, passive: true });
   document.addEventListener("keydown", bootBgm, { once: true });
+  // 1.5s 후 hint fade-in
+  setTimeout(showHint, 1500);
 })();
 
 // BGM auto-stop — 페이지 leave·hidden·엔딩 시 자동 정지
