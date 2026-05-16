@@ -341,28 +341,32 @@
     100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(540deg) scale(0.7); }
   }
 
-  /* === Yuna portrait inset (dialog box 옆 — 표정 swap) === */
+  /* === Yuna portrait inset (dialog box 옆 — 표정 swap, 크게 박힘) === */
   .yuna-portrait {
     position: absolute;
-    top: -38px;
+    top: -72px;
     left: 0.9em;
-    width: 72px; height: 72px;
+    width: 144px; height: 144px;
     border-radius: 50%;
-    border: 3px solid var(--accent);
+    border: 4px solid var(--accent);
     background: #fff5f5;
     overflow: hidden;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-    z-index: 3;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    z-index: 2;
+    pointer-events: none;  /* 아래 button 클릭 가리지 X */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2em;
+    font-size: 4.4em;
     transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.3s ease;
   }
   .yuna-portrait.bump { animation: portraitBump 0.45s ease; }
   @keyframes portraitBump {
     0%, 100% { transform: scale(1); }
-    40%      { transform: scale(1.22); }
+    40%      { transform: scale(1.18); }
+  }
+  @media (max-width: 380px) {
+    .yuna-portrait { width: 120px; height: 120px; top: -60px; font-size: 3.8em; }
   }
   .yuna-portrait img {
     width: 100%; height: 100%;
@@ -462,7 +466,7 @@
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
     border-top: 3px solid var(--accent);
-    padding: 2.2em 1.1em 1.4em;  /* portrait inset 자리 박음 */
+    padding: 4.2em 1.1em 1.4em;  /* portrait inset 자리 박음 (144px) */
     flex: 1 0 auto;
     /* max-height 폐기 — 자연 높이. 페이지 스크롤로 선택지 다 도달. */
   }
@@ -498,6 +502,8 @@
     text-align: left;
     transition: all 0.12s;
     line-height: 1.4;
+    position: relative;
+    z-index: 5;
   }
   .choice-btn:hover, .choice-btn:active {
     background: var(--accent);
@@ -590,6 +596,8 @@
     font-size: 0.92em;
     transition: transform 0.08s;
     line-height: 1.25;
+    position: relative;
+    z-index: 5;
   }
   .trade-btn small { font-size: 0.72em; font-weight: 500; display: block; opacity: 0.85; margin-top: 0.15em; }
   .trade-btn:active { transform: scale(0.96); }
@@ -1281,7 +1289,10 @@ const game = {
   ],
 
   start() {
-    // 인트로 페이지 폐기 — cover-sub 한 줄에 핵심 룰 박힘. 즉시 게임 진입.
+    // cover history entry 박음 — 뒤로가기 끝까지 가면 cover 복귀
+    try {
+      history.replaceState({ type: "cover" }, "", "#cover");
+    } catch (e) {}
     try { gtag('event', 'sim_start', { event_category: 'sim' }); } catch (e) {}
     this.beginChapter();
   },
@@ -1313,11 +1324,11 @@ const game = {
       ]
     };
     this.show("screen-game");
-    // 게임 시작 marker — 뒤로가기 시 cover 페이지 가지 말고 시작 scene 유지
+    // 게임 첫 scene marker — cover replaceState 위로 pushState 박음 (뒤로가기 시 cover 복귀)
     try {
-      history.replaceState({ sceneIdx: 0, snap: JSON.parse(JSON.stringify(this.state)) }, "", "#s0");
+      history.pushState({ type: "game", sceneIdx: 0, snap: JSON.parse(JSON.stringify(this.state)) }, "", "#s0");
     } catch (e) {}
-    this.renderScene();
+    this.renderScene({ restoring: true });  // 이미 pushState 박았으므로 renderScene 안에서 다시 push 박지 X
   },
 
   // popstate (뒤로가기·앞으로가기) — 이전 scene state 복원
@@ -1356,10 +1367,10 @@ const game = {
       const snapshot = JSON.parse(JSON.stringify(s));  // deep clone
       const url = "#s" + s.sceneIdx;
       try {
-        if (history.state && history.state.sceneIdx === s.sceneIdx) {
-          history.replaceState({ sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
+        if (history.state && history.state.type === "game" && history.state.sceneIdx === s.sceneIdx) {
+          history.replaceState({ type: "game", sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
         } else {
-          history.pushState({ sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
+          history.pushState({ type: "game", sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
         }
       } catch (e) {}
     }
@@ -2146,9 +2157,18 @@ const game = {
 
 window.game = game;
 
-// 브라우저 뒤로가기 / 앞으로가기 — 이전 scene state 복원
+// 브라우저 뒤로가기 / 앞으로가기 — cover · game scene 복원
 window.addEventListener("popstate", function(e) {
-  if (e.state && typeof e.state.sceneIdx === "number" && e.state.snap) {
+  if (!e.state) {
+    // state 박힘 안 박힘 — 그냥 cover 박음 (가장 안전)
+    game.show("screen-cover");
+    return;
+  }
+  if (e.state.type === "cover") {
+    game.show("screen-cover");
+    return;
+  }
+  if (e.state.type === "game" && typeof e.state.sceneIdx === "number" && e.state.snap) {
     game.restoreFromHistory(e.state);
   }
 });
