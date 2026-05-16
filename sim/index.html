@@ -263,8 +263,8 @@
     flex-shrink: 0;
     z-index: 5;
   }
-  /* === Audio mute button (inline in status bar) === */
-  .audio-toggle {
+  /* === Hamburger menu (자산 옆 inline) — 햄버거·dropdown·confirm === */
+  .menu-toggle {
     width: 30px; height: 30px;
     border-radius: 50%;
     background: #fff5f5;
@@ -275,11 +275,103 @@
     justify-content: center;
     cursor: pointer;
     transition: transform 0.1s;
-    margin-left: 0.2em;
+    margin-left: 0.3em;
     flex-shrink: 0;
     padding: 0;
+    position: relative;
   }
-  .audio-toggle:active { transform: scale(0.88); }
+  .menu-toggle:active { transform: scale(0.88); }
+  .menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0.7em;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    border: 1px solid var(--rule);
+    padding: 0.4em;
+    min-width: 200px;
+    z-index: 80;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .menu-dropdown.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.7em 0.9em;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    color: var(--ink);
+    font-size: 0.96em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .menu-item:hover { background: #fff5f5; }
+  .menu-item.danger { color: var(--accent); }
+  .menu-item .icon { font-size: 1.1em; width: 22px; text-align: center; }
+  .menu-item .state { margin-left: auto; font-size: 0.84em; color: var(--muted); font-weight: 600; }
+  .menu-divider { height: 1px; background: var(--rule); margin: 0.3em 0; }
+
+  /* Confirm dialog */
+  .confirm-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.4em;
+  }
+  .confirm-backdrop.show { display: flex; }
+  .confirm-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.6em 1.4em 1.2em;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+  }
+  .confirm-title {
+    font-size: 1.15em;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 0.3em;
+  }
+  .confirm-body {
+    color: var(--ink-soft);
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 1.2em;
+  }
+  .confirm-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5em;
+  }
+  .confirm-btn {
+    padding: 0.85em;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    font-size: 0.96em;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .confirm-btn.ghost { background: #f0f0f0; color: var(--ink); }
+  .confirm-btn.primary { background: var(--accent); color: white; }
+  .confirm-btn:active { transform: scale(0.97); }
 
   .stat-pill {
     display: flex;
@@ -1030,6 +1122,18 @@
   <img id="reaction-overlay-img" alt="" style="display:none" />
 </div>
 
+<!-- Confirm dialog — destructive 액션 (홈 복귀 등) 박힌 자리 -->
+<div class="confirm-backdrop" id="confirm-backdrop" onclick="game.confirmCancel(event)">
+  <div class="confirm-box" onclick="event.stopPropagation()">
+    <div class="confirm-title" id="confirm-title">처음부터 다시?</div>
+    <div class="confirm-body" id="confirm-body">현재 진행 상황이 모두 사라집니다.</div>
+    <div class="confirm-buttons">
+      <button class="confirm-btn ghost" onclick="game.confirmCancel()">취소</button>
+      <button class="confirm-btn primary" id="confirm-ok" onclick="game.confirmOk()">처음으로</button>
+    </div>
+  </div>
+</div>
+
 <div id="app">
 
   <!-- ===== Cover ===== -->
@@ -1095,12 +1199,21 @@
       <div class="stat-pill" id="stat-asset-pill">
         💰 <span id="stat-asset">10,000,000</span>원
       </div>
-      <button class="audio-toggle" onclick="game.toggleBgm()" aria-label="BGM 토글" id="audio-toggle-bgm">
-        <span id="audio-toggle-bgm-icon">🎵</span>
+      <button class="menu-toggle" onclick="game.toggleMenu(event)" aria-label="메뉴">
+        <span>☰</span>
       </button>
-      <button class="audio-toggle" onclick="game.toggleVoice()" aria-label="음성 토글" id="audio-toggle-voice">
-        <span id="audio-toggle-voice-icon">🎤</span>
-      </button>
+      <div class="menu-dropdown" id="menu-dropdown">
+        <button class="menu-item" onclick="game.toggleBgm()" id="menu-bgm">
+          <span class="icon">🎵</span><span>BGM</span><span class="state" id="menu-bgm-state">켜짐</span>
+        </button>
+        <button class="menu-item" onclick="game.toggleVoice()" id="menu-voice">
+          <span class="icon">🎤</span><span>음성</span><span class="state" id="menu-voice-state">켜짐</span>
+        </button>
+        <div class="menu-divider"></div>
+        <button class="menu-item danger" onclick="game.confirmRestart()">
+          <span class="icon">🏠</span><span>처음부터 다시</span>
+        </button>
+      </div>
     </header>
 
     <div class="scene-area" id="scene-area">
@@ -2582,28 +2695,82 @@ const game = {
   toggleBgm() {
     this.bgmEnabled = !this.bgmEnabled;
     const bgm = document.getElementById("bgm-audio");
-    const icon = document.getElementById("audio-toggle-bgm-icon");
+    const state = document.getElementById("menu-bgm-state");
     if (!this.bgmEnabled) {
       if (bgm) bgm.pause();
-      if (icon) icon.textContent = "🔇";
+      if (state) state.textContent = "꺼짐";
     } else {
-      if (icon) icon.textContent = "🎵";
+      if (state) state.textContent = "켜짐";
       this.playBgm();
     }
   },
   toggleVoice() {
     this.voiceEnabled = !this.voiceEnabled;
     const narr = document.getElementById("narration-audio");
-    const icon = document.getElementById("audio-toggle-voice-icon");
+    const state = document.getElementById("menu-voice-state");
     if (!this.voiceEnabled) {
       if (narr) narr.pause();
-      if (icon) icon.textContent = "🔇";
+      if (state) state.textContent = "꺼짐";
     } else {
-      if (icon) icon.textContent = "🎤";
+      if (state) state.textContent = "켜짐";
     }
   },
-  // legacy alias — 기존 호출 호환
   toggleAudio() { this.toggleBgm(); },
+
+  // 햄버거 메뉴 + confirm dialog
+  toggleMenu(ev) {
+    if (ev) ev.stopPropagation();
+    const dd = document.getElementById("menu-dropdown");
+    if (!dd) return;
+    dd.classList.toggle("show");
+    // 한 번만 박은 outside-click listener
+    if (!this._menuClickListener) {
+      this._menuClickListener = (e) => {
+        const dd2 = document.getElementById("menu-dropdown");
+        const tg = document.querySelector(".menu-toggle");
+        if (!dd2) return;
+        if (!dd2.contains(e.target) && tg && !tg.contains(e.target)) {
+          dd2.classList.remove("show");
+        }
+      };
+      document.addEventListener("click", this._menuClickListener);
+    }
+  },
+  closeMenu() {
+    const dd = document.getElementById("menu-dropdown");
+    if (dd) dd.classList.remove("show");
+  },
+  confirmRestart() {
+    this.closeMenu();
+    const back = document.getElementById("confirm-backdrop");
+    if (back) back.classList.add("show");
+  },
+  confirmCancel(ev) {
+    if (ev && ev.target && !ev.target.classList.contains("confirm-backdrop")) {
+      // backdrop click 만 cancel — 박스 안 click 은 event.stopPropagation 박힘
+      if (ev.target.classList && ev.target.classList.contains("confirm-btn")) {
+        // ghost cancel button — proceed
+      } else if (ev.type) {
+        return;
+      }
+    }
+    const back = document.getElementById("confirm-backdrop");
+    if (back) back.classList.remove("show");
+  },
+  confirmOk() {
+    const back = document.getElementById("confirm-backdrop");
+    if (back) back.classList.remove("show");
+    // 홈 복귀 — cover state push (뒤로가기로 game scene 복원 차단)
+    try {
+      history.pushState({ type: "cover" }, "", "#cover");
+    } catch (e) {}
+    // BGM 정지 (cover 진입 시 자연)
+    const bgm = document.getElementById("bgm-audio");
+    if (bgm) bgm.pause();
+    const narr = document.getElementById("narration-audio");
+    if (narr) narr.pause();
+    this.show("screen-cover");
+  },
 
   fmt(n) { return Math.round(n).toLocaleString("ko-KR"); },
   fmtPct(p) { return (p >= 0 ? "+" : "") + p.toFixed(1) + "%"; }
