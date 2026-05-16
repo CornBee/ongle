@@ -410,29 +410,29 @@
   /* === Yuna portrait inset (dialog box 옆 — 표정 swap, 크게 박힘) === */
   .yuna-portrait {
     position: absolute;
-    top: -72px;
+    top: -90px;
     left: 0.9em;
-    width: 144px; height: 144px;
+    width: 180px; height: 180px;
     border-radius: 50%;
     border: 4px solid var(--accent);
     background: #fff5f5;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
     z-index: 2;
-    pointer-events: none;  /* 아래 button 클릭 가리지 X */
+    pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4.4em;
+    font-size: 5.4em;
     transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.3s ease;
   }
   .yuna-portrait.bump { animation: portraitBump 0.45s ease; }
   @keyframes portraitBump {
     0%, 100% { transform: scale(1); }
-    40%      { transform: scale(1.18); }
+    40%      { transform: scale(1.16); }
   }
   @media (max-width: 380px) {
-    .yuna-portrait { width: 120px; height: 120px; top: -60px; font-size: 3.8em; }
+    .yuna-portrait { width: 150px; height: 150px; top: -75px; font-size: 4.6em; }
   }
   .yuna-portrait img {
     width: 100%; height: 100%;
@@ -532,7 +532,7 @@
     background: rgba(255,255,255,0.97);
     backdrop-filter: blur(10px);
     border-top: 3px solid var(--accent);
-    padding: 4.2em 1.1em 1.4em;  /* portrait inset 자리 박음 (144px) */
+    padding: 5.4em 1.1em 1.4em;  /* portrait inset 자리 박음 (180px) */
     flex: 1 0 auto;
     /* max-height 폐기 — 자연 높이. 페이지 스크롤로 선택지 다 도달. */
   }
@@ -1488,6 +1488,9 @@ const game = {
     // 캐릭터 — emoji fallback + 일러스트 PNG swap (있으면) + portrait 동기화
     document.getElementById("character-emoji").textContent = FACE[scene.face] || FACE.default;
     this.setPortrait(scene.face || "default");
+
+    // BGM scene 별 switch
+    this.switchBgmFor(scene, s.sceneIdx);
     const charEl = document.getElementById("character-display");
     const charImg = document.getElementById("character-img");
     if (asset.scene) {
@@ -2236,15 +2239,16 @@ const game = {
     else if (level >= 60) this.vibe([150, 80, 150]);
     else this.vibe([100, 50, 100]);
     // toast
-    const msg = level >= 80 ? "🔥 호감도 80 돌파! 진엔딩 임박" : level >= 60 ? "✨ 호감도 60 — TRUE 가능권" : "💖 호감도 40 — ROMANCE 가능";
+    const msg = level >= 80 ? "🔥 80!" : level >= 60 ? "✨ 60" : "💖 40";
     this.toast(msg, "gain");
     setTimeout(() => { burst.innerHTML = ""; }, 2000);
   },
 
   // ========== Audio (BGM + narration) ==========
   audioEnabled: true,
-  bgmUrl: "assets/bgm/chapter_romance.mp3",
-  bgmTensionUrl: "assets/bgm/chapter_tension.mp3",
+  bgmUrl: "audio/sim_chapter_romance.wav",
+  bgmTensionUrl: "audio/sim_chapter_tension.wav",
+  bgmClimaxUrl: "audio/sim_chapter_climax.wav",
 
   playBgm(url) {
     if (!this.audioEnabled) return;
@@ -2259,11 +2263,16 @@ const game = {
     bgm.volume = 0.32;
     bgm.play().catch(()=>{});
   },
-  switchBgmFor(scene) {
-    // MARKET 결정 = tension BGM, 그 외 romance
+  switchBgmFor(scene, sceneIdx) {
+    // MARKET = tension BGM. 후반 (SCENE 17+) climax. 그 외 romance.
     if (!scene) return;
-    if (scene.market_choice || scene.market) this.playBgm(this.bgmTensionUrl);
-    else this.playBgm(this.bgmUrl);
+    if (scene.market_choice || scene.market) {
+      this.playBgm(this.bgmTensionUrl);
+    } else if (typeof sceneIdx === "number" && sceneIdx >= 17) {
+      this.playBgm(this.bgmClimaxUrl);
+    } else {
+      this.playBgm(this.bgmUrl);
+    }
   },
   playNarration(sceneIdx) {
     if (!this.audioEnabled) return;
