@@ -2790,6 +2790,26 @@ const game = {
 
 window.game = game;
 
+// Cover BGM autoplay — 페이지 진입 후 첫 user gesture (어디든 click·터치) 시 BGM 시작
+// 모바일 autoplay 정책 우회 — user gesture 박힌 자리 audio.play() Promise resolved.
+(function bootBgmOnFirstGesture() {
+  function bootBgm() {
+    if (!window.game) return;
+    if (!window.game.bgmEnabled) return;
+    const bgm = document.getElementById("bgm-audio");
+    if (!bgm) return;
+    if (bgm.paused) {
+      try { window.game.playBgm(); } catch (e) {}
+    }
+    document.removeEventListener("click", bootBgm);
+    document.removeEventListener("touchstart", bootBgm);
+    document.removeEventListener("keydown", bootBgm);
+  }
+  document.addEventListener("click", bootBgm, { once: true, passive: true });
+  document.addEventListener("touchstart", bootBgm, { once: true, passive: true });
+  document.addEventListener("keydown", bootBgm, { once: true });
+})();
+
 // BGM auto-stop — 페이지 leave·hidden·엔딩 시 자동 정지
 window.addEventListener("beforeunload", function() {
   const bgm = document.getElementById("bgm-audio");
