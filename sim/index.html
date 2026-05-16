@@ -298,6 +298,24 @@
     flex-shrink: 0;
     z-index: 5;
   }
+  /* === Audio mute button (inline in status bar) === */
+  .audio-toggle {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #fff5f5;
+    border: 1px solid #ffe0e0;
+    font-size: 1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin-left: 0.2em;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .audio-toggle:active { transform: scale(0.88); }
+
   .stat-pill {
     display: flex;
     align-items: center;
@@ -455,36 +473,68 @@
     0%, 100% { transform: scale(1); }
     40%      { transform: scale(1.16); }
   }
-  /* Reaction zoom — 큼지막 jump out·hold·smooth return */
-  .yuna-portrait.reacting {
-    animation: portraitReaction 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
-    z-index: 100;
+  /* Reaction overlay — viewport 중앙 zoom·hold·fade out (별도 element) */
+  .reaction-overlay {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 240px; height: 240px;
+    transform: translate(-50%, -50%) scale(0.3);
+    border-radius: 50%;
+    border: 5px solid var(--accent);
+    background: #fff5f5;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7em;
   }
-  .yuna-portrait.reacting.big {
-    animation: portraitReactionBig 1700ms cubic-bezier(.3,1.4,.4,1) forwards;
-    z-index: 100;
+  .reaction-overlay img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
-  @keyframes portraitReaction {
-    0%   { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
-    18%  { transform: scale(1.85) translateY(-18px); box-shadow: 0 18px 50px rgba(255,107,107,0.45); }
-    62%  { transform: scale(1.85) translateY(-18px); }
-    100% { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+  .reaction-overlay.show {
+    animation: reactionOverlayPop 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
   }
-  @keyframes portraitReactionBig {
-    0%   { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); border-color: var(--accent); }
-    14%  { transform: scale(2.25) translateY(-32px); box-shadow: 0 24px 70px rgba(255,140,0,0.6); border-color: #ffd093; }
-    66%  { transform: scale(2.25) translateY(-32px); border-color: #ffd093; }
-    100% { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); border-color: var(--accent); }
+  .reaction-overlay.show.big {
+    animation: reactionOverlayPopBig 1700ms cubic-bezier(.3,1.4,.4,1) forwards;
+    border-color: #ffd093;
+    box-shadow: 0 24px 80px rgba(255,140,0,0.6);
   }
-  .yuna-portrait.reacting.cold {
-    animation: portraitReactionCold 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
-    z-index: 100;
+  .reaction-overlay.show.cold {
+    animation: reactionOverlayPopCold 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
+    filter: grayscale(0.5) brightness(0.9);
+    border-color: #6b7a8a;
+    box-shadow: 0 24px 70px rgba(70,90,120,0.5);
   }
-  @keyframes portraitReactionCold {
-    0%   { transform: scale(1) translateY(0);    filter: none; border-color: var(--accent); }
-    18%  { transform: scale(1.85) translateY(-18px); filter: grayscale(0.4) brightness(0.92); border-color: #6b7a8a; box-shadow: 0 18px 50px rgba(70,90,120,0.5); }
-    62%  { transform: scale(1.85) translateY(-18px); filter: grayscale(0.4) brightness(0.92); border-color: #6b7a8a; }
-    100% { transform: scale(1) translateY(0);    filter: none; border-color: var(--accent); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+  @keyframes reactionOverlayPop {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    25%  { transform: translate(-50%, -50%) scale(1); }
+    72%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  }
+  @keyframes reactionOverlayPopBig {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    12%  { opacity: 1; transform: translate(-50%, -50%) scale(1.25); }
+    22%  { transform: translate(-50%, -50%) scale(1.1); }
+    72%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  }
+  @keyframes reactionOverlayPopCold {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+    25%  { transform: translate(-50%, -50%) scale(0.98); }
+    72%  { opacity: 1; transform: translate(-50%, -50%) scale(0.98); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  }
+  @media (max-width: 380px) {
+    .reaction-overlay { width: 200px; height: 200px; font-size: 6em; }
   }
   @media (max-width: 380px) {
     .yuna-portrait { width: 150px; height: 150px; top: -75px; font-size: 4.6em; }
@@ -897,9 +947,12 @@
 <!-- Audio (graceful — wav/mp3 없으면 catch) -->
 <audio id="bgm-audio" loop preload="none"></audio>
 <audio id="narration-audio" preload="none"></audio>
-<button class="audio-toggle" onclick="game.toggleAudio()" aria-label="음소거 토글">
-  <span id="audio-toggle-icon">🔊</span>
-</button>
+
+<!-- Portrait reaction overlay — 큰 zoom 시 viewport 중앙 표시 -->
+<div class="reaction-overlay" id="reaction-overlay">
+  <span class="reaction-overlay-emoji" id="reaction-overlay-emoji">🌸</span>
+  <img id="reaction-overlay-img" alt="" style="display:none" />
+</div>
 
 <div id="app">
 
@@ -973,6 +1026,9 @@
       <div class="stat-pill" id="stat-asset-pill">
         💰 <span id="stat-asset">10,000,000</span>원
       </div>
+      <button class="audio-toggle" onclick="game.toggleAudio()" aria-label="음소거 토글">
+        <span id="audio-toggle-icon">🔊</span>
+      </button>
     </header>
 
     <div class="scene-area" id="scene-area">
@@ -2155,11 +2211,29 @@ const game = {
     const s = this.state;
     const finalAsset = s.cash + s.shares * s.kospi;
     const returnPct = (finalAsset - GAME.start_cash) / GAME.start_cash * 100;
-    const txt = `[유나와의 봄] 호감도 ${s.affinity} · 수익률 ${returnPct >= 0 ? "+" : ""}${returnPct.toFixed(1)}% — ONGLE 미연시 투자 시뮬\nhttps://cornbee.github.io/ongle/sim/`;
+    const aff = s.affinity;
+    const affPctile = this.percentileForAffinity(aff);
+    const retPctile = this.percentileForReturn(returnPct);
+
+    // 엔딩 emoji prefix
+    let prefix = "";
+    if (returnPct >= 100 && aff < 40)            prefix = "🤑 JACKPOT · ";
+    else if (s.flags.confess_yes && aff >= 60 && returnPct >= 1) prefix = "🥰 TRUE ENDING · ";
+    else if (s.flags.confess_yes && aff >= 40)   prefix = "🌸 ROMANCE · ";
+    else if (returnPct >= 50 && aff < 40)        prefix = "📈 BULL RUN · ";
+    else if (aff >= 20 && (s.flags.chapter_friend_close || s.flags.confess_no || s.flags.confess_wait)) prefix = "☺️ FRIEND · ";
+    else if (finalAsset < GAME.start_cash * 0.8) prefix = "💸 WIPED OUT · ";
+    else                                          prefix = "😢 SOLO · ";
+
+    const text = `${prefix}호감도 ${aff} (상위 ${affPctile}%) · 수익률 ${returnPct >= 0 ? "+" : ""}${returnPct.toFixed(1)}% (상위 ${retPctile}%) — ONGLE 미연시 투자 시뮬`;
+    const url = "https://cornbee.github.io/ongle/sim/";
+
     if (navigator.share) {
-      navigator.share({ title: "유나와의 봄", text: txt, url: "https://cornbee.github.io/ongle/sim/" }).catch(()=>{});
+      // text 안 URL 박지 X — url field 박힘. 중복 회피.
+      navigator.share({ title: "유나와의 봄", text: text, url: url }).catch(()=>{});
     } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(txt);
+      // clipboard fallback — text + url 박음 (한 번만)
+      navigator.clipboard.writeText(text + "\n" + url);
       this.toast("결과 복사됨", "gain");
     }
   },
@@ -2277,21 +2351,36 @@ const game = {
     portrait.classList.add("bump");
   },
 
-  // Reaction zoom — 큰 변동 시 portrait scale up·hold·smooth return
+  // Reaction overlay — viewport 중앙 큰 portrait zoom·hold·fade out
   triggerPortraitReaction(intensity) {
-    const portrait = document.getElementById("yuna-portrait");
-    if (!portrait) return;
-    portrait.classList.remove("reacting", "big", "cold");
-    void portrait.offsetWidth;  // reflow restart
-    let cls = "reacting";
+    const overlay = document.getElementById("reaction-overlay");
+    if (!overlay) return;
+    // 현재 portrait 박힌 표정 src 가져옴 (이미 swapped)
+    const portraitImg = document.getElementById("yuna-portrait-img");
+    const portraitEmoji = document.getElementById("yuna-portrait-emoji");
+    const overlayImg = document.getElementById("reaction-overlay-img");
+    const overlayEmoji = document.getElementById("reaction-overlay-emoji");
+    if (portraitImg && portraitImg.src && portraitImg.classList.contains("loaded")) {
+      overlayImg.src = portraitImg.src;
+      overlayImg.style.display = "block";
+      if (overlayEmoji) overlayEmoji.style.display = "none";
+    } else {
+      if (overlayImg) overlayImg.style.display = "none";
+      if (overlayEmoji) {
+        overlayEmoji.style.display = "block";
+        overlayEmoji.textContent = portraitEmoji ? portraitEmoji.textContent : "🌸";
+      }
+    }
+    overlay.classList.remove("show", "big", "cold");
+    void overlay.offsetWidth;
+    let cls = "show";
     let dur = 1500;
     if (intensity === "big-pos") { cls += " big"; dur = 1700; }
     else if (intensity === "cold") { cls += " cold"; dur = 1500; }
-    portrait.className = portrait.className.replace(/\breacting\b|\bbig\b|\bcold\b/g, "").trim();
-    portrait.classList.add(...cls.split(" "));
+    overlay.className = "reaction-overlay " + cls;
     if (this._reactionTimer) clearTimeout(this._reactionTimer);
     this._reactionTimer = setTimeout(() => {
-      portrait.classList.remove("reacting", "big", "cold");
+      overlay.classList.remove("show", "big", "cold");
     }, dur);
   },
   checkThreshold(before, after) {
