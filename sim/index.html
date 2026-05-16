@@ -536,10 +536,8 @@
     transition: opacity 0.3s;
   }
   .character-emoji {
-    font-size: 13em;
-    line-height: 1;
-    filter: drop-shadow(0 8px 22px rgba(0,0,0,0.18));
-    margin-bottom: -0.05em;
+    /* scene 일러스트 PNG 없을 때도 큰 emoji 표시 X — 배경만 보이게 */
+    display: none;
   }
   .character-img {
     max-height: 100%;
@@ -2195,15 +2193,14 @@ const game = {
   showAffPopup(aff) {
     const p = document.getElementById("aff-popup");
     if (!p) return;
-    const sign = aff >= 0 ? "+" : "";
     const absV = Math.abs(aff);
     let cls = aff >= 0 ? "pos" : "neg";
     if (absV >= 15) cls += " huge";
     else if (absV >= 8) cls += " big";
-    p.textContent = sign + aff + " 💖";
-    if (aff < 0) p.textContent = aff + " 💔";
+    // 큰 숫자만. emoji·부연 X.
+    p.textContent = (aff >= 0 ? "+" : "") + aff;
     p.className = "aff-popup";
-    void p.offsetWidth;  // reflow trigger restart
+    void p.offsetWidth;
     p.className = "aff-popup show " + cls;
   },
   flashScene(aff) {
