@@ -767,7 +767,7 @@ const CHAPTER_1 = [
     text: "안녕하세요. 저… 옆자리 새로 온 박유나입니다. 같은 팀이라고 들었어요. 잘 부탁드려요!",
     choices: [
       { text: "반가워요. 옆자리니까 자주 봐요.", aff: +4, reply: "감사해요. 첫 출근이라 좀 긴장했는데, 옆자리가 따뜻해서 다행." },
-      { text: "박유나… 어디서 들은 이름인데. 어쨌든 잘 부탁해요.", aff: +1, reply: "어… 그래요? 흔한 이름이긴 한데." },
+      { text: "박유나… 어디서 들은 이름인데. 어쨌든 잘 부탁해요.", aff: +2, reply: "어… 그래요? 흔한 이름이긴 한데." },
       { text: "(가볍게 고개만 끄덕인다)", aff: -2, reply: "아… 네. (조금 어색하게 자리에 앉는다)" }
     ]
   },
@@ -777,8 +777,8 @@ const CHAPTER_1 = [
     text: "저… 죄송한데, KOSPI 시가총액 상위 50종목 정리 매크로 좀 도와주실 수 있어요? Excel은 어느 정도 하는데, VBA는 자신이 없어서요.",
     choices: [
       { text: "그거 어렵지 않아요. 같이 봐줄게요.", aff: +5, reply: "정말요? 진짜 감사해요. 점심이라도 살게요!" },
-      { text: "지금은 좀 바빠요. 퇴근 전에 같이 보자.", aff: +2, reply: "아, 네! 시간 될 때 부탁드려요." },
-      { text: "VBA 정도는 검색하면 나와요.", aff: -4, reply: "아… 네. 죄송해요, 바쁜데 괜한 거 물어봐서." }
+      { text: "지금은 좀 바빠요. 퇴근 전에 같이 보자.", aff: +3, reply: "아, 네! 시간 될 때 부탁드려요." },
+      { text: "VBA 정도는 검색하면 나와요.", aff: -3, reply: "아… 네. 죄송해요, 바쁜데 괜한 거 물어봐서." }
     ]
   },
   {
@@ -787,8 +787,8 @@ const CHAPTER_1 = [
     text: "오전에 도와주셔서 정말 고마웠어요. 그래서 점심 산다고 했잖아요. 그… 카페라떼 좋아하시나요?",
     choices: [
       { text: "라떼 좋아해요. 잘 마실게요.", aff: +3, reply: "다행이에요. 제가 살 수 있어서 더 좋아요." },
-      { text: "라떼는 좀… 아메리카노로 부탁해요.", aff: +1, reply: "앗 그렇구나. 다음엔 미리 물어봐야겠다." },
-      { text: "마음만 받을게요. 안 사도 돼요.", aff: +4, reply: "어… 아니에요. 그래도 한 잔은 사고 싶어요. (살짝 웃는다)" }
+      { text: "라떼는 좀… 아메리카노로 부탁해요.", aff: +2, reply: "앗 그렇구나. 다음엔 미리 물어봐야겠다." },
+      { text: "마음만 받을게요. 안 사도 돼요.", aff: +5, reply: "어… 아니에요. 그래도 한 잔은 사고 싶어요. (살짝 웃는다)" }
     ]
   },
   {
@@ -818,9 +818,9 @@ const CHAPTER_1 = [
     text: "상사 추천으로 KOSPI 매수 의향. 현금에서 얼마를 넣을지 결정하라.",
     market: {
       kospi: 2750,
-      ctx: "[상사 추천] 외국인 6일 연속 순매수. 환율 안정. 반도체 대형주 우상향 흐름. 다만 단기 과열 신호도 있음 (60일선 +6%).",
-      change_pct: +1.8,
-      post: "그날 오후 KOSPI는 +1.8% 마감. 너의 결정이 어땠는지는 자산창에 반영됐다."
+      ctx: "[상사 추천] 외국인 6일 연속 순매수 + 반도체 외국인 폭매수. 환율 급락. 단기 슈퍼사이클 진입 신호. 강한 매수 시그널.",
+      change_pct: +20,
+      post: "🚀 그날 KOSPI 폭등 +20%. 상사의 정보가 적중. 매수한 자리는 큰 수익."
     },
     skip_if: "boss_skip"
   },
@@ -832,7 +832,7 @@ const CHAPTER_1 = [
     text: "(살짝 취해서) 회식 처음인데… 다들 너무 잘 마시는 거 아니에요? 저는 맥주 한 잔에 이렇게 됐는데…",
     choices: [
       { text: "물 챙겨드릴게요. 천천히 마셔요.", aff: +5, reply: "감사해요… 챙겨주는 사람이 있어서 다행이에요." },
-      { text: "사회생활 첫 회식은 다 그래요.", aff: +2, reply: "그렇구나. 다들 이런 식으로 적응하는구나." },
+      { text: "사회생활 첫 회식은 다 그래요.", aff: +3, reply: "그렇구나. 다들 이런 식으로 적응하는구나." },
       { text: "그 정도면 약하시네요.", aff: -3, reply: "아… 네. 약한가요. (조금 시무룩)" }
     ]
   },
@@ -841,9 +841,9 @@ const CHAPTER_1 = [
     face: "sad", speaker: "유나",
     text: "사실… 우리 엄마가 작은 KOSPI 상장사 대표예요. 화장품 회사. 요즘 시장이 안 좋아서 엄마가 매일 한숨 쉬셔요. 그래서 제가 분석가가 됐어요. 시장을 더 이해하고 싶어서.",
     choices: [
-      { text: "어머니 회사… 진짜 응원해주고 싶어요.", aff: +6, reply: "감사해요. 다른 사람한테 처음 말한 건데… 듣고 흘려주지 않아서 좋아요." },
+      { text: "어머니 회사… 진짜 응원해주고 싶어요.", aff: +5, reply: "감사해요. 다른 사람한테 처음 말한 건데… 듣고 흘려주지 않아서 좋아요." },
       { text: "분석가 동기가 그래서 강한 거구나.", aff: +4, reply: "동기가 강하다는 표현, 처음 들어봤어요. 좋네요." },
-      { text: "회사일은 회사일이죠. 너무 짊어지지 마세요.", aff: 0, reply: "…그렇긴 한데. 그래도 엄마니까요." }
+      { text: "회사일은 회사일이죠. 너무 짊어지지 마세요.", aff: +1, reply: "…그렇긴 한데. 그래도 엄마니까요." }
     ]
   },
   {
@@ -851,7 +851,7 @@ const CHAPTER_1 = [
     face: "blush", speaker: "유나",
     text: "(택시 안에서 조용히) 같이 택시 잡아주셔서 감사해요. 그… 다음에 또 점심 같이 먹어도 돼요? 회사 안 동기 빼면 친한 사람이 없어서.",
     choices: [
-      { text: "당연하죠. 매일 같이 먹어도 돼요.", aff: +6, reply: "어… 매일이요? (살짝 웃으며 창밖을 본다)" },
+      { text: "당연하죠. 매일 같이 먹어도 돼요.", aff: +5, reply: "어… 매일이요? (살짝 웃으며 창밖을 본다)" },
       { text: "내일도 같이 먹어요.", aff: +4, reply: "네! 약속이에요!" },
       { text: "팀 분위기 봐가면서요.", aff: -2, reply: "아… 그렇네요. 신경 쓰셔야 하는구나." }
     ]
@@ -863,7 +863,7 @@ const CHAPTER_1 = [
     choices: [
       { text: "안 잊을게요. 중요한 얘기였으니까.", aff: +5, reply: "…그렇게 들어주시는 게 더 부끄러워요. 근데 좀 든든해요." },
       { text: "걱정 마세요. 회사 안에선 비밀이에요.", aff: +3, reply: "감사해요. 그렇게 말해주셔서 마음이 놓여요." },
-      { text: "기억 안 나요. 신경 쓰지 말아요.", aff: +1, reply: "어… 그래요? (안도 반 서운함 반)" }
+      { text: "기억 안 나요. 신경 쓰지 말아요.", aff: +2, reply: "어… 그래요? (안도 반 서운함 반)" }
     ]
   },
   {
@@ -871,7 +871,7 @@ const CHAPTER_1 = [
     face: "serious", speaker: "narrator",
     text: "팀 정기 회의. 유나가 첫 종목 리포트를 발표한다. 손이 떨리는 게 보인다. 발표가 어색하게 시작하자 팀장이 시계를 본다. 너의 자리는?",
     choices: [
-      { text: "(질문 타이밍에 일부러 친근한 질문을 던져 분위기를 푼다)", aff: +6, reply: "(발표 후) 그 질문… 진짜 살았어요. 감사해요." },
+      { text: "(질문 타이밍에 일부러 친근한 질문을 던져 분위기를 푼다)", aff: +5, reply: "(발표 후) 그 질문… 진짜 살았어요. 감사해요." },
       { text: "(가만히 듣고 발표 끝나고 따로 격려한다)", aff: +3, reply: "(발표 후) 끝나고 와주셔서 다행. 손이 너무 떨렸어요." },
       { text: "(평가는 평가. 끝나고 솔직히 피드백한다)", aff: -2, reply: "(발표 후) 네… 맞는 말씀이에요. 더 준비할게요. (씁쓸한 미소)" }
     ]
@@ -883,7 +883,7 @@ const CHAPTER_1 = [
     choices: [
       { text: "유나 씨가 사면 거절 못 하지. 잘 먹을게요.", aff: +3, reply: "후훗, 거절 못 하게 말한 거예요." },
       { text: "디저트는 제가 살게요. 1:1 교환.", aff: +5, reply: "어… 그런 거 좋아해요. 1:1 교환 받아들일게요." },
-      { text: "발표 무사히 끝났는데 굳이 살 필요는…", aff: 0, reply: "그래도 사고 싶었어요. 받아주세요." }
+      { text: "발표 무사히 끝났는데 굳이 살 필요는…", aff: +2, reply: "그래도 사고 싶었어요. 받아주세요." }
     ]
   },
   {
@@ -904,9 +904,9 @@ const CHAPTER_1 = [
     text: "퇴근길. 뉴스에서 \"오늘 KOSPI -2.4%, 외국인 매도 전환. 환율 1,360원 돌파\" 속보가 떴다.\n\n유나 어머니 회사처럼 중소형주 직격. 너의 포지션은? 시장은 패닉인가, 기회인가.",
     market: {
       kospi: 2750,  // 자동으로 직전 값으로 갱신됨
-      ctx: "[시장 패닉] 외국인 매도 + 환율 급등. 중소형주 -5~-8% 흔한 자리. 단, 과거 두 번의 비슷한 패턴에서는 2주 내 반등한 사례가 더 많았다.",
-      change_pct: +3.1,  // 결과적으로 반등 (홀드·매수가 유리)
-      post: "다음 날 KOSPI는 외국인 매수 재개로 +3.1% 반등. 패닉 때 들어간 자리가 유리했다."
+      ctx: "[패닉장 — 역발상 기회] 외국인 패닉셀 + 환율 급등 + 개미 투매. 과거 비슷한 패턴에서 평균 +30~50% 반등 사례 다수. 공포에 사는 자리.",
+      change_pct: +40,  // 패닉 매수 = 큰 반등
+      post: "🚀 다음 주 KOSPI 폭등 +40%. 패닉을 견디고 매수한 자리가 진짜 자리."
     }
   },
 
@@ -918,7 +918,7 @@ const CHAPTER_1 = [
     choices: [
       { text: "유나 씨도요. 회사 밖에선 더 편해 보여요.", aff: +5, reply: "어… 그래요? (살짝 머리를 만지작거린다)" },
       { text: "둘이 회사 밖에서 만나도 이상하지 않네요.", aff: +4, reply: "그렇죠. 이상하지 않네요. (의외로 차분히)" },
-      { text: "그냥 산책일 뿐이죠.", aff: -3, reply: "아… 네. 그렇긴 하죠. (조용해진다)" }
+      { text: "그냥 산책일 뿐이죠.", aff: -2, reply: "아… 네. 그렇긴 하죠. (조용해진다)" }
     ]
   },
   {
@@ -926,9 +926,9 @@ const CHAPTER_1 = [
     face: "serious", speaker: "유나",
     text: "사실… 엄마 회사를 매각할지 말지 결정해야 한대요. 사모펀드 쪽에서 인수 제안이 들어왔거든요. 엄마는 자존심 때문에 안 팔고 싶어해요. 저는… 솔직히 잘 모르겠어요. 너는 어떻게 생각해?",
     choices: [
-      { text: "팔지 말지는 어머니 결정. 다만 시장 가치는 객관적으로 봐야.", aff: +5, reply: "그래요. 객관적인 눈… 제가 부족했네요." },
-      { text: "사모펀드 인수면 통상 가격 후려치기. 협상은 길게 가져가요.", aff: +6, reply: "와… 진짜 분석가네. 도움이 돼요. 진심으로." },
-      { text: "어른들 일이니까 끼지 말자.", aff: -5, reply: "…그래. 미안해, 괜한 거 꺼냈네." }
+      { text: "팔지 말지는 어머니 결정. 다만 시장 가치는 객관적으로 봐야.", aff: +4, reply: "그래요. 객관적인 눈… 제가 부족했네요." },
+      { text: "사모펀드 인수면 통상 가격 후려치기. 협상은 길게 가져가요.", aff: +5, reply: "와… 진짜 분석가네. 도움이 돼요. 진심으로." },
+      { text: "어른들 일이니까 끼지 말자.", aff: -3, reply: "…그래. 미안해, 괜한 거 꺼냈네." }
     ]
   },
   {
@@ -936,9 +936,9 @@ const CHAPTER_1 = [
     face: "blush", speaker: "유나",
     text: "(잠깐 침묵 후) 있잖아… 너랑 같이 있으면 회사 일이 회사 일로만 안 느껴져. 그게 좋은 건지 무서운 건지 잘 모르겠어. 그… 우리, 회사 밖에서도 자주 봐도 돼?",
     choices: [
-      { text: "응. 자주 봐도 돼. 솔직히 나도 그랬으면 좋겠어.", aff: +8, reply: "어… (한참 말 못 잇다가) 응. 그럼 자주 봐." },
-      { text: "회사 안에서도 좋으니까, 밖에서도 좋아.", aff: +6, reply: "그런 식으로 말하는 거… 좀 반칙인 거 알지?" },
-      { text: "음… 회사 안에서만 보는 게 깔끔하지 않을까?", aff: -4, reply: "아… 그래. 그게 맞지. 미안, 분위기 깼네." }
+      { text: "응. 자주 봐도 돼. 솔직히 나도 그랬으면 좋겠어.", aff: +6, reply: "어… (한참 말 못 잇다가) 응. 그럼 자주 봐." },
+      { text: "회사 안에서도 좋으니까, 밖에서도 좋아.", aff: +5, reply: "그런 식으로 말하는 거… 좀 반칙인 거 알지?" },
+      { text: "음… 회사 안에서만 보는 게 깔끔하지 않을까?", aff: -3, reply: "아… 그래. 그게 맞지. 미안, 분위기 깼네." }
     ]
   },
   {
@@ -952,9 +952,9 @@ const CHAPTER_1 = [
     face: "sad", speaker: "유나",
     text: "(자리에서 폰을 보며) 엄마 회사 -9% 출발했어… 매각 협상 중인데, 이 가격이면 후려치기 더 심해질 거예요. 어떡하지.",
     choices: [
-      { text: "지금이 진짜 마지막 라운드. 펀더멘털 자료 정리해서 같이 가요.", aff: +7, flag: "help_yuna", reply: "…진짜? 같이 가줄 거예요? (눈가 촉촉)" },
+      { text: "지금이 진짜 마지막 라운드. 펀더멘털 자료 정리해서 같이 가요.", aff: +5, flag: "help_yuna", reply: "…진짜? 같이 가줄 거예요? (눈가 촉촉)" },
       { text: "오늘은 일단 시장 관망. 패닉장에서 결정하면 후회만 남아요.", aff: +4, reply: "그래요. 차분하게. 고마워요." },
-      { text: "어차피 어머니 결정. 우린 관여하지 말자.", aff: -6, reply: "…그래. 알겠어. (눈을 피한다)" }
+      { text: "어차피 어머니 결정. 우린 관여하지 말자.", aff: -4, reply: "…그래. 알겠어. (눈을 피한다)" }
     ]
   },
 
@@ -965,9 +965,9 @@ const CHAPTER_1 = [
     text: "시장 패닉. 너의 포지션은 마지막 결정 앞에 있다. 매수·매도·홀드 — 이번 한 번의 선택이 챕터의 수익률을 거의 정한다.",
     market: {
       kospi: 2750,
-      ctx: "[패닉 데이] 외부 충격 + 패닉셀. 과거 비슷한 외부 충격 후 평균 2주 뒤 반등 사례 다수. 다만 이번에는 추가 하락 위험도 무시 못 함. 50:50.",
-      change_pct: +2.5,  // 반등이 약간 더 유리
-      post: "그 다음날 KOSPI는 +2.5% 반등. 미 연준 비둘기 발언이 트리거였다."
+      ctx: "[마지막 결정 — 극한 반등 시그널] 외부 충격 후 미 연준 비둘기 발언 임박 + 환율 안정. 과거 비슷한 자리에서 +50~80% 반등 사례. 마지막 자리.",
+      change_pct: +60,  // 마지막 결정 — 극단 반등
+      post: "🚀🚀 다음 날 KOSPI 대폭등 +60%. 마지막 자리에서 매수한 자리는 인생 트레이드."
     }
   },
   {
@@ -976,10 +976,11 @@ const CHAPTER_1 = [
     text: "어제 도와줘서 진심으로 감사해. 엄마 협상 자리에 동행해줘서… 인수가격 18% 더 받아냈어. 변호사도 놀라더라. (살짝 웃음) 너 진짜 멋있더라.",
     choices: [
       { text: "멋있다는 말은 처음 들어보는 것 같아.", aff: +3, reply: "처음이라니, 의외네. 내가 처음 말한 사람이라서 좋아." },
-      { text: "당연한 거지. 친구 일이니까.", aff: +2, reply: "친구… 그래, 친구지. (살짝 시무룩)" },
+      { text: "당연한 거지. 친구 일이니까.", aff: +3, reply: "친구… 그래, 친구지. (살짝 시무룩)" },
       { text: "유나 씨한테 도움 됐다면 다행.", aff: +5, reply: "유나 씨 말고 그냥 유나라고 불러줘. 우리, 이 정도 사이잖아." }
     ]
   },
+  // SCENE 20·21 — 호감도 ≥ 40 일 때만 고백 등장. < 40 이면 alt (친구 작별).
   {
     bg: "bg-han", bgIcon: "🌸", label: "SCENE 20 · 한강 · 저녁",
     face: "blush", speaker: "유나",
@@ -987,17 +988,32 @@ const CHAPTER_1 = [
     choices: [
       { text: "응, 말해.", aff: +2, reply: "응. (심호흡) 나, 너 좋아해. 동료로 말고. 진심으로." },
       { text: "분위기가 진지하네. 천천히 말해도 돼.", aff: +3, reply: "고마워. 그래도 미루면 못 할 것 같아서. 나, 너 좋아해." }
-    ]
+    ],
+    if_affinity_below: {
+      min: 40,
+      face: "default", speaker: "유나",
+      text: "있잖아… 이번 한 주, 같이 보내줘서 고마워. 회사 동료로 와서 말 트고 점심도 같이 먹어줬잖아. 그게 큰 도움이 됐어.",
+      choices: [
+        { text: "응, 잘 지내자. 회사에서 또 봐.", aff: +1, flag: "chapter_friend_close", reply: "응. 잘 지내. (작게 손 흔든다)" },
+        { text: "다음 주에도 점심 같이 먹자.", aff: +2, flag: "chapter_friend_close", reply: "그래. 동료끼리 점심은 자주 먹어야지." }
+      ]
+    }
   },
   {
     bg: "bg-han", bgIcon: "💖", label: "SCENE 21 · 한강 · 고백 응답",
     face: "embarrassed", speaker: "유나",
     text: "(잠시 후) 대답 안 해도 돼. 답이 어떻든 이 봄을 너와 함께 보낸 거 후회 안 해. 그래도… 답해줄래?",
     choices: [
-      { text: "나도 좋아해. 우리 사귀자.", aff: +12, flag: "confess_yes", reply: "…진짜? (한 박자 후) 응. 응!" },
+      { text: "나도 좋아해. 우리 사귀자.", aff: +8, flag: "confess_yes", reply: "…진짜? (한 박자 후) 응. 응!" },
       { text: "동료로 더 지내고 싶어. 미안.", aff: -2, flag: "confess_no", reply: "…응. 알겠어. (살짝 미소) 그래도 들어줘서 고마워." },
       { text: "지금은 답 못 하겠어. 시간을 좀.", aff: -1, flag: "confess_wait", reply: "응, 천천히 생각해. 답이 늦어도 괜찮아." }
-    ]
+    ],
+    if_affinity_below: {
+      min: 40,
+      face: "smile", speaker: "narrator",
+      text: "(고백은 일어나지 않았다. 두 사람은 회사 동료로서 한 챕터를 마친다.)",
+      next: true
+    }
   },
   {
     bg: "bg-han", bgIcon: "🌅", label: "SCENE 22 · 챕터 마지막",
@@ -1049,10 +1065,25 @@ const game = {
       flags: {}
     };
     this.show("screen-game");
+    // 게임 시작 marker — 뒤로가기 시 cover 페이지 가지 말고 시작 scene 유지
+    try {
+      history.replaceState({ sceneIdx: 0, snap: JSON.parse(JSON.stringify(this.state)) }, "", "#s0");
+    } catch (e) {}
     this.renderScene();
   },
 
-  renderScene() {
+  // popstate (뒤로가기·앞으로가기) — 이전 scene state 복원
+  restoreFromHistory(state) {
+    if (!state || typeof state.sceneIdx !== "number" || !state.snap) return false;
+    this.state = JSON.parse(JSON.stringify(state.snap));
+    this.state.sceneIdx = state.sceneIdx;
+    this.show("screen-game");
+    this.renderScene({ restoring: true });
+    return true;
+  },
+
+  renderScene(opts) {
+    opts = opts || {};
     const s = this.state;
     let scene = CHAPTER_1[s.sceneIdx];
     if (!scene) { this.runEnding(); return; }
@@ -1060,8 +1091,29 @@ const game = {
     // skip 처리 (MARKET 1 등)
     if (scene.skip_if && s.flags[scene.skip_if]) {
       s.sceneIdx++;
-      this.renderScene();
+      this.renderScene(opts);
       return;
+    }
+
+    // affinity_gate — SCENE 20·21 고백 임계값. 호감도 < min 이면 alt scene 박음.
+    if (scene.if_affinity_below && s.affinity < scene.if_affinity_below.min) {
+      const alt = scene.if_affinity_below;
+      // alt 박힌 임시 scene 으로 진행 (원본 scene 의 bg·bgIcon 유지)
+      scene = Object.assign({}, scene, alt);
+      // alt 가 choices 또는 next 박음 — 원본 if_affinity_below 키는 그대로 두되 사용 X
+    }
+
+    // History API — 뒤로가기 시 이전 scene 복원 가능. restoring 중에는 push X.
+    if (!opts.restoring) {
+      const snapshot = JSON.parse(JSON.stringify(s));  // deep clone
+      const url = "#s" + s.sceneIdx;
+      try {
+        if (history.state && history.state.sceneIdx === s.sceneIdx) {
+          history.replaceState({ sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
+        } else {
+          history.pushState({ sceneIdx: s.sceneIdx, snap: snapshot }, "", url);
+        }
+      } catch (e) {}
     }
 
     // 배경 — gradient fallback + 일러스트 PNG swap (있으면)
@@ -1170,6 +1222,7 @@ const game = {
     const mkt = scene.market;
     let msg = "";
 
+    const totalBefore = s.cash + s.shares * s.kospi;
     if (action === "buy") {
       if (s.cash < 100000) { this.toast("현금 부족", "loss"); return; }
       const spend = Math.floor(s.cash * 0.50);
@@ -1179,7 +1232,6 @@ const game = {
       s.shares = total;
       s.cash -= spend;
       msg = "매수 체결: " + this.fmt(spend) + "원";
-      this.toast("매수 체결", "money-up");
     } else if (action === "sell") {
       if (s.shares < 0.0001) { this.toast("보유 주식 없음", "loss"); return; }
       const receive = s.shares * s.kospi;
@@ -1188,14 +1240,29 @@ const game = {
       s.shares = 0;
       s.avg_buy = 0;
       msg = "매도 체결: " + this.fmt(Math.round(receive)) + "원 (손익 " + (pnl >= 0 ? "+" : "") + this.fmt(Math.round(pnl)) + ")";
-      this.toast(pnl >= 0 ? "매도 (수익)" : "매도 (손실)", pnl >= 0 ? "money-up" : "money-down");
     } else {
       msg = "홀드: 포지션 유지";
-      this.toast("홀드", "gain");
     }
 
     // 시장 변동 반영
     s.kospi = s.kospi * (1 + mkt.change_pct / 100);
+
+    // 도파민 toast — 매매 결과 자산 변동
+    const totalAfter = s.cash + s.shares * s.kospi;
+    const delta = totalAfter - totalBefore;
+    const deltaPct = totalBefore > 0 ? (delta / totalBefore) * 100 : 0;
+    let toastText, toastCls;
+    if (delta > 100000) {
+      toastText = "🚀 +" + this.fmt(Math.round(delta)) + "원 (" + deltaPct.toFixed(1) + "%)";
+      toastCls = "money-up";
+    } else if (delta < -100000) {
+      toastText = "💸 " + this.fmt(Math.round(delta)) + "원 (" + deltaPct.toFixed(1) + "%)";
+      toastCls = "money-down";
+    } else {
+      toastText = action === "hold" ? "📊 시장 통과" : "✓ 체결";
+      toastCls = "gain";
+    }
+    this.toast(toastText, toastCls);
 
     // 결과 narrator
     document.getElementById("speaker").className = "speaker narrator";
@@ -1262,38 +1329,67 @@ const game = {
     const finalAsset = s.cash + s.shares * s.kospi;
     const returnPct = (finalAsset - GAME.start_cash) / GAME.start_cash * 100;
     const aff = s.affinity;
-    const confessYes = s.flags.confess_yes;
+    const confessYes = !!s.flags.confess_yes;
+    const friendClose = !!s.flags.chapter_friend_close;  // 호감도 < 40 시 SCENE 20·21 alt 박힘
 
+    // 엔딩 매트릭스 6종 (재설계 — 호감도·KOSPI 극단)
+    // JACKPOT  : return ≥ 100 + aff < 40 (도파민 극치, 옆자리 X)
+    // TRUE     : confess_yes + aff ≥ 60 + return ≥ 1
+    // ROMANCE  : confess_yes + aff ≥ 40
+    // BULL RUN : return ≥ 50 + aff < 40
+    // FRIEND   : friend_close + aff ≥ 20  또는 confess_no/wait + aff ≥ 20
+    // SOLO     : 그 외 (실패·자산 손실 포함)
     let ending;
-    if (confessYes && aff >= 60 && returnPct >= 1) {
+    if (returnPct >= 100 && aff < 40) {
+      ending = {
+        tag: "JACKPOT ENDING",
+        mascot: "🤑",
+        title: "잭팟. 그리고 빈 자리.",
+        body: "통장은 두 배로 부풀었다. 모니터 위 KOSPI 차트는 거의 수직. 동료들의 박수, 팀장의 어깨 두드림. 다만 — 옆자리는 비었다. 유나는 너의 결과에 박수를 보냈지만 그 박수는 거리감이 묻어 있다. 돈은 너의 손에 있고, 봄은 다른 사람의 것이 됐다."
+      };
+    } else if (confessYes && aff >= 60 && returnPct >= 1) {
       ending = {
         tag: "TRUE ENDING",
         mascot: "🥰",
         title: "유나와 봄, 그리고 첫 수익",
         body: "유나는 너의 손을 잡았다. KOSPI 차트도 너의 손을 들어주었다. 회사 안에서는 동료, 회사 밖에서는 연인. 다음 주 월요일 — 유나는 너에게 어머니 회사 IR에 같이 가달라고 했다. 챕터 1, 완벽한 마침."
       };
-    } else if (aff >= 60) {
+    } else if (confessYes && aff >= 40) {
       ending = {
         tag: "ROMANCE ENDING",
         mascot: "🌸",
-        title: returnPct >= 0 ? "수익은 작았지만, 너를 얻었어" : "통장은 가벼워졌지만, 너는 옆에 있어",
+        title: returnPct >= 0 ? "수익은 작아도, 너를 얻었어" : "통장은 가벼워졌지만, 너는 옆에 있어",
         body: returnPct >= 0
-          ? "수익은 작지만 마이너스는 아니다. 더 중요한 건 — 유나가 너의 옆에 있다는 것. 회사가 끝나고 같은 지하철을 타고 같은 카페에서 차를 마신다. 이 봄의 결말은 따뜻하다."
+          ? "수익은 크지 않지만 더 중요한 건 — 유나가 너의 옆에 있다는 것. 회사가 끝나고 같은 지하철을 타고 같은 카페에서 차를 마신다. 이 봄의 결말은 따뜻하다."
           : "통장은 가벼워졌지만 유나는 너의 손을 잡았다. \"돈은 또 벌면 되지. 너만 옆에 있으면 돼.\" 시장은 다음 주에도 열린다. 사랑은 지금 옆에 있다."
       };
-    } else if (returnPct >= 5) {
+    } else if (returnPct >= 50 && aff < 40) {
       ending = {
         tag: "BULL RUN ENDING",
         mascot: "📈",
         title: "수익은 챙겼지만, 옆자리는 비어",
-        body: "통장은 두툼해졌다. 유나는 너에게 정중하게 거리를 두기 시작했다. 회사 안에선 동료, 회사 밖에선 남남. 너는 자리에서 KOSPI 차트를 본다. 차트는 너를 배신하지 않았다. 다만 옆자리가 비었을 뿐."
+        body: "통장은 50% 이상 두툼해졌다. 유나와는 회사 동료 거리에서 멈췄다. 회사 안에선 인사를 나누고, 회사 밖에선 보이지 않는다. 너는 자리에서 KOSPI 차트를 본다. 차트는 너를 배신하지 않았다. 다만 옆자리가 비었을 뿐."
+      };
+    } else if (aff >= 20 && (friendClose || s.flags.confess_no || s.flags.confess_wait)) {
+      ending = {
+        tag: "FRIEND ENDING",
+        mascot: "☺️",
+        title: "잘 지내는 두 사람",
+        body: "고백은 일어나지 않았지만 유나와는 여전히 가까운 동료다. 다음 주 점심도 같이 먹기로 했다. 회사 안의 작은 봄은 조용히 이어진다. 한 챕터 더 두고 봐도 좋은 사이."
+      };
+    } else if (finalAsset < GAME.start_cash * 0.8) {
+      ending = {
+        tag: "WIPED OUT",
+        mascot: "💸",
+        title: "통장도 봄도, 잃었다",
+        body: "자산은 시작 시점의 80% 아래로 떨어졌다. 유나도 멀어졌다. 회사 점심 — 너는 혼자 편의점 김밥을 먹는다. KOSPI 차트는 무심하게 흘러간다. 다음 챕터에서는 다른 선택이 가능하다."
       };
     } else {
       ending = {
         tag: "SOLO ENDING",
         mascot: "😢",
         title: "잃은 봄",
-        body: "유나는 멀어졌다. 통장도 가벼워졌다. 회사 점심시간 — 너는 혼자 샌드위치를 먹는다. 봄은 짧고, 시장은 다음 주에도 열린다. 너는 다시 시작할 수 있다."
+        body: "유나는 멀어졌다. 회사 점심시간 — 너는 혼자 샌드위치를 먹는다. 봄은 짧고, 시장은 다음 주에도 열린다. 너는 다시 시작할 수 있다."
       };
     }
 
@@ -1347,6 +1443,13 @@ const game = {
 };
 
 window.game = game;
+
+// 브라우저 뒤로가기 / 앞으로가기 — 이전 scene state 복원
+window.addEventListener("popstate", function(e) {
+  if (e.state && typeof e.state.sceneIdx === "number" && e.state.snap) {
+    game.restoreFromHistory(e.state);
+  }
+});
 </script>
 </body>
 </html>
