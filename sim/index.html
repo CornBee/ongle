@@ -67,14 +67,15 @@
   /* game·ending 화면은 페이지 스크롤 허용. cover·tutorial 은 viewport fit */
   #screen-cover.active, #screen-tutorial.active { min-height: 100vh; }
 
-  /* ===== Cover — 시네마틱 dark + 골드 + 유나 portrait ===== */
+  /* ===== Cover — 벚꽃 흩날림 + 골든 hour 미연시 톤 ===== */
   #screen-cover {
     background:
-      radial-gradient(ellipse at top right, rgba(255, 152, 102, 0.35) 0%, transparent 50%),
-      radial-gradient(ellipse at bottom left, rgba(255, 89, 130, 0.25) 0%, transparent 55%),
-      linear-gradient(170deg, #1a0a14 0%, #2a1424 40%, #3a1c2e 100%);
-    padding: 2.4em 1.4em 1.8em;
-    justify-content: flex-start;
+      radial-gradient(ellipse at 50% 0%, rgba(255, 220, 180, 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 110%, rgba(255, 150, 180, 0.35) 0%, transparent 60%),
+      linear-gradient(175deg, #ffd9a8 0%, #ffb3c8 50%, #d98ab3 100%);
+    padding: 4vh 6vw 3vh;
+    min-height: 100vh;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     user-select: none;
@@ -82,36 +83,45 @@
     position: relative;
     overflow: hidden;
   }
-  #screen-cover::before {
-    content: "";
+  /* 벚꽃 흩날림 — CSS only */
+  .petal {
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(2px 2px at 12% 22%, rgba(255,200,150,0.7), transparent),
-      radial-gradient(1px 1px at 30% 45%, rgba(255,180,200,0.5), transparent),
-      radial-gradient(2px 2px at 65% 18%, rgba(255,210,170,0.6), transparent),
-      radial-gradient(1px 1px at 80% 38%, rgba(255,180,200,0.4), transparent),
-      radial-gradient(2px 2px at 18% 70%, rgba(255,200,150,0.5), transparent),
-      radial-gradient(1px 1px at 88% 78%, rgba(255,180,200,0.4), transparent);
+    top: -40px;
+    width: 14px; height: 14px;
+    background: linear-gradient(135deg, #ffd1de 0%, #ff9eb9 100%);
+    border-radius: 100% 0 100% 100%;
+    opacity: 0.85;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
+    animation-name: petalFall;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    filter: drop-shadow(0 2px 4px rgba(220, 110, 150, 0.3));
+  }
+  @keyframes petalFall {
+    0%   { transform: translate(0, 0) rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.9; }
+    50%  { transform: translate(60px, 55vh) rotate(360deg); }
+    100% { transform: translate(-30px, 110vh) rotate(720deg); opacity: 0; }
   }
   .cover-art {
-    width: 240px; height: 240px;
+    width: 38vh; height: 38vh;
+    max-width: 280px; max-height: 280px;
+    min-width: 180px; min-height: 180px;
     border-radius: 50%;
-    background: linear-gradient(160deg, #2a1424, #1a0a14);
-    margin: 1.8em auto 1.2em;
+    background: linear-gradient(160deg, #fff5d4 0%, #ffd9a8 100%);
+    margin: 0 auto;
     display: flex; align-items: center; justify-content: center;
     font-size: 5.4em;
-    color: #ff8e3c;
+    color: #d98ab3;
     overflow: hidden;
-    border: 3px solid rgba(255, 195, 120, 0.7);
+    border: 4px solid rgba(255, 255, 255, 0.85);
     box-shadow:
-      0 0 60px rgba(255, 152, 102, 0.5),
-      0 14px 50px rgba(0,0,0,0.5),
-      inset 0 0 30px rgba(255, 195, 120, 0.15);
+      0 0 80px rgba(255, 180, 120, 0.55),
+      0 18px 60px rgba(170, 60, 100, 0.35),
+      inset 0 0 30px rgba(255, 200, 150, 0.25);
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
   .cover-art img {
     width: 100%; height: 100%;
@@ -121,84 +131,98 @@
   }
   .cover-art img.loaded { display: block; }
   .cover-art.has-image .cover-art-emoji { display: none; }
-  @media (min-height: 740px) {
-    .cover-art { width: 280px; height: 280px; }
+  .cover-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; z-index: 2;
   }
   .cover-tag {
-    font-size: 0.78em;
+    font-size: 0.74em;
     font-weight: 700;
-    color: #ff9866;
+    color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.18em;
     margin-bottom: 0.4em;
-    position: relative; z-index: 1;
-    text-shadow: 0 0 18px rgba(255, 152, 102, 0.7);
+    position: relative; z-index: 2;
+    text-shadow: 0 2px 12px rgba(170, 60, 100, 0.5);
+  }
+  .cover-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; z-index: 2;
+    width: 100%;
   }
   .cover-title {
-    font-size: 2.9em;
+    font-size: 3.2em;
     font-weight: 900;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: #fff;
-    margin: 0.1em 0 0.3em;
-    line-height: 1.05;
-    position: relative; z-index: 1;
-    text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+    margin: 0.6em 0 0.25em;
+    line-height: 1.0;
+    position: relative; z-index: 2;
+    text-shadow: 0 4px 28px rgba(170, 60, 100, 0.55), 0 2px 8px rgba(0,0,0,0.25);
   }
   .cover-title .accent {
-    background: linear-gradient(180deg, #ffd093 0%, #ff8e3c 60%, #ff5085 100%);
+    background: linear-gradient(180deg, #fff5d4 0%, #ffd093 50%, #ff8e3c 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
   .cover-sub {
-    color: rgba(255, 220, 220, 0.92);
-    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05em;
     font-weight: 500;
-    margin: 0.4em auto 1.8em;
-    max-width: 340px;
-    line-height: 1.55;
+    margin: 0.4em auto 0;
+    max-width: 320px;
+    line-height: 1.5;
     letter-spacing: -0.005em;
-    position: relative; z-index: 1;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    position: relative; z-index: 2;
+    text-shadow: 0 2px 12px rgba(170, 60, 100, 0.4);
   }
   .cover-sub .em {
-    color: #ffb380;
+    color: #fff5d4;
     font-weight: 700;
+    text-shadow: 0 0 18px rgba(255, 220, 150, 0.7);
+  }
+  .cover-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative; z-index: 2;
   }
   .cover-cta {
-    background: linear-gradient(180deg, #ffb066 0%, #ff7a55 60%, #ff5085 100%);
-    color: white;
-    font-size: 1.12em;
-    font-weight: 800;
-    padding: 1em 3em;
+    background: linear-gradient(180deg, #fff5d4 0%, #ffba76 55%, #ff7aab 100%);
+    color: #6b1a3a;
+    font-size: 1.18em;
+    font-weight: 900;
+    padding: 1em 3.4em;
     border-radius: 999px;
     box-shadow:
-      0 0 0 1px rgba(255,210,170,0.5),
-      0 10px 28px rgba(255, 96, 100, 0.55),
-      0 4px 12px rgba(255, 152, 102, 0.35),
-      inset 0 1px 0 rgba(255,255,255,0.4);
+      0 0 0 2px rgba(255,255,255,0.65),
+      0 14px 34px rgba(170, 60, 100, 0.55),
+      0 4px 12px rgba(255, 180, 120, 0.5),
+      inset 0 1px 0 rgba(255,255,255,0.6);
     transition: transform 0.1s, box-shadow 0.15s;
-    letter-spacing: 0.04em;
-    position: relative; z-index: 1;
+    letter-spacing: 0.06em;
+    position: relative; z-index: 2;
   }
   .cover-cta:active { transform: scale(0.97); }
-  .cover-cta:hover { box-shadow: 0 0 0 1px rgba(255,210,170,0.7), 0 14px 36px rgba(255, 96, 100, 0.65); }
+  .cover-cta:hover { box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 18px 40px rgba(170, 60, 100, 0.65); }
   .cover-foot {
-    margin-top: 1.8em;
-    font-size: 0.78em;
-    color: rgba(255, 200, 200, 0.55);
-    position: relative; z-index: 1;
-  }
-  .cover-foot a { color: rgba(255, 220, 200, 0.8); text-decoration: none; }
-  .cover-meta {
-    display: flex; gap: 0.5em; justify-content: center;
-    margin-top: 0.9em;
+    margin-top: 1em;
     font-size: 0.72em;
-    color: rgba(255, 200, 200, 0.55);
-    position: relative; z-index: 1;
-    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.65);
+    position: relative; z-index: 2;
   }
-  .cover-meta .dot { width: 3px; height: 3px; background: rgba(255, 200, 200, 0.4); border-radius: 50%; align-self: center; }
+  .cover-foot a { color: rgba(255, 255, 255, 0.85); text-decoration: none; }
+  @media (max-height: 640px) {
+    .cover-title { font-size: 2.5em; }
+    .cover-art { width: 30vh; height: 30vh; min-width: 150px; min-height: 150px; }
+    .cover-sub { font-size: 0.95em; }
+  }
 
   /* ===== Tutorial ===== */
   #screen-tutorial {
@@ -430,6 +454,37 @@
   @keyframes portraitBump {
     0%, 100% { transform: scale(1); }
     40%      { transform: scale(1.16); }
+  }
+  /* Reaction zoom — 큼지막 jump out·hold·smooth return */
+  .yuna-portrait.reacting {
+    animation: portraitReaction 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
+    z-index: 100;
+  }
+  .yuna-portrait.reacting.big {
+    animation: portraitReactionBig 1700ms cubic-bezier(.3,1.4,.4,1) forwards;
+    z-index: 100;
+  }
+  @keyframes portraitReaction {
+    0%   { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    18%  { transform: scale(1.85) translateY(-18px); box-shadow: 0 18px 50px rgba(255,107,107,0.45); }
+    62%  { transform: scale(1.85) translateY(-18px); }
+    100% { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+  }
+  @keyframes portraitReactionBig {
+    0%   { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); border-color: var(--accent); }
+    14%  { transform: scale(2.25) translateY(-32px); box-shadow: 0 24px 70px rgba(255,140,0,0.6); border-color: #ffd093; }
+    66%  { transform: scale(2.25) translateY(-32px); border-color: #ffd093; }
+    100% { transform: scale(1) translateY(0);    box-shadow: 0 10px 28px rgba(0,0,0,0.25); border-color: var(--accent); }
+  }
+  .yuna-portrait.reacting.cold {
+    animation: portraitReactionCold 1500ms cubic-bezier(.3,1.4,.4,1) forwards;
+    z-index: 100;
+  }
+  @keyframes portraitReactionCold {
+    0%   { transform: scale(1) translateY(0);    filter: none; border-color: var(--accent); }
+    18%  { transform: scale(1.85) translateY(-18px); filter: grayscale(0.4) brightness(0.92); border-color: #6b7a8a; box-shadow: 0 18px 50px rgba(70,90,120,0.5); }
+    62%  { transform: scale(1.85) translateY(-18px); filter: grayscale(0.4) brightness(0.92); border-color: #6b7a8a; }
+    100% { transform: scale(1) translateY(0);    filter: none; border-color: var(--accent); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
   }
   @media (max-width: 380px) {
     .yuna-portrait { width: 150px; height: 150px; top: -75px; font-size: 4.6em; }
@@ -852,20 +907,34 @@
 
   <!-- ===== Cover ===== -->
   <section id="screen-cover" class="screen active">
-    <div class="cover-tag">ONGLE SIM · CHAPTER 1</div>
-    <div class="cover-art" id="cover-art">
-      <span class="cover-art-emoji">🌸</span>
-      <img id="cover-art-img" alt="" />
+    <!-- 벚꽃 흩날림 (CSS animation) -->
+    <span class="petal" style="left: 8%;  animation-duration: 11s; animation-delay: 0s;"></span>
+    <span class="petal" style="left: 22%; animation-duration: 13s; animation-delay: 2s;  width: 11px; height: 11px;"></span>
+    <span class="petal" style="left: 38%; animation-duration: 9s;  animation-delay: 4s;  width: 16px; height: 16px;"></span>
+    <span class="petal" style="left: 54%; animation-duration: 14s; animation-delay: 1s;"></span>
+    <span class="petal" style="left: 68%; animation-duration: 10s; animation-delay: 3s;  width: 12px; height: 12px;"></span>
+    <span class="petal" style="left: 82%; animation-duration: 12s; animation-delay: 5s;"></span>
+    <span class="petal" style="left: 92%; animation-duration: 15s; animation-delay: 0.5s; width: 10px; height: 10px;"></span>
+    <span class="petal" style="left: 15%; animation-duration: 16s; animation-delay: 6s;  width: 13px; height: 13px;"></span>
+    <span class="petal" style="left: 46%; animation-duration: 13s; animation-delay: 7s;  width: 11px; height: 11px;"></span>
+    <span class="petal" style="left: 75%; animation-duration: 11s; animation-delay: 4.5s; width: 15px; height: 15px;"></span>
+
+    <div class="cover-top">
+      <div class="cover-tag">ONGLE SIM · CHAPTER 1</div>
+      <div class="cover-art" id="cover-art">
+        <span class="cover-art-emoji">🌸</span>
+        <img id="cover-art-img" alt="" />
+      </div>
     </div>
-    <h1 class="cover-title"><span class="accent">유나</span>와의 봄</h1>
-    <p class="cover-sub"><span class="em">그녀의 미소</span>일까, <span class="em">너의 통장</span>일까.<br/>둘 다 가질 수 있을까?</p>
-    <button class="cover-cta" onclick="game.start()">시작하기</button>
-    <div class="cover-meta">
-      <span>약 15분</span><span class="dot"></span><span>다중 엔딩</span><span class="dot"></span><span>도덕 딜레마</span>
+    <div class="cover-middle">
+      <h1 class="cover-title"><span class="accent">유나</span>와의 봄</h1>
+      <p class="cover-sub"><span class="em">그녀의 미소</span>일까, <span class="em">너의 통장</span>일까.<br/>둘 다 가질 수 있을까?</p>
     </div>
-    <div class="cover-foot">
-      ONGLE · 미연시 투자 시뮬<br/>
-      <a href="https://cornbee.github.io/ongle/" target="_blank">← ONGLE 메인으로</a>
+    <div class="cover-bottom">
+      <button class="cover-cta" onclick="game.start()">시작하기</button>
+      <div class="cover-foot">
+        <a href="https://cornbee.github.io/ongle/" target="_blank">← ONGLE 메인</a>
+      </div>
     </div>
   </section>
 
@@ -1614,6 +1683,9 @@ const game = {
     this.flashScene(choice.aff);
     this.pulseHeader(choice.aff);
     this.swapFaceForAff(choice.aff);
+    if (choice.aff >= 15)       this.triggerPortraitReaction("big-pos");
+    else if (choice.aff <= -10) this.triggerPortraitReaction("cold");
+    else if (Math.abs(choice.aff) >= 5) this.triggerPortraitReaction("normal");
     this.checkThreshold(affBefore, s.affinity);
 
     // 자산 변동 toast
@@ -1775,8 +1847,11 @@ const game = {
     this.flashScene(choice.aff);
     // 4. bar / pill pulse
     this.pulseHeader(choice.aff);
-    // 5. 표정 portrait swap
+    // 5. 표정 portrait swap + reaction zoom
     this.swapFaceForAff(choice.aff);
+    if (choice.aff >= 15)       this.triggerPortraitReaction("big-pos");
+    else if (choice.aff <= -10) this.triggerPortraitReaction("cold");
+    else if (Math.abs(choice.aff) >= 5) this.triggerPortraitReaction("normal");
     // 6. 임계값 도달 confetti
     this.checkThreshold(affBefore, s.affinity);
 
@@ -2203,6 +2278,24 @@ const game = {
     portrait.classList.remove("bump");
     void portrait.offsetWidth;
     portrait.classList.add("bump");
+  },
+
+  // Reaction zoom — 큰 변동 시 portrait scale up·hold·smooth return
+  triggerPortraitReaction(intensity) {
+    const portrait = document.getElementById("yuna-portrait");
+    if (!portrait) return;
+    portrait.classList.remove("reacting", "big", "cold");
+    void portrait.offsetWidth;  // reflow restart
+    let cls = "reacting";
+    let dur = 1500;
+    if (intensity === "big-pos") { cls += " big"; dur = 1700; }
+    else if (intensity === "cold") { cls += " cold"; dur = 1500; }
+    portrait.className = portrait.className.replace(/\breacting\b|\bbig\b|\bcold\b/g, "").trim();
+    portrait.classList.add(...cls.split(" "));
+    if (this._reactionTimer) clearTimeout(this._reactionTimer);
+    this._reactionTimer = setTimeout(() => {
+      portrait.classList.remove("reacting", "big", "cold");
+    }, dur);
   },
   checkThreshold(before, after) {
     const s = this.state;
