@@ -657,12 +657,24 @@
     background: #fff5f5;
     border-radius: 13px;
     padding: 0.7em;
+    border: 1.5px solid #ffd4d4;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.15s;
+    text-align: center;
   }
-  .ending-stat .lbl { font-size: 0.76em; color: var(--muted); }
-  .ending-stat .val { font-size: 1.25em; font-weight: 800; color: var(--ink); margin-top: 0.15em; }
+  .ending-stat:active { transform: scale(0.97); background: #ffe9e9; }
+  .ending-stat .lbl { font-size: 0.74em; color: var(--muted); font-weight: 500; }
+  .ending-stat .val { font-size: 1.35em; font-weight: 800; color: var(--ink); margin-top: 0.2em; }
   .ending-chart-wrap {
-    margin: 0.9em 0 0.4em;
+    margin: 0;
     text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease, margin 0.3s ease;
+  }
+  .ending-chart-wrap.open {
+    margin: 0.9em 0 0.4em;
+    max-height: 260px;
   }
   .ending-chart-title {
     font-size: 0.86em;
@@ -676,12 +688,18 @@
     background: #fff5f5;
     border-radius: 12px;
     padding: 0.5em 0.4em 0.3em;
-    height: 160px;
+    height: 180px;
     position: relative;
   }
   .ending-chart-box canvas {
     width: 100% !important;
     height: 100% !important;
+  }
+  .ending-stat .percentile {
+    font-size: 0.78em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-top: 0.25em;
   }
   .ending-cta {
     background: var(--accent);
@@ -829,22 +847,24 @@
       <h1 class="ending-title" id="ending-title">…</h1>
       <p class="ending-body" id="ending-body">…</p>
       <div class="ending-stats">
-        <div class="ending-stat">
+        <button class="ending-stat" onclick="game.toggleChart('affinity')">
           <div class="lbl">💖 호감도</div>
           <div class="val" id="end-affinity">0</div>
-        </div>
-        <div class="ending-stat">
+          <div class="percentile" id="end-affinity-percentile">상위 -%</div>
+        </button>
+        <button class="ending-stat" onclick="game.toggleChart('asset')">
           <div class="lbl">📈 수익률</div>
           <div class="val" id="end-return">0%</div>
-        </div>
+          <div class="percentile" id="end-return-percentile">상위 -%</div>
+        </button>
       </div>
 
-      <!-- 회고 차트 — 호감도·자산 추이 -->
-      <div class="ending-chart-wrap">
+      <!-- 회고 차트 — 박스 탭 시 expand -->
+      <div class="ending-chart-wrap" id="chart-wrap-affinity">
         <div class="ending-chart-title">💖 호감도 추이</div>
         <div class="ending-chart-box"><canvas id="chart-affinity"></canvas></div>
       </div>
-      <div class="ending-chart-wrap">
+      <div class="ending-chart-wrap" id="chart-wrap-asset">
         <div class="ending-chart-title">💰 자산 추이</div>
         <div class="ending-chart-box"><canvas id="chart-asset"></canvas></div>
       </div>
@@ -878,17 +898,24 @@ const GAME = {
 
 // 캐릭터 표정 (nano banana 일러스트 자리, fallback emoji)
 const FACE = {
-  default: "🌸",
-  smile:   "😊",
-  blush:   "☺️",
-  sad:     "😢",
-  surprise:"😳",
-  serious: "😐",
-  happy:   "🥰",
-  laugh:   "😄",
-  worry:   "😟",
-  thinking:"🤔",
-  embarrassed: "🙈"
+  default:        "🌸",
+  smile:          "😊",
+  blush:          "☺️",
+  sad:            "😢",
+  surprise:       "😳",
+  serious:        "😐",
+  happy:          "🥰",
+  laugh:          "😄",
+  worry:          "😟",
+  thinking:       "🤔",
+  embarrassed:    "🙈",
+  // 확장 — 큰 호감도 변동·도덕 딜레마 표정
+  love_heart:     "😍",
+  flustered:      "😅",
+  disappointed:   "😞",
+  contempt_cold:  "😒",
+  angry:          "😠",
+  crying:         "😭"
 };
 
 // 일러스트 path resolver — nano banana 자산 박힌 후 sim/assets/ 에 deploy 되면 자동 swap.
@@ -987,16 +1014,30 @@ const CHAPTER_1 = [
     ]
   },
 
-  // ---------- MARKET 1 ----------
+  // ---------- MARKET 1 (도덕적 분기) ----------
   {
     bg: "bg-office", bgIcon: "📊", label: "MARKET 1 · 매수 결정",
     face: "thinking", speaker: "narrator",
-    text: "상사 추천으로 KOSPI 매수 의향. 현금에서 얼마를 넣을지 결정하라.",
-    market: {
-      kospi: 2750,
-      ctx: "[상사 추천] 외국인 6일 연속 순매수 + 반도체 외국인 폭매수. 환율 급락. 단기 슈퍼사이클 진입 신호. 강한 매수 시그널.",
-      change_pct: +20,
-      post: "🚀 그날 KOSPI 폭등 +20%. 상사의 정보가 적중. 매수한 자리는 큰 수익."
+    text: "팀장이 KOSPI 매수 시그널을 던졌다. 외국인 매수 + 반도체 슈퍼사이클 시그널. 너의 결정은?",
+    market_choice: {
+      ctx: "[상사 추천] 외국인 6일 연속 순매수 + 반도체 폭매수. 환율 안정. 강한 매수 시그널.",
+      choices: [
+        {
+          text: "유나와 같이 분석하고 매수 (현금 50%)",
+          aff: +10, alloc: 0.50, change_pct: +20, flag: "trust_yuna_m1",
+          reply: "유나와 함께 자료 검토 후 매수. KOSPI +20% — 안정된 수익."
+        },
+        {
+          text: "혼자 풀투자 (현금 100%, 유나에게 알리지 X)",
+          aff: -5, alloc: 1.00, change_pct: +25, flag: "alone_m1",
+          reply: "유나에게 알리지 않고 단독 풀투자. KOSPI +25% — 큰 수익이지만 묘한 거리감."
+        },
+        {
+          text: "이번엔 패스. 다음 기회.",
+          aff: 0, alloc: 0, change_pct: 0, flag: "skip_m1",
+          reply: "보수적으로 패스. 시장은 흘러갔다."
+        }
+      ]
     },
     skip_if: "boss_skip"
   },
@@ -1073,16 +1114,30 @@ const CHAPTER_1 = [
     ]
   },
 
-  // ---------- MARKET 2 ----------
+  // ---------- MARKET 2 (도덕적 딜레마 — 유나가 인사이드 정보 흘림) ----------
   {
-    bg: "bg-night", bgIcon: "🌃", label: "SCENE 13 · 퇴근 후 · 시장 뉴스",
+    bg: "bg-night", bgIcon: "🌃", label: "SCENE 13 · 퇴근 후 · 인사이더 정보",
     face: "worry", speaker: "narrator",
-    text: "퇴근길. 뉴스에서 \"오늘 KOSPI -2.4%, 외국인 매도 전환. 환율 1,360원 돌파\" 속보가 떴다.\n\n유나 어머니 회사처럼 중소형주 직격. 너의 포지션은? 시장은 패닉인가, 기회인가.",
-    market: {
-      kospi: 2750,  // 자동으로 직전 값으로 갱신됨
-      ctx: "[패닉장 — 역발상 기회] 외국인 패닉셀 + 환율 급등 + 개미 투매. 과거 비슷한 패턴에서 평균 +30~50% 반등 사례 다수. 공포에 사는 자리.",
-      change_pct: +40,  // 패닉 매수 = 큰 반등
-      post: "🚀 다음 주 KOSPI 폭등 +40%. 패닉을 견디고 매수한 자리가 진짜 자리."
+    text: "퇴근 직전 유나가 너에게 슬쩍 다가왔다. \"엄마 회사 내일 호재 공시 나올 거야. 너만 알아.\" 유나의 인사이더 정보. 너의 결정은?",
+    market_choice: {
+      ctx: "[유나 인사이더 정보] 미공개 호재 — 사용 시 위법 + 유나 신뢰 무너짐. 단독 매수 시 큰 수익 가능. 도덕적 딜레마.",
+      choices: [
+        {
+          text: "정직하게 — \"고맙지만 그건 듣지 않을게\"",
+          aff: +20, alloc: 0, change_pct: +5, flag: "honest_m2",
+          reply: "정직을 택했다. 유나가 \"…고마워. 그게 맞아.\" 라며 깊은 신뢰를 보였다. KOSPI 평이 +5%."
+        },
+        {
+          text: "정보 받고 풀투자 (배신·이용)",
+          aff: -25, alloc: 1.00, change_pct: +60, flag: "betray_m2",
+          reply: "유나 정보로 풀투자. KOSPI +60% 대박. 다만 유나의 눈빛이 달라졌다."
+        },
+        {
+          text: "거절한 척하고 따로 매수",
+          aff: -10, alloc: 0.50, change_pct: +40, flag: "sneaky_m2",
+          reply: "겉으로 거절하고 따로 매수. KOSPI +40%. 마음 한 켠 무거움."
+        }
+      ]
     }
   },
 
@@ -1134,16 +1189,30 @@ const CHAPTER_1 = [
     ]
   },
 
-  // ---------- MARKET 3 ----------
+  // ---------- MARKET 3 (마지막 결정 — 자기희생 옵션) ----------
   {
     bg: "bg-office", bgIcon: "📊", label: "MARKET 3 · 마지막 결정",
     face: "thinking", speaker: "narrator",
-    text: "시장 패닉. 너의 포지션은 마지막 결정 앞에 있다. 매수·매도·홀드 — 이번 한 번의 선택이 챕터의 수익률을 거의 정한다.",
-    market: {
-      kospi: 2750,
-      ctx: "[마지막 결정 — 극한 반등 시그널] 외부 충격 후 미 연준 비둘기 발언 임박 + 환율 안정. 과거 비슷한 자리에서 +50~80% 반등 사례. 마지막 자리.",
-      change_pct: +60,  // 마지막 결정 — 극단 반등
-      post: "🚀🚀 다음 날 KOSPI 대폭등 +60%. 마지막 자리에서 매수한 자리는 인생 트레이드."
+    text: "시장 패닉. 유나 어머니 회사 협상 직전. 이번 한 결정이 챕터를 정한다.",
+    market_choice: {
+      ctx: "[마지막 결정] 패닉장 후 반등 시그널. 단독 풀투자 = 인생 트레이드 가능. 매도 = 유나 어머니 협상에 자금 보태기 (자기희생).",
+      choices: [
+        {
+          text: "유나와 같이 결정 후 매수 (현금 50%)",
+          aff: +15, alloc: 0.50, change_pct: +30, flag: "trust_yuna_m3",
+          reply: "유나와 자료 검토 후 매수. KOSPI +30% — 같이 만든 결과."
+        },
+        {
+          text: "단독 풀투자 (유나 안 알림 — 마지막 배신)",
+          aff: -30, alloc: 1.00, change_pct: +80, flag: "betray_m3",
+          reply: "유나에게 알리지 않고 단독 풀투자. KOSPI +80% 폭등. 통장은 두툼해졌지만 유나는 멀어졌다."
+        },
+        {
+          text: "보유 전량 매도 → 유나 어머니 협상에 자금 보탬 (자기희생)",
+          aff: +25, alloc: -1, change_pct: -10, flag: "sacrifice_m3",
+          reply: "보유 주식 전량 매도. 유나 어머니 협상에 자금을 보탰다. 시장은 -10% 더 빠졌지만, 유나의 눈물이 너의 손에 떨어졌다."
+        }
+      ]
     }
   },
   {
@@ -1342,7 +1411,10 @@ const game = {
     choicesEl.innerHTML = "";
     marketMount.innerHTML = "";
 
-    if (scene.market) {
+    if (scene.market_choice) {
+      // 새 디자인 — 도덕적 매매 분기 (aff + alloc + change 통합 선택지)
+      this.renderMarketChoice(scene);
+    } else if (scene.market) {
       this.renderMarketCard(scene);
     } else if (scene.choices) {
       scene.choices.forEach((c, i) => {
@@ -1362,6 +1434,110 @@ const game = {
       };
       choicesEl.appendChild(btn);
     }
+  },
+
+  renderMarketChoice(scene) {
+    const s = this.state;
+    const mc = scene.market_choice;
+    const mount = document.getElementById("market-mount");
+
+    // 시장 컨텍스트 미니 카드
+    const card = document.createElement("div");
+    card.className = "market-card";
+    card.innerHTML = `
+      <div class="market-head">
+        <span class="market-title">📊 KOSPI</span>
+        <span class="market-date">${this.fmt(s.kospi)} · 현금 ${this.fmt(Math.round(s.cash))}원 · 주식 ${this.fmt(Math.round(s.shares * s.kospi))}원</span>
+      </div>
+      <div class="market-context">${mc.ctx}</div>
+    `;
+    mount.appendChild(card);
+
+    // 선택지 박음
+    const choicesEl = document.getElementById("choices");
+    mc.choices.forEach((c, i) => {
+      const btn = document.createElement("button");
+      btn.className = "choice-btn";
+      btn.textContent = c.text;
+      btn.onclick = () => this.executeMarketChoice(i);
+      choicesEl.appendChild(btn);
+    });
+  },
+
+  executeMarketChoice(i) {
+    const s = this.state;
+    const scene = CHAPTER_1[s.sceneIdx];
+    const mc = scene.market_choice;
+    const choice = mc.choices[i];
+    const affBefore = s.affinity;
+    const totalBefore = s.cash + s.shares * s.kospi;
+
+    // 1) 자산 alloc 적용
+    if (choice.alloc > 0) {
+      // 매수: cash 의 alloc 비율
+      const spend = Math.floor(s.cash * choice.alloc);
+      if (spend > 0) {
+        const newShares = spend / s.kospi;
+        const total = s.shares + newShares;
+        s.avg_buy = total > 0 ? (s.avg_buy * s.shares + s.kospi * newShares) / total : s.kospi;
+        s.shares = total;
+        s.cash -= spend;
+      }
+    } else if (choice.alloc < 0) {
+      // 전량 매도 (자기희생)
+      if (s.shares > 0.0001) {
+        const receive = s.shares * s.kospi;
+        s.cash += receive;
+        s.shares = 0;
+        s.avg_buy = 0;
+      }
+    }
+
+    // 2) KOSPI 변동
+    s.kospi = s.kospi * (1 + choice.change_pct / 100);
+
+    // 3) 호감도 변동
+    s.affinity = Math.max(0, Math.min(100, s.affinity + choice.aff));
+    if (choice.flag) s.flags[choice.flag] = true;
+
+    // 4) timeline 박음
+    const totalAfter = Math.round(s.cash + s.shares * s.kospi);
+    s.timeline.push({ idx: s.sceneIdx + 1, aff: s.affinity, asset: totalAfter, label: scene.label || "MARKET", kind: "market" });
+
+    // 5) 도파민 효과 다 박음
+    this.showAffPopup(choice.aff);
+    this.vibeForAff(choice.aff);
+    this.flashScene(choice.aff);
+    this.pulseHeader(choice.aff);
+    this.swapFaceForAff(choice.aff);
+    this.checkThreshold(affBefore, s.affinity);
+
+    // 자산 변동 toast
+    const delta = (s.cash + s.shares * s.kospi) - totalBefore;
+    const deltaPct = totalBefore > 0 ? (delta / totalBefore) * 100 : 0;
+    if (Math.abs(delta) > 100000) {
+      const txt = (delta >= 0 ? "🚀 +" : "💸 ") + this.fmt(Math.round(delta)) + "원 (" + (delta>=0?"+":"") + deltaPct.toFixed(1) + "%)";
+      this.toast(txt, delta >= 0 ? "money-up" : "money-down");
+      if (delta >= 0 && deltaPct >= 30) this.vibe([100,50,100,50,100]);
+      else if (delta < 0) this.vibe([200,80,200]);
+    }
+
+    // 6) narrator dialog (선택 reply + 결과)
+    document.getElementById("speaker").className = "speaker narrator";
+    document.getElementById("speaker").textContent = "(시장 결과)";
+    document.getElementById("dialog-text").textContent = choice.reply + "\n\nKOSPI: " + this.fmt(s.kospi) + " · 자산: " + this.fmt(totalAfter) + "원";
+    document.getElementById("market-mount").innerHTML = "";
+
+    // 7) next 버튼
+    const choicesEl = document.getElementById("choices");
+    choicesEl.innerHTML = "";
+    const btn = document.createElement("button");
+    btn.className = "next-btn";
+    btn.textContent = "다음 →";
+    btn.onclick = () => { s.sceneIdx++; this.renderScene(); };
+    choicesEl.appendChild(btn);
+
+    this.refreshHeader();
   },
 
   renderMarketCard(scene) {
@@ -1608,6 +1784,14 @@ const game = {
     document.getElementById("ending-body").textContent = ending.body;
     document.getElementById("end-affinity").textContent = aff;
     document.getElementById("end-return").textContent = (returnPct >= 0 ? "+" : "") + returnPct.toFixed(1) + "%";
+    document.getElementById("end-affinity-percentile").textContent = "상위 " + this.percentileForAffinity(aff) + "%";
+    document.getElementById("end-return-percentile").textContent = "상위 " + this.percentileForReturn(returnPct) + "%";
+
+    // 차트 wrap collapsed 상태로 시작 (다시 하기 후 재시작 대비)
+    const wAff = document.getElementById("chart-wrap-affinity");
+    const wAsset = document.getElementById("chart-wrap-asset");
+    if (wAff) wAff.classList.remove("open");
+    if (wAsset) wAsset.classList.remove("open");
 
     this.show("screen-ending");
 
@@ -1632,7 +1816,16 @@ const game = {
   },
 
   drawEndingCharts() {
-    if (typeof Chart === "undefined") return;  // Chart.js 미로드 시 graceful
+    // Chart.js CDN 로드 대기 (네트워크 느릴 때 graceful retry)
+    if (typeof Chart === "undefined") {
+      if (!this._chartRetries) this._chartRetries = 0;
+      if (this._chartRetries < 20) {
+        this._chartRetries++;
+        setTimeout(() => this.drawEndingCharts(), 250);
+      }
+      return;
+    }
+    this._chartRetries = 0;
     const tl = (this.state && this.state.timeline) || [];
     if (tl.length < 2) return;
 
@@ -1748,6 +1941,39 @@ const game = {
 
   restart() { this.show("screen-cover"); },
 
+  toggleChart(kind) {
+    const wrapId = kind === "affinity" ? "chart-wrap-affinity" : "chart-wrap-asset";
+    const wrap = document.getElementById(wrapId);
+    if (!wrap) return;
+    const isOpen = wrap.classList.toggle("open");
+    if (isOpen) {
+      this.drawEndingCharts();  // 한 번만 그려도 safe (destroy 박혀 있음)
+      setTimeout(() => { wrap.scrollIntoView({ behavior: "smooth", block: "center" }); }, 320);
+      this.vibe(25);
+    }
+  },
+
+  percentileForAffinity(aff) {
+    if (aff >= 95) return 2;
+    if (aff >= 85) return 5;
+    if (aff >= 70) return 15;
+    if (aff >= 55) return 30;
+    if (aff >= 40) return 50;
+    if (aff >= 25) return 70;
+    if (aff >= 10) return 88;
+    return 97;
+  },
+  percentileForReturn(pct) {
+    if (pct >= 150) return 1;
+    if (pct >= 100) return 3;
+    if (pct >= 50) return 10;
+    if (pct >= 20) return 25;
+    if (pct >= 0) return 50;
+    if (pct >= -20) return 70;
+    if (pct >= -40) return 90;
+    return 97;
+  },
+
   share() {
     const s = this.state;
     const finalAsset = s.cash + s.shares * s.kospi;
@@ -1822,14 +2048,17 @@ const game = {
     });
   },
   swapFaceForAff(aff) {
-    // 호감도 변동에 따른 표정 — emoji portrait + scene character emoji 양쪽 swap
+    // 호감도 변동 → 표정 매핑 (9 단계). 큰 - 시 경멸·분노·울먹 박음 — 도덕 딜레마 톤.
     let face;
-    if (aff >= 15)      face = "happy";
-    else if (aff >= 8)  face = "smile";
-    else if (aff >= 2)  face = "default";
-    else if (aff >= -3) face = "thinking";
-    else if (aff >= -10) face = "sad";
-    else                face = "surprise";   // 큰 -, 충격
+    if (aff >= 15)       face = "love_heart";    // 폭증 — 하트 눈
+    else if (aff >= 10)  face = "happy";         // 큰 +
+    else if (aff >= 5)   face = "smile";         // 좋음
+    else if (aff >= 1)   face = "default";       // 평이
+    else if (aff >= -3)  face = "flustered";     // 살짝 당황
+    else if (aff >= -8)  face = "disappointed";  // 실망
+    else if (aff >= -15) face = "contempt_cold"; // 경멸·차가운 눈
+    else if (aff >= -25) face = "angry";         // 분노
+    else                 face = "crying";        // 폭락·배신
     this.setPortrait(face);
   },
   setPortrait(faceKey) {
@@ -1845,17 +2074,24 @@ const game = {
       img.onload = () => { portrait.classList.add("has-image"); img.classList.add("loaded"); };
       // 매핑 — character_bible_yuna.md 의 face key → 일러스트 파일명
       const fileMap = {
-        default: "_01_yuna_face_default",
-        smile:   "_02_yuna_face_smile",
-        surprise:"_03_yuna_face_surprise",
-        embarrassed: "_04_yuna_face_embarrassed",
-        sad:     "_05_yuna_face_aversion",
-        happy:   "_02_yuna_face_smile",
-        thinking:"_01_yuna_face_default",
-        worry:   "_05_yuna_face_aversion",
-        serious: "_01_yuna_face_default",
-        blush:   "_04_yuna_face_embarrassed",
-        laugh:   "_02_yuna_face_smile"
+        default:       "_01_yuna_face_default",
+        smile:         "_02_yuna_face_smile",
+        surprise:      "_03_yuna_face_surprise",
+        embarrassed:   "_04_yuna_face_embarrassed",
+        sad:           "_05_yuna_face_aversion",
+        happy:         "_02_yuna_face_smile",
+        thinking:      "_01_yuna_face_default",
+        worry:         "_05_yuna_face_aversion",
+        serious:       "_01_yuna_face_default",
+        blush:         "_04_yuna_face_embarrassed",
+        laugh:         "_02_yuna_face_smile",
+        // 확장 — 새 PNG 박힐 자리 (없으면 emoji fallback)
+        love_heart:    "_06_yuna_face_love_heart",
+        flustered:     "_04_yuna_face_embarrassed",  // PNG 없으면 embarrassed 재활용
+        disappointed:  "_08_yuna_face_disappointed",
+        contempt_cold: "_07_yuna_face_contempt",
+        angry:         "_09_yuna_face_angry",
+        crying:        "_10_yuna_face_crying"
       };
       const fileName = fileMap[faceKey] || "_01_yuna_face_default";
       img.src = "assets/" + fileName + ".png";
