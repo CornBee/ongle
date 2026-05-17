@@ -223,6 +223,52 @@
     .hero h1 { font-size: 1.7em; }
     .card { padding: 1.1em 1.2em; }
   }
+  /* sim 진입점 카드 — 영상 카드와 톤 유지하되 살짝 차별 */
+  .sim-card {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 1.2em;
+    border: 1px solid #ececec;
+    background: linear-gradient(135deg, #fff5f5 0%, #fff 70%);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 1.6em;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .sim-card:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  .sim-card-thumb {
+    width: 64px; height: 64px; border-radius: 50%;
+    object-fit: cover; background: #ffe4e4;
+  }
+  .sim-card-body { line-height: 1.4; }
+  .sim-card-title {
+    font-size: 1.02em; font-weight: 700; color: #2b2b2b;
+    display: inline-block; margin-right: 0.4em;
+  }
+  .sim-card-beta {
+    display: inline-block; font-size: 0.7em; font-weight: 600;
+    padding: 0.12em 0.5em; border-radius: 8px;
+    background: #ffe4e4; color: #c75555; vertical-align: middle;
+  }
+  .sim-card-sub {
+    font-size: 0.86em; color: #777; margin-top: 0.25em;
+  }
+  .sim-card-cta {
+    font-size: 0.9em; color: #c75555; font-weight: 600; white-space: nowrap;
+  }
+  @media (max-width: 600px) {
+    .sim-card { grid-template-columns: 52px 1fr auto; padding: 0.9em 1em; gap: 0.7em; }
+    .sim-card-thumb { width: 52px; height: 52px; }
+    .sim-card-title { font-size: 0.96em; }
+    .sim-card-sub { font-size: 0.8em; }
+    .sim-card-cta { font-size: 0.85em; }
+  }
+  .footer-links { margin-top: 0.5em; font-size: 0.85em; }
+  .footer-links a { color: #888; text-decoration: none; margin: 0 0.4em; }
+  .footer-links a:hover { color: #c75555; }
 </style>
 </head>
 <body>
@@ -238,6 +284,14 @@
   <button class="cat-toggle" id="cat-toggle" type="button">더보기 ▼</button>
 </div>
 <main id="card-grid">
+<a class="sim-card" href="https://cornbee.github.io/ongle/sim/">
+  <img class="sim-card-thumb" src="https://cornbee.github.io/ongle/sim/assets/_01_yuna_face_default.png" alt="" loading="lazy" onerror="this.style.display='none'">
+  <div class="sim-card-body">
+    <span class="sim-card-title">분석가 시점 베팅 시뮬</span><span class="sim-card-beta">베타</span>
+    <div class="sim-card-sub">당신이 분석가라면, 어떤 선택을 할까?</div>
+  </div>
+  <span class="sim-card-cta">시작하기 →</span>
+</a>
 <a class="card" href="https://cornbee.github.io/ongle/r/079" data-cats="AI영상,오픈소스,콘텐츠시장,광고시장,한국경제,포털광고">
   <div class="card-thumb-wrap"><img class="card-thumb" src="https://cornbee.github.io/ongle/assets/thumbs/079.png" alt="중국 무료 영상 AI — 외주 단가 압축의 종착지가 광고 노출 단일 관문" loading="lazy"></div>
   <div class="card-meta">
@@ -359,6 +413,11 @@
 <footer>
   <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
   © 2026 ONGLE · 마지막 업데이트: 2026-05-15 12:15
+  <div class="footer-links">
+    <a href="https://cornbee.github.io/ongle/sim/">시뮬레이터 (베타)</a>
+    ·
+    <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">YouTube</a>
+  </div>
 </footer>
 <script>
   const buttons = document.querySelectorAll('.cat-btn');
