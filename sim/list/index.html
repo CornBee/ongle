@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>분석가 시점 시뮬레이션 시리즈 — ONGLE</title>
+<meta name="description" content="ONGLE의 분석 권위 시리즈를 시뮬레이션 형식으로. 한 분기, 한 사람, 한 시장.">
+<meta property="og:title" content="분석가 시점 시뮬레이션 시리즈 — ONGLE">
+<meta property="og:description" content="ONGLE의 분석 권위 시리즈를 시뮬레이션 형식으로.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 1.6em 1.2em 3em; }
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.9em;
+    color: var(--muted);
+    margin-bottom: 1.4em;
+  }
+  .topbar a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .topbar a:hover { color: var(--accent); }
+  h1 {
+    font-size: 1.5em;
+    margin: 0 0 0.3em;
+    font-weight: 700;
+  }
+  .sub {
+    color: var(--ink-soft);
+    margin-bottom: 2em;
+    font-size: 1em;
+  }
+  .featured {
+    display: block;
+    background: linear-gradient(135deg, #fff8f3 0%, #ffe6d5 100%);
+    border: 1px solid var(--highlight-border);
+    border-radius: 14px;
+    padding: 1.5em 1.6em;
+    text-decoration: none;
+    color: var(--ink);
+    margin-bottom: 1.8em;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .featured:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255,107,53,0.15);
+  }
+  .featured-label {
+    font-size: 0.78em;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5em;
+  }
+  .featured-title {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: 0.35em;
+  }
+  .featured-sub {
+    color: var(--ink-soft);
+    font-size: 0.95em;
+    margin-bottom: 0.8em;
+  }
+  .featured-cta {
+    font-size: 0.95em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .section-label {
+    font-size: 0.85em;
+    color: var(--muted);
+    margin: 2em 0 0.8em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .chapters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9em;
+  }
+  .chapter {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.1em 1.2em;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .chapter:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .chapter.upcoming {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .chapter-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  .chapter-tag {
+    display: inline-block;
+    font-size: 0.7em;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    margin-left: 0.4em;
+    font-weight: 500;
+  }
+  .chapter-tag.upcoming { background: #f3f3f3; color: #999; }
+  .chapter-sub {
+    color: var(--ink-soft);
+    font-size: 0.9em;
+  }
+  footer {
+    margin-top: 3em;
+    padding-top: 1.5em;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.85em;
+    text-align: center;
+  }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+  }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="topbar">
+  <a href="/ongle/">← ONGLE 메인</a>
+</div>
+
+<h1>분석가 시점 시뮬레이션 시리즈</h1>
+<p class="sub">ONGLE의 분석 권위 시리즈를 시뮬레이션 형식으로. 한 분기, 한 사람, 한 시장.</p>
+
+<a class="featured" href="/ongle/sim/">
+  <div class="featured-label">▶ FEATURED</div>
+  <div class="featured-title">유나와의 봄</div>
+  <div class="featured-sub">같은 팀 동료 유나와의 한 주. 대화와 투자 결정이 결말을 만든다.</div>
+  <div class="featured-cta">시작하기 →</div>
+</a>
+
+<div class="section-label">시리즈 목록</div>
+
+<div class="chapters">
+
+  <a class="chapter" href="/ongle/sim/">
+    <div class="chapter-title">유나와의 봄 <span class="chapter-tag">CH.1 · 베타</span></div>
+    <div class="chapter-sub">분석가 신입의 한 주 — KOSPI 투자 시뮬</div>
+  </a>
+
+  <div class="chapter upcoming">
+    <div class="chapter-title">네 사람의 봄 <span class="chapter-tag upcoming">CH.2 · 준비 중</span></div>
+    <div class="chapter-sub">전세 시장의 네 시선 — 4 히로인 루트</div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/ongle/">← ONGLE 메인</a> · <a href="https://www.youtube.com/@CornBeeRock">YouTube 채널</a>
+</footer>
+
+</div>
+</body>
+</html>
