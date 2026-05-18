@@ -1,0 +1,27 @@
+{
+  "name": "유나와의 봄 — ONGLE 미연시 투자 시뮬",
+  "short_name": "유나와의 봄",
+  "description": "같은 팀 동료 유나와의 한 주. 대화와 투자 결정이 결말을 만든다.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff5f5",
+  "theme_color": "#ffa8a8",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"]
+}
