@@ -125,6 +125,42 @@
     grid-template-columns: 1fr;
     gap: 1.1em;
   }
+  .sim-card {
+    display: block;
+    background: linear-gradient(135deg, #fff8f3 0%, #ffe6d5 100%);
+    border: 1px solid var(--highlight-border);
+    border-radius: 12px;
+    padding: 1.1em 1.3em;
+    text-decoration: none;
+    color: var(--ink);
+    margin-bottom: 1.2em;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .sim-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255,107,53,0.12);
+  }
+  .sim-card-title {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin-bottom: 0.25em;
+  }
+  .sim-card-beta {
+    font-size: 0.75em;
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 0.3em;
+  }
+  .sim-card-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    margin-bottom: 0.5em;
+  }
+  .sim-card-cta {
+    font-size: 0.95em;
+    color: var(--accent);
+    font-weight: 600;
+  }
   .card {
     display: block;
     background: var(--surface);
@@ -239,6 +275,11 @@
   <button class="cat-toggle" id="cat-toggle" type="button">더보기 ▼</button>
 </div>
 <main id="card-grid">
+<a class="sim-card" href="https://cornbee.github.io/ongle/sim/">
+  <div class="sim-card-title">분석가 시점 베팅 시뮬레이션 <span class="sim-card-beta">[베타]</span></div>
+  <div class="sim-card-sub">당신이 분석가라면, 어떤 선택을 할까?</div>
+  <div class="sim-card-cta">시작하기 →</div>
+</a>
 <a class="card" href="https://cornbee.github.io/ongle/r/079" data-cats="AI영상,오픈소스,콘텐츠시장,광고시장,한국경제,포털광고">
   <div class="card-thumb-wrap"><img class="card-thumb" src="https://cornbee.github.io/ongle/assets/thumbs/079.png" alt="중국 무료 영상 AI — 외주 단가 압축의 종착지가 광고 노출 단일 관문" loading="lazy"></div>
   <div class="card-meta">
@@ -359,7 +400,7 @@
 </main>
 <footer>
   <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
-  © 2026 ONGLE · 마지막 업데이트: 2026-05-18 20:12
+  © 2026 ONGLE · 마지막 업데이트: 2026-05-18 20:15
 </footer>
 <script>
   const buttons = document.querySelectorAll('.cat-btn');
