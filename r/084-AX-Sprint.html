@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>네이버 — AX-Sprint 7,540억이 통과하는 한 자리 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="네이버 — AX-Sprint 7,540억이 통과하는 한 자리">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">네이버 — AX-Sprint 7,540억이 통과하는 한 자리</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+timeline
+    title AX-Sprint 7,540억 — 자금이 통과하는 경로
+    2026-05 발표 : 11개 부처 합동
+                : 5대 분야 분산
+    2026 집행   : 6,135억 (출연·보조 4,735억 + 융자 1,400억)
+    246개 제품  : 제조·농축어·국토·복지·생활 5 갈래
+    공통 인프라 : GPU·HBM·CSAP 클라우드·한국어 LLM·데이터
+    2027 집행   : 1,405억 후속
+    혁신조달    : 우수 제품 정부 발주 시장 연결
+</pre></div>
+    <div class="article-meta">2026-05-18 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#AX-Sprint</span> <span class="tag">#AI</span> <span class="tag">#네이버</span> <span class="tag">#클라우드</span> <span class="tag">#sovereign-LLM</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">네이버 — AX-Sprint 7,540억이 통과하는 한 자리</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">2026년 정부 AI 예산 2조 4천억 중 단일 사업 하나에 6,135억이 들어간다. 사업 이름은 AX-Sprint, 두 해 합쳐 7,540억. 11개 부처가 한 줄로 들어섰고 246개 응용제품이 동시에 개발된다. 자금이 한 꺼풀씩 흩어지다 결국 통과해야 하는 가장 좁은 자리가 어디인지 따라간다.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Hero · AX-Sprint의 자금 흐름 한 장</h2>
+
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">층위</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">흩어지는 자리</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">통과해야 하는 자리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자금 입구</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">11개 부처</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기재부 lead</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">분야 분기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5대 분야</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">246개 제품</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개발 주체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 AI·SI 기업 다수</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공통 인프라</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">인프라 통로</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">GPU·HBM (글로벌 시장)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">CSAP 등급 국내 클라우드</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">끝자리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 sovereign AI + 공공 클라우드</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 첫 꺼풀 — 246개 응용제품, 5대 분야로 어떻게 흩어지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">AX-Sprint의 1차 단위는 <strong>246개 AI 응용제품</strong>. 다섯 분야로 분산된다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">분야</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">대표 사례 (정책 발표 기준)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">사업 성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">제조</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공정 이상감지·품질검사·예지보전</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">산업부 주도</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">농·축·어업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">작황 예측·축사 모니터링·양식 자동화</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">농식품부·해수부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국토·교통</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자율주행·SOC 안전·물류 최적화</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국토부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보건·복지·환경</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">의료 영상·돌봄 로봇·대기·수질 감지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">복지부·기후부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">생활·보안·방산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">치안·국방 영상·재난 대응</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국방부·행안부·식약처</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[AX-Sprint<br/>7,540억] --> B[5대 분야 분산]
+    B --> C[제조]
+    B --> D[농축어]
+    B --> E[국토교통]
+    B --> F[복지환경]
+    B --> G[생활보안방산]
+    C --> H[246개 응용제품]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>관전 포인트</strong> — 자금은 분야별로 흩어진다. 분야 하나하나는 그 분야의 응용 기업만 차지. 단일 종목이 246개를 다 차지하는 그림은 이 단에선 만들어지지 않는다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 두 번째 꺼풀 — 11개 부처는 자금을 어디로 내려보내나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">11개 부처가 합동이라는 사실은 발표 시점에 가장 큰 헤드라인이었다. 실제 자금은 부처마다 다른 실행 기관을 거쳐 사업자에게 도달.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">부처</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">실행 채널 (대표)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">응용 분야</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기획재정부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사업 총괄·예산 배분</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전 분야</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">과기정통부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">IITP·NIA·KISA</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공통 AI 기반·플랫폼</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">산업통상자원부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KEIT·KIAT</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">제조·소부장</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">농림축산식품부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">농진청·aT</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">농축산</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">해양수산부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국해양과학기술원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">양식·해양</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보건복지부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보건산업진흥원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">의료·돌봄</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기후에너지환경부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">환경산업기술원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">환경 감지</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국토교통부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국토교통과학기술진흥원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자율주행·SOC</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국방부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국방기술진흥연구소</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국방 AI</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중소벤처기업부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">TIPA</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중소·스타트업</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">식품의약품안전처</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">식약처 자체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">식의약 안전</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>핵심 — 채널은 분산, 통과 지점은 공통</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">단계</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">분산되는 자리</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">묶이는 자리</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">예산 배분</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부처별</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기재부 총괄</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사업 공고</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">11개 실행기관</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">입찰·선정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">분야별 컨소시엄</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">학습·배포</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>공통 인프라</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자금이 부처에서 사업자로 가는 길은 11갈래. 그러나 사업자가 만든 246개 제품이 학습·배포되려면 어딘가에서 다시 한 자리로 모인다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 세 번째 꺼풀 — 246개를 실제로 만드는 곳</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">응용제품을 짜는 주체는 한국 AI 솔루션 기업과 SI 기업. 셋으로 갈린다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">그룹</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">대표 사업자</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">AX-Sprint 노출</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대형 SI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">삼성SDS·LG CNS·SK C&amp;C·포스코DX</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">컨소시엄 주관·시스템 구축</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">빅테크 AI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버·카카오·LG AI연구원·KT</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 LLM·플랫폼 제공</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전문 AI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">루닛·뷰노·딥노이드·솔트룩스·코난테크놀로지·셀바스AI·라이너</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">도메인 특화 응용제품</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[11개 부처 사업 공고] --> B[컨소시엄 입찰]
+    B --> C{컨소시엄 구성}
+    C --> D[대형 SI 주관]
+    C --> E[전문 AI 참여]
+    D --> F[시스템 구축·운영]
+    E --> G[알고리즘·모델]
+    F --> H[공통 인프라 위에서 학습·배포]
+    G --> H
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>관전 포인트</strong> — 컨소시엄은 사업마다 새로 조합. 단일 종목이 246개 컨소시엄을 다 가져가는 구조 X. 자금은 여전히 분산. 다음 단으로 한 꺼풀 더.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 네 번째 꺼풀 — 246개 제품이 공통으로 의존하는 인프라</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">응용제품 개수와 분야와 부처가 아무리 갈라져도, 그 모든 제품은 같은 다섯 자원 위에 올라간다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">공통 인프라</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">자원 성격</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">한국 공급 상황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">GPU</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">학습·추론 연산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔비디아 단일 공급, 한국 직접 제조 X</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">HBM</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">GPU에 붙는 메모리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SK하이닉스·삼성전자 글로벌 과점</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">클라우드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">학습 환경·배포 환경</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부 사업은 <strong>CSAP 인증</strong> 등급 강제</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 LLM</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">도메인 응용의 base model</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버·LG·KT·카카오 — 한정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">데이터·인력</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">학습 데이터·개발 인력</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부 보유 데이터 + AI 인력 부족</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>병목 점검 — 각 자리의 좁기</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">인프라</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">글로벌 시장 비중</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">AX-Sprint 7,540억의 의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">GPU</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국은 수요자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">글로벌 시장 대비 미미</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">HBM</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국이 공급자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">글로벌 수요 대비 작아 직접 수혜 한정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공공 클라우드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 정부는 외산 직접 사용 X</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국내 CSAP 등급 사업자만 가능</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 LLM</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어는 한국이 공급</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국내 4사 한정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">데이터·인력</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부 보유·국내 노동 시장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장 자원</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">→ 글로벌 시장에 묶인 자리(GPU·HBM)는 7,540억으로 단일 종목이 흔들리지 않는다. 한국 내부에서 좁은 자리는 두 곳: <strong>공공 클라우드</strong>와 <strong>한국어 LLM</strong>.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 5. 다섯 번째 꺼풀 — 자리를 채우는 쪽과 잃는 쪽</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">흐름의 방향: <strong>분산된 컨소시엄 → 공통 인프라로 자금이 빨려 올라간다</strong>.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">자리를 잃는 쪽 (영향 X 또는 한정 수혜)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">자리를 채우는 쪽 (구조적 수혜)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반 SI 사업 (AX-Sprint 외부)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부·공공 SI (삼성SDS·LG CNS·SK C&amp;C·포스코DX)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">외산 클라우드 (AWS·MS·Google) — CSAP 직접 X</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">CSAP 등급 국내 클라우드 (네이버클라우드·KT클라우드·NHN클라우드)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">외산 LLM (OpenAI·Anthropic·Google) — 정부 발주 직접 X</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 sovereign LLM (네이버 하이퍼클로바X·LG 엑사원·KT 믿음·카카오)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장 AI 스타트업 (수혜 — 단, 투자 접근 X)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상장 전문 AI 기업 (루닛·뷰노·솔트룩스·코난·셀바스 등)</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>핵심 시소</strong> — 외산 vs 국산. AX-Sprint 자금은 한국 정부 발주이므로 외산 인프라가 직접 통로가 되지 못한다. 강제로 국내 통로로 휘는 자리가 가장 좁은 자리.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 6. 여섯 번째 꺼풀 — 7,540억이 통과하는 가장 좁은 자리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">병목 후보 5 자리를 capacity·접근성·대체재 세 축으로 정리.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">후보</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">capacity (한국 내)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">정부 사업 접근성</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">대체재</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">GPU</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0 (수입 의존)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔비디아 글로벌</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사실상 X</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">HBM</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">충분 (한국이 공급)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">글로벌 수요와 묶임</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SK하이닉스·삼성</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>CSAP 등급 클라우드</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>한정 (4사)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>강제 통로</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>국내 4사 한정</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>한국어 sovereign LLM</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>한정 (4사)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>도메인 응용의 base</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>국내 4사 한정</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">데이터·인력</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부 보유·노동 시장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[AX-Sprint 자금<br/>7,540억] --> B[부처 11갈래]
+    B --> C[사업자 컨소시엄]
+    C --> D{공통 인프라 통과}
+    D --> E[GPU·HBM<br/>글로벌 시장]
+    D --> F[CSAP 클라우드<br/>국내 4사]
+    D --> G[한국어 LLM<br/>국내 4사]
+    F -.강제 통로.-> H[병목]
+    G -.강제 통로.-> H
+    E -.글로벌 묶임.-> I[직접 수혜 한정]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>(a) CSAP 등급 클라우드 — 가장 좁은 자리</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">사업자</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">CSAP 등급 보유</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">공공 시장 위치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버클라우드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상·중·하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국내 공공 클라우드 점유율 선두</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KT클라우드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상·중·하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통신3사 중 유일 자회사 분리</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">NHN클라우드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상·중·하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">행정 망 사업 강점</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">삼성SDS</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부분</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그룹사 + 정부 일부</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">외산 빅3(AWS·MS·Google)는 정부 발주 클라우드 상등급 직접 진입 X. 246개 응용제품의 학습·배포 환경은 국내 4사 안에서만 결정된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>(b) 한국어 sovereign LLM — 두 번째로 좁은 자리</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">모델</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">보유 기업</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">AX-Sprint 응용 분야</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">하이퍼클로바X</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전 분야 한국어 base</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엑사원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">LG AI연구원 (비상장)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">산업·연구</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">믿음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KT</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통신·콜센터·공공</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">카카오 모델</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">카카오</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">생활·검색</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">도메인 특화 응용제품은 base model 위에서 fine-tuning. 정부 발주 사업은 데이터 주권상 외산 LLM API 직접 호출이 제약. 국내 sovereign LLM 4사 안에서 통과한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>(a)와 (b)가 겹치는 자리</strong> — <strong>네이버</strong>. CSAP 등급 클라우드(네이버클라우드) + 한국어 sovereign LLM(하이퍼클로바X)을 동시에 직접 보유한 유일한 상장사. 7,540억의 모든 자금 흐름이 두 자리를 함께 통과해야 할 때 한 종목 안에서 만난다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론 · 자리를 차지하는 한 주인공</h2>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[AX-Sprint<br/>7,540억 발표] --> B[5대 분야 분산]
+    B --> C[11개 부처 11갈래]
+    C --> D[246개 응용제품]
+    D --> E[공통 인프라 통과]
+    E --> F[CSAP 클라우드<br/>+ 한국어 LLM]
+    F --> G[**네이버 035420**]
+    style G fill:#fff8f3,stroke:#ff6b35,stroke-width:3px
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">6 꺼풀을 따라 끝까지 갔을 때 자리를 차지하는 주인공은 한 회사다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>주인공 — 투자 가능한 자리</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">회사</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시장</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">코드</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>네이버</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">035420</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버클라우드(공공 CSAP 선두) + 하이퍼클로바X(한국어 sovereign LLM) 동시 보유</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>보조 노출 — 같은 흐름에 닿는 다른 자리</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">회사</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시장</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">코드</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">노출 성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KT</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">030200</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KT클라우드 + 믿음 LLM, 두 자리 동시 보유 (두 번째 통로)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">삼성SDS</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">018260</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부·공공 SI 1위, 컨소시엄 주관 자리</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">LG CNS</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">064400</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정부·공공 SI 2위, 컨소시엄 주관 자리</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">LG AI연구원(엑사원)·카카오엔터프라이즈(공공 클라우드 일부)는 상장 구조상 직접 노출이 한정. 카카오(035720)·LG(003550)는 그룹 단위 간접 노출.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>재무·투자 지표 (참고 — 정확 수치는 네이버 증권·FnGuide에서 실시간 확인 권장)</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">네이버 (035420)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">KT (030200)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">삼성SDS (018260)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI (대형주)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI (대형주)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KOSPI (대형주)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사업 비중</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">검색·커머스·클라우드·AI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통신·미디어·클라우드·AI</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SI·물류·클라우드</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AX-Sprint 노출 채널</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네이버클라우드 + 하이퍼클로바X</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KT클라우드 + 믿음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">컨소시엄 주관·시스템 구축</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차별점</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국어 LLM·공공 클라우드 두 자리 단일 종목 동시</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통신3사 유일 클라우드 자회사 분리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그룹사 매출 비중 큼, 정부 비중 한정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">7,540억 노출 강도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직접·매우 큼 (학습·배포 통로)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직접·큼 (두 번째 통로)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보조·중간 (수주 단위)</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">(시가총액·PER·PBR·배당수익률은 시점 의존 — 네이버 증권 <a href="https://finance.naver.com/item/main.naver?code=035420" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">035420</a> · <a href="https://finance.naver.com/item/main.naver?code=030200" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">030200</a> · <a href="https://finance.naver.com/item/main.naver?code=018260" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">018260</a>에서 직접 확인)</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>왜 네이버가 단일 주인공인가</strong></p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">표면 — 11개 부처 합동 7,540억, 246개 응용제품, 5대 분야 분산</li>
+<li style="margin:0.3em 0;">그 아래 — 자금이 부처·컨소시엄·분야로 갈라졌다가 공통 인프라 통과 시점에 다시 한 자리로 모임</li>
+<li style="margin:0.3em 0;">그 한 자리의 두 축 — CSAP 등급 공공 클라우드 + 한국어 sovereign LLM</li>
+<li style="margin:0.3em 0;">그 두 축을 단일 상장 종목 안에서 동시에 보유한 곳 = 네이버</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정부 AI 사업의 모수는 AX-Sprint 7,540억에서 끝나지 않는다. 2026 정부 AI 예산 2.4조의 25.6%가 이 단일 사업에 집중됐다는 뜻은, 다음 회차 정부 AI 사업이 같은 구조로 설계될 가능성이 높다. 모수가 확장될수록 네이버가 차지한 자리의 구조적 지배력은 분명해진다. 7,540억이라는 첫 단추가 가리키는 끝자리가 여기다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Sources</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">산업통상자원부 (2026-05) https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171603/view</li>
+<li style="margin:0.3em 0;">정책브리핑 (2026-05) https://www.korea.kr</li>
+<li style="margin:0.3em 0;">전자신문 (2026-05) https://www.etnews.com</li>
+<li style="margin:0.3em 0;">아주경제 (2026-05) https://www.ajunews.com</li>
+<li style="margin:0.3em 0;">헤럴드경제 (2026-05) https://news.heraldcorp.com</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상: 084
+작성일: 2026-05-18</p>
+  </article>
+
+  
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
