@@ -1694,6 +1694,8 @@ const game = {
       history.replaceState({ type: "cover" }, "", "#cover");
     } catch (e) {}
     try { gtag('event', 'sim_start', { event_category: 'sim' }); } catch (e) {}
+    // GA4 custom — 커버 "시작하기" 클릭. funnel 시작점 측정용.
+    try { gtag('event', 'sim_start_clicked'); } catch (e) {}
     // 첫 사용자 interaction — BGM autoplay (모바일 제약 해소) + greeting 동시 재생
     this.playBgm();
     this.playGreeting();
@@ -1788,6 +1790,15 @@ const game = {
         }
       } catch (e) {}
     }
+
+    // GA4 custom — scene_view (restoring 시에도 동일 scene 진입은 측정)
+    try {
+      gtag('event', 'scene_view', {
+        scene_idx: s.sceneIdx,
+        scene_name: scene.id || ('scene_' + String(s.sceneIdx).padStart(2, '0')),
+        is_market: !!(scene.market_choice || scene.market)
+      });
+    } catch (e) {}
 
     // 배경 — gradient fallback + 일러스트 PNG swap (있으면)
     const bg = document.getElementById("scene-bg");
@@ -1932,6 +1943,16 @@ const game = {
     const choice = mc.choices[i];
     const affBefore = s.affinity;
     const totalBefore = s.cash + s.shares * s.kospi;
+
+    // GA4 custom — choice_made (market choice)
+    try {
+      gtag('event', 'choice_made', {
+        scene_idx: s.sceneIdx,
+        choice_idx: i,
+        choice_text: (choice.text || choice.label || '...').slice(0, 80),
+        choice_type: 'market'
+      });
+    } catch (e) {}
 
     // 1) 자산 alloc 적용
     if (choice.alloc > 0) {
@@ -2123,6 +2144,17 @@ const game = {
     const choice = choiceList[i];
     const scene = sceneRaw;  // 원본 scene 박음 (label 등 reference)
     const affBefore = s.affinity;
+
+    // GA4 custom — choice_made (dialog choice)
+    try {
+      gtag('event', 'choice_made', {
+        scene_idx: s.sceneIdx,
+        choice_idx: i,
+        choice_text: (choice.text || choice.label || '...').slice(0, 80),
+        choice_type: 'dialog'
+      });
+    } catch (e) {}
+
     s.affinity = Math.max(0, Math.min(100, s.affinity + choice.aff));
     if (choice.flag) s.flags[choice.flag] = true;
 
@@ -2294,6 +2326,20 @@ const game = {
         value: Math.round(aff)
       });
     } catch (e) {}
+
+    // GA4 custom — ending_reached (분포 측정용 상세 페이로드)
+    try {
+      const endingType = (ending.tag || '').replace(/\s*ENDING\s*$/i, '').trim();
+      gtag('event', 'ending_reached', {
+        ending_type: endingType,            // TRUE / ROMANCE / BULL RUN / FRIEND / JACKPOT / WIPED OUT / SOLO
+        affection: Math.round(aff),
+        return_pct: Math.round(returnPct * 10) / 10,
+        affection_percentile: this.percentileForAffinity(aff),
+        return_percentile: this.percentileForReturn(returnPct)
+      });
+      // 엔딩 도달 시점 — 추후 share 이벤트 결합용 캐시
+      this._lastEndingType = endingType;
+    } catch (e) {}
   },
 
   drawEndingCharts() {
@@ -2420,7 +2466,11 @@ const game = {
     }
   },
 
-  restart() { this.show("screen-cover"); },
+  restart() {
+    // GA4 custom — replay_started (엔딩 "다시 하기")
+    try { gtag('event', 'replay_started', { source: 'ending_button' }); } catch (e) {}
+    this.show("screen-cover");
+  },
 
   toggleChart(kind) {
     const wrapId = kind === "affinity" ? "chart-wrap-affinity" : "chart-wrap-asset";
@@ -2462,6 +2512,13 @@ const game = {
     const aff = s.affinity;
     const affPctile = this.percentileForAffinity(aff);
     const retPctile = this.percentileForReturn(returnPct);
+
+    // GA4 custom — sim_share_clicked
+    try {
+      gtag('event', 'sim_share_clicked', {
+        ending_type: this._lastEndingType || 'UNKNOWN'
+      });
+    } catch (e) {}
 
     // 엔딩 emoji prefix
     let prefix = "";
@@ -2801,6 +2858,8 @@ const game = {
   confirmOk() {
     const back = document.getElementById("confirm-backdrop");
     if (back) back.classList.remove("show");
+    // GA4 custom — replay_started (메뉴 → 홈)
+    try { gtag('event', 'replay_started', { source: 'menu_home' }); } catch (e) {}
     // 홈 복귀 — cover state push (뒤로가기로 game scene 복원 차단)
     try {
       history.pushState({ type: "cover" }, "", "#cover");
