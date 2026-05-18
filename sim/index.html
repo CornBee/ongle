@@ -13,6 +13,17 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<!--
+  GA4 custom events (G-L02KZS89M1) — funnel/이탈/엔딩 분포 측정용
+    sim_start_clicked   : 커버 "시작하기" 클릭 (funnel 진입)
+    scene_view          : 각 scene 진입 (이탈 지점 추적)
+    choice_made         : 대화·시장 선택지 클릭
+    ending_reached      : 엔딩 도달 (분포·percentile)
+    replay_started      : 엔딩 "다시 하기" 또는 메뉴 홈
+    sim_share_clicked   : 엔딩 share 버튼 클릭
+  ?dev=1 또는 localStorage.ongle_dev='1' 시 GA disabled (위 IIFE 참조).
+-->
+
 <style>
   :root {
     --accent: #ff6b6b;
