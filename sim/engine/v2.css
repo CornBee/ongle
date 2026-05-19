@@ -217,6 +217,38 @@ body {
 @keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .fade-in { animation: fadein 0.3s ease; }
 
+@keyframes barPulseUp {
+  0%   { box-shadow: 0 0 0 0 rgba(0,184,148,0); filter: brightness(1); }
+  30%  { box-shadow: 0 0 0 6px rgba(0,184,148,0.55); filter: brightness(1.4); }
+  100% { box-shadow: 0 0 0 0 rgba(0,184,148,0); filter: brightness(1); }
+}
+@keyframes barPulseDown {
+  0%   { box-shadow: 0 0 0 0 rgba(214,48,49,0); filter: brightness(1); }
+  30%  { box-shadow: 0 0 0 6px rgba(214,48,49,0.55); filter: brightness(0.7); }
+  100% { box-shadow: 0 0 0 0 rgba(214,48,49,0); filter: brightness(1); }
+}
+.aff-pill .fill.pulse-up { animation: barPulseUp 0.9s ease; }
+.aff-pill .fill.pulse-down { animation: barPulseDown 0.9s ease; }
+
+/* Floating toast — appears top of viewport, fades */
+.aff-toast {
+  position: fixed; top: -40px; left: 50%; transform: translateX(-50%);
+  background: rgba(0, 184, 148, 0.96); color: #fff;
+  padding: 9px 18px; border-radius: 999px;
+  font-size: 14px; font-weight: 700;
+  z-index: 999; opacity: 0;
+  transition: top 0.32s ease, opacity 0.32s ease;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.aff-toast.loss { background: rgba(214, 48, 49, 0.96); }
+.aff-toast.show { top: 14px; opacity: 1; }
+/* Stack multiple toasts vertically */
+.aff-toast.show ~ .aff-toast.show { top: 60px; }
+.aff-toast.show ~ .aff-toast.show ~ .aff-toast.show { top: 106px; }
+.aff-toast.show ~ .aff-toast.show ~ .aff-toast.show ~ .aff-toast.show { top: 152px; }
+
 /* ===== Mobile tweaks ===== */
 @media (max-width: 600px) {
   .cover h1 { font-size: 22px; }

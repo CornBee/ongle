@@ -143,6 +143,41 @@
 
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
+  // ---------- Affinity effects ----------
+  function triggerAffinityEffects(script, state, affBefore) {
+    const chars = script.characters || {};
+    const charNames = { sea: '박세아', harin: '윤하린', seoyeon: '이서연', mirae: '한미래' };
+    for (const key of ['sea','harin','seoyeon','mirae']) {
+      const before = affBefore[key] || 0;
+      const after = state.affinity[key] || 0;
+      const delta = after - before;
+      if (delta === 0) continue;
+      const name = (chars[key] && chars[key].name) || charNames[key] || key;
+      const sign = delta > 0 ? '+' : '−';
+      const heart = delta > 0 ? '❤️' : '💔';
+      showToast(name + ' ' + sign + Math.abs(delta) + ' ' + heart, delta > 0 ? 'gain' : 'loss', key);
+    }
+  }
+  function showToast(text, kind, charKey) {
+    const t = document.createElement('div');
+    t.className = 'aff-toast ' + (kind || '');
+    if (charKey) t.setAttribute('data-c', charKey);
+    t.textContent = text;
+    document.body.appendChild(t);
+    // animate fill bar pulse if exists
+    if (charKey) {
+      const pill = document.querySelector('.aff-pill[data-c="' + charKey + '"] .fill');
+      if (pill) {
+        pill.classList.remove('pulse-up','pulse-down');
+        void pill.offsetWidth; // restart animation
+        pill.classList.add(kind === 'gain' ? 'pulse-up' : 'pulse-down');
+      }
+    }
+    setTimeout(() => { t.classList.add('show'); }, 20);
+    setTimeout(() => { t.classList.remove('show'); }, 1800);
+    setTimeout(() => { t.remove(); }, 2200);
+  }
+
   // ---------- Ending selection ----------
   function selectEnding(script, state) {
     const endings = (script.endings || []).slice().sort((a, b) => (a.priority || 99) - (b.priority || 99));
@@ -275,8 +310,35 @@
     dialog.appendChild(speaker);
     dialog.appendChild(el('div', { class: 'text' }, scene.text || ''));
 
-    // choices or next
-    if (Array.isArray(scene.choices) && scene.choices.length > 0) {
+    // 분기: state.awaitingNext=true 이면 reply 표시 + 다음 버튼 (이 scene에서 머무름),
+    // 아니면 일반 choices/next.
+    if (state.awaitingNext) {
+      // 직전 선택의 reply 보이는 단계. 다음 버튼 누르면 advance.
+      const nextBtn = el('button', { type: 'button', class: 'next-btn' }, '다음 →');
+      nextBtn.addEventListener('click', () => {
+        state.awaitingNext = false;
+        state.replyText = null;
+        // route branch면 state.block이 이미 변경됨
+        if (state.block === 'ending') {
+          saveState(ctx);
+          state.phase = 'ending';
+          render(ctx);
+          return;
+        }
+        const ok = advance(script, state);
+        if (!ok && state.block === 'ending') {
+          saveState(ctx);
+          state.phase = 'ending';
+          render(ctx);
+          return;
+        }
+        state.currentScene = getCurrentScene(script, state);
+        saveState(ctx);
+        render(ctx);
+        emitEvent(opts, 'scene_view', { scene_id: state.currentScene && state.currentScene.id });
+      });
+      dialog.appendChild(nextBtn);
+    } else if (Array.isArray(scene.choices) && scene.choices.length > 0) {
       const choicesEl = el('div', { class: 'choices' });
       scene.choices.forEach((ch, i) => {
         const btn = el('button', { type: 'button', class: 'choice' });
@@ -295,32 +357,28 @@
           btn.appendChild(lock);
         } else {
           btn.addEventListener('click', () => {
+            const affBefore = Object.assign({}, state.affinity);
             applyChoice(script, state, i);
             emitEvent(opts, 'choice_made', { scene_id: scene.id, choice_idx: i, flag: ch.flag });
-            // route branch이면 advance가 이미 idx=-1로 세팅됨
-            if (state.block === 'ending') {
+            // 호감도 변경 toast/pulse
+            triggerAffinityEffects(script, state, affBefore);
+            // route branch이면 즉시 ending 전환
+            if (state.block === 'ending' && (!ch.reply)) {
               saveState(ctx);
               state.phase = 'ending';
               render(ctx);
               return;
             }
-            const ok = advance(script, state);
-            if (!ok && state.block === 'ending') {
-              saveState(ctx);
-              state.phase = 'ending';
-              render(ctx);
-              return;
-            }
-            state.currentScene = getCurrentScene(script, state);
+            // reply 표시 단계로 전환 — 같은 scene에 머무름
+            state.awaitingNext = true;
             saveState(ctx);
             render(ctx);
-            emitEvent(opts, 'scene_view', { scene_id: state.currentScene && state.currentScene.id });
           });
         }
         choicesEl.appendChild(btn);
       });
       dialog.appendChild(choicesEl);
-    } else if (scene.next || true) {
+    } else {
       const nextBtn = el('button', { type: 'button', class: 'next-btn' }, '다음 →');
       nextBtn.addEventListener('click', () => {
         state.replyText = null;
