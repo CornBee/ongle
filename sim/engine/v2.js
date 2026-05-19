@@ -228,21 +228,20 @@
 
     const sceneEl = el('div', { class: 'scene fade-in' });
 
-    // bg
+    // bg-wrap: 16:9 image area + overlays
+    const bgWrap = el('div', { class: 'bg-wrap' });
     if (scene.scene_asset) {
       const img = el('img', {
         class: 'bg-img',
         src: opts.assetsBase + scene.scene_asset + '.png',
         alt: scene.label || '',
       });
-      sceneEl.appendChild(img);
+      bgWrap.appendChild(img);
     }
-    sceneEl.appendChild(el('div', { class: 'bg-overlay' }));
-
-    // status bar
-    sceneEl.appendChild(renderStatusbar(script, state));
-
-    // menu
+    bgWrap.appendChild(el('div', { class: 'bg-overlay' }));
+    // status bar (overlay on top of bg)
+    bgWrap.appendChild(renderStatusbar(script, state));
+    // menu button (overlay)
     const menubar = el('div', { class: 'menubar' });
     const menuBtn = el('button', { type: 'button' }, '메뉴');
     menuBtn.addEventListener('click', () => {
@@ -254,20 +253,20 @@
       }
     });
     menubar.appendChild(menuBtn);
-    sceneEl.appendChild(menubar);
+    bgWrap.appendChild(menubar);
+    // label (overlay at bottom)
+    if (scene.label) bgWrap.appendChild(el('div', { class: 'scene-label' }, scene.label));
+    sceneEl.appendChild(bgWrap);
 
-    // label
-    if (scene.label) sceneEl.appendChild(el('div', { class: 'scene-label' }, scene.label));
+    // dialog (below bg, natural flow)
+    const dialog = el('div', { class: 'dialog' });
 
-    // reply popup (after choice)
+    // reply popup (post-choice) — inside dialog now
     if (state.replyText) {
       const rp = el('div', { class: 'reply-popup' });
       rp.textContent = (state.replyChar ? state.replyChar + ': ' : '') + state.replyText;
-      sceneEl.appendChild(rp);
+      dialog.appendChild(rp);
     }
-
-    // dialog
-    const dialog = el('div', { class: 'dialog' });
     const speakerLabel = scene.speaker && scene.speaker !== 'narrator' ? scene.speaker : '·';
     const face = scene.face ? faceEmoji(script, scene.face) : '';
     const speaker = el('div', { class: 'speaker' });

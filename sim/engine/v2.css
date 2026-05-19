@@ -67,23 +67,30 @@ body {
 .scene {
   flex: 1; display: flex; flex-direction: column;
   position: relative; min-height: 100vh; min-height: 100dvh;
-  background-size: cover; background-position: center; background-color: #000;
+  background: #000;
+}
+.scene .bg-wrap {
+  position: relative; width: 100%;
+  aspect-ratio: 16/9;
+  background: #0c0c12;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 .scene .bg-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
 .scene .bg-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.65) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.5) 100%);
   z-index: 1; pointer-events: none;
 }
 
 /* Top status bar — affinity 4 bars */
 .statusbar {
-  position: relative; z-index: 2;
+  position: absolute; top: 0; left: 0; right: 0; z-index: 3;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
-  padding: 10px 12px 8px;
+  padding: 10px 12px 14px;
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
 }
 .aff-pill {
@@ -112,21 +119,21 @@ body {
   padding: 6px 10px; font-size: 11px; cursor: pointer;
 }
 
-/* Scene label */
+/* Scene label — placed at bottom of bg-wrap as overlay */
 .scene-label {
-  position: relative; z-index: 2;
-  margin: 4px 12px 0; font-size: 11px; color: rgba(255,255,255,0.7);
+  position: absolute; bottom: 8px; left: 12px; z-index: 3;
+  font-size: 11px; color: rgba(255,255,255,0.85);
   font-weight: 600; letter-spacing: 0.02em;
+  padding: 3px 8px; background: rgba(0,0,0,0.45); border-radius: 6px;
 }
 
 /* Dialog box */
 .dialog {
-  position: relative; z-index: 2; margin-top: auto;
-  background: var(--surface); border-top: 1px solid rgba(0,0,0,0.06);
-  padding: 16px 20px 24px;
-  border-radius: 18px 18px 0 0;
-  box-shadow: 0 -10px 30px rgba(0,0,0,0.25);
-  min-height: 200px;
+  flex: 1;
+  background: var(--surface);
+  padding: 18px 20px 28px;
+  min-height: 220px;
+  display: flex; flex-direction: column;
 }
 .dialog .speaker {
   display: inline-flex; align-items: center; gap: 6px;
@@ -166,12 +173,11 @@ body {
 }
 .next-btn:active { transform: scale(0.97); }
 
-/* Reply popup (post-choice) */
+/* Reply popup (post-choice) — overlay on top of dialog */
 .reply-popup {
-  position: relative; z-index: 2;
-  margin: 0 16px 12px; padding: 12px 14px;
+  margin: 0 0 12px; padding: 10px 12px;
   background: #fffbe6; border-left: 3px solid var(--accent);
-  border-radius: 10px; font-size: 13px; color: var(--ink-soft);
+  border-radius: 8px; font-size: 13px; color: var(--ink-soft);
   animation: fadein 0.25s ease;
 }
 
