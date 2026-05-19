@@ -1,571 +1,390 @@
 {
-  "version": "v_final_2026-05-18",
+  "version": "2.0",
   "chapter": 2,
   "title": "네 사람의 봄",
-  "subtitle": "ONGLE 미연시 시뮬 — CHAPTER 2 · 전세 대란 4 히로인",
-  "deploy_url": "https://cornbee.github.io/ongle/sim/jeonse-spring/",
-
+  "subtitle": "ONGLE 미연시 시뮬 — 박세아 메인 루트",
   "meta": {
-    "voice": "Gemini TTS Aoede (단일 voice + 톤 분리)",
-    "character_bible": "~/Desktop/Shorts_제작/sim_chapter2_jeonse/character_bible_4_heroines.md",
-    "scenario_outline": "~/Desktop/Shorts_제작/sim_chapter2_jeonse/scenario_outline.md",
-    "mechanic_design": "~/Desktop/Shorts_제작/sim_chapter2_jeonse/mechanic_design.md",
-    "asset_library": "~/Desktop/Shorts_제작/assets/sim_chapter2_jeonse/",
-    "engine_base": "~/Desktop/Shorts_제작/Shorts_업로드/_blog_repo/sim/index.html",
-    "engine_target": "~/Desktop/Shorts_제작/Shorts_업로드/_blog_repo/sim/jeonse-spring/index.html",
-    "act_structure": [
-      "ACT 1 만남 (S1-S8) — 4 히로인 인터뷰 + MINI 1",
-      "ACT 2 분기 (S9-S15) — 메인 루트 결정 + MINI 2",
-      "ACT 3 클라이맥스 (S16-S24) — 그녀 위기 + MINI 3 + 엔딩"
-    ],
-    "topic_source": "~/Desktop/Shorts_제작/영상_070_전세대란_20260510/report/report.md"
+    "duration_est": "약 10~15분",
+    "note": "박세아 메인. 윤하린·이서연·한미래는 서브 디핑 포인트로 등장."
   },
-
   "game_config": {
-    "start_affinity": {
-      "sea": 30,
-      "harin": 30,
-      "seoyeon": 30,
-      "mirae": 30
-    },
+    "start_affinity": { "sea": 40, "harin": 20, "seoyeon": 20, "mirae": 20 },
     "start_asset": 0,
     "affinity_range": [0, 100],
-    "thresholds": {
-      "side_block": 25,
-      "branch_min": 35,
-      "main_route": 40,
-      "true_happy": 60
-    },
-    "cleared_localStorage_key": "ongle_chapter2_cleared",
-    "true_awake_requires": ["all_four_cleared", "multi_view_flag"]
+    "thresholds": { "sub_friend": 30, "true_happy_sea": 60, "happy_sea": 45 },
+    "cleared_localStorage_key": "ongle_chapter2_cleared"
   },
-
   "characters": {
     "sea": {
       "name": "박세아",
       "age": 28,
-      "role": "임차인 OL · 버티는 자",
+      "role": "임차인 OL · 메인 히로인",
       "anchor": "이사 가야 사는데 보증금이 안 빠진다"
     },
     "harin": {
       "name": "윤하린",
       "age": 26,
-      "role": "갭투자 부녀 외동딸 · 묶인 자",
-      "anchor": "내 인생인지 아버지 인생인지"
+      "role": "임대인 (서브)",
+      "anchor": "아버지 자산에 묶인 외동딸"
     },
     "seoyeon": {
       "name": "이서연",
       "age": 27,
-      "role": "보증사 손해율 분석가 · 보는 자",
+      "role": "보증사 분석가 (서브)",
       "anchor": "데이터를 본 자의 책임"
     },
     "mirae": {
       "name": "한미래",
-      "age": 29,
-      "role": "정책청 사무관 · 결정하는 자",
+      "age": 31,
+      "role": "정책청 사무관 (서브)",
       "anchor": "누구를 먼저 살릴 것인가"
     }
   },
-
   "face_keys": {
-    "default": "🌸 차분",
-    "smile": "😊 미소",
-    "blush": "☺️ 빨개짐",
-    "sad": "😢 슬픔",
-    "surprise": "😳 놀람",
-    "serious": "😐 진지",
-    "happy": "🥰 환한 미소",
-    "laugh": "😄 웃음",
-    "worry": "😟 걱정",
-    "thinking": "🤔 생각",
-    "embarrassed": "🙈 부끄러움",
-    "contempt_cold": "😒 차가운 거리감"
+    "default": "🌸",
+    "smile": "😊",
+    "blush": "☺️",
+    "sad": "😢",
+    "surprise": "😳",
+    "serious": "😐",
+    "happy": "🥰",
+    "laugh": "😄",
+    "worry": "😟",
+    "thinking": "🤔",
+    "embarrassed": "🙈",
+    "cold": "😒"
   },
 
   "scenes_common": [
     {
       "idx": 0,
       "id": "S1",
-      "label": "SCENE 1 · 입사 첫날",
+      "label": "1화 · 첫 출근",
       "act": 1,
-      "bg": "bg_01_lab_entrance",
+      "bg": "bg_01_office",
       "scene_asset": "scene_01_office_intro",
-      "bgm": "spring_office",
       "speaker": "선임",
       "face": "smile",
-      "text": "오신 거 환영해요. 첫 출근부터 큰 거 하나 던집니다. 5월 9일 양도세 중과 부활. 임차인·임대인·보증사·정책 네 시야 보고서. 한 달 안에. 4명 직접 인터뷰 권장합니다. 가능하시죠?",
+      "text": "오신 거 환영해요. 자리는 저쪽. 첫 출근부터 바로 큰 거 하나 드릴게요.\n5월 9일 부동산 정책 바뀌면서, 전세 시장이 한 주 만에 다 달라졌어요.\n취재 부탁할게요. 핵심 한 명만 깊이 만나면 돼요 — 보증금 못 빼고 있는 분이에요.",
       "next": true
     },
     {
       "idx": 1,
       "id": "S2",
-      "label": "SCENE 2 · 인터뷰 대상 결정",
+      "label": "2화 · 박세아",
       "act": 1,
-      "bg": "bg_02_office_desk",
-      "scene_asset": "scene_02_choose_order",
-      "bgm": "spring_office",
-      "speaker": "narrator",
-      "face": "thinking",
-      "text": "박세아 (임차인), 윤하린 (임대인), 이서연 (보증사), 한미래 (정책). 어느 순서로 만날지부터.",
+      "bg": "bg_03_cafe",
+      "scene_asset": "scene_03_sea_cafe",
+      "speaker": "박세아",
+      "face": "default",
+      "text": "…안녕하세요. 박세아예요. 28살, 광고대행사 다녀요.\n5월에 이사 가야 하는데, 임대인이 보증금을 못 돌려준대요.\n…그게 다예요.",
       "choices": [
-        {"text": "현장부터 (세아 → 하린 → 서연 → 미래)", "aff": {}, "flag": "order_field_first", "reply": "현장 톤으로 가시는군요. 좋은 출발입니다."},
-        {"text": "데이터부터 (서연 → 미래 → 하린 → 세아)", "aff": {}, "flag": "order_data_first", "reply": "데이터 톤. 분석가 답습니다."},
-        {"text": "위에서 아래로 (미래 → 서연 → 하린 → 세아)", "aff": {}, "flag": "order_top_down", "reply": "정책 라인부터. 무게 있는 출발입니다."}
+        {
+          "text": "혼자 짊어진 거 같네요.",
+          "aff": { "sea": 8 },
+          "flag": "warm_intro",
+          "reply": "박세아: …네. 그렇긴 해요. (작게 웃는다)"
+        },
+        {
+          "text": "법적으로는 임차인이 유리해요. 같이 알아봐요.",
+          "aff": { "sea": 5 },
+          "flag": "pro_intro",
+          "reply": "박세아: 그게 통한다면요."
+        },
+        {
+          "text": "전 남친 분이 좀 그러셨던 거 같네요.",
+          "aff": { "sea": -5 },
+          "flag": "tactless_intro",
+          "reply": "박세아: …그게 핵심은 아니에요. 다른 질문 있으세요?"
+        }
       ]
     },
     {
       "idx": 2,
       "id": "S3",
-      "label": "SCENE 3 · 박세아 첫 만남",
+      "label": "3화 · 카페 두 번째",
       "act": 1,
-      "bg": "bg_03_cafe_gangseo",
+      "bg": "bg_03_cafe",
       "scene_asset": "scene_03_sea_cafe",
-      "bgm": "character_intro_sea",
       "speaker": "박세아",
-      "face": "sad",
-      "text": "있잖아요… 사실 이사 가야 하는데 보증금이 안 빠져요. 그게 다예요.",
-      "clue": "강아지 사진 액자 (S13/S17 callback)",
+      "face": "worry",
+      "text": "사실 작년 11월에 결혼하려 했어요. 식 한 달 전에 깨졌어요.\n신혼 보증금 일부가 제 명의로 묶였고, 그쪽이 다 가지고 떠났어요.\n…왜 이런 얘기까지 하는 건지 모르겠네요.",
       "choices": [
-        {"text": "임대차보호법 갱신청구권부터 검토해보죠. 묵시적 갱신 효력도 같이요.", "aff": {"sea": 5, "mirae": 2, "seoyeon": 1}, "flag": "professional", "reply": "전문 용어로 가시네요. …그게 통한다면요."},
-        {"text": "혼자 짊어진 거 같네요.", "aff": {"sea": 7}, "flag": "quiet_empathy", "reply": "…네. 그렇긴 해요."},
-        {"text": "전 남친이 나쁜 사람이었네요.", "aff": {"sea": -4}, "flag": "tactless", "reply": "…그게 핵심은 아니에요. 다른 질문 있으세요?"}
+        {
+          "text": "들어도 돼요. 시간 더 있어요.",
+          "aff": { "sea": 6 },
+          "flag": "listen",
+          "reply": "박세아: …고마워요. 별 말 아닌데."
+        },
+        {
+          "text": "힘드셨겠어요. 다 잘 될 거예요.",
+          "aff": { "sea": -2 },
+          "flag": "shallow_comfort",
+          "reply": "박세아: …네. 그렇겠죠."
+        },
+        {
+          "text": "지금 보증금 얘기로 돌아갈까요.",
+          "aff": { "sea": 2 },
+          "flag": "stick_to_topic",
+          "reply": "박세아: …네. 그게 낫겠네요."
+        }
       ]
     },
     {
       "idx": 3,
       "id": "S4",
-      "label": "SCENE 4 · 윤하린 첫 만남",
+      "label": "4화 · 출근길 보고",
       "act": 1,
-      "bg": "bg_04_office_gangnam",
-      "scene_asset": "scene_04_harin_office",
-      "bgm": "character_intro_harin",
-      "speaker": "윤하린",
-      "face": "default",
-      "text": "오래 기다리셨죠. …그쪽이 뭘 안다고요? 아버지 자산 8건. 그 중 한 건이 5월 9일 직후 막혔어요. 도미노 1번 패예요.",
-      "clue": "재즈 라이브 포스터 (S10/S17 callback)",
-      "choices": [
-        {"text": "같이 그려봐요. 8건 사슬을 도식으로.", "aff": {"harin": 6}, "flag": "analytical", "reply": "…그래요. 같이 그려봅시다. 생각보다 실무 들어오시네요."},
-        {"text": "오늘 하루 어떠셨어요.", "aff": {"harin": 1}, "flag": "social", "reply": "…워밍업 좋아하시는 타입이군요. 본론부터 갈게요."},
-        {"text": "갭투자가 이번 위기 만든 거 아닌가요.", "aff": {"harin": -5, "mirae": 2}, "flag": "confrontational", "reply": "그렇게 보시는군요. 갭은 합법이고, 위기는 정책이 만들었어요. 다른 질문?"}
-      ]
-    },
+      "bg": "bg_01_office",
+      "scene_asset": "scene_01_office_intro",
+      "speaker": "선임",
+      "face": "thinking",
+      "text": "박세아 씨 얘기 들었어요. 깊게 들어간 거 같네요.\n근데 한 사람 케이스만으론 기사 안 나와요.\n임대인·보증사·정책 — 세 시야 짧게라도 더 들어두세요. 안 만나도 되지만, 만나면 그림이 살아요.",
+      "next": true
+    }
+  ],
+
+  "scenes_route_sea": [
     {
       "idx": 4,
-      "id": "S5",
-      "label": "SCENE 5 · 이서연 첫 만남",
-      "act": 1,
-      "bg": "bg_05_sgi_meeting",
-      "scene_asset": "scene_05_seoyeon_sgi",
-      "bgm": "character_intro_seoyeon",
-      "speaker": "이서연",
-      "face": "serious",
-      "text": "결론부터 말씀드리면, 임계점 근접입니다. 2025년 4분기 손해율 8.2%, 2026년 1분기 12.7%. 한계 추산 18%. 단순 추세로 2026년 3분기 도달. 내부 보고서 올렸어요. 외부 비공개 처리됐고요.",
-      "clue": "매운 컵라면 + KAIST 머그컵 (S12/S17 callback)",
+      "id": "S5_choose_sub",
+      "label": "5화 · 누구 더 만날까",
+      "act": 2,
+      "bg": "bg_07_desk",
+      "scene_asset": "scene_07_four_cards_desk",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "박세아의 사연이 머리에 남는다.\n한 사람은 더 만나야 그림이 산다. 누구를 만날까?",
       "choices": [
-        {"text": "손해율 모델의 회귀 변수 같이 보죠.", "aff": {"seoyeon": 5}, "flag": "data_first", "reply": "…정확하시네요. 변동성 가장 큰 건 갱신 거절율이에요."},
-        {"text": "이걸 회사가 알면서도 가만 있나요?", "aff": {"seoyeon": 7, "mirae": -2}, "flag": "justice", "reply": "…그 질문, 누군가는 해야죠. 제 입장은 다른 자리에서 말씀드릴게요."},
-        {"text": "외부에 알려지면 충격이 클 텐데요.", "aff": {"seoyeon": 3, "mirae": 4}, "flag": "system_first", "reply": "정답이 없는 질문이죠. 어느 쪽 충격을 사회가 감당할 수 있느냐의 문제예요."}
+        {
+          "text": "윤하린 — 임대인 입장 들어보기",
+          "aff": { "harin": 10 },
+          "flag": "sub_harin",
+          "reply": "narrator: 임대인 쪽 시선. 박세아와 정반대 자리."
+        },
+        {
+          "text": "이서연 — 보증사 데이터 확인",
+          "aff": { "seoyeon": 10 },
+          "flag": "sub_seoyeon",
+          "reply": "narrator: 숫자로 위기의 크기를 본다."
+        },
+        {
+          "text": "한미래 — 정책 방향 묻기",
+          "aff": { "mirae": 10 },
+          "flag": "sub_mirae",
+          "reply": "narrator: 위에서 내려오는 그림."
+        },
+        {
+          "text": "박세아만 깊이 — 다른 사람은 안 만난다",
+          "aff": { "sea": 5 },
+          "flag": "sub_none",
+          "reply": "narrator: 한 사람만. 좁고 깊게."
+        }
       ]
     },
     {
       "idx": 5,
-      "id": "S6",
-      "label": "SCENE 6 · 한미래 첫 만남",
-      "act": 1,
-      "bg": "bg_06_fsc_office",
-      "scene_asset": "scene_06_mirae_fsc",
-      "bgm": "character_intro_mirae",
-      "speaker": "한미래",
-      "face": "default",
-      "text": "5월 9일 양도세 중과 부활. 6월 임시 정책 패키지 표결 직전입니다. 옵션 셋 — 임대료 상한 / 보증 한도 확대 / 시장 자율. 또는 혼합안. 정답이 없어요. 외부 자문 의견이 표결 라인에 한 줄 반영됩니다.",
-      "clue": "테드 창 SF 단편집 (S10/S17 callback)",
+      "id": "S6_sub",
+      "label": "6화 · 짧은 두 번째 만남",
+      "act": 2,
+      "bg": "bg_04_office",
+      "scene_asset": "scene_04_harin_office",
+      "speaker": "윤하린",
+      "face": "cold",
+      "text": "오래 기다리셨네요.\n아버지 자산 8건 중 두 채가 묶였어요. 저도 빠지고 싶죠. 시장이 막혔잖아요.\n…그쪽 사연 들었어요. 박세아 씨. 미안해요, 라고만 말할게요.\n\n(※ 서브 캐릭터 한 명 만남 — 다음 발견부터는 이 사람 대신 다른 만남이 박힙니다)",
       "choices": [
-        {"text": "네 옵션 모두 trade-off가 명확하네요. 정책 비용 vs 시장 효과 균형 어디 두실지가 본질 같은데요.", "aff": {"mirae": 6, "seoyeon": 1}, "flag": "policy_aware", "reply": "…정확하시네요. 그 균형이 본 패키지의 본질입니다."},
-        {"text": "결정 다 누가 책임지는 거예요.", "aff": {"mirae": 8}, "flag": "weight_aware", "reply": "…그 질문, 안에서 받아보긴 처음이에요. 책임은 결재 라인 위까지 갑니다. 단, 무게는 결정한 사람만 짊어집니다."},
-        {"text": "정부가 임대료 상한 강제로 잡아주셔야죠.", "aff": {"mirae": -3, "harin": -1, "sea": 2}, "flag": "demand", "reply": "그 의견 자주 들어요. 정책 수단의 한계가 있다는 점만 한 줄 덧붙일게요."}
+        {
+          "text": "임대인도 사연이 있군요.",
+          "aff": { "harin": 5 },
+          "flag": "sub_warm",
+          "reply": "윤하린: 사연 없는 사람이 없죠."
+        },
+        {
+          "text": "그래도 박세아 씨 보증금 먼저잖아요.",
+          "aff": { "harin": -3, "sea": 3 },
+          "flag": "side_with_sea",
+          "reply": "윤하린: …그렇긴 하죠. 사람 한 명 이야긴."
+        }
       ]
     },
     {
       "idx": 6,
       "id": "S7",
-      "label": "SCENE 7 · 4명 자료 정리 + 야근",
-      "act": 1,
-      "bg": "bg_07_office_night",
-      "scene_asset": "scene_07_four_cards_desk",
-      "bgm": "quiet_reflection",
-      "speaker": "선임",
-      "face": "default",
-      "text": "한 시야로 결론 내려 하시면 안 나옵니다. 어느 시점을 보고서 첫 챕터로 두실지부터 정해보세요.",
-      "clue": "4 카드 동시 등장 — 진엔딩 visual foreshadow",
+      "label": "7화 · 늦은 전화",
+      "act": 2,
+      "bg": "bg_08_phone",
+      "scene_asset": "scene_08_mini1_phone",
+      "speaker": "박세아",
+      "face": "worry",
+      "text": "…늦은 시간에 죄송해요.\n임대인이 오늘 새 세입자 거절했대요. 다음 사람도 거절. 6개월 더 기다리래요.\n…저 어떻게 해야 할지 모르겠어요.",
       "choices": [
-        {"text": "임차인 시점부터 (세아)", "aff": {"sea": 3}, "flag": "report_tenant_first"},
-        {"text": "임대인 시점부터 (하린)", "aff": {"harin": 3}, "flag": "report_landlord_first"},
-        {"text": "보증사 시점부터 (서연)", "aff": {"seoyeon": 3}, "flag": "report_guarantor_first"},
-        {"text": "정책 시점부터 (미래)", "aff": {"mirae": 3}, "flag": "report_policy_first"}
+        {
+          "text": "내일 같이 봐요. 카페에서.",
+          "aff": { "sea": 7 },
+          "flag": "next_day",
+          "reply": "박세아: …고마워요. 그래도 될까요."
+        },
+        {
+          "text": "지금 가요. 어디예요?",
+          "aff": { "sea": 5 },
+          "flag": "go_now",
+          "reply": "박세아: 아니에요, 그러지 마세요. 늦었어요."
+        },
+        {
+          "text": "내용증명부터 보내세요. 그게 1단계예요.",
+          "aff": { "sea": 3 },
+          "flag": "logical",
+          "reply": "박세아: …네. 알아볼게요."
+        }
       ]
     },
     {
       "idx": 7,
       "id": "S8",
-      "label": "SCENE 8 · MINI 1 — 전세 거래 자문",
-      "act": 1,
-      "kind": "mini_sim",
-      "bg": "bg_08_office_phone",
-      "scene_asset": "scene_08_mini1_phone",
-      "bgm": "mini_sim_tense",
+      "label": "8화 · 카페 세 번째",
+      "act": 2,
+      "bg": "bg_03_cafe",
+      "scene_asset": "scene_03_sea_cafe",
       "speaker": "박세아",
-      "face": "serious",
-      "text": "늦은 시간에 죄송해요. 내용증명, 소송, 보증기관 보증 활용, 합의. 어떤 방향이 가장 좋을까요?",
+      "face": "default",
+      "text": "오늘은 평일 오후가 아니라 토요일이에요. 사람이 좀 있죠.\n…사실 어제 너무 무너졌어요. 안 그러려고 했는데.\n근데 그쪽이 들어준 게 도움이 됐어요.",
       "choices": [
-        {"text": "보증기관 보증 + 내용증명", "aff": {"sea": 6, "harin": -2, "seoyeon": 3, "mirae": 4}, "flag": "system_use", "reply": "그 방법, 들어봤어요. 한 번 알아볼게요."},
-        {"text": "소송 + 강제집행", "aff": {"sea": 4, "harin": -5, "seoyeon": 1, "mirae": -3}, "flag": "hardline", "reply": "…그쪽까지 가야 하나요. 알겠어요."},
-        {"text": "합의 시도 + 분납 수용", "aff": {"sea": 2, "harin": 5, "seoyeon": -1, "mirae": 2}, "flag": "compromise", "reply": "분납이라도… 빨리 끝났으면 좋겠네요."}
+        {
+          "text": "들었어요. 그게 다예요.",
+          "aff": { "sea": 6 },
+          "flag": "quiet",
+          "reply": "박세아: …그게 의외로 컸어요."
+        },
+        {
+          "text": "오늘은 보증금 얘기 빼고 다른 얘기 해요.",
+          "aff": { "sea": 8 },
+          "flag": "off_topic",
+          "reply": "박세아: …그래도 돼요? (조금 환하게) 좋아요."
+        }
       ]
     },
     {
       "idx": 8,
       "id": "S9",
-      "label": "SCENE 9 · 분기 진입",
+      "label": "9화 · 한강 산책",
       "act": 2,
-      "kind": "route_branch",
-      "bg": "bg_09_phone_split",
+      "bg": "bg_09_walk",
       "scene_asset": "scene_09_four_kakao",
-      "bgm": "romance_v2",
+      "speaker": "박세아",
+      "face": "smile",
+      "text": "강서 한강공원 와봤어요?\n저는 처음이에요. 이런 데 데려와 줄 사람이 그동안 없었어요.\n…아 미안. 무거운 얘기 아니에요. 그냥 사실이에요.",
+      "choices": [
+        {
+          "text": "오늘 같이 와봐서 좋네요.",
+          "aff": { "sea": 7 },
+          "flag": "walk_warm",
+          "reply": "박세아: …저도요."
+        },
+        {
+          "text": "다음 주에도 같이 와요.",
+          "aff": { "sea": 5 },
+          "flag": "walk_next",
+          "reply": "박세아: 그래요. 약속이에요."
+        }
+      ]
+    },
+    {
+      "idx": 9,
+      "id": "S10",
+      "label": "10화 · 판단의 자리",
+      "act": 3,
+      "bg": "bg_07_desk",
+      "scene_asset": "scene_07_four_cards_desk",
       "speaker": "narrator",
       "face": "thinking",
-      "text": "네 명. 한 명을 고른다는 게, 단순한 일정 선택이 아니다. 호감도 < 35인 캐릭터는 선택지 비활성화.",
-      "branch_rule": "selected route 캐릭터의 S10~S24 진입. 모두 < 35 = BAD_DRIFT.",
+      "text": "기사 마감 사흘 전.\n박세아 사례를 어떻게 다룰지가 핵심이다.\n익명? 실명? 기사 톤은 차갑게? 따뜻하게?",
       "choices": [
-        {"text": "박세아 — 떡볶이 노점", "aff": {"sea": 4}, "flag": "route_sea", "requires_min_aff": {"sea": 35}, "route": "sea"},
-        {"text": "윤하린 — 강남 사무실", "aff": {"harin": 4}, "flag": "route_harin", "requires_min_aff": {"harin": 35}, "route": "harin"},
-        {"text": "이서연 — 보증사 본사 모델 검토", "aff": {"seoyeon": 4}, "flag": "route_seoyeon", "requires_min_aff": {"seoyeon": 35}, "route": "seoyeon"},
-        {"text": "한미래 — 청사 자문 회의", "aff": {"mirae": 4}, "flag": "route_mirae", "requires_min_aff": {"mirae": 35}, "route": "mirae"},
-        {"text": "4명 모두 거리 두기", "aff": {"sea": -2, "harin": -2, "seoyeon": -2, "mirae": -2}, "flag": "cold", "route": "bad_drift"}
+        {
+          "text": "익명 · 따뜻한 톤. 그녀를 지킨다.",
+          "aff": { "sea": 10 },
+          "flag": "protect_warm",
+          "reply": "narrator: 사람을 먼저 두는 기사. 정책 임팩트는 줄어든다."
+        },
+        {
+          "text": "실명 동의 받기. 정책 변화 노린다.",
+          "aff": { "sea": -3 },
+          "flag": "expose",
+          "reply": "narrator: 정책 임팩트는 커진다. 그녀를 노출시키는 대가."
+        },
+        {
+          "text": "익명 + 데이터 중심. 균형.",
+          "aff": { "sea": 5 },
+          "flag": "balanced",
+          "reply": "narrator: 균형 잡은 자리. 양쪽 다 만족도 50%."
+        }
       ]
+    },
+    {
+      "idx": 10,
+      "id": "S11",
+      "label": "11화 · 발행 전 통화",
+      "act": 3,
+      "bg": "bg_08_phone",
+      "scene_asset": "scene_08_mini1_phone",
+      "speaker": "박세아",
+      "face": "default",
+      "text": "기사 내일 나간다고요.\n…읽기 무서워요. 근데 읽고 싶어요.\n그리고 — 끝나면, 카페 한 번 더 가요. 보증금 얘기 빼고.",
+      "next": true
+    },
+    {
+      "idx": 11,
+      "id": "S12",
+      "label": "12화 · 그 다음 주",
+      "act": 3,
+      "bg": "bg_03_cafe",
+      "scene_asset": "scene_03_sea_cafe",
+      "speaker": "박세아",
+      "face": "smile",
+      "text": "기사 잘 봤어요. 무서웠는데, 다 읽고 나니까 마음이 조금 가벼웠어요.\n임대인 쪽도 어제 전화 왔어요. 이번 달 안에 보증금 돌려준대요.\n…기사 덕분인 것 같아요.",
+      "next": true
     }
   ],
-
-  "scenes_route_sea": [
-    {"idx": 10, "id": "S10_sea", "label": "S10 · 떡볶이 노점 (사적 만남)", "act": 2, "bg": "bg_10_sea_tteokbokki", "speaker": "박세아", "face": "happy", "text": "매워. 매워. …아 진짜 매운데 맛있어요. 보통 회사에서는 이런 모습 안 보여요.", "choices": [
-      {"text": "이쪽이 진짜 박세아 씨 같은데요.", "aff": {"sea": 5}, "flag": "playful", "reply": "…그래요? 그런 말 처음 들어요."},
-      {"text": "이번 주 임대인 면담 같이 갈게요.", "aff": {"sea": 3}, "flag": "business", "reply": "…네. 그게 더 도움이 되겠죠."},
-      {"text": "파혼한 분, 어떤 사람이었어요?", "aff": {"sea": -3}, "flag": "too_fast", "reply": "…그 얘기는, 다음에 할게요."}
-    ]},
-    {"idx": 11, "id": "S11_sea", "label": "S11 · 임대인 면담 동행", "act": 2, "bg": "bg_11_landlord_office", "speaker": "임대인", "face": "serious", "text": "보증금이요? 운용 중입니다. 새 세입자 못 구해서 그래요. 6개월만 기다려달라니까.", "choices": [
-      {"text": "내용증명 이번 주 안에 보낼게요. 임대차보호법 위반입니다.", "aff": {"sea": 4, "harin": -2}, "flag": "hardline_meeting", "reply": "…협박입니까?"},
-      {"text": "3개월 분납은 가능하신가요?", "aff": {"sea": 5, "mirae": 2}, "flag": "practical", "reply": "…분납이라. 일단 생각해보겠습니다."},
-      {"text": "법적 책임이 어디까지인지 보시죠.", "aff": {"sea": 2, "mirae": -4}, "flag": "threat", "reply": "…협박이면 저도 끝까지 갑니다."}
-    ]},
-    {"idx": 12, "id": "S12_sea", "label": "S12 · 한강 컵라면", "act": 2, "bg": "bg_12_han_river_night", "speaker": "박세아", "face": "sad", "text": "있잖아요… 사실 그 사람이 제 보증금도 일부 가져갔어요. 결혼 자금이라고. 식 한 달 전에. 1억 6천이에요.", "choices": [
-      {"text": "(아무 말 안 함. 옆에 앉아 컵라면 같이 먹음.)", "aff": {"sea": 7}, "flag": "quiet", "reply": "…고마워요. 옆에 있어주셔서."},
-      {"text": "그 사람, 어떻게든 책임지게 만들어야죠.", "aff": {"sea": 3}, "flag": "vengeance", "reply": "…일단은 보증금부터요."},
-      {"text": "괜찮아요. 그래도 좋은 추억이잖아요.", "aff": {"sea": -2}, "flag": "bad_comfort", "reply": "…좋은 추억이요? 그쪽한테는 그런 말 안 듣고 싶어요."}
-    ]},
-    {"idx": 13, "id": "S13_sea", "label": "S13 · 길 강아지 (의외성)", "act": 2, "bg": "bg_13_park_walk", "speaker": "박세아", "face": "happy", "text": "안녕. 너 어디서 왔어. 제가요, 사실 강아지 키우고 싶었거든요. 그 사람이랑 같이.", "clue_callback": "S3 강아지 액자", "choices": [
-      {"text": "사진 같이 찍어요. 이 친구랑.", "aff": {"sea": 6}, "flag": "photo_together", "reply": "…그래요. 어색하지만, 좋아요."},
-      {"text": "강아지 좋아하시는구나. 카페에서 봤던 액자 사진도.", "aff": {"sea": 5}, "flag": "clue_callback_dog", "reply": "…기억하셨어요? 그 강아지가 제 그 강아지였어요."},
-      {"text": "(만지지 않고 옆에 서 있음.)", "aff": {}, "flag": "distant", "reply": "…강아지 별로세요? 그럴 수도 있죠."}
-    ]},
-    {"idx": 14, "id": "S14_sea", "label": "S14 · 사이드 — 윤하린 자문", "act": 2, "bg": "bg_14_office_corridor", "speaker": "윤하린", "face": "serious", "text": "우리 아버지 자산 8건 중 두 번째 건 — 매도 결정 직전. 시장 자율안 외부 자문 한 줄 가능할까요?", "choices": [
-      {"text": "같이 봅시다. 30분.", "aff": {"harin": 3, "sea": -1}, "flag": "side_help_harin", "reply": "…고마워요. 그쪽 솔직하시네요."},
-      {"text": "자료 두고 가시면 내일 메모 드릴게요.", "aff": {"harin": 1}, "flag": "side_memo_harin", "reply": "…그래요. 메모 부탁드려요."},
-      {"text": "외부 자문 룰이 있어요. 한 명에 한 챕터.", "aff": {"harin": -3, "sea": 1}, "flag": "cold_side", "reply": "…그렇군요. 알겠습니다."}
-    ]},
-    {"idx": 15, "id": "S15_sea", "label": "S15 · MINI 2 — 정책 의견", "act": 2, "kind": "mini_sim", "bg": "bg_15_fsc_consult", "speaker": "한미래", "face": "default", "text": "6월 패키지 표결 4일 전. 외부 자문 의견서 한 줄 부탁드려요. 표결 라인에 반영됩니다.", "choices": [
-      {"text": "임대료 상한 + 갱신권 강화", "aff": {"sea": 6, "harin": -6, "seoyeon": 2, "mirae": -2}, "flag": "tenant_first", "reply": "한미래: 약자 보호 의견. 후속 부작용은 제가 짊어집니다."},
-      {"text": "보증 한도 확대 + 정부 보증", "aff": {"sea": 2, "harin": 3, "seoyeon": -3, "mirae": 4}, "flag": "system_first", "reply": "한미래: 임차인 일시 보호 가능. / 이서연: 보증여력 한계 무시한 결정."},
-      {"text": "시장 자율 + 모니터링 강화", "aff": {"sea": -4, "harin": 6, "seoyeon": 3, "mirae": 1}, "flag": "market_first", "reply": "한미래: 정부 개입 최소화 권고. / 박세아: 그러면 저 같은 사람은 어떻게 해요?"},
-      {"text": "혼합안 (상한 일부 + 한도 일부)", "aff": {"sea": 3, "harin": 1, "seoyeon": 1, "mirae": 3}, "flag": "mixed", "reply": "한미래: 정책 비용은 크지만 단일 frame 회피는 가능합니다."}
-    ]},
-    {"idx": 16, "id": "S16_sea", "label": "S16 · 세아 위기", "act": 3, "bg": "bg_16_sea_apartment", "speaker": "박세아", "face": "sad", "text": "오늘. 임대인이 분납 합의 깨버렸어요. 새 세입자 한 명 들어왔다가 계약 안 갔대요. 내일이 6월 1일이에요. 통근 1시간 30분. 한 달 더는 회사에서 못 봐줘요.", "choices": [
-      {"text": "제가 새 주거 알아볼게요. 단기 월세, 회사 근처.", "aff": {"sea": 5}, "flag": "practical_help", "reply": "…그렇게까지요? 미안해요. 진짜로."},
-      {"text": "(옆에 한참 앉아 있음. 빈 박스 옆에.)", "aff": {"sea": 7}, "flag": "quiet_presence", "reply": "…고마워요. 한 시간 있다 가도 되죠?"},
-      {"text": "변호사 추천해드릴게요.", "aff": {"sea": 3}, "flag": "expert", "reply": "…그것도 한 방향이긴 한데요. 시간이 너무 길어요."}
-    ]},
-    {"idx": 17, "id": "S17_sea", "label": "S17 · 깊은 대화 (트라우마)", "act": 3, "bg": "bg_17_sea_apartment_late", "speaker": "박세아", "face": "default", "text": "그 강아지요. 그 사람이 데려갔어요. 자기 누나네 가서 키운다고. 그래서 그 카페만 가요. 그 강아지 사진 액자 있는 카페.", "clue_callback": "S3 강아지 액자 정면 호출", "choices": [
-      {"text": "저도 비슷한 거 있어요. 잃어버린 거, 다시 가질 수 없는 거.", "aff": {"sea": 5}, "flag": "share", "reply": "…사람마다 하나씩 있는 거 같아요."},
-      {"text": "(아무 말 안 함. 옆에 그대로.)", "aff": {"sea": 7}, "flag": "quiet_2", "reply": "…고마워요. 듣고 있어주셔서."},
-      {"text": "이제 그 사람 잊고 새로 시작해야죠.", "aff": {"sea": -3}, "flag": "tone_wrong", "reply": "…잊는 게, 한 줄로 되는 거 아니에요."}
-    ]},
-    {"idx": 18, "id": "S18_sea", "label": "S18 · 보고서 통합", "act": 3, "bg": "bg_18_office_report", "speaker": "선임", "face": "default", "text": "이번 주 안에 결론. 한 줄. 어느 방향이에요?", "choices": [
-      {"text": "임차인 보호 강화 결론", "aff": {"sea": 2}, "flag": "report_tenant"},
-      {"text": "보증 시스템 안정화 결론", "aff": {"seoyeon": 2, "mirae": 2}, "flag": "report_system"},
-      {"text": "결론은 4 시야 모두 부분 정답. 단일 정답이 없는 사슬 구조.", "aff": {"sea": 1, "harin": 1, "seoyeon": 1, "mirae": 1}, "flag": "multi_view", "reply": "…그 frame은, 한 번 도전해볼 만하네요. 그게 본 보고서 본질이긴 합니다."}
-    ]},
-    {"idx": 19, "id": "S19_sea", "label": "S19 · 사이드 — 이서연", "act": 3, "bg": "bg_19_sgi_corridor", "speaker": "이서연", "face": "serious", "text": "보증 손해율 데이터 외부 비공개 연장 결정 직전. 본인이 결정하세요.", "choices": [
-      {"text": "같이 봅시다. 오늘 오후.", "aff": {"seoyeon": 3, "sea": -1}, "flag": "side_help_seoyeon", "reply": "…고마워요."},
-      {"text": "보고서 마지막 챕터에 한 줄 넣을게요.", "aff": {"seoyeon": 2, "mirae": 1}, "flag": "bridge_seoyeon", "reply": "…그 한 줄이 정확하면 충분합니다."},
-      {"text": "보고서 라인이 정해진 상태예요.", "aff": {"seoyeon": -2}, "flag": "cold_seoyeon", "reply": "…알겠습니다."}
-    ]},
-    {"idx": 20, "id": "S20_sea", "label": "S20 · MINI 3 — 세아 결정", "act": 3, "kind": "mini_sim", "bg": "bg_20_sea_decision", "speaker": "박세아", "face": "serious", "text": "일부 합의예요. 60%. 2.4억 즉시. 나머지 1.6억 6개월 후 — 보장 없음. 오늘 자정까지 결정해야 해요.", "choices": [
-      {"text": "일부 합의 수용 (60%)", "aff": {"sea": 5}, "asset_delta": -1600, "flag": "partial_accept", "reply": "…그렇게 갈게요. 끝내야 살아요."},
-      {"text": "끝까지 소송", "aff": {"sea": 3}, "asset_delta_range": [0, 1600], "time_delta": 180, "flag": "litigation", "reply": "…시간이 길지만 결판은 나야 해요."},
-      {"text": "본인이 단기 주거 직접 마련 (한 달 자기 부담)", "aff": {"sea": 9}, "asset_delta": -300, "flag": "sacrifice", "reply": "…뭐라고요? 그쪽이… 왜요? 진짜로요?"}
-    ]},
-    {"idx": 21, "id": "S21_sea", "label": "S21 · 한강 진심 모먼트", "act": 3, "bg": "bg_21_han_river_dawn", "speaker": "박세아", "face": "blush", "text": "있잖아요… 고마워요. 진짜로요. 그쪽이 옆에 있어서, 이번 봄을 넘겼어요.", "choices": [
-      {"text": "저도 같이 봄을 넘기고 싶어요. 다음 봄도. 그 다음 봄도.", "aff": {"sea": 8}, "flag": "confess_yes_sea", "reply": "…진짜요? 그러면 진짜로요. 같이 가요."},
-      {"text": "옆에 있어줘서, 저도 고마워요.", "aff": {"sea": 4}, "flag": "warm_close", "reply": "…네. 그거면 됐어요. 오래 그렇게."},
-      {"text": "그쪽 회복하는 거 본 게 다행이에요.", "aff": {"sea": -3}, "flag": "route_friend", "reply": "…네. 동료로, 오래요."}
-    ]},
-    {"idx": 22, "id": "S22_sea", "label": "S22 · 후속 분기 (호감도 cutoff)", "act": 3, "kind": "branch_eval", "bg": "dynamic", "speaker": "narrator", "face": "thinking", "text": "호감도와 flag가 이 봄의 결말을 정한다.", "next": true},
-    {"idx": 23, "id": "S23_sea", "label": "S23 · 후일담", "act": 3, "bg": "bg_23_sea_new_apartment", "speaker": "박세아", "face": "smile", "text": "보세요. 화분도 들였어요. 통근 30분이에요. 다음 달에 보호소에서 강아지 한 마리 데려와요.", "next": true}
-  ],
-
-  "scenes_route_harin": [
-    {"idx": 10, "id": "S10_harin", "label": "S10 · 재즈 라이브 카페", "act": 2, "bg": "bg_10_jazz_cafe", "speaker": "윤하린", "face": "serious", "text": "저 베이시스트, 7년 전 NY에서 본 적 있어요. 라이브 보면 알아요. 7년이 묻어 있어요. 사무실에서 이런 얘기 하면 다들 못 알아들어요.", "choices": [
-      {"text": "음악, 진짜 좋아하시네요.", "aff": {"harin": 6}, "flag": "music_recognize", "reply": "…눈치 빠르시네요."},
-      {"text": "7년 전 NY 가셨던 이유가 있어요?", "aff": {"harin": 4}, "flag": "probe_past", "reply": "…학교 때문이에요. 음대 안 간 게, 가끔 후회돼요."},
-      {"text": "본론으로 가시죠. 사슬 다음 단계.", "aff": {"harin": -2}, "flag": "business_tone", "reply": "…그래요. 본론으로 갈게요."}
-    ]},
-    {"idx": 11, "id": "S11_harin", "label": "S11 · 8건 도미노 시뮬", "act": 2, "bg": "bg_11_gangnam_office_night", "speaker": "윤하린", "face": "serious", "text": "8건 사슬이 다 묶여 있어요. 아버지 자산 35억인데, 한 건 막혔다고 35억이 다 굳어요. PF 대출 한 건 더 있어요. 그쪽까지 가면 끝나요.", "choices": [
-      {"text": "2번을 가격 -10% 매도하는 시나리오부터 시뮬해봐요.", "aff": {"harin": 6}, "flag": "chain_break_proposal", "reply": "…그쪽 말이 맞아요. 사슬은 끊어야죠."},
-      {"text": "PF 대출 금리부터 협상해보죠.", "aff": {"harin": 5}, "flag": "pf_first", "reply": "…가능할 수도 있겠네요."},
-      {"text": "갭투자가 본인 자유의지로 한 거라면, 본인이 져야죠.", "aff": {"harin": -5}, "flag": "blame", "reply": "…8건 중 6건은 제 의지가 아니에요. 아버지가 명의만 빌려간 거예요."}
-    ]},
-    {"idx": 12, "id": "S12_harin", "label": "S12 · 한강 어머니 사연", "act": 2, "bg": "bg_12_han_river_night", "speaker": "윤하린", "face": "serious", "text": "여기, 엄마랑 마지막 본 자리예요. 7년 전 새벽. '아빠가 부동산 하는 거 다 정리될 때까지 돌아오지 않을 거야.' 그게 끝이었어요.", "choices": [
-      {"text": "(아무 말 안 함. 옆에 그대로.)", "aff": {"harin": 7}, "flag": "quiet_harin", "reply": "…고마워요. 7년 만이에요."},
-      {"text": "본인 인생, 그 자산이랑 분리할 수 있어요.", "aff": {"harin": 8}, "flag": "separate_life", "reply": "…그 한 줄, 7년 만에 처음 들었어요."},
-      {"text": "어머니가 그래도 가족을 떠난 건…", "aff": {"harin": -4}, "flag": "judge_mother", "reply": "…그건 제가 평생 본 거예요."}
-    ]},
-    {"idx": 13, "id": "S13_harin", "label": "S13 · 길고양이 (의외성)", "act": 2, "bg": "bg_13_alley_cat", "speaker": "윤하린", "face": "blush", "text": "개보다 고양이파예요. 개는 정답을 요구하는데, 고양이는 답이 없어도 같이 있어줘요. 사무실에서 이러는 거 본 적 없죠.", "choices": [
-      {"text": "이쪽이 진짜 윤하린 씨인 거 같아요.", "aff": {"harin": 6}, "flag": "real_harin", "reply": "…그쪽, 자꾸 그런 말 하시면 곤란해요."},
-      {"text": "사료 가지고 다니시는구나. 자주 와요?", "aff": {"harin": 4}, "flag": "routine", "reply": "…일주일에 두 번. 5년째예요."},
-      {"text": "(만지지 않고 옆에 서 있음.)", "aff": {}, "flag": "distant", "reply": "…고양이 별로세요?"}
-    ]},
-    {"idx": 14, "id": "S14_harin", "label": "S14 · 사이드 — 박세아", "act": 2, "bg": "bg_14_office_corridor", "speaker": "박세아", "face": "sad", "text": "임대인이 분납 거부했어요. 다음 단계 어떻게 가야 할지, 한 줄 조언 부탁드려도 될까요?", "choices": [
-      {"text": "내용증명 + 보증기관 보증부터 검토하세요.", "aff": {"sea": 3, "harin": -1}, "flag": "side_help_sea", "reply": "…고마워요."},
-      {"text": "보증기관 보증 검토하세요. 그게 첫 단계예요.", "aff": {"sea": 1}, "flag": "side_memo_sea", "reply": "네, 알아볼게요."},
-      {"text": "다음 주에 다시 봐요.", "aff": {"sea": -3, "harin": 1}, "flag": "cold_side_sea", "reply": "…네. 알겠습니다."}
-    ]},
-    {"idx": 15, "id": "S15_harin", "label": "S15 · MINI 2 — 정책 의견", "act": 2, "kind": "mini_sim", "bg": "bg_15_fsc_consult", "speaker": "한미래", "face": "default", "text": "6월 패키지 표결 4일 전. 외부 자문 의견서 한 줄 부탁드려요.", "choices_ref": "scenes_route_sea[S15_sea].choices (동일 4 옵션)"},
-    {"idx": 16, "id": "S16_harin", "label": "S16 · 하린 위기 — 도미노 두 번째", "act": 3, "bg": "bg_16_gangnam_office_late", "speaker": "윤하린", "face": "serious", "text": "2번 건 마포 임차인이 보증금 반환 청구 소송 들어왔어요. 사슬 두 번째 끊김 직전. 아버지가 '네가 처리해' 한 줄로 끝.", "choices": [
-      {"text": "2번 건, 가격 -15% 매도. 8천만원 손실 인정.", "aff": {"harin": 5}, "flag": "fast_cut_proposal", "reply": "…8천이 차라리 나아요. 아버지 설득이…"},
-      {"text": "(옆에 한참 앉아 있음. 책상 옆 자리.)", "aff": {"harin": 7}, "flag": "quiet_harin_2", "reply": "…7년 만이에요."},
-      {"text": "아버지에게 본인 입장 다 말하세요.", "aff": {"harin": 3}, "flag": "confront_father", "reply": "…그것도 한 번은 해야 해요."}
-    ]},
-    {"idx": 17, "id": "S17_harin", "label": "S17 · 어머니 마지막 본 가게", "act": 3, "bg": "bg_17_old_jazz_bar", "speaker": "윤하린", "face": "serious", "text": "엄마가 그날 한 말. '하린아, 너는 음악 하는 사람이 될 줄 알았어. 그게 안 되면, 너 자신을 잃지 마.' 7년 동안, 그 한 줄 잊은 적 없어요.", "clue_callback": "S4 재즈 포스터 정면 호출", "choices": [
-      {"text": "본인을 잃지 않으셨어요. 자산 관리는 본인의 일부이지, 본인 전체가 아니에요.", "aff": {"harin": 8}, "flag": "identity_affirm", "reply": "…그 한 줄, 두 번째 들었어요. 7년 만에 두 번."},
-      {"text": "(아무 말 안 함. 음악 같이 들음.)", "aff": {"harin": 7}, "flag": "quiet_3", "reply": "…고마워요. 7년 만이에요."},
-      {"text": "어머니가 그래도 본인 두고 떠난 건…", "aff": {"harin": -5}, "flag": "judge_mother_2", "reply": "…그 얘기, 두 번 안 한다고 했죠."}
-    ]},
-    {"idx": 18, "id": "S18_harin", "label": "S18 · 보고서 통합", "act": 3, "bg": "bg_18_office_report", "choices_ref": "scenes_route_sea[S18_sea].choices (동일)"},
-    {"idx": 19, "id": "S19_harin", "label": "S19 · 사이드 — 한미래", "act": 3, "bg": "bg_19_fsc_corridor", "speaker": "한미래", "face": "serious", "text": "6월 패키지 표결 사흘 전. 외부 자문 의견서 한 줄을 다시 다듬어줄 수 있어요?", "choices": [
-      {"text": "한 시간만요. 같이 봅시다.", "aff": {"mirae": 3, "harin": -1}, "flag": "side_help_mirae", "reply": "…고마워요."},
-      {"text": "메모 보내드릴게요.", "aff": {"mirae": 2}, "flag": "bridge_mirae", "reply": "…충분합니다."},
-      {"text": "일정 빡빡합니다.", "aff": {"mirae": -2}, "flag": "cold_mirae", "reply": "…알겠습니다."}
-    ]},
-    {"idx": 20, "id": "S20_harin", "label": "S20 · MINI 3 — 하린 결정", "act": 3, "kind": "mini_sim", "bg": "bg_20_harin_decision", "speaker": "윤하린", "face": "serious", "text": "2번 건 매도. 세 가지 옵션. 한 줄 조언해주세요.", "choices": [
-      {"text": "즉시 매도 (-15% 손실 인정)", "aff": {"harin": 4}, "asset_delta": -8000, "flag": "fast_cut", "reply": "…그렇게 갈게요. 35억 다 굳는 것보다 낫죠."},
-      {"text": "가격 회복 6개월 대기", "aff": {"harin": 2}, "asset_delta_range": [-12000, 3000], "time_delta": 180, "flag": "wait_harin", "reply": "…아버지 안이에요. 6개월 갈게요."},
-      {"text": "본인이 매도 손실 일부 자기 자금으로 분담", "aff": {"harin": 9}, "asset_delta": -1500, "flag": "sacrifice", "reply": "…뭐라고요? 진짜로요?"}
-    ]},
-    {"idx": 21, "id": "S21_harin", "label": "S21 · 재즈 라이브 후 진심", "act": 3, "bg": "bg_21_jazz_after", "speaker": "윤하린", "face": "blush", "text": "솔직히, 그쪽 없었으면 무너졌어요. 7년치 무너짐이, 한 번에 왔을 거예요. 다음 봄에 음대 다시 알아볼 거예요.", "choices": [
-      {"text": "음대 시험, 같이 갈 사람 필요하면 옆자리 둘게요.", "aff": {"harin": 8}, "flag": "confess_yes_harin", "reply": "…그쪽, 진짜 그렇게 갈 사람이에요? 그러면 같이 가요."},
-      {"text": "그쪽이 본인 길 찾은 거 같아 다행이에요.", "aff": {"harin": 4}, "flag": "warm_close_harin", "reply": "…네. 그거면 됐어요."},
-      {"text": "음대는 좋은 선택이에요.", "aff": {"harin": -3}, "flag": "route_friend", "reply": "…알겠어요. 잘 들었어요."}
-    ]},
-    {"idx": 22, "id": "S22_harin", "kind": "branch_eval", "speaker": "narrator", "text": "호감도와 flag가 이 봄의 결말을 정한다.", "next": true},
-    {"idx": 23, "id": "S23_harin", "label": "S23 · 후일담", "act": 3, "bg": "bg_23_jazz_cafe_summer", "speaker": "윤하린", "face": "smile", "text": "아버지가 결국 자산 관리 직접 가져갔어요. 저는 음대 입시 준비 시작했어요. 엄마한테 카톡 — 읽음 1번. 그게 답이라고 생각해요.", "next": true}
-  ],
-
-  "scenes_route_seoyeon": [
-    {"idx": 10, "id": "S10_seoyeon", "label": "S10 · 마라탕집 (의외성)", "act": 2, "bg": "bg_10_malatang", "speaker": "이서연", "face": "laugh", "text": "아 매워. 진짜 매워. 근데 맛있어요. 회사에서는 이런 톤 안 써요.", "choices": [
-      {"text": "이쪽이 진짜 이서연 씨인 거 같은데요.", "aff": {"seoyeon": 5}, "flag": "real_seoyeon", "reply": "…어색하긴 한데, 고마워요."},
-      {"text": "마라탕 통계 한 번 봤는데…", "aff": {"seoyeon": 3}, "flag": "analytical", "reply": "…2017년 본격 확산. 그쪽도 즐기시는군요."},
-      {"text": "(약한 단계 주문)", "aff": {}, "flag": "distant", "reply": "…이건 그쪽이 맞춰주신 건가요."}
-    ]},
-    {"idx": 11, "id": "S11_seoyeon", "label": "S11 · 보증사 임원진 회의 동행", "act": 2, "bg": "bg_11_sgi_meeting", "speaker": "이서연", "face": "serious", "text": "임원진이 외부 비공개 1년 연장 의결. 본 데이터, 임원진이 안 봐요. 한 줄 미루면, 임계 도달 시점에 사회 충격이 한 번에.", "choices": [
-      {"text": "보고서에 그 한 줄 명시할게요. '보증여력 한계 위치, 외부 비공개.'", "aff": {"seoyeon": 6}, "flag": "bridge_data", "reply": "…그 한 줄, 충분합니다. 감사해요."},
-      {"text": "외부 누출이 답일 수도 있어요.", "aff": {"seoyeon": 4, "mirae": -3}, "flag": "leak_propose", "reply": "…그 결정은 제가 해요. 한 번도 받아본 적 없는 호의예요."},
-      {"text": "임원진 결정 따라야죠. 회사 룰이에요.", "aff": {"seoyeon": -3}, "flag": "resignation", "reply": "…알겠습니다. 자문 시간 빼앗아 죄송해요."}
-    ]},
-    {"idx": 12, "id": "S12_seoyeon", "label": "S12 · KAIST 동기 P2P 사건", "act": 2, "bg": "bg_12_seoyeon_apartment", "speaker": "이서연", "face": "serious", "text": "학부 4학년 때 동기 한 명이 P2P 사기 피해. 5천만원. 제가 한 달 전에 부실률 통계 한 줄 봤어요. 한 줄 보냈으면 안 잃었어요.", "clue_callback": "S5 KAIST 머그컵 정면 호출", "choices": [
-      {"text": "그 한 줄 자책, 5천만원 무게보다 크게 짊어지셨네요. 21살에.", "aff": {"seoyeon": 8}, "flag": "weight_recognize", "reply": "…그쪽이 처음 받아준 거예요. 6년 만이에요."},
-      {"text": "(아무 말 안 함. 옆에 그대로.)", "aff": {"seoyeon": 6}, "flag": "quiet_seoyeon", "reply": "…처음이에요, 이런 자리에 누가 같이 있어준 거."},
-      {"text": "본인 탓 아니에요. 그 친구가 결정한 거잖아요.", "aff": {"seoyeon": -3}, "flag": "lighten", "reply": "…그 무게는 제가 정해요."}
-    ]},
-    {"idx": 13, "id": "S13_seoyeon", "label": "S13 · 길고양이 인스타", "act": 2, "bg": "bg_13_seoyeon_phone", "speaker": "이서연", "face": "smile", "text": "5년 동안 모은 거예요. 동네 길고양이 60마리 정도. 다 이름 있어요. 저쪽 흰둥이는 '회귀계수', 저쪽 검정은 '편차'.", "choices": [
-      {"text": "다음 데이터 변수 후보 있어요?", "aff": {"seoyeon": 6}, "flag": "share_world", "reply": "…다음 길고양이 이름 '분산'으로 정할게요."},
-      {"text": "5년 동안 매일이요? 진짜로요?", "aff": {"seoyeon": 4}, "flag": "surprise_react", "reply": "…네. 처음엔 마음 식히려고. 지금은 그냥 좋아서요."},
-      {"text": "통계학적으로 흥미로운데요.", "aff": {"seoyeon": 3}, "flag": "data_tone", "reply": "…그건 다른 자리에서 정리해드릴게요."}
-    ]},
-    {"idx": 14, "id": "S14_seoyeon", "label": "S14 · 사이드 — 박세아", "act": 2, "bg": "bg_14_office_corridor", "choices_ref": "scenes_route_harin[S14_harin].choices"},
-    {"idx": 15, "id": "S15_seoyeon", "label": "S15 · MINI 2 — 정책 의견", "act": 2, "kind": "mini_sim", "bg": "bg_15_fsc_consult", "choices_ref": "scenes_route_sea[S15_sea].choices"},
-    {"idx": 16, "id": "S16_seoyeon", "label": "S16 · 서연 위기 — 외부 누출 직전", "act": 3, "bg": "bg_16_sgi_rooftop", "speaker": "이서연", "face": "default", "text": "본 결정 제 손에 있어요. 21살 그 친구 한 줄 못 보낸 거랑, 같은 결정이에요. 단지 이번엔 5천만원이 아니라, 사회 단위.", "choices": [
-      {"text": "한 번 더 임원진 보고 보강하시죠. 누출은 마지막 카드.", "aff": {"seoyeon": 5, "mirae": 2}, "flag": "internal_first", "reply": "…알겠습니다. 한 번 더 갈게요."},
-      {"text": "(옆에 한참 서 있음.)", "aff": {"seoyeon": 7}, "flag": "quiet_decision", "reply": "…고마워요. 처음이에요."},
-      {"text": "외부 한 줄 흘리세요. 더 큰 마비 막아요.", "aff": {"seoyeon": 4, "mirae": -5}, "flag": "leak_propose_climax", "reply": "…같이 무게 짊어진 거예요. 본 결정 단독 책임이에요."}
-    ]},
-    {"idx": 17, "id": "S17_seoyeon", "label": "S17 · 옥상 한 줄 (트라우마 callback)", "act": 3, "bg": "bg_17_sgi_rooftop_late", "speaker": "이서연", "face": "serious", "text": "이걸 알고도 가만 있는 건 죄예요. 21살 때는 몰랐어요. 27살에는 알아요.", "choices": [
-      {"text": "21살의 본인을 27살의 본인이 같이 짊어진 거예요. 자책이 아니라 책임이에요.", "aff": {"seoyeon": 8}, "flag": "weight_separate", "reply": "…그 한 줄, 6년 만에 처음이에요."},
-      {"text": "(아무 말 안 함. 같은 옥상.)", "aff": {"seoyeon": 7}, "flag": "quiet_3", "reply": "…6년 만이에요."},
-      {"text": "그래도 본인 자리 잘 지키세요.", "aff": {"seoyeon": -4}, "flag": "self_first", "reply": "…그 한 줄 안 받을게요."}
-    ]},
-    {"idx": 18, "id": "S18_seoyeon", "choices_ref": "scenes_route_sea[S18_sea].choices"},
-    {"idx": 19, "id": "S19_seoyeon", "label": "S19 · 사이드 — 한미래", "act": 3, "choices_ref": "scenes_route_harin[S19_harin].choices"},
-    {"idx": 20, "id": "S20_seoyeon", "label": "S20 · MINI 3 — 서연 결정", "act": 3, "kind": "mini_sim", "bg": "bg_20_seoyeon_decision", "speaker": "이서연", "face": "serious", "text": "결정. 익명 외부 누출 / 내부 보고 한 번 더 보강 / 그쪽이 본인 보고서 라인에 한 줄 명시 — 본인이 책임 일부 분담.", "choices": [
-      {"text": "외부 누출 (그녀 신념 우선 — 그녀 직장 위험)", "aff": {"seoyeon": 5}, "flag": "leak", "side_effect": "사회 충격 + 그녀 정직 위험", "reply": "…본 결정 단독 책임."},
-      {"text": "내부 보고서 보강 (3번째)", "aff": {"seoyeon": 3}, "flag": "internal", "reply": "…3번째 보강 가요."},
-      {"text": "본인 보고서 라인에 한 줄 명시 (외부 자문 위치 위험)", "aff": {"seoyeon": 9}, "asset_delta": 0, "flag": "sacrifice", "side_effect": "본인 외부 자문 위치 끝", "reply": "…뭐라고요? 진짜로요? 그쪽이… 왜요?"}
-    ]},
-    {"idx": 21, "id": "S21_seoyeon", "label": "S21 · 옥상 진심 모먼트", "act": 3, "bg": "bg_21_sgi_rooftop_dawn", "speaker": "이서연", "face": "blush", "text": "데이터 말고 다른 거 처음 의지해봐요. 그쪽한테요.", "choices": [
-      {"text": "다음 데이터도 같이 봐요. 옆자리 둘게요. 오래요.", "aff": {"seoyeon": 8}, "flag": "confess_yes_seoyeon", "reply": "…6년 만에 처음이에요. 같이 봐요."},
-      {"text": "한 줄 같이 한 거예요. 평생 가져가요.", "aff": {"seoyeon": 4}, "flag": "warm_close_seoyeon", "reply": "…네. 그거면 됐어요."},
-      {"text": "본인이 한 결정이에요.", "aff": {"seoyeon": -3}, "flag": "route_friend", "reply": "…그건 그쪽 정의예요."}
-    ]},
-    {"idx": 22, "id": "S22_seoyeon", "kind": "branch_eval", "next": true},
-    {"idx": 23, "id": "S23_seoyeon", "label": "S23 · 후일담", "act": 3, "bg": "bg_23_sgi_office_summer", "speaker": "이서연", "face": "smile", "text": "보증사 내부 reform 권고안 채택. 손해율 외부 공개 분기 단위 정례화. 진급도 했어요. 차장. 그쪽 익명 공저자 1명.", "next": true}
-  ],
-
-  "scenes_route_mirae": [
-    {"idx": 10, "id": "S10_mirae", "label": "S10 · SF 책방 동행", "act": 2, "bg": "bg_10_sf_bookstore", "speaker": "한미래", "face": "smile", "text": "테드 창. '바빌론의 탑'. 정책 일이 SF 같다고 느낄 때가 있어요. 한 결정 한 줄이 한 사회 한 챕터 닫아요.", "clue_callback": "S6 SF 책 정면 호출", "choices": [
-      {"text": "정책이 SF 비유로 한 줄 정리되는 분, 처음 봐요.", "aff": {"mirae": 6}, "flag": "sf_recognize", "reply": "…그쪽이 처음이에요. 받아주신 거."},
-      {"text": "테드 창 한 권 추천해주세요.", "aff": {"mirae": 5}, "flag": "book_recommend", "reply": "…'당신 인생의 이야기.'"},
-      {"text": "본론으로 가시죠.", "aff": {"mirae": -2}, "flag": "business_tone", "reply": "…일하는 자리부터 다시 가시죠."}
-    ]},
-    {"idx": 11, "id": "S11_mirae", "label": "S11 · 정책 패키지 회의", "act": 2, "bg": "bg_11_fsc_meeting", "speaker": "한미래", "face": "serious", "text": "단일 frame은 어느 쪽이든 한 챕터 닫아요. 혼합이 정책 비용 크지만, 그게 본 패키지 본질입니다.", "choices": [
-      {"text": "외부 자문 한 줄 — 혼합안이 후속 데이터 수집 frame으로 가장 정확합니다.", "aff": {"mirae": 8}, "flag": "support_in_meeting", "reply": "…외부 자문 한 줄, 결재 라인 위에 한 줄로 갑니다."},
-      {"text": "본 결정 무게, 결재 라인이 짊어진다는 frame 확인 부탁드립니다.", "aff": {"mirae": 6}, "flag": "weight_frame", "reply": "…한 번도 안 받았어요. 감사합니다."},
-      {"text": "(말 안 함.)", "aff": {}, "flag": "silent", "reply": "…회의 끝 후 다시 봅시다."}
-    ]},
-    {"idx": 12, "id": "S12_mirae", "label": "S12 · 술 한 잔 (사적 톤)", "act": 2, "bg": "bg_12_mirae_bar", "speaker": "한미래", "face": "serious", "text": "사실 나도 모르겠어요. 답이 없으니까. 6년 전 동기가 부동산 정책 결정 후속 — 시민 한 명 자살. 그 동기 못 버티고 휴직. 결국 자퇴.", "choices": [
-      {"text": "답이 없는 일에 결정해야 한다는 무게, 결재 라인이 짊어질 일이 아니에요.", "aff": {"mirae": 8}, "flag": "weight_recognize", "reply": "…6년 만이에요. 진짜로요."},
-      {"text": "(아무 말 안 함. 옆에 그대로.)", "aff": {"mirae": 7}, "flag": "quiet_mirae", "reply": "…이 자리 누가 옆에 있어준 거, 6년 만이에요."},
-      {"text": "결정은 결정이에요. 무게는 일에 따라오는 거고요.", "aff": {"mirae": -4}, "flag": "detached", "reply": "…외부 자문 자격은 거기까지인가 봐요."}
-    ]},
-    {"idx": 13, "id": "S13_mirae", "label": "S13 · 비 오는 거리 (의외성)", "act": 2, "bg": "bg_13_rainy_street", "speaker": "한미래", "face": "smile", "text": "사무관실 안에서 한 달 갇혀 있다 보면, 비 맞고 싶어져요. 우산 쓰면 그 자유가 또 닫혀요. 이런 모습 본 사람 6년 전 동기 이후 두 번째예요.", "choices": [
-      {"text": "(본인도 우산 안 씀. 같이 비 맞음.)", "aff": {"mirae": 7}, "flag": "rain_together", "reply": "…같이 맞으시네요. 6년 만이에요."},
-      {"text": "(우산 꺼내서 같이 씀.)", "aff": {"mirae": 5}, "flag": "shared_umbrella", "reply": "…고마워요. 어깨 젖어요."},
-      {"text": "감기 걸리세요.", "aff": {"mirae": 2}, "flag": "practical", "reply": "…5분 후 들어갈게요."}
-    ]},
-    {"idx": 14, "id": "S14_mirae", "label": "S14 · 사이드 — 박세아", "act": 2, "choices_ref": "scenes_route_harin[S14_harin].choices"},
-    {"idx": 15, "id": "S15_mirae", "label": "S15 · MINI 2 — 정책 의견", "act": 2, "kind": "mini_sim", "choices_ref": "scenes_route_sea[S15_sea].choices"},
-    {"idx": 16, "id": "S16_mirae", "label": "S16 · 미래 위기 — 6월 표결 직전", "act": 3, "bg": "bg_16_fsc_late_night", "speaker": "한미래", "face": "serious", "text": "결재 라인 위 결정 — '시장 자율 + 모니터링 강화.' 본 결정 후속에 한 명 사라질 수도 있어요. 본인이 본 거예요. 본 자청은 본인 위치 끝낼 위험.", "choices": [
-      {"text": "본 자청, 한 번 더 결재 라인에 보고 보강하세요. 외부 자문 자격으로 같이 갈 수 있어요.", "aff": {"mirae": 5}, "flag": "internal_first_mirae", "reply": "…알겠어요. 한 번 더 보고 가요."},
-      {"text": "(옆에 한참 앉아 있음. 책상 옆 자리.)", "aff": {"mirae": 7}, "flag": "quiet_mirae_2", "reply": "…본 자리에서 처음이에요."},
-      {"text": "본 자청 가세요. 한 줄 추천해요.", "aff": {"mirae": 3}, "flag": "self_sacrifice_propose", "reply": "…무게 한 줄 가져가요."}
-    ]},
-    {"idx": 17, "id": "S17_mirae", "label": "S17 · 청사 옥상 (트라우마)", "act": 3, "bg": "bg_17_fsc_rooftop_night", "speaker": "한미래", "face": "serious", "text": "본 1년 무급 자청 — 결재 라인 위가 안 짊어진다면, 결정한 본인이 짊어지면 돼요.", "clue_callback": "S6 SF 책 정면 호출", "choices": [
-      {"text": "6년 전 동기 결정과 본 결정, 같이 짊어진 사람 한 명 있어야 해요. 본 자청, 같이 갈게요.", "aff": {"mirae": 8}, "flag": "weight_share", "reply": "…그 한 줄, 6년 만에 두 번째예요."},
-      {"text": "(아무 말 안 함. 같은 옥상.)", "aff": {"mirae": 7}, "flag": "quiet_3_mirae", "reply": "…6년 만이에요."},
-      {"text": "본인 위치 끝나는 결정이에요. 후회 안 하실 자신 있으세요?", "aff": {"mirae": -4}, "flag": "doubt_her", "reply": "…후회 frame, 그쪽 자격이 아니에요."}
-    ]},
-    {"idx": 18, "id": "S18_mirae", "choices_ref": "scenes_route_sea[S18_sea].choices"},
-    {"idx": 19, "id": "S19_mirae", "label": "S19 · 사이드 — 윤하린", "act": 3, "bg": "bg_19_office_corridor", "speaker": "윤하린", "face": "default", "text": "2번 건 매도 결정 다 끝났어요. 다음 주 라이브 한 번 어떠세요?", "choices": [
-      {"text": "다음 주 라이브 한 번 가도 좋겠네요.", "aff": {"harin": 3, "mirae": -1}, "flag": "side_help_harin"},
-      {"text": "다음 챕터로.", "aff": {"harin": 1}, "flag": "bridge_harin"},
-      {"text": "본 자문 일정 빡빡합니다.", "aff": {"harin": -2}, "flag": "cold_harin"}
-    ]},
-    {"idx": 20, "id": "S20_mirae", "label": "S20 · MINI 3 — 미래 결정", "act": 3, "kind": "mini_sim", "bg": "bg_20_mirae_decision", "speaker": "한미래", "face": "serious", "text": "결정. 강경 임차 보호 권고 / 시장 자율 권고 / 본인 1년 무급 자청. 한 줄로 표결 라인에 갑니다.", "choices": [
-      {"text": "강경 임차 보호 권고", "aff": {"mirae": 4, "sea": 6, "harin": -6}, "flag": "strong_intervene", "reply": "…강경 권고. 후속 부작용은 본인이 짊어집니다."},
-      {"text": "시장 자율 권고", "aff": {"mirae": 3, "harin": 4, "sea": -4}, "flag": "let_market", "reply": "…자율 권고. 임차인 단기 직격은 본인이 자료로 짊어집니다."},
-      {"text": "본인이 후속 부작용 모니터링 자청 (1년 무급 — 본인 외부 자문 위치 끝)", "aff": {"mirae": 9}, "asset_delta": -500, "flag": "sacrifice", "side_effect": "본인 외부 자문 위치 끝", "reply": "…뭐라고요? 본인이… 왜요? 6년 전 동기 자리, 그쪽이 같이 가실 거예요?"}
-    ]},
-    {"idx": 21, "id": "S21_mirae", "label": "S21 · 비 오는 청사 앞 진심", "act": 3, "bg": "bg_21_fsc_rainy_evening", "speaker": "한미래", "face": "blush", "text": "있잖아요… 이 일 끝나면 — 답 없는 일 같이 보러 가실래요? SF 책방, 다음 주 토요일.", "choices": [
-      {"text": "답 없는 일, 같이 보러 가요. 다음 봄도. 그 다음 봄도.", "aff": {"mirae": 8}, "flag": "confess_yes_mirae", "reply": "…그러면 진짜로요. 토요일이요."},
-      {"text": "토요일 SF 책방, 같이 가요.", "aff": {"mirae": 4}, "flag": "warm_close_mirae", "reply": "…네. 토요일이요."},
-      {"text": "본인 자리 잘 챙기세요.", "aff": {"mirae": -3}, "flag": "route_friend", "reply": "…일은 일이고요."}
-    ]},
-    {"idx": 22, "id": "S22_mirae", "kind": "branch_eval", "next": true},
-    {"idx": 23, "id": "S23_mirae", "label": "S23 · 후일담", "act": 3, "bg": "bg_23_fsc_summer", "speaker": "한미래", "face": "smile", "text": "6월 패키지 후속 — 임대인 보증 한도 단계적 확대 + 임차인 단기 보호 자금 50억 추가 편성. 모니터링 자리 신설. 박세아 분, 1.6억 일부 회수 가능.", "next": true}
-  ],
-
-  "mini_sims": {
-    "mini_1_jeonse_consult": {
-      "scene_id": "S8",
-      "context": "박세아 보증금 반환 거부 사례 자문",
-      "topic_anchor": "전세 거래 자문"
-    },
-    "mini_2_policy_opinion": {
-      "scene_id": "S15",
-      "context": "6월 임시 정책 패키지 자문",
-      "topic_anchor": "정책 의견"
-    },
-    "mini_3_decision": {
-      "scene_id": "S20",
-      "context": "메인 캐릭터별 위기 결정 (자기희생 옵션 1개 = TRUE_HAPPY 트리거)",
-      "topic_anchor": "자산 변동 + 호감도",
-      "routes": ["sea", "harin", "seoyeon", "mirae"]
-    }
-  },
 
   "endings": [
-    {"tag": "TRUE_AWAKE", "trigger": "all_cleared && multi_view_flag", "priority": 0, "mascot": "🌅", "title": "네 시야 모두 본 봄", "body": "새벽 사무실. 4 카드가 한 책상 위에 있다. 임차인 부담 → 보증 손해율 폭증 → 정부 보증여력 한계 → 정책 결정 → 다시 임차인. 사슬이 닫힌다. 너는 한 줄을 쓴다 — '단일 정답이 없다. 부분 정답들의 합집합만 가능하다.' 봄은 끝났고, 다음 봄에는 — 누구의 시선을 따라갈지 본인이 안다.", "vibration": [300, 100, 300, 100, 300]},
-
-    {"tag": "TRUE_HAPPY_SEA", "trigger": "route=sea && aff>=60 && sacrifice && confess_yes_sea", "priority": 1, "mascot": "🥰", "title": "그녀의 봄, 그리고 너의 봄", "body": "네 한 달 단기 월세 300만원이 그녀를 무너지지 않게 했다. 보증금 1.6억 자리에 너의 옆자리가 들어왔다. 보호소에서 데려온 새 강아지 이름 — 그녀가 너에게 짓게 했다. \"봄.\" 너는 한 글자를 골랐다.", "vibration": [300, 100, 300, 100, 300]},
-    {"tag": "TRUE_HAPPY_HARIN", "trigger": "route=harin && aff>=60 && sacrifice && confess_yes_harin", "priority": 1, "mascot": "🥰", "title": "끊긴 사슬, 첫 무대", "body": "네 1500만원이 그녀의 7년치 결박을 끊었다. 라이브 카페 무대 — 그녀의 첫 곡 헌사. 'My Foolish Heart.' 빌 에반스. 어머니가 좋아했던 곡. 너의 옆자리 1번.", "vibration": [300, 100, 300, 100, 300]},
-    {"tag": "TRUE_HAPPY_SEOYEON", "trigger": "route=seoyeon && aff>=60 && sacrifice && confess_yes_seoyeon", "priority": 1, "mascot": "🥰", "title": "한 줄의 공저자", "body": "본 한 줄이 본인 보고서 라인에 들어갔고, 외부 자문 위치 한 챕터 닫혔다. 단, 그 한 줄 — 보증사 내부 reform 권고안의 시작점. 다음 길고양이 이름 후보 — '공저자.' 그녀가 환하게 웃는다.", "vibration": [300, 100, 300, 100, 300]},
-    {"tag": "TRUE_HAPPY_MIRAE", "trigger": "route=mirae && aff>=60 && sacrifice && confess_yes_mirae", "priority": 1, "mascot": "🥰", "title": "같이 짊어진 자리", "body": "본 1년 무급 자청 자리 — 그녀와 너 둘. 6년 전 동기 자리가 처음으로 둘이 짊어진 자리로 닫혔다. SF 책방 토요일 — 테드 창 '당신 인생의 이야기.' 그녀가 너에게 첫 페이지를 읽는다.", "vibration": [300, 100, 300, 100, 300]},
-
-    {"tag": "HAPPY_SEA", "trigger": "route=sea && aff>=40 && (confess_yes_sea || warm_close)", "priority": 2, "mascot": "🌸", "title": "작지만 따뜻한 봄", "body": "보증금 60%만 돌아왔다. 나머지 1.6억은 떠났다. 그녀는 새 자취방에서 화분 둘을 키운다. 회사 점심 — 너와 그녀가 같은 도시락. 회사 안 동료, 회사 밖 옆자리.", "vibration": [200, 100, 200]},
-    {"tag": "HAPPY_HARIN", "trigger": "route=harin && aff>=40", "priority": 2, "mascot": "🌸", "title": "자유의 한 음", "body": "2번 건 매도 8천만원 손실. 사슬은 끊겼다. 그녀 음대 입시 시작. 본 라이브 카페 어둠 한 켠. 베이스 한 음. 작지만 자유로운 결말.", "vibration": [200, 100, 200]},
-    {"tag": "HAPPY_SEOYEON", "trigger": "route=seoyeon && aff>=40", "priority": 2, "mascot": "🌸", "title": "정확한 봄", "body": "손해율 외부 공개 분기 단위 정례화. 그녀 진급 — 차장. 늦은 밤 마라탕집 — 마라 4단계. 그녀가 한 입 먹고 너에게 — '오늘 한 줄 봐줄까요?' 사무실 톤 아닌 그녀.", "vibration": [200, 100, 200]},
-    {"tag": "HAPPY_MIRAE", "trigger": "route=mirae && aff>=40", "priority": 2, "mascot": "🌸", "title": "한 우산의 결말", "body": "본 모니터링 자리 — 그녀와 너의 공동 자리. 비 오는 밤 청사 앞 — 우산 같이. 어깨가 한쪽씩 젖는다. 작지만 정확한 자리.", "vibration": [200, 100, 200]},
-
-    {"tag": "FRIEND_SEA", "trigger": "route=sea && aff>=25 && route_friend", "priority": 3, "mascot": "☺️", "title": "잘 지내는 두 사람", "body": "고백은 일어나지 않았다. 보호소 강아지 입양 사진을 그녀가 보내준다. 너는 한 줄 답 — '잘 됐네요.' 따뜻하지도 차갑지도 않은 두 사람.", "vibration": 150},
-    {"tag": "FRIEND_HARIN", "trigger": "route=harin && aff>=25 && route_friend", "priority": 3, "mascot": "☺️", "title": "잘 지내는 두 사람", "body": "음대 입시 합격 카톡. 너의 한 줄 답 — '잘 됐네요.' 라이브 카페 — 너는 가끔 가지만 그녀의 무대 자리는 멀다.", "vibration": 150},
-    {"tag": "FRIEND_SEOYEON", "trigger": "route=seoyeon && aff>=25 && route_friend", "priority": 3, "mascot": "☺️", "title": "잘 지내는 두 사람", "body": "분기 단위 데이터 한 줄 메일. 첨부 한 장 — 길고양이. '회귀계수 잘 지내네요.' 가까운 동료 거리.", "vibration": 150},
-    {"tag": "FRIEND_MIRAE", "trigger": "route=mirae && aff>=25 && route_friend", "priority": 3, "mascot": "☺️", "title": "잘 지내는 두 사람", "body": "분기 단위 보고서 한 줄. 가끔 청사 앞 비 — 우산 같이 한 적도 있다. 잘 지내는 두 사람.", "vibration": 150},
-
-    {"tag": "BAD_FAILURE_SEA", "trigger": "route=sea && aff>=40 && !sacrifice && her_crisis_worsened", "priority": 4, "mascot": "😢", "title": "그녀의 봄을 모른다", "body": "그녀 자취방 — 짐 못 뺐다. 친구 집 두 달, 친척 집 한 달, 그 다음은 모른다. 너는 보고서 마감, 박수 받았다. 그녀에게서 한 달째 카톡이 없다.", "vibration": 500},
-    {"tag": "BAD_FAILURE_HARIN", "trigger": "route=harin && aff>=40 && !sacrifice && her_crisis_worsened", "priority": 4, "mascot": "😢", "title": "닫힌 가게", "body": "6개월 대기 — 가격 회복 안 되고 5번까지 도미노. 35억 중 22억 손실. 음대 입시 무산. 카페 문 닫음. 두 달째 카톡이 없다.", "vibration": 500},
-    {"tag": "BAD_FAILURE_SEOYEON", "trigger": "route=seoyeon && aff>=40 && !sacrifice && her_crisis_worsened", "priority": 4, "mascot": "😢", "title": "임계 도달", "body": "외부 비공개 1년 연장. 임계 도달 9월. 사회 충격 한 번에. 보증 시장 마비. 그녀 익명 누출 — 정직 6개월. 회사 떠남.", "vibration": 500},
-    {"tag": "BAD_FAILURE_MIRAE", "trigger": "route=mirae && aff>=40 && !sacrifice && her_crisis_worsened", "priority": 4, "mascot": "😢", "title": "닫힌 자리", "body": "시장 자율 안 채택. 단기 보호 자금 편성 안 됨. 그녀 자청 단독 — 자리 닫혔다. 두 달째 카톡이 없다.", "vibration": 500},
-
-    {"tag": "BAD_DRIFT", "trigger": "all aff<35 || cold", "priority": 5, "mascot": "💸", "title": "빈 옆자리", "body": "보고서는 마감됐다. 6월 정책 패키지는 어떤 안이 채택됐든 — 너의 옆자리는 비었다. 네 명 모두 너에게서 멀어졌다. 회사 점심 — 너는 혼자 김밥을 먹는다. 다음 봄에는, 다른 선택이 가능하다.", "vibration": 500}
-  ],
-
-  "bgm_mapping": {
-    "default": "music/bgm/spring_office.mp3",
-    "rules": [
-      {"if": "scene.kind == 'mini_sim'", "play": "music/bgm/mini_sim_tense.mp3"},
-      {"if": "scene.act == 3 && scene.idx >= 16", "play": "music/bgm/climax_jeonse.mp3"},
-      {"if": "scene.id startswith S10_sea || S12_sea || S17_sea", "play": "music/bgm/quiet_reflection.mp3"},
-      {"if": "scene.id startswith S10_harin || S17_harin", "play": "music/bgm/romance_jazz.mp3"},
-      {"if": "scene.id startswith S21_", "play": "music/bgm/resolution_per_route.mp3"},
-      {"else": "music/bgm/romance_v2.mp3"}
-    ],
-    "character_intros": {
-      "sea": "music/bgm/character_intro_sea.mp3",
-      "harin": "music/bgm/character_intro_harin.mp3",
-      "seoyeon": "music/bgm/character_intro_seoyeon.mp3",
-      "mirae": "music/bgm/character_intro_mirae.mp3"
-    }
-  },
-
-  "asset_layout_rules": {
-    "four_cards_simultaneous": ["S7", "TRUE_AWAKE scene"],
-    "screen_positions": {
-      "sea": "left (warm dark)",
-      "harin": "right (cool bright)",
-      "seoyeon": "center-back (gray stable)",
-      "mirae": "right-back or entrance (neat dark)"
+    {
+      "tag": "TRUE_HAPPY_SEA",
+      "trigger": "aff>=60 && next_day && protect_warm",
+      "priority": 0,
+      "mascot": "🌸",
+      "title": "한 사람을 위한 봄",
+      "body": "기사가 나간 다음 주. 박세아가 보증금을 받았다는 문자가 왔다.\n그날 저녁, 그녀는 처음으로 먼저 카페에 왔다. 강서 한강공원이 가까운 그 카페.\n\"이사 잘 끝났어요. 다음 봄에도 여기 올 수 있을까요?\"\n— 그녀의 봄은 끝났고, 우리의 봄은 이제 시작이다."
     },
-    "tone": "pastel watercolor unified across 4"
-  },
-
-  "percentile_distribution": {
-    "comment": "CHAPTER 1과 동일 frame. 4 vector 평균을 기준으로 percentile 계산.",
-    "affinity_avg": {
-      "table": [
-        {"min": 65, "top_pct": 5},
-        {"min": 55, "top_pct": 15},
-        {"min": 45, "top_pct": 35},
-        {"min": 35, "top_pct": 55},
-        {"min": 25, "top_pct": 80},
-        {"min": 0, "top_pct": 97}
-      ]
+    {
+      "tag": "HAPPY_SEA",
+      "trigger": "aff>=45",
+      "priority": 1,
+      "mascot": "☀️",
+      "title": "고마운 한 사람",
+      "body": "기사가 나간 뒤 박세아는 한 통의 문자를 보냈다.\n\"덕분에 보증금 돌려받게 됐어요. 진심으로 고마워요.\"\n사적인 인사는 아니었지만, 한 줄 따뜻했다.\n다음 봄에 그녀가 어디 있을지는 모른다. 하지만 이 봄, 한 사람을 지켰다."
+    },
+    {
+      "tag": "FRIEND_SEA",
+      "trigger": "aff>=30",
+      "priority": 2,
+      "mascot": "🌱",
+      "title": "동료의 봄",
+      "body": "기사가 나가고 박세아는 동료처럼 가끔 연락한다.\n보증금은 한 달 더 걸렸지만 결국 받았다.\n친구라기엔 멀고, 모르는 사람이라기엔 가깝다. 그 정도의 거리.\n다음 봄에는 또 다른 한 사람을 만날 것이다."
+    },
+    {
+      "tag": "BAD_SEA_EXPOSED",
+      "trigger": "expose",
+      "priority": 3,
+      "mascot": "🥀",
+      "title": "이름을 빌린 봄",
+      "body": "박세아는 기사 후 연락이 끊겼다.\n정책은 한 단계 움직였고, 한 사람의 이름은 인터넷에 남았다.\n임대인 쪽 보증금은 결국 돌려받았지만, 그녀가 그 다음 어디로 갔는지는 알 수 없다.\n— 한 사람을 지키지 못한 봄."
+    },
+    {
+      "tag": "BAD_DRIFT_SEA",
+      "trigger": "all aff<30",
+      "priority": 4,
+      "mascot": "🌫️",
+      "title": "흩어진 봄",
+      "body": "기사는 나갔고, 박세아의 사례는 한 줄로 짧게 들어갔다.\n그녀에게서 답장은 오지 않았다.\n그 봄, 한 사람도 깊이 만나지 못한 채 끝났다."
     }
-  },
-
-  "_notes": {
-    "implementation_hints": [
-      "scenes_route_<name>는 동일 idx (10~23)를 가짐 — runtime에서 route key로 분기 선택",
-      "choices_ref는 다른 route의 동일 scene 선택지 재사용 — DRY 패턴",
-      "branch_eval scene (S22_<route>)은 dialog 없음. 엔진이 호감도+flag 평가 후 S23 또는 BAD 엔딩으로 점프",
-      "TRUE_AWAKE는 localStorage cleared 객체 평가 후 S24 직전 enginer가 endings priority 0 trigger 평가",
-      "MINI 2 (S15)만 4 선택지 — UI는 본 scene에 한해 폰트 작게 + 짧은 한 줄",
-      "side scene (S14, S19)에서 사이드 캐릭터 선택은 진엔딩 unlock 흐름의 단서 — 본 회차 결과보다 누적 회차 영향 큼"
-    ]
-  }
+  ]
 }
