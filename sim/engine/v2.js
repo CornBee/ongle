@@ -360,8 +360,6 @@
             const affBefore = Object.assign({}, state.affinity);
             applyChoice(script, state, i);
             emitEvent(opts, 'choice_made', { scene_id: scene.id, choice_idx: i, flag: ch.flag });
-            // 호감도 변경 toast/pulse
-            triggerAffinityEffects(script, state, affBefore);
             // route branch이면 즉시 ending 전환
             if (state.block === 'ending' && (!ch.reply)) {
               saveState(ctx);
@@ -373,6 +371,8 @@
             state.awaitingNext = true;
             saveState(ctx);
             render(ctx);
+            // render 후 새 DOM 잡혀있을 때 toast/pulse 발사
+            setTimeout(() => triggerAffinityEffects(script, state, affBefore), 30);
           });
         }
         choicesEl.appendChild(btn);
