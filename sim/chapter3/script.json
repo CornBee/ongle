@@ -1,0 +1,299 @@
+{
+  "version": "3.0",
+  "chapter": 3,
+  "title": "두 자의 봄",
+  "subtitle": "ONGLE 미연시 시뮬 — 윤하린 × 한미래",
+  "meta": {
+    "duration_est": "약 15~20분",
+    "note": "시장 vs 정책. 윤하린 메인 + 한미래 라이벌. 호감도 × 투자 수익률 두 axis."
+  },
+  "game_config": {
+    "start_affinity": { "harin": 30, "mirae": 30 },
+    "start_asset": 1000000,
+    "affinity_range": [0, 100],
+    "thresholds": { "true_happy": 60, "happy": 45, "friend": 30 },
+    "cleared_localStorage_key": "ongle_chapter3_cleared"
+  },
+  "characters": {
+    "harin": {
+      "name": "윤하린",
+      "age": 26,
+      "role": "임대인 외동딸 · 메인 히로인",
+      "anchor": "내 인생인지 아버지 인생인지"
+    },
+    "mirae": {
+      "name": "한미래",
+      "age": 29,
+      "role": "정책청 사무관 · 라이벌·서브",
+      "anchor": "누구를 먼저 살릴 것인가"
+    }
+  },
+  "face_keys": {
+    "default": "🌸",
+    "smile": "😊",
+    "blush": "☺️",
+    "sad": "😢",
+    "surprise": "😳",
+    "serious": "😐",
+    "happy": "🥰",
+    "thinking": "🤔",
+    "cold": "😒",
+    "worry": "😟"
+  },
+  "scenes_common": [
+    {
+      "idx": 0,
+      "id": "S1",
+      "label": "1화 · 첫 출근",
+      "act": 1,
+      "scene_asset": "scene_01_office",
+      "speaker": "선임",
+      "face": "smile",
+      "text": "오신 거 환영해요. 자리는 저쪽입니다.\n오늘 첫 일 — 5월 9일 정책 바뀌면서 전세 시장이 한 주 만에 흔들렸어요.\n취재 두 자리 받아오세요. 한 자리는 임대인, 다른 한 자리는 정책. 그림이 한 면이면 기사가 안 나와요.",
+      "next": true
+    },
+    {
+      "idx": 1,
+      "id": "S2",
+      "label": "2화 · 윤하린",
+      "act": 1,
+      "scene_asset": "scene_harin_office",
+      "speaker": "윤하린",
+      "face": "cold",
+      "text": "분석가라고요? 그쪽이 뭘 안다고요. 우리 아버지 자산 8건, 그 중 두 채가 보증금 못 빼서 묶였어요. 솔직히 인터뷰 받을 시간 없어요. 그래도 여기까지 왔으면 30분 드릴게요. 어디서부터 잘못된 건지, 그쪽 입으로 한번 말해봐요.",
+      "choices": [
+        { "text": "임대인도 사연이 있군요.", "aff": {"harin": 6}, "flag": "harin_warm", "reply": "윤하린: 사연. …그 단어 들어본 게 얼마 만인지 모르겠네요. 다들 임대인 얘기 들으면 욕부터 시작하던데. (한 박자) 뭐, 일단 앉아요. 시간은 30분이라고 했지만, 그쪽이 어떻게 듣는지 보고 결정할게요." },
+        { "text": "자산 8건 중 두 채 묶였다고요? 어느 건들인지.", "aff": {"harin": 4}, "flag": "harin_pro", "reply": "윤하린: 정확하네요, 일단. 수도권 외곽 한 채 — 입주 절벽 직격. 지방 한 채 — 역전세. 둘 다 갭이 컸어요. 환급 압박이 동시에 왔고, 도미노 시작점이 그 두 채예요." },
+        { "text": "갭투자자 입장도 알겠어요.", "aff": {"harin": -5}, "flag": "harin_tactless", "reply": "윤하린: 갭투자자. …그게 그쪽이 정리한 단어예요? 우리 아버지가 갭투자자고, 그래서 그 딸도 갭투자자다? 편하네요, 그 단어. (한 박자) 인터뷰 끝이에요." }
+      ]
+    },
+    {
+      "idx": 2,
+      "id": "S3",
+      "label": "3화 · 카페에서",
+      "act": 1,
+      "scene_asset": "scene_cafe",
+      "speaker": "윤하린",
+      "face": "worry",
+      "text": "여기까지 와줘서 — 솔직히 좀 의외였어요. 사무실 밖에서 누구 만나는 거, 요즘은 거의 없어서. (머그를 한 번 돌리며) 잠들기 전에 자꾸 그 생각이 들어요. 이게 내 인생인지, 아버지 인생인지. 자산 관리 위임받은 게 스물둘이었어요. 그때부터 매물 하나 묶이면 내 손가락 하나 묶이는 기분이에요.",
+      "choices": [
+        { "text": "들어도 돼요.", "aff": {"harin": 6}, "flag": "listen", "reply": "윤하린: …고마워요. 그 말 한 마디가 왜 이렇게 힘든지 모르겠네요. (작게) 새벽 한강 가본 적 있어요? 엄마가 마지막으로 본 게 거기였어요." },
+        { "text": "아버지 자산 분리해서 인생 짜요.", "aff": {"harin": 4}, "flag": "harin_independent_advice", "reply": "윤하린: 분리. …그 단어 진짜 오랜만이에요. 한 채만 매도하면 도미노 풀린다는 거 알아요. 그런데 그 한 채가 아버지한테 어떤 의미인지 — 그쪽이 알면 그 말 못 해요." }
+      ]
+    },
+    {
+      "idx": 3,
+      "id": "S4",
+      "label": "4화 · 한미래",
+      "act": 1,
+      "scene_asset": "scene_mirae_office",
+      "speaker": "한미래",
+      "face": "serious",
+      "text": "오시느라 수고하셨습니다. 자료 두 부 잘 받았습니다.\n6월 패키지 결재가 정확히 2주 남았어요. 임대료 상한 강제와 시장 자율, 둘 다 후속 부작용이 분명하게 잡힙니다. 외부효과를 보면 임차인 보호는 단기 정합, 시장 자율은 중장기 공급 정합.\n비례 원칙으로 어디까지 개입할지가 본질이에요. 분석가님 시점, 정리해서 들려주시면 결재 라인에 같이 올리겠습니다.",
+      "choices": [
+        { "text": "정책 한 줄이 사람 인생 한 줄에 영향 가는 거 — 무겁네요.", "aff": {"mirae": 6}, "flag": "mirae_weight", "reply": "한미래: …그 무게를 정확히 보고 계신 분은 드물어요. 사실 — 시행령 한 줄이 누군가의 마지막 한 줄이 된 적이 있어서요. 그 자리에 다시 안 서려고 결재합니다." },
+        { "text": "시장 자율과 정책 개입 — 어느 쪽이 후속 부작용이 더 적을지가 본질 같습니다.", "aff": {"mirae": 4}, "flag": "mirae_balance", "reply": "한미래: 정확합니다. 한쪽이 옳다고 단정할 수 있는 사안이 아니에요. 분석가님 데이터도 결재 보고서에 인용 가능한 형태로 정리해 주시면 좋겠습니다." },
+        { "text": "공무원이 시장을 얼마나 알겠어요. 결국 책상 위 결정 아닙니까.", "aff": {"mirae": -5}, "flag": "mirae_tactless", "reply": "한미래: 그 프레임 자체가 논의를 비좁게 만듭니다. 시장과 정책은 양자택일이 아니라, 같은 자에 놓고 재는 변수예요." }
+      ]
+    },
+    {
+      "idx": 4,
+      "id": "S5",
+      "label": "5화 · 첫 베팅",
+      "act": 2,
+      "scene_asset": "scene_desk_night",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "사무실. 두 자리 받은 자료가 책상에 펼쳐져 있다.\n6월 정책 패키지 표결 전에 시장은 한 번 더 움직인다. 부동산·금융 관련 종목 — 지금 베팅할까.\n자본금 100만 원. 첫 번째 결정.",
+      "choices": [
+        { "text": "정책 강도 약화 베팅 — 부동산 매수.", "aff": {}, "flag": "invest_1_buy", "reply": "narrator: 정책 강도 약화 가정. 상승 시 수익. (자본금 변동: +12%)" },
+        { "text": "관망 — 홀드.", "aff": {}, "flag": "invest_1_hold", "reply": "narrator: 관망. 한 박자 더 본다. (자본금 유지)" },
+        { "text": "정책 강도 강화 베팅 — 공매도.", "aff": {}, "flag": "invest_1_short", "reply": "narrator: 정책 강화 가정. 하락 시 수익. (자본금 변동: -8%)" }
+      ]
+    },
+    {
+      "idx": 5,
+      "id": "S6",
+      "label": "6화 · 윤하린 사적 디핑",
+      "act": 2,
+      "scene_asset": "scene_cafe",
+      "speaker": "윤하린",
+      "face": "serious",
+      "text": "…자료 정리 끝났어요. 매도 후보 한 채, 수도권 외곽. 이거 처분하면 묶인 두 채 풀려요. 손해는 나요. 그래도 사슬은 끊겨요.\n아버지한테는 아직 말 안 했어요. 솔직히 — 그쪽 의견 듣고 결정하려고 자료부터 정리한 거예요.\n내 결정인데, 한 명한테는 미리 들어보고 싶었어요. 그쪽이라고 말할 수 있는 사람이 — 지금은 그쪽밖에 없어서.",
+      "choices": [
+        { "text": "매도가 답이에요.", "aff": {"harin": 5}, "flag": "harin_sell_push", "reply": "윤하린: …그 한 마디 들으려고 부른 거 맞아요. (한 박자) 알았어요. 다음 주 매물 등록할게요. 결정 무거운 거 같이 본 거 — 잊지 않을게요." },
+        { "text": "시장 더 보고요.", "aff": {"harin": 3}, "flag": "harin_hold_advice", "reply": "윤하린: 더 보자고요. …그 말이 더 합리적일 수도 있어요. 일단 한 달만 더 기다려볼게요. 그쪽 말 믿어보는 거예요." },
+        { "text": "본인 결정이에요.", "aff": {"harin": 4}, "flag": "harin_respect", "reply": "윤하린: 본인 결정. …맞는 말이에요. 그래도 옆에 한 명 있다는 게 — 생각보다 무게가 달라요. 결정하면 알려드릴게요." }
+      ]
+    },
+    {
+      "idx": 6,
+      "id": "S7",
+      "label": "7화 · 한미래의 늦은 전화",
+      "act": 2,
+      "scene_asset": "scene_phone",
+      "speaker": "한미래",
+      "face": "worry",
+      "text": "늦은 시간 죄송합니다, 사무관 한미래입니다.\n내일 아침 결재가 올라가는데 — 임차인 보호 강도, 어디까지가 비례 원칙 안에 들어올지가 마지막 안 풀린 한 줄이에요. 보증 한도 확대도 같이 묶여 있고요.\n(한 박자) …사실, 답이 한 줄로 안 나옵니다. 외부 시점 한 분 듣고 결재하고 싶어서 전화 드렸어요.",
+      "choices": [
+        { "text": "이번엔 임차인 보호 쪽으로 강하게 가셔야 합니다.", "aff": {"mirae": 3, "harin": -2}, "flag": "support_renter", "reply": "한미래: …네. 단기 정합은 그쪽이 맞아요. 후속 부작용까지 안고 갈 책임은 저희 라인이 가져가야겠죠." },
+        { "text": "시장 자율을 두는 쪽이 중장기 부작용이 적습니다.", "aff": {"mirae": 2, "harin": 3}, "flag": "support_market", "reply": "한미래: …그 시점도 결재 라인 안에서 강하게 주장되고 있어요. 중장기 공급 정합으로 보면 그쪽이 맞습니다." },
+        { "text": "결정 자체가 무거우시겠네요. 답이 한 줄로 안 나오는 자리니까요.", "aff": {"mirae": 7}, "flag": "mirae_late_call_warm", "reply": "한미래: …그 한 줄을 정확히 짚어 주시네요. (한 박자) 이 일이 무서울 때가 있어요. 가끔. — 들어주셔서 감사합니다." }
+      ]
+    },
+    {
+      "idx": 7,
+      "id": "S8",
+      "label": "8화 · 야근",
+      "act": 2,
+      "scene_asset": "scene_desk_night",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "사무실에 다시 혼자.\n윤하린의 결정 한 줄과 한미래의 한 줄이 같은 책상 위에 놓여있다.\n내일은 정책 공청회 — 두 사람이 한 자리에 모일 자리다.",
+      "next": true
+    },
+    {
+      "idx": 8,
+      "id": "S9",
+      "label": "9화 · 공청회 (합류 climax)",
+      "act": 2,
+      "scene_asset": "scene_choose",
+      "speaker": "narrator",
+      "face": "surprise",
+      "text": "정책 공청회 패널.\n\n윤하린 (임대인 측 대표): 「한 사무관님. 정책 한 줄이 사람 인생 한 줄을 결정합니다. 임대료 상한, 보증 한도 — 다 단어예요. 그 단어 책임지실 수 있는지, 이 자리에서 한 번만 듣고 싶어요.」\n\n한미래: 「임대인 한 분의 자산 결정과 정책 한 줄의 사회 영향은 — 같은 자에서 잴 수 없습니다. 비례 원칙은 약자 쪽으로 한 칸 더 기울이는 자예요. 그게 정책의 무게입니다.」\n\n둘의 시선이 한 자리에 박힌다. 분석가의 자리에서 한 번 베팅한다 — 시장은 누구 편을 들까?",
+      "choices": [
+        { "text": "윤하린 편 — 시장 자율 베팅 (부동산 매수).", "aff": {"harin": 8, "mirae": -3}, "flag": "route_harin_side|invest_2_buy", "reply": "narrator: 시장 자율 가정. 임대인 라인. (자본금 +18% / 호감도 변동 박힘)" },
+        { "text": "한미래 편 — 정책 강화 베팅 (공매도).", "aff": {"mirae": 8, "harin": -3}, "flag": "route_mirae_side|invest_2_short", "reply": "narrator: 정책 강화 가정. 정책 라인. (자본금 +12% / 호감도 변동 박힘)" },
+        { "text": "중립 — 홀드.", "aff": {"harin": 2, "mirae": 2}, "flag": "route_balanced|invest_2_hold", "reply": "narrator: 어느 자리에도 안 박힘. 균형. (자본금 +2%)" }
+      ]
+    },
+    {
+      "idx": 9,
+      "id": "S10",
+      "label": "10화 · 공청회 후",
+      "act": 3,
+      "scene_asset": "scene_cafe",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "공청회가 끝났다.\n잠시 후, 한 통의 메시지가 온다.",
+      "next": true
+    },
+    {
+      "idx": 10,
+      "id": "S10b",
+      "label": "10화 · 한 잔",
+      "act": 3,
+      "scene_asset": "scene_cafe",
+      "speaker": "윤하린",
+      "face": "default",
+      "text": "한 잔만 해요. 공청회 끝나고 바로 집에 가면 — 잠 안 와요. (위스키 잔 받으며) 한미래 사무관. …솔직히 그 사람 말은 다 맞아요. 정책 한 줄 한 줄. 그런데 그 한 줄이 내 아버지 자산 한 채 처분 시점을 정하는 거예요. 맞는 말이 사람 인생 흔드는 거 — 처음 봐요. 자산 한 채 매도 사인 어제 했어요. 그쪽이 그 자리에 한 마디 안 했으면 — 못 했을 거예요.",
+      "choices": [
+        { "text": "무거운 사인이었네요.", "aff": {"harin": 5}, "flag": "warm_close_harin", "reply": "윤하린: …무거운 사인. 그 한 마디면 충분해요. (잔 들며) 오늘은 그쪽이 옆에 있어줘서 — 그래서 마실 수 있어요. 다음 한 잔은 천천히." },
+        { "text": "매도 후 자금 흐름 정리, 같이 봐드릴까요?", "aff": {"harin": 4}, "flag": "advisor_close_harin", "reply": "윤하린: …그 말 하려고 부른 건지도 모르겠네요. (작게 웃음) 다음 주 정리 시작할게요." }
+      ]
+    },
+    {
+      "idx": 11,
+      "id": "S11",
+      "label": "11화 · 기사의 자리",
+      "act": 3,
+      "scene_asset": "scene_desk_night",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "기사 마감 직전.\n어느 시점 톤으로 가져갈까? — 윤하린의 자리(시장 자율), 한미래의 자리(정책 개입), 또는 균형.",
+      "choices": [
+        { "text": "윤하린 편 — 시장 자율 옹호 톤.", "aff": {"harin": 6}, "flag": "article_harin", "reply": "narrator: 임대인 시점 한 줄. 시장 자율의 무게를 다룬다." },
+        { "text": "한미래 편 — 정책 옹호 톤.", "aff": {"mirae": 6}, "flag": "article_mirae", "reply": "narrator: 정책 시점 한 줄. 사회 영향의 무게를 다룬다." },
+        { "text": "균형 — 두 시점 모두 정리.", "aff": {"harin": 2, "mirae": 2}, "flag": "article_balanced", "reply": "narrator: 어느 쪽도 결정하지 않는 자리. 분석가 답다." }
+      ]
+    },
+    {
+      "idx": 12,
+      "id": "S12",
+      "label": "12화 · 마지막 베팅",
+      "act": 3,
+      "scene_asset": "scene_desk_night",
+      "speaker": "narrator",
+      "face": "thinking",
+      "text": "정책 패키지 표결 결과 직전.\n시장은 한 번 더 흔들린다. 마지막 베팅.",
+      "choices": [
+        { "text": "정책 약화 베팅 — 매수.", "aff": {}, "flag": "invest_3_buy", "reply": "narrator: 정책 약화 가정. (자본금 변동: +10%)" },
+        { "text": "관망 — 홀드.", "aff": {}, "flag": "invest_3_hold", "reply": "narrator: 관망. (자본금 유지)" },
+        { "text": "정책 강화 베팅 — 공매도.", "aff": {}, "flag": "invest_3_short", "reply": "narrator: 정책 강화 가정. (자본금 변동: +6%)" }
+      ]
+    },
+    {
+      "idx": 13,
+      "id": "S13",
+      "label": "13화 · 그 다음 주",
+      "act": 3,
+      "scene_asset": "scene_cafe",
+      "speaker": "narrator",
+      "face": "smile",
+      "text": "기사 나간 다음 주.\n시장은 정리되고, 누구의 라인이었는지가 두 사람의 메시지 한 줄로 돌아온다.",
+      "next": true
+    },
+    {
+      "idx": 14,
+      "id": "S14",
+      "label": "14화 · 끝맺음",
+      "act": 3,
+      "scene_asset": "scene_desk_night",
+      "speaker": "narrator",
+      "face": "smile",
+      "text": "두 자리의 봄이 한 자리에서 끝났다.\n시장은 베팅을 정산하고, 두 사람과의 거리는 다음 분기를 정한다.",
+      "next": true
+    }
+  ],
+  "scenes_route_sea": [],
+  "endings": [
+    {
+      "tag": "TRUE_HAPPY_HARIN",
+      "trigger": "route_harin_side && warm_close_harin && article_harin",
+      "priority": 0,
+      "mascot": "🌸",
+      "title": "그쪽이 부르는 자리",
+      "body": "윤하린에게서 메시지가 왔다.\n「기사 봤어요. 임대인 시점 한 줄 한 줄 — 정확했어요. 다음 주 수요일 저녁 비워줄 수 있어요? 한강 근처 카페 알아요. 자산 얘기 말고 — 그쪽 얘기 듣고 싶어요. 이번엔 내가 부르는 자리예요.」\n— 매도 사인은 끝났고, 그녀가 처음으로 먼저 자리를 정한다."
+    },
+    {
+      "tag": "TRUE_HAPPY_MIRAE",
+      "trigger": "route_mirae_side && mirae_late_call_warm && article_mirae",
+      "priority": 1,
+      "mascot": "🌃",
+      "title": "비 안 쓰는 사람",
+      "body": "한미래에게서 메시지가 왔다.\n「기사 잘 봤습니다. 정책 톤을 빈정 없이 가져가 주신 거, 이쪽 라인에서도 봤어요. 정책 패키지 후속 보고서를 다음 주에 다시 한 번 돌립니다. 같은 자리 한 번 더, 가능하실까요. (한 박자) 비 와도 우산은 안 챙겨 오셔도 됩니다. 제가 잘 안 쓰는 편이라서요.」\n— 그녀의 사적 한 줄이 처음 메시지에 박혔다."
+    },
+    {
+      "tag": "HAPPY_HARIN",
+      "trigger": "route_harin_side",
+      "priority": 2,
+      "mascot": "🌷",
+      "title": "임대인의 봄",
+      "body": "윤하린의 매도가 정산됐다. 도미노가 풀렸다.\n그녀가 짧은 인사를 보냈다 — \"고마웠어요. 다음에 또 봐요.\" 동료의 거리. 그래도 거리 두는 사람치곤 따뜻한 한 줄이었다."
+    },
+    {
+      "tag": "HAPPY_MIRAE",
+      "trigger": "route_mirae_side",
+      "priority": 3,
+      "mascot": "🏛️",
+      "title": "정책의 봄",
+      "body": "정책 패키지 표결 통과. 후속 보고서 작업이 한 번 더 들어온다.\n한미래에게서 정중한 한 줄 — \"다음 자문 한 번 더, 가능하실까요.\" 공적 톤이지만, 그 자리에 분석가의 이름이 정확히 남았다."
+    },
+    {
+      "tag": "BALANCED",
+      "trigger": "article_balanced",
+      "priority": 4,
+      "mascot": "📰",
+      "title": "두 자의 사이",
+      "body": "기사는 두 시점을 모두 다뤘다.\n두 사람 모두에게서 짧은 회신 — \"잘 정리됐어요.\" 어느 쪽 라인에도 박히지 않은 자리. 분석가로서의 평판이 한 칸 올라간 봄."
+    },
+    {
+      "tag": "BAD_DRIFT",
+      "trigger": "harin_tactless || mirae_tactless",
+      "priority": 5,
+      "mascot": "🌫️",
+      "title": "흩어진 두 자리",
+      "body": "두 사람 모두에게서 답이 오지 않았다.\n기사는 짧게 나갔고, 시장 베팅은 정리됐다. 그 봄에는 — 두 자리 모두 닫혔다."
+    }
+  ]
+}
