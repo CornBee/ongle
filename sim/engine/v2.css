@@ -43,6 +43,10 @@ body {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
   width: 100%; max-width: 480px; margin: 16px 0 24px;
 }
+.cover .cast.main-only { grid-template-columns: 1fr; max-width: 280px; }
+.cover .cast.main-only .card.main img { aspect-ratio: 3/4; }
+.cover .cast.main-only .card.main .name { font-size: 16px; margin-top: 8px; }
+.cover .cast.main-only .card.main .role { font-size: 12px; margin-top: 4px; }
 .cover .cast .card {
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; padding: 8px; text-align: center;
@@ -93,6 +97,10 @@ body {
   padding: 10px 12px 14px;
   background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 100%);
 }
+.statusbar.main-only { grid-template-columns: 1fr; padding: 12px 16px 16px; }
+.statusbar.main-only .aff-pill.main { gap: 6px; }
+.statusbar.main-only .aff-pill.main .name { font-size: 12px; font-weight: 700; opacity: 0.95; }
+.statusbar.main-only .aff-pill.main .bar { height: 8px; }
 .aff-pill {
   display: flex; flex-direction: column; align-items: center; gap: 4px;
   font-size: 10px; color: #fff;

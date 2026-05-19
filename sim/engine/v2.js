@@ -204,11 +204,12 @@
     if (script.subtitle) cover.appendChild(el('div', { class: 'subtitle' }, script.subtitle));
 
     const chars = script.characters || {};
-    const cast = el('div', { class: 'cast' });
-    for (const key of ['sea', 'harin', 'seoyeon', 'mirae']) {
+    const mainOnly = script.game_config && script.game_config.main_heroine;
+    const cast = el('div', { class: mainOnly ? 'cast main-only' : 'cast' });
+    if (mainOnly && chars[mainOnly]) {
+      const key = mainOnly;
       const c = chars[key];
-      if (!c) continue;
-      const card = el('div', { class: 'card' });
+      const card = el('div', { class: 'card main' });
       const img = el('img', {
         src: opts.characterSheetBase + '_00_' + key + '_sheet_front.png',
         alt: c.name || key,
@@ -218,6 +219,21 @@
       card.appendChild(el('div', { class: 'name' }, c.name || key));
       card.appendChild(el('div', { class: 'role' }, c.role || ''));
       cast.appendChild(card);
+    } else {
+      for (const key of ['sea', 'harin', 'seoyeon', 'mirae']) {
+        const c = chars[key];
+        if (!c) continue;
+        const card = el('div', { class: 'card' });
+        const img = el('img', {
+          src: opts.characterSheetBase + '_00_' + key + '_sheet_front.png',
+          alt: c.name || key,
+          loading: 'lazy',
+        });
+        card.appendChild(img);
+        card.appendChild(el('div', { class: 'name' }, c.name || key));
+        card.appendChild(el('div', { class: 'role' }, c.role || ''));
+        cast.appendChild(card);
+      }
     }
     cover.appendChild(cast);
 
@@ -404,7 +420,22 @@
   function renderStatusbar(script, state) {
     const sb = el('div', { class: 'statusbar' });
     const chars = script.characters || {};
+    const mainOnly = script.game_config && script.game_config.main_heroine;
+    if (mainOnly && chars[mainOnly]) {
+      sb.classList.add('main-only');
+      const c = chars[mainOnly] || {};
+      const v = state.affinity[mainOnly] || 0;
+      const pill = el('div', { class: 'aff-pill main', 'data-c': mainOnly });
+      pill.appendChild(el('div', { class: 'name' }, (c.name || mainOnly) + ' 호감도'));
+      const bar = el('div', { class: 'bar' });
+      const fill = el('div', { class: 'fill', style: 'width: ' + v + '%' });
+      bar.appendChild(fill);
+      pill.appendChild(bar);
+      sb.appendChild(pill);
+      return sb;
+    }
     for (const key of ['sea', 'harin', 'seoyeon', 'mirae']) {
+      if (!chars[key]) continue;
       const c = chars[key] || {};
       const v = state.affinity[key] || 0;
       const pill = el('div', { class: 'aff-pill', 'data-c': key });
