@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>돈로주의 — 트럼프 2기 외교가 200년 전 먼로주의로 회귀하는 패턴 4가지 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="돈로주의 — 트럼프 2기 외교가 200년 전 먼로주의로 회귀하는 패턴 4가지">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">돈로주의 — 트럼프 2기 외교가 200년 전 먼로주의로 회귀하는 패턴 4가지</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TB
+    A["1823년 먼로주의<br/>미주 영향권 · 유럽 간섭 = 적대 행위"] -->|"200년 회귀"| B["2025~ 돈로주의<br/>Donroe Doctrine (트럼프식)"]
+    B --> C1["① 그린란드 매입<br/>덴마크령 영향권 요구"]
+    B --> C2["② 파나마 운하<br/>환수 위협"]
+    B --> C3["③ 캐나다 51주<br/>economic force"]
+    B --> C4["④ 멕시코 카르텔<br/>군사 개입 시사"]
+    C1 --> K["한국 영향<br/>FTA · 관세 · 방위비"]
+    C2 --> K
+    C3 --> K
+    C4 --> K
+</pre></div>
+    <div class="article-meta">2026-05-20 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#돈로주의</span> <span class="tag">#DonroeDoctrine</span> <span class="tag">#트럼프2기</span> <span class="tag">#먼로주의</span> <span class="tag">#외교</span> <span class="tag">#한미동맹</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">돈로주의 — 트럼프 2기 외교가 200년 전 먼로주의로 회귀하는 패턴 4가지</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>돈로주의(Donroe Doctrine).</strong> 도널드 트럼프와 먼로주의의 합성어. 외신·학계가 트럼프 2기 외교 행보를 호명한 신조어다. 1823년 먼로주의가 박은 미주 영향권 사고가 200년이 지난 2025년에 그린란드·파나마·캐나다·멕시코 4가지 발언으로 부활했다는 분석이다. 본질은 미주 대륙 영향권 재정리. 한국에는 어떤 의미인지 한 단계씩 따라간다.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Hero · 돈로주의의 4축 한 장</h2>
+
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">축</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">트럼프 2기 발언·조치</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">먼로주의 매핑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">①</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그린란드 매입 발언 — 덴마크령 그린란드의 미국 통제, 군사력 옵션도 배제하지 않음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">유럽 열강의 미주 인접 영토 통제 종식 (먼로 원본 ①)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">②</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">파나마 운하 환수 위협 — 1999년 파나마로 이양된 운하 관리권 회수 주장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미주 핵심 인프라에 대한 직접 통제 (루즈벨트 코롤러리)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">③</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">캐나다 51주 발언 — 캐나다를 미국 51번째 주로 편입 ("economic force" 시사)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미주 영향권의 북쪽 확장</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">④</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">멕시코 카르텔에 군사 개입 시사 — 카르텔의 테러조직 지정, 멕시코 영토 내 작전 옵션</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">"만성적 비행"에 대한 국제 경찰력 (루즈벨트 코롤러리)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상징</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">멕시코만 → "Gulf of America" 행정명령 개명</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상징적 영토 주장</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 돈로주의 — 신조어가 왜 박혔나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">2025년 1월 트럼프 2기 출범 직후 일련의 발언과 행정 조치가 외신에서 같은 frame으로 묶이기 시작했다. CBS News·CNN·NPR·Carnegie Endowment 등 미국 주류 매체와 싱크탱크가 잇따라 "Donroe Doctrine" 또는 "Trump Corollary to the Monroe Doctrine"이라는 표현을 사용했고, 위키피디아에도 별도 항목이 박혔다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">⚠️ <em>주의 — '돈로주의'는 외신·학계의 호명이지 미국 정부의 공식 외교 독트린 명칭이 아니다. 트럼프 행정부 자체는 "America First"를 박는다. 다만 호명이 정착됐다는 것 자체가 패턴이 인식됐다는 신호다.</em></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 먼로주의 — 1줄 컨텍스트</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">먼로주의는 1823년 12월 2일, 미국 5대 대통령 제임스 먼로가 의회 연두교서에서 선언한 외교 원칙이다. 국무장관 존 퀸시 애덤스가 초안의 핵심을 작성했다. 라틴 아메리카 신생 독립국에 대한 유럽 열강의 재식민지화 우려와 러시아 차르의 북서 태평양 진출 시도가 직접 배경이었다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>미주는 미국의 영향권</strong> — 유럽 열강의 신규 식민지화 금지</li>
+<li style="margin:0.3em 0;"><strong>미주 간섭은 적대 행위</strong> — 유럽이 미주에 정치·군사적으로 개입하면 미국에 대한 적대 행위로 간주</li>
+<li style="margin:0.3em 0;"><strong>미국도 유럽 내정 불간섭</strong> — 상호주의 박힘</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">81년 후 1904년 시어도어 루즈벨트가 한 줄 더했다 — "미주에서 만성적 비행 발생 시 미국이 국제 경찰력을 행사한다" (Roosevelt Corollary, 적극 개입권). 2013년 존 케리 국무장관이 OAS에서 "먼로주의의 시대는 끝났다"고 공식 선언했지만, 12년 만에 그 선언은 다시 흔들린다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 4가지 회귀 패턴 — 한 축씩</h2>
+
+<h3 style="font-size:1.15em;font-weight:700;margin-top:1.4em;margin-bottom:0.4em;color:#333;">① 그린란드 매입 발언</h3>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">트럼프 1기에서도 거론됐던 그린란드 매입은 2기 들어 강도가 높아졌다. 덴마크령 그린란드는 북극항로·희토류·미군 툴레 공군기지 등 전략적 가치가 높다. 트럼프는 "군사력 사용을 배제하지 않는다"는 발언까지 박았고, 덴마크 정부는 "그린란드는 매물이 아니다"라고 거듭 박았다. 19세기 먼로주의가 "유럽이 미주 인근에서 영토 관리하는 것을 종식"한다는 사고와 정확히 같은 frame이다.</p>
+
+<h3 style="font-size:1.15em;font-weight:700;margin-top:1.4em;margin-bottom:0.4em;color:#333;">② 파나마 운하 환수 위협</h3>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">파나마 운하는 1903년 미국이 콜롬비아에서 파나마 독립을 지원하면서 조차했고, 1999년 카터-토리호스 조약 이행으로 파나마에 완전 이양됐다. 트럼프는 "통항료 부당 인상·중국 영향력 침투" 등을 이유로 운하 관리권 회수를 주장했다. 1903년 운하 조차와 1904년 루즈벨트 코롤러리는 같은 흐름의 두 얼굴이었다. 그 인프라를 다시 미국 손에 가져오자는 주장이 122년 만에 박혔다.</p>
+
+<h3 style="font-size:1.15em;font-weight:700;margin-top:1.4em;margin-bottom:0.4em;color:#333;">③ 캐나다 51주 발언</h3>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">캐나다 51번째 주 발언은 트럼프 본인은 농담으로 시작했지만 "economic force"(경제적 강제력) 사용 가능성까지 박으면서 외교 마찰을 박았다. 캐나다 여론조사에서 응답자 90%가 미국 편입에 반대했다. 먼로 원본은 라틴 아메리카·중남미 중심이었지만, 미주 영향권 사고를 북쪽으로 확장한 새 축이다.</p>
+
+<h3 style="font-size:1.15em;font-weight:700;margin-top:1.4em;margin-bottom:0.4em;color:#333;">④ 멕시코 카르텔 군사 개입 시사</h3>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">트럼프 2기는 멕시코 마약 카르텔을 외국 테러조직(FTO)으로 지정하는 행정명령을 박았다. 이는 미국이 멕시코 영토 내에서 군사 작전을 펼칠 법적 근거를 마련하는 단계로 해석된다. 1904년 루즈벨트 코롤러리의 "만성적 비행에 대한 국제 경찰력 행사"와 정확히 같은 frame이다. 멕시코 정부는 주권 침해라며 반발했다.</p>
+
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 본질 — 미주 대륙 영향권 재정리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">4가지 축을 한 frame으로 묶으면 단순한 그림이 박힌다 — 미주 대륙(북·중·남)에 대한 미국의 단일 영향권 재정리. 19세기 먼로주의가 박은 영향권 사고가 그대로 돌아왔다. 다만 시대가 바뀐 만큼 도구도 다르다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시대</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">domain</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">강제 수단</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">19세기 먼로주의</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">군사·외교</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">해군 · 해병대 파견 · 영국 해군의 비공식 집행</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">20세기 루즈벨트 코롤러리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">군사 개입 + 채무 인수</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">도미니카·니카라과·아이티 미군 점령</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">21세기 돈로주의</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관세 · 동맹 비용 청구 · 군사 옵션</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">economic force · 행정명령 · FTO 지정</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">표면적 어법은 다르지만 사고의 골격은 동일하다 — <strong>미주는 미국이 단독으로 관리하는 영향권이고, 외부 행위자(유럽·중국·국제기구)의 개입을 거부한다.</strong> 이 사고가 미국 외교의 기본값으로 복귀하면, 미주 바깥 동맹(한국·일본·유럽 NATO 등)을 보는 미국의 시선도 자연스럽게 거래적·비용 청구식으로 옮겨간다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 5. 한국 함의 — 같은 framework, 다른 자리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈로주의의 frame이 한국에 의미하는 것은 라틴 아메리카만큼 직접적이지는 않지만 결코 멀지 않다. "미주 우선" 패러다임이 미국 외교의 기본값이 되면, 미주 바깥 동맹은 동등한 비용 청구 협상 대상이 된다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">변동 시나리오</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">한국 영향 추정치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한미 FTA</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">재협상 또는 부분 개정 (자동차·농축산물·디지털 무역 조항)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관세 양허 후퇴 가능성, 미국산 농축산물 추가 수입 압박</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">10% 보편관세</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">FTA 미체결국 우선 부과 후 확장 가능성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 대미 수출 연 64억달러 감소 추정 (한국무역협회)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">총수출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시나리오 차이 큼</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">53~241억달러 감소 추정 (실질 GDP -0.27 ~ +0.13%)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">방위비 분담금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">동맹 비용 청구 기조 강화 — 재협상 압박</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금액 미확정, 분담 비율 인상 압박 예상</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">배터리 투자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">IRA 보조금 축소·관세 부담 가중 시 미국 내 공장 가동 부담</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2026년까지 500억달러 중 20~30% 축소 가능성</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>다만 모두 추정 시나리오</strong>다. 한미 FTA는 2026년 5월 현재 재협상이 공식 개시되지 않았고, 10% 보편관세도 일부 품목·국가 대상으로 적용 중일 뿐 전면 시행 단계는 아니다. 위 수치는 한국무역협회·KOTRA·트레드링스 등 국내 연구기관의 "관세 시나리오" 가정 하의 추정치다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 가지는 분명하다. 트럼프 2기 외교가 미주 영향권 사고로 회귀하는 한, 미국이 그린란드·파나마·캐나다·멕시코에 던지는 신호와 한국·일본·대만에 던지는 신호는 같은 frame에서 해석된다. <strong>미주 우선 패러다임이 한국의 자리를 다시 묻는다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 6. 끝자리 — 200년의 회귀</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈로주의는 신조어지만 그 안에 박힌 사고는 새것이 아니다. 1823년 박힌 영향권 사고가 200년이 지나 같은 형태로 돌아왔다. 다른 점은 도구뿐이다 — 19세기 해병대 자리에 21세기 관세·행정명령·FTO 지정이 박혔다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 phase가 얼마나 오래갈지는 미정이다. 트럼프 1기 직후 2021~2024 바이든 시기에는 다자주의·동맹 복원이 우세했다. 2025 이후 다시 단극·영향권 사고가 박혔다. 다음 미국 대통령에서 또 흔들릴 수도, 굳어질 수도 있다. 다만 framework가 바뀌었음을 인식하는 것과 인식하지 못하는 것의 차이는 크다. <strong>한국이 마주하는 협상 테이블의 default가 무엇인지 — 그 인식부터가 시작이다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Sources</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">Wikipedia — Donroe Doctrine <a href="https://en.wikipedia.org/wiki/Donroe_Doctrine" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">CBS News — 6 countries where the "Don-roe Doctrine" may take Trump next <a href="https://www.cbsnews.com/news/donroe-doctrine-greenland-cuba-colombia-canada-panama-canal-iran/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">Carnegie Endowment — Trump's Greenland and Panama Canal Threats Are a Throwback to an Old, Misguided Foreign Policy (2025-01) <a href="https://carnegieendowment.org/emissary/2025/01/trump-greenland-panama-canal-monroe-doctrine-policy" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">NPR — Trump's 2nd-term foreign policy includes power plays in Greenland, Panama and beyond (2025-01-14) <a href="https://www.npr.org/2025/01/14/g-s1-42586/trumps-2nd-term-foreign-policy-includes-power-plays-in-greenland-panama-and-beyond" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">CNN Politics — Trump's threats to Greenland, Canada and Panama explain everything about America First (2025-01-08) <a href="https://www.cnn.com/2025/01/08/politics/trump-greenland-canada-panama-analysis" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">National Archives — Monroe Doctrine (1823) <a href="https://www.archives.gov/milestone-documents/monroe-doctrine" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">한국무역협회 — 트럼프 보편관세 시나리오 분석 (2025) — 대미 수출 64억달러 감소 추정</li>
+<li style="margin:0.3em 0;">트레드링스 — 트럼프 재집권시 한국 무역·수출 어떻게 변할까? <a href="https://www.tradlinx.com/blog/guide/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+<li style="margin:0.3em 0;">뉴스핌 — [트럼프 2기 출범] 한미 FTA 재협상 가능성 (2025-01-20) <a href="https://www.newspim.com/news/view/20250120001019" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">link</a></li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상: 090
+작성일: 2026-05-20</p>
+  </article>
+
+  
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
