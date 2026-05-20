@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>국민성장펀드, 살까 말까 — 구조적으로 유리한 자리와 유의할 점 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="국민성장펀드, 살까 말까 — 구조적으로 유리한 자리와 유의할 점">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">국민성장펀드, 살까 말까 — 구조적으로 유리한 자리와 유의할 점</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["국민 6,000억<br/>(개인 청약 · 한도 5년 2억)"] --> M["재정모펀드<br/>한국성장금융"]
+    A2["재정 1,200억<br/>(정부 후순위 · 손실 cushion)"] --> M
+    M --> P["공모펀드 3곳<br/>미래에셋·삼성·KB"]
+    P --> F["자펀드 10곳<br/>대형 2 · 중형 4 · 소형 4"]
+    F --> R60["60% 이상<br/>12개 첨단전략산업"]
+    F --> R30["30% 이상<br/>비상장 + 코스닥 기술특례"]
+    F --> R10["10% 이내<br/>코스피 (cap 720억)"]
+</pre></div>
+    <div class="article-meta">2026-05-21 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#국민성장펀드</span> <span class="tag">#사모재간접공모</span> <span class="tag">#자펀드</span> <span class="tag">#코스닥기술특례</span> <span class="tag">#모태펀드</span> <span class="tag">#첨단전략산업</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">국민성장펀드, 살까 말까 — 구조적으로 유리한 자리와 유의할 점</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>결론부터.</strong> 5년을 묶어둘 여유 자금이 있다면, 이 펀드는 구조적으로 유리한 위치에 있다. 정부가 손실 20%를 먼저 떠안고, 소득공제·분리과세가 겹치고, 무엇보다 150조 정책 자금이 5년간 쏟아질 산업에 가장 먼저 진입하는 입구이기 때문이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다만 &ldquo;정부가 막아준다&rdquo;는 헤드라인만 보고 들어가면 놓치는 자리가 있다. 2026년 5월 22일 일반 판매를 시작한 7,200억 원이 한 꺼풀씩 통과하는 경로를 따라, 유리한 이유와 유의할 점을 짚는다. (이 글은 투자 권유가 아니라 자금 구조 분석이다.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Hero · 7,200억이 통과하는 경로 한 장</h2>
+
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">자리</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규모</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시장 노출</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">도달 시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">코스피 (상장 대형주)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">최대 720억 (10%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직접 — 그러나 mute</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2027 H2~</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장 + 코스닥 기술특례</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 2,160억 (30%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">IPO 직전 라인업 직격</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2027 H1~</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">첨단전략산업 (12개)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4,320억+ (60%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">산업군 분산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2027~2030 누적</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심을 한 줄로: <strong>7,200억 중 코스피로 가는 돈은 720억뿐이다.</strong> 나머지 90%는 비상장과 코스닥 기술특례상장 후보로 흐른다. &ldquo;정부 손실 20% 부담&rdquo;이라는 입구 뒤에서, 진짜 통과 자리는 IPO 직전 단계의 비상장 라인업이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">⓪ 한눈에 보기</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">5월 22일 일반 판매 시작. 7,200억 = 국민 6,000억 + 재정 1,200억.</li>
+<li style="margin:0.3em 0;">정부 재정 1,200억이 자펀드별로 손실 20%까지 우선 부담 — 국민 출자 대비 5:1 leverage.</li>
+<li style="margin:0.3em 0;">자펀드 결성금액의 60% 이상은 12개 첨단전략산업, 30% 이상은 비상장·코스닥 기술특례, 코스피는 10% 이내.</li>
+<li style="margin:0.3em 0;">진짜 receive 자리 = 반도체·AI·바이오·로봇 4 산업의 IPO 직전 라인업. 첫 신호는 2027 H1 자펀드 deal 공시.</li>
+<li style="margin:0.3em 0;">모태펀드 history가 reference — 2021~2025 코스닥 신규상장 63%(260/413)가 모태펀드 라인업을 통과했다.</li>
+<li style="margin:0.3em 0;">150조는 한 펀드가 아니라 4개 통로(직접 15·간접 35·인프라 50·대출 50조)의 5년 총합. 국민 직접 참여 창구는 이번 7,200억 단발 pilot — 그러나 150조 흐름의 가장 이른 vintage 입구다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 첫 꺼풀 — 7,200억은 4 layer를 통과한다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자금은 4단계로 분해된다. 각 layer에서 누가 결정권을 갖는지가 다르다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">Layer</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">단위</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규모</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">결정자</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">통과 성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">L1 국민 청약</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1인당 5년 2억</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">가입자 본인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">운용사 직접 선택 불가</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">L2 공모펀드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3곳</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">각 약 2,000억</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미래에셋·삼성·KB</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">도관(conduit) — 차별화 여지 적음</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">L3 자펀드</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">10곳</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대형 1,200억×2 + 중형 800억×4 + 소형 400억×4</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">10개 운용사</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">종목 선택 alpha가 행사되는 자리</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">L4 개별 기업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">12개 산업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자펀드의 60%+ 의무</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자펀드 매니저</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정책 목적 강제 + 40% 자유도</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>finding</strong> — L2 공모펀드 3사는 같은 포트폴리오를 공유하는 도관에 가깝다. 가입자가 미래에셋·삼성·KB 어디를 골라도 결과는 거의 같다. 실제 운용 결과가 갈리는 자리는 L3 자펀드 10곳이며, 이 layer는 일반 가입자에게 보이지 않는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>손실 20% 우선 부담 — 정확한 산수</strong></p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["자펀드 NAV 100%"] -->|손실 발생| B{"손실 규모"}
+    B -->|0~20% 구간| C["재정이 먼저 전액 흡수"]
+    B -->|20% 초과| D["초과분만 국민이 분담"]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">재정 1,200억은 모펀드가 아니라 자펀드 단위에 직접 후순위로 출자된다. 자펀드별 독립 cushion이다. 1,200억 / 6,000억 = 20%는 &ldquo;국민 출자 대비 cushion 두께&rdquo;이고, 자펀드 결성금액 7,200억 대비로는 16.7%다. 손실이 20%를 넘으면 그 초과분만 국민이 1:1로 떠안는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가입 인센티브는 네 층의 가입자를 동시에 겨냥한다. 손실 cushion은 위험 회피 일반인을, 소득공제 40%(3,000만 원 이하 구간)는 저소득층을, 배당소득 분리과세 9.9%는 자산가를 끌어들인다. 한 상품에 cross-class 가입자 pool을 설계한 구조다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 두 번째 꺼풀 — 90%가 코스피를 비껴간다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자펀드 결성금액 가이드라인은 <strong>60·30·10</strong>이다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">60% 이상 → 12개 첨단전략산업</li>
+<li style="margin:0.3em 0;">30% 이상 → 비상장(10%+) + 코스닥 기술특례상장사(10%+) 신규자금</li>
+<li style="margin:0.3em 0;">10% 이내 → 유가증권시장(코스피)</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">즉 7,200억 중 코스피 노출은 최대 720억으로 묶인다. 30%(약 2,160억)는 IPO 직전·기술특례상장 후보로 직격한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>12개 산업 흡수 capacity (분석가 추정)</strong></p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+pie title 7,200억 — 12개 산업 흡수 capacity 추정
+  "반도체" : 18
+  "AI" : 17
+  "이차전지" : 12
+  "바이오" : 12
+  "로봇" : 10
+  "미래차" : 8
+  "방산" : 7
+  "디스플레이" : 6
+  "수소" : 4
+  "콘텐츠" : 3
+  "백신" : 2
+  "핵심광물" : 1
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">단일 산업이 50%를 흡수하지는 않는다. 자펀드 10곳이 각자 색채로 분산하기 때문이다. 다만 반도체와 AI 두 산업이 합쳐 약 35%로 상위 protagonist를 이룬다. 그 다음이 이차전지·바이오·로봇이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>자금 도달 timing — 즉시가 아니라 누적</strong></p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+timeline
+    title 7,200억 자금 도달 timeline
+    2026-05-22 : 공모펀드 판매 개시
+    2026-Q3 : 모펀드 결성 · 자펀드 결성 본격화
+    2026-Q4 : 첫 자펀드 결성 (대형 우선)
+    2027-H1 : 첫 비상장 신규자금 집행 · 코스닥 기술특례 라인업 첫 공시
+    2027-H2 : 코스피 cap 720억 일부 진입
+    2028-2030 : 누적 portfolio 완성 · IPO·M&A exit
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">5월 22일 판매 직후 코스피·코스닥 상승 narrative는 얕다. 실제 자금 진입은 빨라야 2026 Q4, 첫 receive 신호는 2027 H1 자펀드 deal 공시에서 나온다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 세 번째 꺼풀 — 가장 이른 자리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">7,200억은 5년 150조 계획의 한 조각이다. 150조는 하나의 펀드가 아니라 4개 통로의 누적 총합이다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+pie title K-국부펀드 150조 — 4개 통로 (조)
+  "초저리대출" : 50
+  "인프라투융자" : 50
+  "간접투자" : 35
+  "직접투자" : 15
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민참여형 7,200억은 간접투자 35조의 일부다. 개인이 직접 가입하는 창구로는 2026년 이번 한 번이 첫 시도(pilot)이며, 2차·3차는 아직 공식 계획이 없다. &ldquo;150조&rdquo; 헤드라인과 달리, 국민 직접 참여 창구는 단발 7,200억이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>early vintage 자리</strong> — 4개 통로 모두 같은 12개 첨단전략산업을 겨냥한다. 국민참여형이 먼저 그 산업의 비상장·IPO 직전 단계에 진입하면, 이후 150조 거대 자금이 같은 산업에 순차 투입되며 밸류를 끌어올릴 때 먼저 들어간 자리가 그 리프트를 받는다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["국민참여형 7,200억<br/>2026 먼저 진입 · 낮은 밸류"] --> B["같은 12개 산업<br/>비상장 · IPO 직전"]
+    C["150조 후속 자금<br/>2027~2030 순차"] --> B
+    B --> D["밸류 리프트<br/>먼저 진입한 자리가 수혜"]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">단 세 조건이 맞아야 한다. ① 후속 자금이 같은 종목에 들어와야 하고, ② 그것이 지분 밸류를 올려야 하며(초저리대출 50조·인프라투융자 50조는 부채·인프라라 밸류 리프트가 약하다 — 직접+간접 50조만 해당), ③ 펀드가 그 종목을 만기까지 들고 있어야 한다. 또한 회차 간 칸막이는 완전하다 — 1차 가입자 수익은 1차 펀드 종목 성과로만 정산되고, 후속 차수 자금이 보전하지 않는다(폰지식 cross-subsidy 아님).</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">→ 국민참여형은 통째 한 펀드가 아니라, 150조 정책 흐름의 <strong>가장 이른 vintage 입구</strong>다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 네 번째 꺼풀 — 무엇이 새로운가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민성장펀드는 영국 EIS·SEIS와 한국 모태펀드 사이의 빈 자리를 채운다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">제도</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">손실 보전</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">세제</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">산업 타깃</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">접근성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 모태펀드 (2005~)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">없음 (정부 LP 동순위)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">없음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">벤처 초기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기관·VC 한정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">영국 EIS·SEIS</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사후 세금 환급 (loss relief)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득공제 30~50%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장 성장기업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개인 직접 투자</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일본 신NISA (2024)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">없음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자본이득·배당 비과세</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">없음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반 개인</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>국민성장펀드 (2026)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>재정 후순위 20% 우선 부담</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>소득공제 40% + 분리과세 9.9%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>12개 첨단전략산업</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>일반 국민 누구나</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">EIS·SEIS는 &ldquo;세제+손실상각&rdquo;을 직접 주식에 적용하고, 국민성장펀드는 &ldquo;정부가 후순위 LP로 들어가 사전적으로 20%까지 흡수&rdquo;한다. 메커니즘은 다르지만 &ldquo;성장 기업 투자 + 세제 보조 + 손실 완충&rdquo; 3축은 일치한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정말 새로운 점은 세 가지다. 첫째, 사모재간접공모 + 정부 후순위 20% 흡수를 일반 국민에게 전면 개방한 첫 표준 상품이다. 둘째, 소득공제 40% × 분리과세 9.9% × 손실 20% 흡수를 한 상품에 결합한 구조는 한국 공모펀드 history에 전례가 없다. 셋째, 정책펀드의 무게 중심을 모태펀드의 &ldquo;벤처 씨앗&rdquo;에서 &ldquo;12개 첨단산업 스케일업&rdquo;으로 옮겼다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 5. Korean lens — 모태펀드가 박은 자리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한국벤처투자(KVIC) 모태펀드의 2005년 이후 history가 직접 reference다. 동일한 fund-of-funds 구조에서, 정부가 표지를 세운 산업이 그대로 자펀드 라인업의 receive 자리가 됐다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">2009년 블루홀(현 크래프톤)이 문화계정 자펀드에서 자금을 받아 &lsquo;테라&rsquo;를 개발 — 모태펀드 receive 자리의 상징.</li>
+<li style="margin:0.3em 0;">2021~2025년 코스닥 신규상장사의 63%(260/413)가 모태펀드 라인업을 통과.</li>
+<li style="margin:0.3em 0;">코스모로보틱스는 모태펀드 라인업 통과 후 상장 첫날 따따블 + 3연상, 공모가 대비 576%.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민성장펀드 자펀드는 모태펀드와 같은 KVIC·한국성장금융 sourcing pool을 활용한다. 즉 &ldquo;모태펀드가 박은 자리&rdquo;가 곧 국민성장펀드 자펀드가 박을 후보다. 60·30·10 룰의 30% 비상장·코스닥 기술특례 조항은 이 IPO 라인업 패턴을 정책적으로 명문화한 것이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민성장펀드의 입구 헤드라인은 &ldquo;정부가 손실 20%를 떠안는다&rdquo;이다. 그러나 자금 흐름을 layer로 따라가면, 7,200억의 90%는 코스피를 비껴가 비상장·코스닥 기술특례 신규자금으로 흐른다. 코스피 노출은 720억으로 묶여 시장 즉시 영향은 mute하다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">진짜 통과 자리는 상장 대형주가 아니라, 자펀드 라인업에 박힐 IPO 직전 단계의 비상장·코스닥 기술특례 후보다. 그 중 반도체·AI·바이오·로봇 4 산업이 흡수 capacity 상위를 이룬다. 첫 신호는 2027 상반기 자펀드 deal 공시에서 나온다. 5월 22일 판매 시작은 입구일 뿐, 자리가 드러나는 시점은 1년 뒤다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그리고 이 7,200억은 5년 150조 정책 흐름의 가장 이른 vintage 입구다. 같은 12개 산업에 거대 자금이 예고된 상태에서 가장 먼저 진입하는 자리이지만, 밸류 리프트로 직결되는 건 150조 전체가 아니라 직접+간접 50조에 한정되고, 후속 자금이 같은 종목에 겹쳐야 한다는 조건이 붙는다. 국민 직접 참여 창구는 아직 이번 한 번뿐이다.</p>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">상장 종목 receive 자리로는 자펀드·공모펀드 운용사 본체(미래에셋증권·KB금융·한국금융지주·삼성생명)가 거론되지만, 7,200억 규모 대비 운용 수수료 효과는 모회사 시총에 비해 noise 수준이다. 이 리포트는 특정 종목 매수·매도를 권하지 않으며, 자금 흐름의 구조를 분석한 자료다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h3 style="font-size:1.15em;font-weight:600;margin-top:1.2em;margin-bottom:0.4em;color:#333;">출처</h3>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148963908" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정책브리핑 — &lsquo;국민참여형&rsquo; 국민성장펀드 22일 판매, 한도 5년 2억</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/no010101/86834" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 5/22 판매 개시 안내</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/no010101/86454" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 자펀드 운용사 10개사 선정 (5/6)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.investchosun.com/site/data/html_dir/2026/04/30/2026043080130.html" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">인베스트조선 — 첨단산업 60% 묶은 국민성장펀드 (60·30·10 가이드라인)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.etnews.com/20260506000112" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">전자신문 — 정부, 손실 20% 우선 부담 국민성장펀드 22일 출시</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.kvic.or.kr/business/business1_1_1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">한국벤처투자 KVIC — 한국모태펀드 사업개요</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.gov.uk/guidance/venture-capital-schemes-tax-relief-for-investors" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">GOV.UK — Venture Capital Schemes: tax relief for investors (EIS·SEIS)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.biotimes.co.kr/news/articleView.html?idxno=31708" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">바이오타임즈 — 코스모로보틱스 상장 후 3일 연속 상한가 (모태펀드 라인업 receive 패턴)</a></li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
