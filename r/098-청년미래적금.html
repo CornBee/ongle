@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5년이 3년으로, 매칭은 두 배로 — 청년 자산형성 통로의 재설계와 청년미래적금 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="5년이 3년으로, 매칭은 두 배로 — 청년 자산형성 통로의 재설계와 청년미래적금">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<meta name="robots" content="noindex, nofollow">
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+<div class="draft-banner">🔒 미리보기 — 아직 공개되지 않은 리포트입니다</div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">5년이 3년으로, 매칭은 두 배로 — 청년 자산형성 통로의 재설계와 청년미래적금</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["청년도약계좌 가입 중"] --> B{"가입 시점이 언제인가"}
+    B -->|"3년 이상 경과 (만기 2년 이내)"| C["유지 권장 (만기 임박 + 기여금 100% 안정)"]
+    B -->|"가입 초기 (잔여 만기 길음)"| D{"청년미래적금 우대형 자격 충족"}
+    D -->|"예 (중기 재직/소상공인/신규취업)"| E["갈아타기 검토 — 매칭률 2배 효과"]
+    D -->|"아니오 (일반형)"| F{"매월 추가 납입 여력"}
+    F -->|"50만원 ↑ 가능"| G["갈아타기 시 일반형 6% — 도약계좌 저소득 매칭과 비슷"]
+    F -->|"50만원 ↓ "| H["유지 유리 — 도약계좌 70만 한도 활용도 ↑"]
+    E --> I["6.22~7.3 사이 ① 미래적금 가입 신청 → ② 그 과정에서 도약계좌 특별중도해지"]
+    G --> I
+    I --> J["기여금·비과세 유지, 중복가입 불가"]
+</pre></div>
+    <div class="article-meta">2026-06-07 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#청년미래적금</span> <span class="tag">#청년도약계좌</span> <span class="tag">#정책금융</span> <span class="tag">#비과세적금</span> <span class="tag">#자산형성</span> <span class="tag">#금융위원회</span> <span class="tag">#이재명정부청년정책</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">5년이 3년으로, 매칭은 두 배로 — 청년 자산형성 통로의 재설계와 청년미래적금</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>결론부터.</strong> 청년도약계좌(2023.6~2025.12)가 5년·월 70만원·소득 구간 차등 매칭으로 청년 자산형성 트랙을 깔았다면, 청년미래적금(2026.6.22 시작)은 같은 만 19~34세 트랙을 <strong>3년·월 50만원·일률 6%/12% 매칭</strong>으로 다시 짠다. 만기는 5년에서 3년으로 짧아지고, 정부 매칭은 최저 3.0%에서 6.0%로, 우대형은 12.0%까지 두 배로 올랐으며, 취급 창구는 11곳에서 15곳(6.22 일제 출시는 14곳, 토스뱅크는 12월 합류)으로 늘었다. 다만 신청 창구는 단 2주(6.22~7.3)다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 글은 두 상품을 항목별로 1:1 비교하고, 자격·계산식·중도해지·갈아타기 룰을 1차 자료 기준으로 정리한다. 영상 098은 핵심 메커니즘(월 50만·3년·2,082/2,197만)을 1분 안에 압축했다. 여기서는 그 위에 <strong>(a) 비교표, (b) 자격·계산식, (c) 중도해지·비과세, (d) 출처</strong>를 깊이로 더한다.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">Hero · 청년도약계좌 vs 청년미래적금 한 장 비교</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"><strong>청년도약계좌</strong> (2023.6.15~2025.12.31 신규 가입)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"><strong>청년미래적금</strong> (2026.6.22 출시)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>대상 연령</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만 19~34세 (병역기간 최대 6년 차감)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만 19~34세 (동일)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>만기</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>5년 (60개월)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>3년 (36개월)</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>월 납입 한도</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>70만원</strong> (연 840만)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>50만원</strong> (연 600만)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>개인소득 조건</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">총급여 7,500만 이하 / 종합소득 6,300만 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반형 총급여 <strong>6,000만 이하</strong> / 우대형 총급여 <strong>3,600만 이하</strong> / 단독형(비과세만) 6,000~7,500만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>가구소득 조건</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기준 중위소득 <strong>250% 이하</strong> (2024.3 이전은 180%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반형 중위 <strong>200% 이하</strong> / 우대형 중위 <strong>150% 이하</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>정부 기여금 매칭률</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>3.0~6.0% 소득 차등</strong> (월 최대 2.4만, 2025.1 확대 후 한도 초과분 3.0% 추가 매칭 → 월 최대 3.3만)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>일반형 6.0% · 우대형 12.0% 일률</strong> (월 최대 일반 3만 / 우대 6만)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>은행 기본금리</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시중 5대은행·IBK 연 4.5%, 지방은행 3.8~4.5%, 3년 고정 + 2년 변동</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>연 5.0% 동일 (3년 고정, 전 기관 통일)</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>최고금리(우대 포함)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 <strong>6.0%</strong> (공통 우대 0.5%p + 은행 최대 1.0%p)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>연 7~8%</strong> (공통 우대 저소득 0.5%p + 재무상담 0.2%p + 은행 최대 2.0~3.0%p)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>비과세 혜택</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이자소득세 15.4% 전액 비과세 (조특법 §91조의22, <strong>2025.12.31 일몰</strong>)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이자소득세 15.4% 전액 비과세 (조특법 §91조의25, 전 가입자 공통)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>취급 창구</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>11개 은행</strong> (KB·신한·우리·하나·NH·IBK·BNK부산·BNK경남·iM대구·광주·전북)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>15곳</strong> = 위 11개 + <strong>수협 + 카카오뱅크 + 토스뱅크 + 우정사업본부</strong> (단, 6.22 동시 출시는 14곳, 토스뱅크는 2026.12 출시 예정)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>신청 기간</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">출시 후 매월 상시 (월 1회)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>2026.6.22 ~ 7.3 단 2주</strong> (1차 모집)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>누적 가입자</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2024년 말 약 157만, 2026년 진입 시점 200만 육박</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">(신규 출시)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>특별중도해지 사유</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사망·해외이주·퇴직·폐업·천재지변·장기치료·<strong>혼인·출산·생애최초 주택구입</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사망·해외이주·퇴직·폐업·장기치료·<strong>청년도약계좌→미래적금 갈아타기</strong> (혼인·출산·주택구입 제외)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>3년 후 (60개월 또는 36개월) 만기 수령액</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">월 70만 5년 납입 시 시뮬레이션 약 <strong>5,000만원 수준</strong> (소득·우대조건별 차이)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">월 50만 3년 납입 시 일반형 <strong>약 2,082만원</strong> (금리 6% 기준), 우대형 <strong>약 2,197만원</strong> (금리 6%), 최고금리 8% 적용 시 우대형 <strong>약 2,255만원</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">차이가 가장 도드라지는 자리는 굵게 표시했다. 항목별 근거와 출처는 본문에서 풀어 박는다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">⓪ 한눈에 보기</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">청년도약계좌는 2025.12.31 신규 가입 종료 — 조세특례제한법 비과세 일몰에 따른 정책 효력 종료. 기존 가입자는 5년 만기까지 혜택 유지.</li>
+<li style="margin:0.3em 0;">청년미래적금은 같은 만 19~34세 트랙을 3년·월 50만원으로 다시 깔았다. <strong>만기 단축</strong>(60→36개월), <strong>납입 한도 축소</strong>(70→50만원), <strong>매칭 일률 인상</strong>(최저 3.0%→6.0%, 최고 6.0%→12.0%), <strong>창구 확대</strong>(11→15곳, 신규 4곳).</li>
+<li style="margin:0.3em 0;">신청 창구는 단 2주. <strong>2026.6.22~7.3 1차 모집</strong>이 끝나면 다음 모집까지 기다려야 하며, 기존 청년도약계좌 가입자의 갈아타기도 이 2주 안에만 허용된다.</li>
+<li style="margin:0.3em 0;">baseline의 &ldquo;은행 기본금리 6%&rdquo;는 정확히는 <strong>기본 5% + 공통 우대(저소득 0.5%p + 재무상담 0.2%p) + 은행 우대 일부 = 6% 수준</strong>의 시나리오. 공식 기본금리는 5%다.</li>
+<li style="margin:0.3em 0;">&ldquo;정책 자금이 또 한 통로로 모인다&rdquo; — 영상 089(국민성장펀드 모태→자펀드 단일 깔때기), 영상 097(KVIC 자펀드 운용사 선정 단일 게이트)에 이어, 청년 자산형성도 정부 매칭 적금이라는 단일 통로로 수렴한다. 다만 이 글은 자금 흐름이 아니라 가입자 의사결정에 필요한 사실을 정리한다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 첫 꺼풀 — 무엇이 바뀌었나, 정책 의도는 어디로 갔나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년도약계좌가 만 5년·월 70만원으로 설계됐던 이유는 단순했다. 비과세 효익과 매칭 누적을 끌어올려 <strong>5,000만원대 목돈</strong>을 만드는 것이었다. 그런데 운영 3년이 지나 청년미래적금이 발표된 자리에서, 정부는 <strong>3년·월 50만원·고매칭</strong> 구조로 방향을 틀었다. 정책 의도의 변경 포인트는 셋이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><img src="data:image/png;base64,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1KdPH02dOlWXXXZZra9/7733KiMjQy+++GKjcpny+uuv67333pMkHXHEETr//PPVu3dvzZ07V2PHjtWYMWMaXcS//PJLHX300ZoxY4Z69+6tUaNGKS0tTf/85z91+umn+20RDzMdoMk4E25vDpYnAwBJnAm3u0CcnK0kX5p+sekUdRv9gRQe49GXfOuttzR06NA6n582bZoWLVpUbdvs2bPVvn37Oo957LHHamxbvXp1vTkmTZpU7XG7du00Z86ceo8ZPXp0tcdHHHGEpk2bVu8xB3+t5557bq15y+Xk5NT7+RzMXz/Phtxyyy36+OOPddlll2ny5MlKSKgcuZmbm+vWLyGquvrqq7Vr1y6NHz9ekydPlsPhkMvl0sSJEzVlyhRde+21+uabbyr2/+yzz/THH3/o4Ycf1j333CNJuuqqqzR16lT98ssvGjx4cMW+y5cv1+TJk3X33XerZ8+ejcplysMPP6z33ntPycnJ1bavXr1aJ554oj755BN9/PHHGjNmjFuvl5WVpbFjx6qkpETvvfeeLrnkEknWCIGRI0dqzpw5evrpp/XPf/7T419Lc1HCYYbDvv/pAYBHhUWZToDmCNQz4UGmU6dO6t27d53Pp6am1tjWvXt3denSpc5jWrRoUWMYcX3vIVlnkasKDw9v8JjIyOq/yIuJiWnwmJCQ6oNhExMT6z2mruHQdfHXz7M+K1asqDhDPW3atBqfUVxcnPr16+f26/3666/6/vvv1bJlSz333HNyOBySJIfDoeeee04ff/yxvv32W/3222867LDDJFnFWpKuueaaite57rrrNHXqVK1YsaKihJcX+c6dO+vuu+92O5NpQ4YMqXV7nz59dOONN+q+++7T7Nmz3S7hr7/+uvbv368zzzyzooBLUkJCgl588UUNHTpUzz77rO644w6FhoZ65GvwFPsORxcl3NYo4QBgCaWE25qTn0eAQDBlyhS5XC7ddNNNNQp4U8yaNUuSdPbZZysqqvr3+aioKJ199tmSpJkzZ1Zsz8jIkCQlJSVVbCs/a7x///6Kba+99poWL16sF154ocZr21V4uDVK9uBfKtWn/DOurbQfccQR6tq1q9LS0rRw4ULPhPQg+5ZwzoTbGyUcACxcE25zDtMBAHhA+bD/YcOGaevWrXriiSd0ww036I477tCXX37Z6GuVV6xYIUnVhpBXNWjQIEnSb7/9VrGtU6dOkqQ1a9ZUbCu/37lzZ0lSenq6/vnPf2r06NE644wzGpXJX23ZskVTpkyRJJ155pluH9eUz9hf2LcJUcLtjRIOABaHfw2RQyOxxBxge0VFRVq/fr0kad68eZo0aZIKCgoqnn/qqad05JFHaubMmWrdurVbr7llyxZJUocOHWp9vnx7+X6SdMYZZ+juu+/W7bffrrffflt5eXm6//77FRsbWzGR3R133KHCwkL95z//afTX6S9mzZqlTz/9VKWlpdqxY4cWLlyosrIy3X///TrttNPceo3s7OyKyxMa8xn7C/s2IUq4vVHCAcDicppOgOZwcCYcsLvyYeCSNH78eI0YMUJPPvmkunbtquXLl2vChAlasmSJLrjgAv34449uvWZubq4kKTY2ttbny69Xz8nJqdg2YMAATZgwQZMnT1a7du0qtj/77LNKTU3VTz/9pDfffFOPP/64OnbsWPF8QUGBoqKiKq4793e//fab3nrrrYrHoaGheuihh3Tbbbe5/Rrln6/UuM/YX9j317eUcJujhAOAJEq43XEmHLA9p7Py+3CXLl30xRdfaMCAAYqPj9fxxx+vb775RtHR0VqwYIG+//57r2b573//q08//VQTJ07UzTffrO+//1633nqrysrKNGHCBB166KG69dZbJVmzqffo0UMxMTGKj4/XpEmTVFTk/ys23HvvvXK5XCooKNCqVat066236v7779dxxx2nffv2mY7nE/ZtQpRwe+OHFgA4gBJua/x7Bthe1VnUx40bp7Cw6hWpQ4cOOvPMM/XJJ59o7ty5GjFihNuvmZeXV+vz5Wdy4+Pjq213OBw677zzdN5551Xb/sILL+i3337TvHnzFB4ert9++00XXnihRowYoWeeeUbLly/Xww8/rKioKD399NMN5rv99tuVlpbW4H7uuPbaazVs2LBGHxcVFaU+ffroqaeeUmJiov71r3/p7rvv1quvvtrgsVX/zvLy8pSYmFhjn7o+Y39g3xLORCj25ioxnQAA/ANnwu2NEg7YXkJCglq0aKGMjAx17dq11n3Kt+/evdut1+zcubOWL1+u7du31/p8+fbyCdfqs2vXLt1///264oordPzxx0uyrlOPiYnRp59+qoSEBJ1zzjnauHGjXnjhBT344IOKiYmp9zU/+eQTj10rPXz48CaV8KrGjh2rf/3r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HXZYva+1Z88e3Xvvvbrkkksq1jJfv369iouLq62rXb5G/KpVqxrMN3z4cLlcLo/d3FE+W3n5teEHS09Pl+T+mvDln9sff/yh4uKaE6SWf+5du3b12szoEiUc/qBwo+QqNZ0CAHyDs+CBgYnZAMia4Oy6667TRx99pF69eunbb79VixZNX0Z51KhRkqSPPvqoxnMzZ85UYWGhDj/88AbP0t5+++1yuVx69tlnK7Y5HA5JNYdi5+fnVzznb8444wyFh4frzz//1N69e2s8X76E2eDBg916vS5duqh///4qLCysdVb1Dz/8UJK1Jrs32X84eng70wnQXK4iqeAvKeZQ00kAwPvS1zS8D/xbSJgU3fQfsv1eaKzU+xvTKeoW2vgzjIC3/P3vf9cbb7yhrl27as6cOUpNTW3wmB07duikk06SZJXI9u0rTyrefPPNmjJlil555RWNGTNGxx9/vCRp586duvPOOyWpxrXfB5s3b57eeecd/ec//6m2RnmPHj0UGRmpDz/8UDfffLMiIiL0888/a/Xq1Ro7dmyjv3ZfSE5O1vXXX68XX3xR48eP1zvvvFOxzvlPP/1U8UuGiRMnVjtu+vTp+uc//6n27dtXFPVy//jHPzR27FjdcccdOuaYY9SundUn58+fr1dffVURERG65ZZbvPp12b+ER1DCA0L+Cko4gOCQzplw2wuGs+AUXQSho446quL+tm3bJEmvvfaavv7664rtixcvrrg/c+ZMPffcc5KsM6z33HNPra977rnn6txzz614XFJSorVr11bcr6p79+564YUXNGHCBI0YMUInnXSS4uLiNHv2bGVnZ+uKK67QJZdcUufXUFJSookTJ2rgwIG68cYbqz0XHR2tW265RU888YQGDBigQw89VLNnz1ZoaGhFwfdHjz/+uJYuXarp06erR48eOvLII5WWlqbFixertLRUf/vb3zR69Ohqx2RlZWnt2rUqLCys8XqXX365vv76a7333nvq06ePRo4cqdzcXM2ZM0dOp1OvvPKKW9fcN0cAlPC2kkIllZlOgubI+01qdanpFADgXWXFzIweCLgeHAhIS5YsqbFtx44d2rFjR637Z2RkVNz/4Ycf6nzdLl26VCvhDbnhhhvUvXt3PfHEE1qyZImKi4vVu3dvXX/99brhhhvqPfa5557T6tWr9dNPPyk0NLTG8w899JAc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" alt="차트" style="max-width:100%;height:auto;display:block;margin:1.2em auto;border:1px solid #e0e0e0;border-radius:6px;" /></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>첫째 — 만기를 5년에서 3년으로 단축.</strong> 5년 락업은 청년층 진입 장벽으로 거론돼 왔다. 누적 가입자 약 200만명을 달성했지만, 청년층의 자금 사정·이직·결혼·전세 등으로 중도해지가 적지 않게 발생했다(특별중도해지에 혼인·출산·주택구입을 포함한 이유와도 맞물린다). 3년은 청년이 한 번에 견뎌낼 만한 기간으로 재설정됐다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>둘째 — 매칭률 일률 인상.</strong> 청년도약계좌의 매칭은 소득 구간별 3.0~6.0% 차등이었고, 한도 초과분에 대한 추가 매칭(2025.1 확대)도 3.0%였다. 청년미래적금은 <strong>소득 구간 매칭 차등을 걷어내고 일반형 6%·우대형 12% 두 단계</strong>로 정리했다. 우대형 12%는 청년도약계좌 저소득 구간(6.0%)의 2배다. 다만 우대형 12% 대상은 &ldquo;저소득 청년&rdquo;이 아니라 <strong>중소기업 재직자(총급여 3,600만 이하)·소상공인(매출 1억 이하)·중소기업 신규취업자</strong>라는 점은 짚고 가야 한다. 단순 저소득이 곧 우대형은 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>셋째 — 창구를 11곳에서 15곳으로 확대.</strong> 청년도약계좌 11개 은행에 <strong>수협은행·카카오뱅크·토스뱅크·우정사업본부</strong> 4곳이 새로 합류했다. 인터넷전문은행·우체국 창구가 들어온 점은 청년 접근성 측면의 변화다. 다만 토스뱅크는 6.22 일제 출시에 합류하지 못하고 2026.12 출시 예정으로, 6.22 시점 가입 가능 창구는 실질적으로 14곳이다(케이뱅크는 미참여).</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 두 번째 꺼풀 — 자격 매트릭스의 정확한 모양</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년미래적금의 매칭률 결정은 단일 변수가 아니다. <strong>소득 + 신분(중소기업 재직·소상공인·신규취업)의 매트릭스</strong>로 정해진다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">가입 유형</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">적용 매칭률</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">개인소득 (총급여 / 종합소득)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">가구소득 (중위소득 %)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">추가 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>일반형</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>6.0%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6,000만 이하 / 4,800만 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">200% 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만 19~34세</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>우대형</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>12.0%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3,600만 이하 / 2,600만 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">150% 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중소기업 재직자 또는 소상공인(매출 1억 이하)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>우대형 (가산)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>12.0%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6,000만 이하 / 4,800만 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">200% 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중소기업 신규취업자(입사 6개월 이내)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>단독형</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>0%</strong> (비과세만)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6,000~7,500만 / 4,800~6,300만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">200% 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만 19~34세</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">즉 같은 6,000만원 이하 총급여라도 신규취업 여부에 따라 12% 매칭이 갈리고, 3,600만 이하 중기 재직자는 자동으로 우대형 트랙이다. 영상에서는 &ldquo;일반형 6%/우대형 12%&rdquo;로만 압축했지만, 실제 가입 의사결정에서는 본인이 어느 분기에 속하는지를 미리 확인해야 한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년도약계좌의 매칭 매트릭스(서민금융진흥원 공식 표, 2025.1 확대 후 기준)도 함께 두면 차이가 분명해진다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">청년도약계좌 — 개인소득 구간 (총급여 / 종합소득)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">매칭 지급 한도(월)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">매칭률</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">월 최대 기여금</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2,400만 ↓ / 1,600만 ↓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">40만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6.0%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2.4만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3,600만 ↓ / 2,600만 ↓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">50만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4.6%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2.3만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4,800만 ↓ / 3,600만 ↓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">60만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3.7%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2.2만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6,000만 ↓ / 4,800만 ↓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">70만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3.0%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2.1만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">7,500만 ↓ / 6,300만 ↓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기여금 없음, 비과세만</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">매칭 한도 초과분(매칭 한도 ~ 70만 사이 납입)에는 추가로 3.0%가 더 적용돼 모든 구간에서 월 최대 <strong>3.3만</strong>까지 받을 수 있다. 청년미래적금 일반형(월 최대 3만)·우대형(월 최대 6만)과 비교하면, <strong>월 누적 매칭 기여금 자체는 우대형이 약 2배</strong> 강하다. 다만 청년도약계좌는 5년이고, 청년미래적금은 3년이다. 만기 누적 비교는 다음 절에서 분해한다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 세 번째 꺼풀 — 만기 수령액의 분해</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년미래적금 baseline의 &ldquo;일반형 2,082만 / 우대형 2,197만&rdquo;이 어떻게 만들어지는지 항목별로 분해한다(월 50만 × 36개월, 비과세 적용).</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">구분</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">원금 (월50만×36)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">정부 기여금 누계</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은행 이자 (비과세, 적금 단리 환산)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">총 수령액</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">적용 금리 가정</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반형 (기본금리 5%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">108만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 139만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,047만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5.0%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반형 (금리 6%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">108만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 174만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,082만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6.0% (= 기본 5% + 우대 1%p 합산 시나리오)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일반형 (최고 8%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">108만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 230만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,138만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">8.0% (=공통 우대 0.7%p + 은행 최대 2.3%p)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">우대형 (기본금리 5%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">216만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 148만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,164만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5.0%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">우대형 (금리 6%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">216만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 181만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,197만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6.0%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">우대형 (최고 8%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,800만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">216만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 239만</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 2,255만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">8.0%</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정리하면 <strong>2,082만 / 2,197만은 baseline의 &ldquo;금리 6%&rdquo; 시나리오</strong>, <strong>2,138만 / 2,255만은 공식 보도자료가 &ldquo;최대 수령액&rdquo;으로 인용하는 8% 시나리오</strong>다. 영상은 6%를 기준으로 압축했다(보수적). 가입자가 실제로 받는 금액은 본인이 어느 은행에서 얼마의 우대를 받느냐에 따라 두 수치 사이 어딘가에 위치하게 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년도약계좌 만기 수령액은 본인 납입(월 50~70만)·소득 구간 매칭(월 2.4~3.3만)·기본 + 우대 금리·5년 누적이라는 5변수 시뮬레이션이다. 출시 당시 보도자료가 인용한 대표값은 월 70만 5년 납입·고매칭·우대 적용 시 약 <strong>5,000만원 수준</strong> — 다만 이 수치는 만 5년 락업의 결과다. 같은 60개월 동안 월 50만을 3년치(36개월) 청년미래적금 우대형으로 굴려 약 2,255만을 만든 뒤, 잔여 24개월을 다른 운용에 돌리는 것과 직접 비교는 단순치 않다(투자 권유가 아니다).</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 네 번째 꺼풀 — 갈아타기 의사결정 분기</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기존 청년도약계좌 가입자의 가장 큰 결정은 <strong>갈아탈 것인가, 만기까지 유지할 것인가</strong>다. 결정 분기는 다음과 같다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심 절차는 <strong>역순 금지</strong>다. 청년도약계좌를 먼저 일반 해지해버리면 기여금·비과세 혜택이 환수된다. 반드시 <strong>① 청년미래적금 가입 신청 → ② 신청 과정에서 도약계좌가 특별중도해지로 처리</strong> 순서를 거쳐야 한다. 이 갈아타기는 1차 모집 2주(6.22~7.3) 안에만 허용되며, 이후 모집에서는 기존 가입자 전환 권리가 사라진다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 5. 다섯 번째 꺼풀 — 중도해지·비과세의 실제 모양</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년미래적금의 중도해지 룰은 청년도약계좌보다 <strong>엄격</strong>해졌다. 특별중도해지로 인정되는 사유가 줄었다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">중도해지 사유</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">청년도약계좌</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">청년미래적금</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사망·해외이주</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정 (기여금 100% + 비과세 유지)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정 (동일)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">퇴직·사업장 폐업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">천재지변</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">장기치료 질병</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">특별 인정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>혼인·출산</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>특별 인정</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>일반 해지</strong> (기여금 환수)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>생애최초 주택구입</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>특별 인정</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>일반 해지</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3년 이상 유지 후 일반 해지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기본금리 + 기여금 60% + 비과세 일부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만기까지 가야 비과세·기여금 인정 (3년 만기 자체가 짧음)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>청년도약계좌→미래적금 갈아타기</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">(해당 없음)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>특별 인정</strong> (단, 6.22~7.3 1차 모집 한정)</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년미래적금은 만기가 3년으로 짧아진 대신 &ldquo;그 3년은 진짜로 묶어두라&rdquo;는 신호다. 청년도약계좌가 청년의 5년 락업을 완화하기 위해 혼인·출산·주택구입을 특별 사유로 풀어줬다면, 청년미래적금은 그 사유들을 일반 해지로 처리한다. 결혼·출산·주택 계획이 3년 안에 잡혀 있다면 가입 전 한 번 더 따져봐야 한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">비과세는 두 상품 모두 <strong>이자소득세 15.4% 전액 비과세</strong>다. 청년도약계좌는 조세특례제한법 §91조의22, 청년미래적금은 §91조의25에 근거한다. 청년도약계좌는 2025.12.31 일몰로 신규 가입이 종료됐고, 청년미래적금이 같은 비과세 트랙을 새 일몰 시한으로 이어받는 모양이다(미래적금의 일몰 시한은 별도 입법사항).</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 6. 여섯 번째 꺼풀 — 신청 일정·창구의 모양</h2>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+timeline
+    title 청년미래적금 1차 모집 timeline
+    2026-05-29 : 금융위 취급기관 금리 공시 (은행연합회 소비자포털)
+    2026-06-22 : 1차 모집 시작 · 14개 기관 일제 출시 (토스뱅크 제외)
+    2026-07-03 : 1차 모집 마감 (단 2주) · 청년도약계좌 갈아타기 마감 동일
+    2026-08-?? : 2차 모집 (예상, 매월 정기 모집 전환 가능성)
+    2026-12-?? : 토스뱅크 출시 예정
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">취급기관별 최고금리 그룹(공통 우대 + 은행 우대 최대 합산 기준):</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">최고금리 그룹</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">해당 기관</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>연 8.0%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">NH농협·신한·하나·IBK기업·KB국민·우정사업본부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>연 7.0%</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수협·iM·BNK부산·광주·전북·BNK경남·카카오뱅크</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>(미공시)</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">토스뱅크 — 12월 출시 시점 공시 예정</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기관별 우대금리 항목은 급여이체·카드 실적·자동이체·최초거래 등으로, 청년도약계좌 시절과 항목 구성은 유사하다. 다만 청년미래적금에는 <strong>공통 우대로 &ldquo;총급여 3,600만 이하 청년 0.5%p&rdquo;</strong>와 <strong>&ldquo;청년 모두를 위한 재무상담 이수자 0.2%p&rdquo;</strong> 두 항목이 추가됐다는 점이 새롭다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 7. 일곱 번째 꺼풀 — 가설이 약해지는 자리·유의점</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">분석가 톤으로 가설을 약화시키는 자리도 짚는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>첫째</strong>, &ldquo;매칭 12%&rdquo;는 일률 적용이 아니다. 우대형 12%는 중기 재직자·소상공인·신규취업자 자격 매트릭스를 통과해야 받는다. 일반 청년은 6%다. 영상에서 &ldquo;정부가 12%를 얹어준다&rdquo;는 hook은 <strong>우대형 대상자에 한정된 사실</strong>이며, 일반형 가입자에게는 6%다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>둘째</strong>, &ldquo;기본금리 6%&rdquo;는 부정확한 표현이다. 공식 기본금리는 <strong>연 5%</strong>이고, 우대를 합산한 최고금리가 7~8%다. 영상에서 &ldquo;은행 금리 6%&rdquo;라 한 것은 보수적 시나리오의 합산 금리에 가깝다. 실제 가입자가 받는 금리는 본인의 우대 충족도에 따라 5%(우대 전무)에서 8%(최고 등급) 사이 어딘가에 분포한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>셋째</strong>, &ldquo;취급 15곳&rdquo;은 6.22 시점이 아니다. <strong>토스뱅크는 2026.12 출시 예정</strong>으로, 6.22 일제 출시 기관은 <strong>14곳</strong>이다. 1차 모집 2주 동안 토스뱅크로의 가입은 불가능하다. 케이뱅크는 미참여.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>넷째</strong>, 갈아타기는 <strong>1회·1차 모집 한정</strong>이다. 7.3 이후에는 청년도약계좌 만기 유지가 사실상의 default이며, 일반 해지로 청년미래적금에 새로 들어가면 도약계좌 기여금·비과세가 환수된다. 결정을 미루면 권리가 사라진다는 의미다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>다섯째</strong>, <strong>혼인·출산·생애최초 주택구입은 특별중도해지 사유에서 빠졌다.</strong> 청년도약계좌가 5년 락업을 완화하던 안전판 셋이 청년미래적금에서는 일반 해지로 분류된다. 3년 안에 결혼·출산·주택 매수 계획이 있는 청년은 가입 전에 자금 흐름을 한 번 시뮬레이션하고 들어가야 한다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 8. 한 줄로 합치면</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>5년이 3년으로, 매칭은 두 배로, 창구는 11곳에서 15곳으로</strong> — 청년 자산형성 통로가 재설계됐다. 진입 장벽(락업 기간)은 낮아지고, 매칭률은 일률 인상됐으며, 인터넷전문은행·우체국까지 채널이 늘었다. 다만 <strong>혼인·출산·주택구입 안전판이 빠졌고, 신청 창구는 단 2주이며, &ldquo;기본금리 6%·취급 15곳&rdquo;이라는 단순화 표현은 실무에서는 더 쪼개서 봐야 한다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">청년도약계좌 가입자에게는 한 번뿐인 갈아타기 분기(6.22~7.3)이고, 새로 가입을 검토하는 청년에게는 본인이 일반형/우대형/단독형 어느 트랙에 속하는지를 미리 확정한 뒤 들어가는 것이 합리적이다. 이 글은 가입 권유가 아니라 정책 상품 구조의 1:1 비교 자료다.</p>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자격·금리·기여금 매트릭스는 출시 시점(2026.6.22) 1차 자료를 기준으로 작성됐다. 가입 직전에는 반드시 은행연합회 소비자포털(portal.kfb.or.kr)·서민금융진흥원(kinfa.or.kr)·취급은행 앱의 최신 공시를 다시 확인할 것.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h3 style="font-size:1.15em;font-weight:600;margin-top:1.2em;margin-bottom:0.4em;color:#333;">출처</h3>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>청년미래적금 1차 자료</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/no010101/86767" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 청년미래적금 출시 준비 점검회의 보도자료</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/no010101/87005" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 청년미래적금 취급기관별 금리 공시 (2026.5.29)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148964376" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정책브리핑 — 청년미래적금 금리 공개·최대 2,255만원</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148963384" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정책브리핑 — 미래를 채우는 첫 시작, 청년미래적금 6월 출시</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.korea.kr/news/reporterView.do?newsId=148954335" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정책브리핑 — 청년도약계좌→청년미래적금 갈아탈 준비 완료</a></li>
+<li style="margin:0.3em 0;"><a href="https://portal.kfb.or.kr" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">은행연합회 소비자포털</a></li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>청년미래적금 2차 자료(취급기관·해설)</strong></p>
+<ol start="7" style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.tossbank.com/articles/youth-grow-up-account" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">토스뱅크 — 청년미래적금 출시일·신청기간·조건</a></li>
+<li style="margin:0.3em 0;"><a href="https://kbthink.com/investment/issues/youth-future-savings.html" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">KB국민은행 KB Think — 청년미래적금 가입 조건·청년도약계좌 차이점</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.hankookilbo.com/news/article/A2026052910330002862" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">한국일보 — 청년미래적금 6.22 출시, 우대형 최고 연 19% 효과</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/finance/2026/05/29/2026052908592978585" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 월 50만원씩 2,255만원, 청년미래적금 내달 22일</a></li>
+<li style="margin:0.3em 0;"><a href="https://imnews.imbc.com/replay/2026/nwtoday/article/6826623_37012.html" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">MBC 비즈&amp;트렌드 — 청년미래적금 출시, 연 19% 적금 수준</a></li>
+<li style="margin:0.3em 0;"><a href="https://govgrant.kr/2026-%ec%b2%ad%eb%85%84%eb%af%b8%eb%9e%98%ec%a0%81%EA%B8%88-%EC%8B%A0%EC%B2%AD%EB%B0%A9%EB%B2%95/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정부보조금정보센터 — 청년미래적금 가이드</a></li>
+<li style="margin:0.3em 0;"><a href="https://grantinfo.co.kr/youth-future-savings-2026-complete-guide/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">grantinfo.co.kr — 청년미래적금 2026 완벽 가이드</a></li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>청년도약계좌 1차 자료</strong></p>
+<ol start="14" style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://ylaccount.kinfa.or.kr/main" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">서민금융진흥원 — 청년도약계좌 상품 안내</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.kinfa.or.kr/financialProduct/youthLeapAccount.do" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">서민금융진흥원 — 청년도약계좌 금융상품 페이지(운영 종료 안내)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/po010101/80198" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 청년도약계좌 6.15 운영 개시 보도자료</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fsc.go.kr/no010101/83729" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금융위원회 — 2025.1 기여금 확대 보도자료</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148937881" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">정책브리핑 — 기여금 확대 수익효과 9.54%</a></li>
+<li style="margin:0.3em 0;"><a href="https://portal.kfb.or.kr/compare/receiving_youth_leap.php" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">은행연합회 소비자포털 — 청년도약계좌 금리비교</a></li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>청년도약계좌 2차 자료(보도·해설)</strong></p>
+<ol start="20" style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://biz.sbs.co.kr/article/20000231568" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">SBS Biz — 누적 200만명 육박</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.hankyung.com/article/202508015743i" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">한국경제 — 청년도약계좌, 비과세 혜택 없어지는거에요?</a></li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">— 작성: 2026-06-07 / 영상 098 후속 분석. 모든 수치·일자는 위 1차·2차 자료 교차 확인. 본 리포트는 특정 금융상품의 매수·매도를 권유하지 않으며, 정책 상품 구조의 비교 분석 자료다.</p></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
