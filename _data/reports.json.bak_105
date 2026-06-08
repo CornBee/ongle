@@ -1,33 +1,5 @@
 [
   {
-    "slug": "105-AI인프라-한국자리",
-    "title": "AI 인프라 지도에 한국이 어디 박혔나 — SK·엔비디아 차세대 메모리 동맹 + 서울 AI 기술센터 한 자리",
-    "summary": "2026-06-05~09 사이 한국이 글로벌 AI 인프라 지도에 받은 두 자리 — SK하이닉스의 메모리 단일 공급자 자리(베라루빈·젯슨토르까지), 그리고 엔비디아 본사가 서울에 박은 AI 기술센터 한 자리(디지털 트윈·로보틱스). 호황 + 같은 무게의 집중 리스크 + K자 양극화 가드까지 한 단일 리포트로.",
-    "labels": [
-      "SK하이닉스",
-      "엔비디아",
-      "베라루빈",
-      "젯슨토르",
-      "AI팩토리",
-      "AI기술센터",
-      "디지털트윈",
-      "피지컬AI",
-      "K자양극화"
-    ],
-    "date": "2026-06-09",
-    "path": "/r/105-AI인프라-한국자리.html",
-    "page_url": "https://cornbee.github.io/ongle/r/105-AI인프라-한국자리",
-    "video_id": "105+107",
-    "shared_with": [
-      "105",
-      "107"
-    ],
-    "status": "published",
-    "lastUpdatedAt": "2026-06-08T22:17:15",
-    "thumbnail": "/assets/thumbs/105-AI인프라.png",
-    "thumbnail_caption": "AI 인프라 지도에 한국이 박힌 자리 — 서울·SK·삼성 한 사슬, K자 갈림길 한 옆"
-  },
-  {
     "slug": "106-빚없는-추경-구조",
     "title": "26.2조를 빚 없이 짠 자리 — 초과세수 25.2조 + 기금 1조의 추경 구조 분해",
     "summary": "",
@@ -45,7 +17,7 @@
     "page_url": "https://cornbee.github.io/ongle/r/106-빚없는-추경-구조",
     "video_id": "106",
     "status": "published",
-    "lastUpdatedAt": "2026-06-08T22:17:18"
+    "lastUpdatedAt": "2026-06-08T22:16:41"
   },
   {
     "slug": "098-청년미래적금",
