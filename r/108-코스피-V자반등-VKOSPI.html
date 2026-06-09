@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>612포인트 폭등에도 공포지수는 사상최고 — 3거래일 V자, 그날의 숫자 분해 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="612포인트 폭등에도 공포지수는 사상최고 — 3거래일 V자, 그날의 숫자 분해">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">612포인트 폭등에도 공포지수는 사상최고 — 3거래일 V자, 그날의 숫자 분해</h1>
+
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["5월 초 직전 고점<br/>약 8,160"] --> B["6/8 검은 월요일<br/>7,484.41 (-676.18p)"]
+    B --> C["6/9 사상최대 상승<br/>8,096.93 (+612.52p, +8.18%)"]
+    C --> D["같은 날 VKOSPI 91.23<br/>(사상 최고)"]
+    C --> E["기관 +2.8조<br/>외국인 -1.9조 / 개인 -1.1조"]
+    C --> F["원달러 1,512.1원<br/>(-22.9원, 4/8 이후 최대 하락폭)"]
+</pre></div>
+    <div class="article-meta">2026-06-09 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#코스피</span> <span class="tag">#VKOSPI</span> <span class="tag">#V자반등</span> <span class="tag">#공포지수</span> <span class="tag">#기관매수</span> <span class="tag">#원달러</span> <span class="tag">#코스닥</span></div>
+
+
+
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">코스피 612포인트 폭등인데 공포지수는 사상 최고 — 6월 9일 V자의 진짜 뜻</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>요약.</strong> 2026년 6월 9일, 코스피는 하루에 <strong>612.52포인트(+8.18%)</strong> 오른 <strong>8,096.93</strong>으로 마감했습니다. 포인트 기준 사상 최대 상승폭입니다. 그런데 같은 날 변동성지수 <strong>VKOSPI도 91.23</strong>까지 올라 사상 최고치를 갈아치웠습니다. 2008년 글로벌 금융위기, 2026년 초 미·이란 충돌 당시보다도 높은 수치입니다. 시장이 진정된 게 아니라, 큰 폭으로 튕긴 동시에 공포 자체는 더 커진 자리였습니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 글은 시점성 정리입니다. 종목 추천·매수·매도 의견·목표가는 다루지 않습니다. 그날 시장이 보여준 숫자들 — 3거래일 V자, 매매주체, 환율, 변동성지수 — 을 그대로 늘어놓고, 받은 자리와 던진 자리가 갈렸다는 점만 짚어둡니다.</p>
+</blockquote>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 3거래일 V자의 모양</h2>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">5월 초 직전 고점에서 출발해 6/8 하루에 무너지고, 다음 날 그 낙폭의 90% 이상을 되돌렸습니다. 단순 라인으로 보면 V자입니다. 단, V의 오른쪽 끝이 왼쪽 고점에 닿지 못한 상태라는 점, 그리고 V를 만든 거래 안에서 매매주체가 정반대로 갈렸다는 점이 같이 있어야 그림이 완성됩니다.</p>
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:right;">코스피 종가</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:right;">등락</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5월 초</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;">약 8,160</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직전 고점 자리</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6/8 (월)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;">7,484.41</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#c62828;">-676.18p</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">&ldquo;검은 월요일&rdquo;로 불린 급락</td>
+</tr>
+<tr style="background:#fff8f3;">
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;font-weight:700;">6/9 (화)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;font-weight:700;">8,096.93</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">+612.52p (+8.18%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">포인트 기준 사상 최대 상승</td>
+</tr>
+</tbody>
+</table>
+
+<div class="hero-visual" style="margin:1.2em 0;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:0.6em;">
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+  <defs>
+    <linearGradient id="vgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- axes -->
+  <line x1="60" y1="40" x2="60" y2="230" stroke="#bbb" stroke-width="1"/>
+  <line x1="60" y1="230" x2="660" y2="230" stroke="#bbb" stroke-width="1"/>
+  <!-- y labels -->
+  <text x="20" y="50" font-size="12" fill="#777">8,200</text>
+  <text x="20" y="120" font-size="12" fill="#777">7,900</text>
+  <text x="20" y="190" font-size="12" fill="#777">7,600</text>
+  <line x1="60" y1="50" x2="660" y2="50" stroke="#eee"/>
+  <line x1="60" y1="120" x2="660" y2="120" stroke="#eee"/>
+  <line x1="60" y1="190" x2="660" y2="190" stroke="#eee"/>
+  <!-- 8,160(5월 초) ≈ y=60 ; 7,484(6/8) ≈ y=218 ; 8,096(6/9) ≈ y=75 -->
+  <path d="M 120 60 L 380 218 L 600 75 L 600 230 L 120 230 Z" fill="url(#vgrad)"/>
+  <polyline points="120,60 380,218 600,75" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <!-- nodes -->
+  <circle cx="120" cy="60" r="6" fill="#ff6b35"/>
+  <circle cx="380" cy="218" r="6" fill="#c62828"/>
+  <circle cx="600" cy="75" r="6" fill="#1565c0"/>
+  <!-- labels -->
+  <text x="80" y="35" font-size="13" fill="#333" font-weight="700">5월초 ~8,160</text>
+  <text x="320" y="248" font-size="13" fill="#c62828" font-weight="700">6/8 7,484</text>
+  <text x="540" y="62" font-size="13" fill="#1565c0" font-weight="700">6/9 8,096</text>
+  <text x="540" y="100" font-size="12" fill="#777">(+612p, +8.18%)</text>
+  <!-- caption -->
+  <text x="350" y="270" font-size="11" fill="#999" text-anchor="middle">3거래일 V자 — 6/9 종가는 5월 초 고점 아래에서 멈춤</text>
+</svg>
+</div>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">매매주체 · 받은 자리와 던진 자리</h2>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">6/9 V자의 가장 큰 특징은 매매주체가 정반대로 갈렸다는 점입니다. 사상 최대 상승이 일어난 그날, 기관은 약 <strong>2.8조 원어치를 사들였고</strong>, 외국인과 개인은 합쳐서 비슷한 규모를 팔았습니다.</p>
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">주체</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:right;">순매수 (조 원)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;font-weight:700;">기관</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">+2.8</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">강한 순매수</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;font-weight:700;">개인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#c62828;">-1.1</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">순매도</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;font-weight:700;">외국인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#c62828;">-1.9</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">순매도</td>
+</tr>
+</tbody>
+</table>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">받은 자리(기관)와 던진 자리(개인·외국인)가 그날 안에서 갈렸습니다. 흔히 V자 반등을 &ldquo;시장이 안심했다&rdquo;고 묶어 부르지만, 매매주체로 끊어 보면 받아낸 쪽과 내놓은 쪽이 따로 있었다는 데이터입니다. 누가 옳았는지는 며칠 더 지켜봐야 알 수 있습니다.</p>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">VKOSPI 91.23 · 공포지수의 위치</h2>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">VKOSPI는 코스피200 옵션 시장이 기대하는 향후 한 달의 변동성을 지수화한 값입니다. 통상 20 안팎이 평온, 30 이상이 불안, 40~50이 위기 영역으로 다뤄집니다. 6/9 종가는 <strong>91.23</strong>이었고, 일별 등락률은 <strong>+19.05%</strong>로 그날 하루만 거의 20% 추가 상승했습니다. 사상 최고치입니다.</p>
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:right;">VKOSPI 고점 (참고)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">맥락</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2008년 글로벌 금융위기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;">~80 권역</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">리먼 직후</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2026년 1월 미·이란 충돌기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;">~70 권역</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전쟁 리스크 급등 구간</td>
+</tr>
+<tr style="background:#fff8f3;">
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;font-weight:700;">2026/6/9</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;font-weight:700;">91.23</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">코스피 +8.18%과 같은 날</td>
+</tr>
+</tbody>
+</table>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">주가가 큰 폭으로 오른 날에 공포지수가 같이 사상 최고를 찍는 조합은 흔치 않습니다. 지수가 올랐다는 것과, 다음 한 달의 흔들림을 시장이 매우 크다고 가격에 박았다는 것은 따로 적힌 신호입니다.</p>
+
+<div class="key-conclusion">
+<strong>한 줄로.</strong> 6/9의 V자는 코스피가 사상 최대 폭으로 오른 동시에, 옵션 시장이 매긴 변동성도 사상 최고로 오른 자리입니다. &ldquo;진정&rdquo;이 아니라 &ldquo;튕김&rdquo;에 가깝다는 점을, 가격과 공포지수 두 데이터가 같은 날 따로 말해 줍니다.
+</div>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">종목·환율·코스닥 · 같은 날의 다른 숫자들</h2>
+
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:right;">6/9 변화</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">메모</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">삼성전자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">+8.97%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시총 1위 대형주 동반 상승</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SK하이닉스</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">+15.91%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반등 폭 가장 큰 대표주</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">코스닥 지수</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">967.81 (+6.19%)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">+56.42p, 중소형도 동반 반등</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원달러 환율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;text-align:right;color:#1565c0;font-weight:700;">1,512.1원 (-22.9원)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4/8 이후 일별 최대 하락폭</td>
+</tr>
+</tbody>
+</table>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">대형 반도체 두 종목이 코스피 상승분의 큰 부분을 끌어올렸고, 코스닥도 같은 방향으로 6%대 반등했습니다. 환율 쪽에서는 외환당국의 미세조정과 국민연금 환헤지 흐름이 동시에 거론되며 22.9원이 빠졌습니다. 4월 8일 이후 일별 기준 가장 큰 하락폭입니다. 주식·환율 모두 같은 방향(원화 강세·주가 상승)으로 움직였다는 점은 한 줄로 메모해 둘 만합니다.</p>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한계 · 이 글이 말하지 않는 것</h2>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 글은 데이터 정리입니다. &ldquo;지금 사라&rdquo; &ldquo;지금 팔라&rdquo; &ldquo;여기가 바닥이다&rdquo; &ldquo;여기가 천장이다&rdquo;는 어떤 종목·지수에 대해서도 말하지 않습니다. 같은 날 매매주체가 갈렸다는 사실, V의 오른쪽 끝이 직전 고점에 못 미친다는 사실, 공포지수가 사상 최고로 박혔다는 사실 — 세 가지를 같은 자리에 놓아 두는 데까지가 이 글의 자리입니다. 며칠 뒤의 결말은 시청자의 자리입니다.</p>
+
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h3 style="font-size:1.15em;font-weight:600;margin-top:1.2em;margin-bottom:0.4em;color:#333;">출처</h3>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — 코스피 6/9 종가 8,096.93, 일중 612.52p 상승 사상 최대</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.etoday.co.kr/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이투데이 — 6/8 검은 월요일, 코스피 -676.18p / 6/9 V자 반등</a></li>
+<li style="margin:0.3em 0;"><a href="https://news.heraldcorp.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">헤럴드경제 — VKOSPI 91.23, 사상 최고 / 일별 +19.05%</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.hankookilbo.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">한국일보 — 매매주체별 순매수·순매도 정리 (기관 +2.8조 / 개인 -1.1조 / 외국인 -1.9조)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.mediawatch.kr/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">미디어워치 — 삼성전자 +8.97% / SK하이닉스 +15.91% 종목별 등락</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.news1.kr/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스1 — 코스닥 967.81(+6.19%), 시장 전반 동반 반등</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.upi.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">UPI — 원달러 1,512.1원, 4/8 이후 일별 최대 하락폭 (-22.9원)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.newspim.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스핌 — 외환당국 미세조정 · 국민연금 환헤지 흐름 정리</a></li>
+<li style="margin:0.3em 0;"><a href="https://imnews.imbc.com/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">MBC 뉴스 — 6/9 시장 종합 보도</a></li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
