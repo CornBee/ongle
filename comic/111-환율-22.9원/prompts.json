@@ -1,0 +1,50 @@
+[
+  {
+    "name": "panel_01_hook",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: ONGLE stands in front of a large stylized smartphone or tablet screen that shows a falling exchange-rate line chart. The chart line drops sharply from upper-left to lower-right. A bold number on the screen reads 1512.1 (no other text). ONGLE looks up at the screen, pupil tilted toward the falling line. Composition: ONGLE on the left lower third, screen on the right upper two-thirds. Soft pastel ambient lighting. No speech bubbles, no captions, no Korean or English text other than the number on the screen.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  },
+  {
+    "name": "panel_02_point",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: Close-up of ONGLE leaning slightly forward, its pupil concentrated and aimed directly at the viewer, as if saying 'look here.' Behind ONGLE is a simplified split background: the left half is a soft warm light, the right half a soft cool light, with a thin vertical seam running down the middle. The seam suggests two sides without labels. No text, no speech bubbles.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  },
+  {
+    "name": "panel_03_positive_loop",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: ONGLE stands quietly on the right edge, observing. The main subject is a group of three simply-drawn human figures (faceless silhouettes, soft pastel colors) at a wide industrial workplace: one figure carries a generic semiconductor wafer disc, one stands beside a small generic car silhouette, one beside a small ship silhouette. Above them floats a soft glowing upward arrow icon (no text). Warm pastel tones (light orange, peach, cream). The mood is steady and slightly exhaling. No text, no logos, no speech bubbles.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  },
+  {
+    "name": "panel_04_negative_loop",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: ONGLE stands quietly on the right edge, observing. The main subject is three simply-drawn human figures (faceless silhouettes, soft pastel colors): one figure stands inside a small generic shop counter (a self-employed café owner), one figure holds a small generic airplane silhouette and a fuel-pump silhouette, one figure holds a small generic envelope with a globe icon (overseas remittance). Above them floats a soft downward arrow icon (no text). Cool pastel tones (light teal, gray-blue, cream). The mood is steady and lightly relieved. No text, no logos, no speech bubbles.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  },
+  {
+    "name": "panel_05_split",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: A vertical split-frame composition. Left side warm pastel orange/peach: faceless silhouettes representing semiconductor/auto/shipbuilding workers from panel 3, with a small soft up-arrow above. Right side cool pastel teal/gray-blue: faceless silhouettes representing self-employed shop owner, airline/fuel worker, overseas-remittance family from panel 4, with a small soft down-arrow above. In the very center, ONGLE stands on a thin horizontal beam that bridges both sides, pupil aimed straight at the viewer. The two sides are visually balanced. No text, no labels, no speech bubbles.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  },
+  {
+    "name": "panel_06_mirror",
+    "prompt": "ONGLE: small round eyeball mascot character. The body is a thick bright-orange ring (like a donut) about the size of a tennis ball. Inside the ring, a single large eye fills the center — white sclera, vivid blue iris with a small white highlight, and a black pupil. Two tiny rounded brown feet stick out at the bottom. Simple flat children-book illustration style, clean bold outlines, plain off-white background. Shape is unchanging across panels — only pose and gaze direction vary. ONGLE has no mouth and no hands; emotion is shown through pupil position, eye-shape squint, and posture only. Scene: ONGLE stands in the foreground, slightly off-center. Behind it, two soft pastel armchairs sit empty side by side — one warm orange, one cool teal — both turned three-quarters toward the viewer, inviting. The empty chairs feel quietly addressed to whoever is looking. ONGLE's pupil is aimed straight forward, calm and curious. Soft cream background. No text, no signs, no speech bubbles.",
+    "refs": [
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_idle.png",
+      "/sessions/bold-sleepy-cannon/mnt/Shorts_제작/OGLE_캐릭터/OGLE_focus.png"
+    ]
+  }
+]

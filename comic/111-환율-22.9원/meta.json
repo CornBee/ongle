@@ -1,0 +1,31 @@
+{
+  "video_id": "111",
+  "format": "comic",
+  "title": "같은 22.9원, 두 자리 — ONGLE 만화",
+  "video_title": "환율이 한 시간 사이 22.9원 빠졌어요 — 같은 22.9원, 누구에겐 양의 루프, 누구에겐 음의 루프",
+  "url_slug": "111-환율-22.9원",
+  "url_path": "comic/111-환율-22.9원",
+  "event_date": "2026-06-09",
+  "publish_date": "2026-06-13",
+  "status": "draft",
+  "meta_description": "6월 9일 환율 한 시간 사이 22.9원 하락, 1,512.1원 마감. 같은 22.9원이 양의 루프 자리(수출·해외파견)엔 환차익 축소로, 음의 루프 자리(수입·자영업·송금)엔 단기 안도로 적힙니다. ONGLE 만화 6컷.",
+  "og_image": "assets/comics/cover.png",
+  "labels": [
+    "원달러환율",
+    "1512.1원",
+    "22.9원하락",
+    "외환당국",
+    "국민연금선물환",
+    "시민자리",
+    "양의루프",
+    "음의루프",
+    "ONGLE만화"
+  ],
+  "related_analysis_report": "https://cornbee.github.io/ongle/r/111-환율-22.9원-시민자리",
+  "comic_format_version": "v1-skill-pilot",
+  "comic_panels": 6,
+  "asset_status": {
+    "comics": "PLACEHOLDER (sandbox outbound blocked) — rerun: python3 _tools/imagegen.py --prompts prompts.json --out-dir assets/comics --aspect-ratio 1:1",
+    "charts": "FINAL"
+  }
+}
