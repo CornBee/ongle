@@ -25,7 +25,7 @@
   "comic_format_version": "v1-skill-pilot",
   "comic_panels": 6,
   "asset_status": {
-    "comics": "PLACEHOLDER (sandbox outbound blocked) — rerun: python3 _tools/imagegen.py --prompts prompts.json --out-dir assets/comics --aspect-ratio 1:1",
+    "comics": "FINAL (nano banana, daemon comic_imagegen_runner, 6 panels)",
     "charts": "FINAL"
   }
 }
