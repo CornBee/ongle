@@ -22,10 +22,14 @@
     "ONGLE만화"
   ],
   "related_analysis_report": "https://cornbee.github.io/ongle/r/111-환율-22.9원-시민자리",
-  "comic_format_version": "v1-skill-pilot",
+  "comic_format_version": "v2-cast-4panel",
   "comic_panels": 6,
   "asset_status": {
     "comics": "FINAL (nano banana, daemon comic_imagegen_runner, 6 panels)",
-    "charts": "FINAL"
-  }
+    "charts": "FINAL",
+    "comics_v2": "FINAL (nano banana, daemon comic_imagegen_runner_v2, 4 panels, real comic with cast and speech bubbles)"
+  },
+  "comic_panels_v2": 4,
+  "v2_url_path": "comic/111-환율-22.9원/v2",
+  "v2_title": "같은 22.9원, 두 표정 — ONGLE 4컷 만화"
 }
