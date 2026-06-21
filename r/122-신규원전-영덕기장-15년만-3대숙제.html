@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>기장에 들어설 작은 원전 1기 — 발전소가 아니라 ‘수출용 1호 견본’입니다 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="기장에 들어설 작은 원전 1기 — 발전소가 아니라 ‘수출용 1호 견본’입니다">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">기장에 들어설 SMR 1기는 발전소가 아니라 ‘수출용 1호 견본’입니다. 전기보다 수출 자격이 목적.</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["기장 SMR 1호기<br/>전기출력 170MW<br/>(최대 4모듈 640MW)"] --> B["국내 첫 SMR 가동<br/>2035년 발전 목표"]
+    B --> C["‘우리 SMR은 실제로 된다’ 증명<br/>= 수출 자격(1호 견본)"]
+    C --> D["세계 SMR 시장<br/>2035년 약 400~600조원"]
+</pre></div>
+    <div class="article-meta">2026-06-21 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#기장SMR</span> <span class="tag">#i-SMR</span> <span class="tag">#혁신형소형모듈원자로</span> <span class="tag">#원전수출</span> <span class="tag">#레퍼런스플랜트</span> <span class="tag">#170MW</span> <span class="tag">#640MW</span> <span class="tag">#SMR시장400조</span> <span class="tag">#원안위첫허가</span> <span class="tag">#신한울2지연전례</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">기장에 들어설 작은 원전 1기 — 발전소가 아니라 ‘수출용 1호 견본’입니다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 ‘기장 SMR 1기’의 뒷이야기입니다.</strong> 발전량으로만 보면 영덕 대형 2기의 한참 아래인 이 작은 원전에 정부가 더 공을 들이는 이유는 전기가 아니라 <strong>수출</strong>에 있다. 평가 없이, 작은 1기가 왜 발전소보다 ‘수출 자격증’에 가까운지를 숫자로 정리한다. (정치·탈원전/친원전·종목 평가 없음.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 기장 SMR 1기가 노리는 것</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">작은 발전소 한 기를 짓는 일이 아니라, <strong>세계 시장에 보여줄 견본 한 대를 만드는 일</strong>이다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">보는 관점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기장 SMR 1기의 의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">발전소로 보면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">170MW(최대 640MW) — 영덕 대형 2기(2,800MW)의 일부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수출 견본으로 보면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국이 ‘실제로 돌아가는 SMR’을 가진 소수 국가로 진입하는 첫 표</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄로: <strong>기장 SMR의 목적은 640메가와트 전기가 아니라, ‘우리 기술로 만든 SMR이 진짜 돌아간다’를 세계에 증명하는 1호 견본이다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 세 개만</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>SMR</strong> = 소형 모듈 원자로. 공장에서 부품을 모듈로 찍어내 현장에서 조립하는 작은 원전. 보통 300메가와트 이하다.</li>
+<li style="margin:0.3em 0;"><strong>i-SMR(혁신형 SMR)</strong> = 한국이 정부 주도로 개발 중인 SMR 모델. 기장에 들어설 것이 바로 이것이다.</li>
+<li style="margin:0.3em 0;"><strong>1호 견본(레퍼런스 플랜트)</strong> = 실제로 지어서 돌려본 첫 호기. 수출 상대국이 “진짜 되는구나”를 확인하는 기준점이 된다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 숫자 다섯</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">숫자</th>
+<th style="text-align: right;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">170MW</td>
+<td style="text-align: right;">기장 i-SMR 모듈 1기 출력 (최대 4모듈 640MW)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2곳</td>
+<td style="text-align: right;">지금 SMR을 상업 가동 중인 나라 — 러시아·중국뿐</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">400~600조원</td>
+<td style="text-align: right;">2035년 세계 SMR 시장 규모 (이후 연 22% 성장 전망)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">127개 중 4개</td>
+<td style="text-align: right;">세계 개발 중 SMR 127개 가운데 한국 몫 (미국 27개로 최다)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2028 → 2030 → 2035</td>
+<td style="text-align: right;">설계 인가 → 건설 허가 → 발전 시작 목표</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 왜 ‘작은’ 원전인가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">대형 원전이 한 번에 큰 전기를 만들어 대도시의 기본 전력을 깐다면, SMR은 작게 쪼개 <strong>전기를 많이 쓰는 곳 가까이</strong> 둔다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">공장에서 모듈로 찍어내니 짓는 기간이 짧고, 한 번에 드는 돈도 적다.</li>
+<li style="margin:0.3em 0;">산업단지·데이터센터처럼 전력 수요가 몰린 곳 옆에 분산 배치할 수 있다.</li>
+<li style="margin:0.3em 0;">미국·사우디처럼 땅이 넓은 나라에선 송전 비용을 줄이는 대안으로, 최근엔 AI로 급증한 전력 수요를 받을 차세대 전원으로 주목받는다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기장 i-SMR은 전기출력 170메가와트급으로, 원자로 건물 하나에 모듈을 4개까지 넣어 최대 640메가와트까지 공급하도록 설계됐다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 작은 발전량인데 왜 더 중요한가 — 견본의 경제학</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 ‘지금 세계에 실제로 돌아가는 SMR이 거의 없다’는 사실이다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    W["세계 SMR 개발 127개<br/>(미국 27·프랑스 10·일본 6·중·러 각 5·한국 4)"] --> X["상업 가동 성공<br/>러시아·중국 2곳뿐"]
+    X --> Y["먼저 ‘되는 것’을 증명한 나라가<br/>400~600조 시장 선점"]
+</pre>
+
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">미국·영국·캐나다도 SMR 경쟁에 뛰어들었지만 <strong>아직 상업 가동 단계에 들어간 곳은 없다.</strong></li>
+<li style="margin:0.3em 0;">중국을 빼면 대부분 민간 업체 중심이라, 사업 발표와 철수를 반복한다. 즉 “설계도는 많은데 실제로 돌아가는 건 드물다”.</li>
+<li style="margin:0.3em 0;">그래서 <strong>1호기를 먼저 완성해 ‘진짜 된다’를 보여주는 것</strong> 자체가 수출 자격증이 된다. 한국은 대형 원전은 이미 수출하고 있지만(체코 등), SMR에는 아직 보여줄 견본이 없었다. 기장 1호기가 그 빈칸을 채우는 자리다.</li>
+<li style="margin:0.3em 0;">위 ‘핵심 숫자’에 적힌 시장 규모(2035년 기준)는, 작은 1기가 만드는 전기값과는 비교가 안 되는 크기다. 견본 하나가 여는 시장이 그만큼 크다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 1호기의 시계는 빡빡하다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">견본이라서 오히려 <strong>일정이 핵심 변수</strong>다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">한국에서 SMR 건설 허가는 <strong>단 한 번도 나온 적이 없다.</strong> 기장 1호기가 원자력안전위원회의 첫 SMR 허가 사례가 된다 — 전례가 없다는 건 시간이 더 걸릴 수 있다는 뜻이다.</li>
+<li style="margin:0.3em 0;">전례: 대형 원전 신한울 2호기는 안전성 강화 조치가 겹치며 공기가 6년 넘게 늘었다(2011년 착공 → 2023년 4월 준공).</li>
+<li style="margin:0.3em 0;">목표 일정은 2028년 설계 인가, 2030년 허가, 2035년 발전이다. <strong>2031년까지 건설 허가를 못 받으면</strong> 준공 목표가 밀릴 수 있다.</li>
+</ul>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상과 이어보면</strong> — 짧은 영상에서 본 ‘기장 87.11점·2035년 준공’은 발전 일정표가 아니라, 이 <strong>수출 시계의 출발선</strong>이다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 그래서 무엇을 보면 되나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기장 SMR에서 지켜볼 숫자는 <strong>얼마나 많은 전기를 만드느냐</strong>가 아니다. 640메가와트는 한국 전체로 보면 작다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">진짜 지표는 <strong>1호기가 일정 안에 ‘실제로 돌아가느냐’</strong>다. 그게 되는 순간 한국은 ‘설계도만 있는 나라’에서 ‘돌아가는 SMR을 가진 나라’로 바뀌고, 400~600조 시장에 들어갈 표를 손에 쥔다. 반대로 첫 허가에서 시간이 길어지면, 먼저 견본을 완성한 나라에 자리를 내주게 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">작은 원전 1기를 ‘발전소’가 아니라 ‘수출 견본’으로 보면, 87.11점이라는 점수보다 <strong>2031년이라는 허가 마감선</strong>이 더 중요한 숫자가 된다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h3 style="font-size:1.15em;font-weight:600;margin-top:1.2em;margin-bottom:0.4em;color:#333;">출처</h3>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">헤럴드경제 2026-06-18 — 국내 첫 SMR ‘수출 자격증’, i-SMR 170MW·640MW 스펙, 상업 가동국·시장 규모·개발 현황·일정: https://biz.heraldcorp.com/article/10774810</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스 2026-06-17 — 영덕·기장 부지 점수·일정: https://www.fnnews.com/news/202606171926380204</li>
+<li style="margin:0.3em 0;">뉴시스 2026-06-17 — 기장 SMR 부지 선정: https://www.newsis.com/view/NISX20260617_0003673365</li>
+<li style="margin:0.3em 0;">중도일보 2026-06-18 — 기장 혁신형 SMR 유치(기장 87.11 vs 경주 84.56): https://m.joongdo.co.kr/view.php?key=20260618010005328</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><sub>본 리포트는 절차적으로 생성된 분석 자료입니다. 사진·로고·종목 추천 없음. 탈원전/친원전 정치 평가 없음.</sub></p></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
