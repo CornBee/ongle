@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>약한 원화는 ‘환율 뉴스’가 아니라 분배 장치다 — 당신은 어느 쪽인가 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="약한 원화는 ‘환율 뉴스’가 아니라 분배 장치다 — 당신은 어느 쪽인가">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">약한 원화는 원화로 버는 다수에게서 달러로 버는 소수에게로 향하는, 고지서 없는 이전이다.</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    W["약한 원화 (달러당 1,562원)"] --> P["보조금처럼 받는 쪽<br/>(달러로 버는 사람)"]
+    W --> T["세금처럼 내는 쪽<br/>(원화로 벌고 수입에 기대는 사람)"]
+    P --> P2["수출 대기업·달러 자산 보유자<br/>→ 같은 매출도 원화로 더 커짐"]
+    T --> T2["봉급생활자·자영업·변동금리 채무자<br/>→ 같은 물건도 더 비싸짐"]
+    style P fill:#fff3e0
+    style T fill:#e3f2fd
+</pre></div>
+    <div class="article-meta">2026-06-23 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#원화약세</span> <span class="tag">#환율</span> <span class="tag">#분배</span> <span class="tag">#실질실효환율</span> <span class="tag">#변동금리</span> <span class="tag">#수입물가</span> <span class="tag">#호황의역설</span> <span class="tag">#평균의함정</span> <span class="tag">#K자</span> <span class="tag">#가계부채</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">약한 원화는 ‘환율 뉴스’가 아니라 분배 장치다 — 당신은 어느 쪽인가</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 ‘호황의 역설’의 다음 이야기입니다.</strong> 영상은 ‘수출은 사상 최대인데 왜 원화는 17년 만에 가장 약한가, 그리고 그 비용을 누가 먼저 치르나’를 다뤘다. 이 리포트는 그 한 걸음 뒤 — <strong>약한 원화 자체가 사실은 ‘분배 장치’라는 점</strong>을 본다. 같은 통화 하나가 누군가에겐 보조금처럼, 누군가에겐 세금처럼 작동한다. 환율을 ‘오른다·내린다’의 뉴스가 아니라 ‘누구에게서 누구에게로 돈이 옮겨가는 장치’로 다시 본다. (정치·종목 평가 없음. 매수·매도 권유 아님.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 같은 원화, 정반대 방향</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">환율은 모두에게 똑같이 일어나는 사건처럼 보인다. 그러나 <strong>방향은 사람마다 정반대다.</strong> 약한 원화는 달러를 버는 쪽엔 이익을 부풀리고, 원화로 벌어 수입에 기대는 쪽엔 비용을 키운다. 하나의 숫자가 동시에 보조금이자 세금이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 세 개만</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>실질실효환율</strong> = 물가까지 감안해 ‘이 돈이 실제로 얼마나 사 올 수 있나’를 따진 환율. 명목 숫자(1,562원)보다 체감 구매력에 가깝다.</li>
+<li style="margin:0.3em 0;"><strong>전가(pass-through)</strong> = 환율·원가 상승분이 최종 소비자 가격으로 옮겨붙는 정도. 약한 원화가 기름·식자재값으로 ‘전가’된다.</li>
+<li style="margin:0.3em 0;"><strong>변동금리 노출</strong> = 내 대출 이자가 시장금리에 따라 바뀌는 비중. 약한 원화가 물가·금리 압력으로 이어지면 이 부분이 먼저 흔들린다.</li>
+<li style="margin:0.3em 0;"><strong>경상수지</strong> = 한 나라가 무역·투자 등으로 해외와 주고받은 돈의 차액. 흑자면 ‘번 돈이 더 많다’는 뜻으로, 보통은 그 나라 통화를 강하게 만드는 힘이다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 숫자 넷</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">숫자</th>
+<th style="text-align: right;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1,562원</td>
+<td style="text-align: right;">6월 초 원·달러 고점 — 2009년 금융위기 이후 17년 만 최약</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 -11%</td>
+<td style="text-align: right;">최근 1년간 원화 가치 하락폭</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 6%</td>
+<td style="text-align: right;">경상수지 흑자의 GDP 대비 비율 — ‘기초 체력’은 튼튼한데도 통화는 약함</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3.1%</td>
+<td style="text-align: right;">5월 소비자물가 상승률 — 2년여 만에 가장 높음(약한 원화·고유가 전가)</td>
+</tr>
+</tbody>
+</table>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 숫자들은 ‘얼마나 좋아졌나/나빠졌나’가 아니라, <strong>같은 호황이 어느 쪽으로 흐르는가</strong>를 보여준다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 환율은 ‘사건’이 아니라 ‘이전(transfer)’이다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">환율이 약해지면 보통 “수입 물가 오르겠네” 정도로 끝난다. 한 단계 더 들어가면 다르게 보인다. 약한 원화는 <strong>돈을 없애는 게 아니라 옮긴다.</strong> 달러로 매출이 잡히는 수출 기업은 같은 물량을 팔아도 원화 환산 매출이 커지고, 달러·해외 자산을 가진 쪽은 원화로 환산한 자산이 불어난다. 반대로 봉급·연금처럼 원화로 고정된 소득을 받고, 기름·식자재·부품처럼 달러로 사 오는 것에 기대는 쪽은 같은 생활을 유지하는 데 더 많은 원화가 든다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">즉 약한 원화는 <strong>원화로 버는 다수에게서 달러로 버는 소수에게로 향하는, 고지서 없는 이전</strong>에 가깝다. 영상에서 ‘호황은 소수 통장에, 비용은 다수 장바구니에’라고 한 그 장면의 작동 원리가 바로 이 이전이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 나는 어느 루프에 서 있나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">분배는 추상이 아니다. 아래로 자신을 한 번 대입해 보면 방향이 보인다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">보조금 쪽(양의 루프)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">세금 쪽(음의 루프)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득의 통화</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">달러·수출 연동</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원화 고정(봉급·연금)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">달러·해외·수출주 비중 큼</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원화 예금·고정 자산 중심</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">빚</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">적거나 고정금리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">많거나 변동금리</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소비</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국내 위주</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수입 의존 큼(에너지·식품)</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">대부분의 가계는 오른쪽에 가깝다. 같은 ‘사상 최대 호황’ 뉴스를 봐도 체감이 갈리는 이유다. 호황이 가짜라서가 아니라, <strong>그 호황의 방향이 내 쪽이 아닐 수 있어서</strong>다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 왜 이 이전이 잘 안 보이나 — 평균의 함정</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">지표는 더한 다음 나눈다. 수출 대박과 골목 적자를 합쳐 평균을 내면 ‘성장률 50년 만 최고’ 같은 숫자가 나온다. 평균은 <strong>분배를 지운다.</strong> 호황의 이익이 어디로 갔는지, 비용을 누가 졌는지는 평균 안에서 보이지 않는다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["수출·자산 이익 (소수)"] --> M["합산 → 평균 지표<br/>‘사상 최대’"]
+    B["내수·임금·자영업 비용 (다수)"] --> M
+    M --> H["분배는 평균 뒤에 숨음"]
+    style M fill:#fff9c4
+    style H fill:#e3f2fd
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그래서 ‘나라가 잘된다’와 ‘내 형편은 그대로다’가 동시에 사실일 수 있다. 둘은 모순이 아니라, <strong>평균과 분포의 차이</strong>다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 그래서 무엇을 보면 되나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 ‘달러를 사라’ 같은 한 방짜리 답은 없다 — 그건 또 다른 베팅이고, 다수에게 깨끗한 개인 출구는 사실 잘 없다. 대신 <strong>내 위치를 정확히 아는 것</strong>부터 시작한다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>소득의 통화를 본다.</strong> 내 소득이 원화 고정인지, 환율과 함께 움직이는지. 고정이라면 약한 원화 국면에서 실질 구매력이 깎인다는 걸 전제로 계획한다.</li>
+<li style="margin:0.3em 0;"><strong>변동금리 노출을 확인한다.</strong> 약한 원화가 물가·금리 압력으로 이어지면 변동금리 이자가 먼저 반응한다. 내 빚에서 변동 비중이 얼마인지 한 번 점검할 가치가 있다.</li>
+<li style="margin:0.3em 0;"><strong>필수 수입 의존을 본다.</strong> 에너지·식품처럼 달러로 사 오는 고정 지출이 클수록 전가에 더 노출된다.</li>
+<li style="margin:0.3em 0;"><strong>평균 대신 분포로 읽는다.</strong> ‘성장률 최고’ 같은 헤드라인을 볼 때, 그 평균이 내 쪽 분포를 포함하는지 한 번 의심한다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 결론: <strong>약한 원화는 환율 뉴스가 아니라, 호황의 이익과 비용을 가르는 조용한 분배 장치다. 한 방짜리 탈출구를 찾기보다, 내가 어느 쪽 루프에 서 있는지를 정직하게 보는 것 — 그리고 그 분배를 평균 뒤에 숨기지 않고 함께 보는 것 — 이 첫걸음이다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">출처: Investing.com·TradingEconomics (USD/KRW·KOSPI, 2026-06), ING THINK·AMRO(한국 무역흑자·원화 약세·가계 레버리지, 2026-06), 5월 소비자물가·자영업 폐업 보도. 본 리포트는 정보 제공용이며 투자 권유가 아닙니다.</p>
+</blockquote>
+  </article>
+
+  
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
