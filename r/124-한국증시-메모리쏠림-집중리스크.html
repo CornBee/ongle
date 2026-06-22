@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한국 증시 1위도 2위도 ‘메모리 한 사이클’에 걸렸다 — 핵심 변수는 무엇인가 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="한국 증시 1위도 2위도 ‘메모리 한 사이클’에 걸렸다 — 핵심 변수는 무엇인가">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">순위가 바뀐 게 아니라, 한국 증시 1·2위가 모두 같은 메모리 한 사이클에 베팅됐다.</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["AI 붐 → HBM 수요 폭발"] --> B["삼성·SK하이닉스<br/>동시 최대 수혜"]
+    B --> C["증시 1위·2위가<br/>모두 같은 메모리 베팅"]
+    C --> D["코스피·국가 성장률이<br/>한 사이클에 연동"]
+    style A fill:#fff3e0
+    style D fill:#fff9c4
+</pre></div>
+    <div class="article-meta">2026-06-22 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#SK하이닉스</span> <span class="tag">#삼성전자</span> <span class="tag">#시총1위</span> <span class="tag">#HBM</span> <span class="tag">#집중리스크</span> <span class="tag">#메모리다운사이클</span> <span class="tag">#코스피9000</span> <span class="tag">#반도체횡재</span> <span class="tag">#외국인순매도</span> <span class="tag">#분산</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">한국 증시 1위도 2위도 ‘메모리 한 사이클’에 걸렸다 — 핵심 변수는 무엇인가</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 ‘SK하이닉스의 삼성 추월’의 다음 이야기입니다.</strong> 영상은 ‘누가 1등인가’를 다뤘다. 이 리포트는 그 1등 교체가 가린 더 큰 그림 — <strong>한국 증시와 경제가 동시에 한 제품 사이클에 묶였다는 사실</strong>을 본다. 누가 이겼나가 아니라, 모두가 같은 곳에 베팅했을 때 무엇이 위험해지는가. (정치·종목 평가 없음. 매수·매도 권유 아님.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 1위 교체가 가린 구조</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">순위가 바뀐 게 핵심이 아니다. <strong>1위와 2위가 같은 한 곳을 보고 있다는 것</strong>이 핵심이다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">보는 관점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이번 사건의 의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1등 경쟁으로 보면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SK하이닉스가 삼성을 앞섰다 (영상 주제)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">집중도로 보면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 증시 시총 1·2위가 <strong>둘 다 메모리</strong> — 분산이 아니라 쏠림</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄로: <strong>좋은 뉴스의 이면은, 한국 증시의 무게추가 ‘반도체’도 아니고 ‘메모리’도 아닌 ‘HBM 한 사이클’에 점점 더 모였다는 것이다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 세 개만</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>집중 리스크</strong> = 한 종목·한 업종에 자산이 몰려, 그 하나가 흔들리면 전체가 같이 흔들리는 위험.</li>
+<li style="margin:0.3em 0;"><strong>다운사이클</strong> = 메모리 반도체 특유의 가격 하락 국면. 공급이 늘고 수요가 식으면 가격이 빠르게 빠진다. 메모리는 역사적으로 호황과 불황을 반복해 왔다.</li>
+<li style="margin:0.3em 0;"><strong>횡재(windfall)</strong> = 노력보다 외부 호황으로 갑자기 들어온 이익. 여기서는 AI 붐으로 반도체에 몰린 이익을 가리킨다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 숫자 넷</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">숫자</th>
+<th style="text-align: right;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1·2위</td>
+<td style="text-align: right;">한국 증시 시총 1위와 2위가 <strong>둘 다</strong> 메모리 회사 (SK하이닉스·삼성전자)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">9,000+</td>
+<td style="text-align: right;">코스피가 넘어선 지수대 — 상승을 끈 건 사실상 두 반도체주</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">50년 만</td>
+<td style="text-align: right;">명목 성장률(물가까지 포함한 전체 성장 속도)이 50년 만에 가장 빠른 속도 — 반도체 이익이 견인</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">22거래일</td>
+<td style="text-align: right;">외국인이 연속 순매도한 기간 — 쏠린 장에 대한 경계 신호</td>
+</tr>
+</tbody>
+</table>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">위 수치는 ‘얼마나 좋아졌나’가 아니라 ‘얼마나 한쪽에 쏠렸나’를 보여주는 지표다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 왜 ‘1위 교체’보다 ‘쏠림’이 중요한가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">보통 증시 1위와 2위가 다른 산업이면, 한쪽이 흔들려도 다른 쪽이 받친다. 지금 한국은 그렇지 않다. 1위 SK하이닉스도, 2위 삼성전자도 이익의 핵심 동력이 같은 메모리, 그중에서도 AI에 들어가는 고부가 메모리다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">즉 코스피 상위가 <strong>서로 다른 두 베팅이 아니라, 같은 한 베팅을 두 번 한 모양</strong>에 가까워졌다. 잘 풀리면 같이 오르지만, 식으면 같이 내린다. 분산의 안전판이 그만큼 얇아졌다는 뜻이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 왜 위험할 수 있나 — 메모리는 ‘주기를 타는’ 산업이다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">메모리는 전기·자동차 같은 꾸준한 수요와 다르다. 공급이 한꺼번에 늘고 수요가 잠깐 식으면 가격이 급락하는, <strong>사이클이 뚜렷한 산업</strong>이다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    W["AI 수요 폭발 → 가격·이익 급등 (현재)"] --> X["증설 경쟁 + 수요 진정"]
+    X --> Y["공급 과잉 → 가격 하락 (다운사이클)"]
+    Y --> Z["이익 급감 → 쏠린 지수도 동반 충격"]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">지금은 사이클의 정점 부근이다. 문제는 정점일수록 ‘이 좋은 흐름이 계속될 것’이라는 기대가 지수에 더 많이 반영된다는 점이다. 외국인이 22거래일 연속 순매도한 것도, 좋은 실적과 별개로 <strong>쏠린 장의 가격에 대한 경계</strong>로 읽을 수 있다.</p>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상과 이어보면</strong> — 영상에서 본 ‘적자에서 흑자로의 전환’은 이 사이클이 얼마나 빠르게 뒤집힐 수 있는지를 보여주는 같은 산업의 직전 사례이기도 하다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 횡재는 어디로 흐르나 — 증시 밖의 쏠림</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">쏠림은 증시만의 문제가 아니다. 정부 정책 책임자도 최근 “반도체로 번 돈(횡재)이 경제 전체로 고르게 퍼지지 않고, 과거처럼 부동산으로 흘러갈 수 있다”는 취지의 우려를 공개적으로 밝혔다. 성장률 숫자는 50년 만에 가장 빠른데, 막상 많은 가계와 자영업자는 그 온기를 못 느낀다는 것이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정리하면 쏠림은 두 층에서 동시에 일어난다. <strong>증시에서는 시총 상위가 메모리로</strong>, <strong>경제에서는 이익이 일부 산업·자산으로</strong> 모인다. 1위 교체라는 화려한 뉴스 밑에 깔린 진짜 구조다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 그래서 무엇을 보면 되나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">지켜볼 것은 ‘누가 1등이냐’가 아니다. <strong>쏠림이 풀리는가, 더 조여지는가</strong>다. 실무적으로 세 가지를 보면 된다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>HBM 가격·재고 신호.</strong> AI 메모리 가격이 꺾이기 시작하는지가 사이클 정점의 첫 경보다.</li>
+<li style="margin:0.3em 0;"><strong>고객 집중도.</strong> 메모리 수요가 소수의 AI 큰손에 얼마나 의존하는지 — 큰손의 투자가 줄면 수요도 같이 준다.</li>
+<li style="margin:0.3em 0;"><strong>내 자산의 ‘실제 분산’.</strong> 코스피 지수나 국내 주식형 펀드를 들고 있다면, 그 안에서 사실상 같은 메모리 베팅에 얼마나 노출됐는지를 한 번 확인할 가치가 있다. (특정 종목 추천이 아니라, 노출을 ‘사이클 단위’로 보자는 뜻이다.)</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 결론: <strong>이번 1위 교체는 한국 증시가 ‘반도체 한 줄’이 아니라 ‘HBM 한 사이클’에 묶였다는 신호다. 좋은 국면일수록, 분산이 얇아진 지점을 같이 보는 게 안전하다.</strong></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">출처: Reuters·Investing.com·Yahoo Finance·Business Standard (2026-06-22 SK하이닉스 시총 1위), Bloomberg(2026-06-22 정책실장 반도체 횡재·부동산 리스크 발언), 코스피·외국인 수급 보도. 본 리포트는 정보 제공용이며 투자 권유가 아닙니다.</p>
+</blockquote>
+  </article>
+
+  
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
