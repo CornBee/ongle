@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>값을 밀어올리기 전에, 문부터 닫혀 있었다 — ONGLE</title>
+<meta name="description" content="금융당국이 2년간 적발한 코인 시세조종 수법들을 실행 방식이 아니라 성립 조건으로 다시 보면, 공통 전제는 매수 자금이 아니라 차익거래 통로의 차단이다. 통로가 살아 있으면 밖에서 들어오는 되돌림 물량 때문에 유지 비용이 발산한다. 그리고 통로가 닫혔다는 사실은 법상 사전 통지·금융위 보고 의무 대상이라 거래소 공지에 먼저 뜬다. 다만 차단은 필요조건이지 충분조건이 아니다.">
+<meta property="og:title" content="값을 밀어올리기 전에, 문부터 닫혀 있었다">
+<meta property="og:description" content="금융당국이 2년간 적발한 코인 시세조종 수법들을 실행 방식이 아니라 성립 조건으로 다시 보면, 공통 전제는 매수 자금이 아니라 차익거래 통로의 차단이다. 통로가 살아 있으면 밖에서 들어오는 되돌림 물량 때문에 유지 비용이 발산한다. 그리고 통로가 닫혔다는 사실은 법상 사전 통지·금융위 보고 의무 대상이라 거래소 공지에 먼저 뜬다. 다만 차단은 필요조건이지 충분조건이 아니다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">값을 밀어올리기 전에, 문부터 닫혀 있었다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    P["누군가 값을 인위적으로 올림"] --> Q{"이 거래소 밖으로<br/>코인을 옮길 수 있나?"}
+    Q -->|"문 열림 (평소)"| A["밖에서 싸게 사서<br/>여기로 보내 판다"]
+    A --> A2["매도 물량이 밀려들어옴"]
+    A2 --> A3["값이 원래대로 끌려 내려감<br/>= 조종 비용이 감당 불가"]
+    Q -->|"문 닫힘 (입출금 중단)"| B["밖에서 사와도<br/>여기로 보낼 수 없다"]
+    B --> B2["되돌릴 매도 물량이 안 들어옴"]
+    B2 --> B3["올린 값이 그대로 유지됨<br/>= 조종이 성립"]
+    style A3 fill:#e3f2fd
+    style B3 fill:#ffe0e0
+</pre></div>
+    <div class="article-meta">2026-07-20 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">값을 밀어올리기 전에, 문부터 닫혀 있었다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-20 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 세 가지 수법 이름의 다음 이야기입니다.</strong> 영상은 금융당국이 2년간 무엇을 얼마나 적발했고 그 수법에 어떤 이름이 붙었는지를 다뤘다. 이 리포트는 한 걸음 뒤 — <strong>그 수법들이 작동하려면 매수세보다 먼저 갖춰져야 했던 조건</strong>과, 그 조건이 어디에 공개되는지를 본다. (특정 종목 추천·투자 자문 아님. 아래 내용은 특정 사건의 혐의 사실을 단정하지 않는다.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 값을 되돌리는 힘은 &lsquo;나가는 문&rsquo;에서 나온다</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가격을 올리는 일은 돈만 있으면 누구나 시도할 수 있다. 어려운 건 <strong>올린 값을 유지하는 일</strong>이다. 그리고 그 유지를 방해하는 힘은 감시가 아니라, 밖에서 코인이 흘러들어올 수 있는 통로에서 나온다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이게 남 얘기가 아닌 이유는 하나다. 이 통로가 닫혔다는 사실은 비밀이 아니라 <strong>거래소 공지사항에 뜬다.</strong> 다만 그 공지를 위험 신호로 읽는 사람이 드물 뿐이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 셋</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>차익거래(아비트라지)</strong> = 같은 물건이 A거래소에서 100원, B거래소에서 120원이면 A에서 사서 B로 옮겨 파는 것. 이 거래가 반복되면 두 곳의 값이 저절로 붙는다. 코인 값이 거래소마다 크게 안 벌어지는 이유가 이것이다.</li>
+<li style="margin:0.3em 0;"><strong>입출금 중단</strong> = 그 거래소에서 특정 코인을 바깥으로 보내거나 바깥에서 받아오는 기능을 잠그는 것. 매매는 계속되는데 이동만 막힌다. 그래서 그 거래소는 잠시 <strong>닫힌 수조</strong>가 된다.</li>
+<li style="margin:0.3em 0;"><strong>유의종목 지정</strong> = 거래소가 &ldquo;이 코인에 문제 소지가 있어 살펴보는 중&rdquo;이라고 공개 표시하는 단계. 사유가 안 풀리면 거래지원 종료(상장폐지)로 간다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 · 이 글이 보는 네 가지</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전제</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시세조종의 필요조건은 매수 자금이 아니라 <strong>차익거래 통로의 차단</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이유</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통로가 살아 있으면 되돌림 물량 때문에 유지 비용이 발산한다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공개성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통로 차단은 법상 <strong>사전 통지 + 금융위 즉시 보고</strong> 의무 대상이다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한계</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차단은 필요조건이지 충분조건이 아니다 — 대부분의 차단은 정상 사유다</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 왜 열린 문 앞에서는 조종이 비싸지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">값을 올린 쪽의 진짜 적은 규제기관이 아니라 <strong>밖에서 들어오는 물량</strong>이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 거래소에서만 값이 30% 튀었다고 하자. 통로가 열려 있으면 누군가는 다른 거래소에서 싸게 사서 이곳으로 옮겨 판다. 그 매도 물량을 계속 사줘야 값이 유지되는데, 밖의 공급은 사실상 무제한이다. 올린 쪽은 밖의 시장 전체를 상대로 물량을 받아내야 하고, 그 순간 조종 비용은 발산한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">통로가 닫히면 이 구조가 통째로 사라진다. 밖의 값이 아무리 싸도 그 코인을 이곳으로 들여올 수 없으니, 이 거래소 안에 이미 있는 물량만이 전부가 된다. 상대해야 할 매도 압력이 유한해지고, <strong>필요한 자금 규모가 현실적인 크기로 줄어든다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 이번 발표에 등장한 이름들의 관계가 정리된다. 값을 어떻게 미느냐 — 여러 종목을 동시에 치는지, 큰돈으로 오래 붙잡고 있는지 — 는 실행 방식의 차이다. 그 방식들이 통하려면 <strong>먼저 물량이 새어 들어올 구멍이 막혀 있어야 한다.</strong> 이름이 다른 수법들은 실행 방식의 분류지, 성립 조건의 분류가 아니다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 문은 어떻게 닫히나 — 그리고 그건 공개된다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">통로가 닫히는 경로는 대체로 넷이다.</p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>네트워크·지갑 점검</strong> — 해당 블록체인의 업그레이드나 거래소 지갑 정기 점검. 보통 짧고 사전 예고된다.</li>
+<li style="margin:0.3em 0;"><strong>보안 사고 대응</strong> — 해당 코인이나 연결 브릿지에서 사고가 확인돼 피해 확산을 막기 위해 잠그는 경우.</li>
+<li style="margin:0.3em 0;"><strong>유의종목 지정</strong> — 문제 소지가 확인돼 살펴보는 단계. 국내 원화 거래소들은 공동협의체(DAXA)를 통해 유의촉구·유의종목 지정·거래지원 종료 같은 조치를 함께 취한다.</li>
+<li style="margin:0.3em 0;"><strong>거래지원 종료 예고</strong> — 상장폐지가 예고된 구간. 종료 이후에도 일정 기간 출금만 열어두는 방식이 일반적이다.</li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 이 넷 모두 <strong>조용히 일어날 수 없다는 점</strong>이다. 「가상자산 이용자 보호 등에 관한 법률」은 사업자가 정당한 사유 없이 이용자의 입출금을 차단하는 것을 금지하고, 차단하는 경우에는 그 사유를 <strong>미리 이용자에게 통지</strong>하고 그 사실을 <strong>금융위원회에 즉시 보고</strong>하도록 정하고 있다. 같은 법은 거래소에 이상거래 상시감시 의무와, 불공정거래로 의심될 때 당국에 지체 없이 통보할 의무도 지운다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정리하면 이렇다. 조종에 필요한 전제조건은 감춰지는 종류의 정보가 아니라, <strong>거래소 공지사항이라는 공개 게시판에 먼저 뜨는 정보</strong>다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 그래서 이 구조가 뒤집어 놓는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">투자자가 코인 공지를 읽는 관습은 대체로 이렇다. 상장·제휴·업그레이드는 호재로, 유의종목·상장폐지는 악재로, 입출금 점검은 <strong>아무것도 아닌 것</strong>으로 분류한다. 세 번째 칸이 문제다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">입출금 중단 공지는 사고를 막기 위한 안내의 형식을 띤다. 실제로 대부분은 정확히 그 목적이고, 이용자 보호 조치가 맞다. 그런데 같은 조치가 시장 구조 측면에서 하는 일은 <strong>가격을 되돌리는 복원력을 일시적으로 제거하는 것</strong>이다. 의도와 무관하게, 그 구간의 가격은 평소보다 훨씬 적은 힘으로 움직인다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그러면 개인이 실제로 바꿀 수 있는 건 판단의 순서다. 값이 튀는 종목을 볼 때 먼저 묻는 질문이 &ldquo;왜 오르지?&rdquo;가 아니라 <strong>&ldquo;지금 이거 밖으로 내보낼 수 있나?&rdquo;</strong> 가 되는 것. 이 질문은 호재의 진위를 가리는 것보다 훨씬 쉽고, 답이 거래소 공지 한 줄에 이미 나와 있다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 정직한 경계</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">주장을 과장하지 않기 위해 세 가지를 분명히 해둔다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>차단은 필요조건이지 충분조건이 아니다.</strong> 입출금이 멈춘 종목이 곧 조종당하고 있다는 뜻은 전혀 아니다. 압도적 다수의 중단 공지는 점검이나 사고 대응이고 그대로 정상 복구된다. 이 글이 말하는 방향은 반대다 — 조종이 성립한 사건들을 뒤에서 보면 그 조건이 깔려 있었다는 것이지, 조건이 있으면 조종이 있다는 것이 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>모든 유형이 이 하나로 설명되지는 않는다.</strong> 이번 발표에는 발행재단이나 해외거래소와 연계된 사건, 밈코인을 발행한 뒤 소셜미디어에 허위 호재를 퍼뜨린 부정거래처럼 통로 차단과 무관한 경로도 함께 들어 있다. 통로 조건은 전체를 여는 열쇠가 아니라 한 종류의 열쇠다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>개인이 할 수 있는 일에는 한계가 있다.</strong> 공지를 읽어 피하는 건 개인의 몫으로 가능하지만, 이미 갇힌 뒤에 값이 무너진 경우 개인에게 회복 경로는 사실상 없다. 당국이 검토 중인 가상자산 계정·은행계좌 지급정지 제도와 신고·포상금 제도가 겨냥하는 자리가 정확히 여기다 — 개인의 주의력으로 못 막는 부분을 구조로 막겠다는 것이다. 다만 그 입법이 어떤 형태로 들어올지는 아직 확정되지 않았다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">시세조종을 가늠하는 눈금은 &ldquo;누가 얼마나 샀나&rdquo;가 아니라 <strong>&ldquo;되돌릴 물량이 들어올 수 있나&rdquo;</strong> 다. 앞의 것은 사후에만 알 수 있고, 뒤의 것은 지금 확인할 수 있다.</li>
+<li style="margin:0.3em 0;">코인 공지를 읽는 순서를 바꿔볼 수 있다. 호재 공지보다 <strong>입출금 상태 공지가 먼저</strong>다. 값이 튀는 구간에 이동이 잠겨 있다면, 그 값은 평소보다 훨씬 얇은 힘으로 만들어진 값이다.</li>
+<li style="margin:0.3em 0;">다만 이건 위험을 줄이는 습관이지 안전을 보장하는 규칙이 아니다. 구조 쪽 해법이 붙어야 개인의 주의력이 감당하는 몫이 줄어든다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">디지털자산기본법 2단계 입법에 계정·계좌 지급정지와 신고·포상금이 실제로 담기는지, 그리고 지급정지의 발동 요건이 어디까지로 정해지는지.</li>
+<li style="margin:0.3em 0;">입출금 차단 사유의 사전 통지·당국 보고가 실무에서 얼마나 구체적으로 이뤄지는지 — 통지가 형식적이면 이 신호 자체가 무의미해진다.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">헤럴드경제, &ldquo;코인판 휘젓는 &lsquo;경주마·가두리·대형고래&rsquo;…2년간 불공정거래 30여건 수사 넘겼다&rdquo;, 2026-07-19 — https://biz.heraldcorp.com/article/10812813</li>
+<li style="margin:0.3em 0;">한국경제, &ldquo;경주마·가두리·대형고래… 가상자산 시세조종 2년 들여다보니&rdquo;, 2026-07-19 — https://www.hankyung.com/article/202607192400i</li>
+<li style="margin:0.3em 0;">머니투데이, &ldquo;금융당국, 코인 시세조종 &lsquo;40여건&rsquo; 잡았다…신고포상금 도입 검토&rdquo;, 2026-07-19 — https://www.mt.co.kr/stock/2026/07/19/2026071909295683281</li>
+<li style="margin:0.3em 0;">국가법령정보센터, 「가상자산 이용자 보호 등에 관한 법률」 (입출금 차단 금지·사유 사전 통지·금융위 보고, 이상거래 상시감시) — https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=261099</li>
+<li style="margin:0.3em 0;">금융위원회 보도자료, &ldquo;「가상자산이용자보호법」 시행 안내&rdquo; — https://www.fsc.go.kr/no010101/82682</li>
+<li style="margin:0.3em 0;">김·장 법률사무소, &ldquo;가상자산 이용자 보호 등에 관한 법률안의 주요 내용&rdquo; — https://www.kimchang.com/ko/insights/detail.kc?sch_section=4&amp;idx=27420</li>
+<li style="margin:0.3em 0;">업비트, &ldquo;거래지원 종료안내 및 거래 유의종목 지정 정책&rdquo; — https://static.upbit.com/guide/market_policy_close.pdf</li>
+<li style="margin:0.3em 0;">업비트 공지, 유의종목 지정 및 입출금 중단 안내 사례 — https://upbit.com/service_center/notice?id=5892</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
