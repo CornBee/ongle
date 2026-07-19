@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신용이 줄어든 게 아니라, 위험의 주인이 바뀌었다 — ONGLE</title>
+<meta name="description" content="금융위 하반기 업무보고의 두 축(산업 쪽 통로 확대·가계대출 억제)을 한 회계로 읽으면, 바뀐 것은 신용의 총량이 아니라 실패 시 손실을 먼저 맞는 자리다. 보증 100%와 지분투자는 개인의 담보를 공공의 장부로 대체한다. 그래서 이 설계의 성패를 재는 눈금은 공급 규모가 아니라 대위변제율이다.">
+<meta property="og:title" content="신용이 줄어든 게 아니라, 위험의 주인이 바뀌었다">
+<meta property="og:description" content="금융위 하반기 업무보고의 두 축(산업 쪽 통로 확대·가계대출 억제)을 한 회계로 읽으면, 바뀐 것은 신용의 총량이 아니라 실패 시 손실을 먼저 맞는 자리다. 보증 100%와 지분투자는 개인의 담보를 공공의 장부로 대체한다. 그래서 이 설계의 성패를 재는 눈금은 공급 규모가 아니라 대위변제율이다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">신용이 줄어든 게 아니라, 위험의 주인이 바뀌었다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    S["가계가 조달하던 신용"] --> OLD["예전 경로<br/>담보(집) 잡고 은행 대출"]
+    S --> NEW["새 경로<br/>보증·지분으로 산업에 투입"]
+    OLD --> O2["실패하면<br/>집을 잃는 건 차주"]
+    NEW --> N1["보증부 대출<br/>못 갚으면 보증기관이 대신 갚음"]
+    NEW --> N2["지분투자<br/>망하면 원금이 그냥 사라짐"]
+    N1 --> N3["손실 = 공공 재정"]
+    N2 --> N3
+    style OLD fill:#e3f2fd
+    style NEW fill:#fff3e0
+    style N3 fill:#ffe0e0
+</pre></div>
+    <div class="article-meta">2026-07-19 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">신용이 줄어든 게 아니라, 위험의 주인이 바뀌었다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 &lsquo;두 개의 문&rsquo;의 다음 이야기입니다.</strong> 영상은 같은 날 한 문이 넓어지고 한 문이 좁아진 장면을 다뤘다. 이 리포트는 그 한 걸음 뒤 — <strong>두 문을 잇는 관의 끝에 누가 서 있고, 실패했을 때 손실을 실제로 떠안는 손이 어디로 옮겨 앉는지</strong>를 본다. (특정 종목 추천·정치 평가 없음. 투자 자문 아님.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 손실을 먼저 맞는 자리가 이동한다</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈의 양이 줄거나 는 이야기가 아니다. <strong>손실이 발생했을 때 그 손실을 먼저 맞는 자리</strong>가 개인의 담보에서 공공의 장부로 옮겨 앉는 이야기다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이게 남 얘기가 아닌 이유는 두 가지다. 대출 한도가 줄어든 쪽에 서 있다면 내 조달 경로가 바뀐 것이고, 그렇지 않더라도 공공의 장부는 결국 세금으로 메워진다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 셋</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>보증부 대출</strong> = 은행이 빌려주되, 못 갚으면 보증기관이 대신 갚기로 약속하고 내주는 대출. 보증 비율이 100%면 은행은 손실 위험이 사실상 0이다.</li>
+<li style="margin:0.3em 0;"><strong>대위변제(代位辨濟)</strong> = 차주가 못 갚아서 보증기관이 대신 갚는 것. 이 비율이 그 제도의 실제 원가다.</li>
+<li style="margin:0.3em 0;"><strong>인내자본(patient capital)</strong> = 10년 넘게 회수를 기다릴 수 있는 돈. 실패 확률이 높은 원천기술에 민간 돈이 안 가는 이유가 이 인내심의 부재고, 정부가 메우려는 자리도 정확히 여기다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 · 이 글이 보는 네 가지</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지렛대</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">변한 건 신용의 총량이 아니라 <strong>위험의 소유자</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">방향</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">담보 잡힌 개인 → 보증기관·정책 운용사(공공 장부)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이유</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">담보로는 못 사는 것을 사려는 것 — 실패 확률이 높은 원천기술</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원가</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대위변제율. 이 숫자가 이 설계의 청구서다</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 관의 끝에 서 있는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">관의 하류에는 두 개의 새 그릇이 놓였다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">하나는 <strong>보증</strong>이다. 영상에서 본 전액 보증 조건이 은행 쪽에서 뜻하는 바는 하나다 — 빌려주고도 손실 위험을 지지 않으므로, 은행은 심사자가 아니라 창구가 된다. 그러면 걸러내는 일은 전부 보증기관 몫이 되고, 그 기관의 크기가 이 통로의 실제 크기를 정한다. 신용보증기금의 2026년 보증 총량은 76.5조 원으로 전년 75.6조 원에서 늘었고, 그중 창업·수출·주력산업에 39.0조 원, 고용창출·미래전략산업에 22.0조 원이 배정돼 있다. 새 청년 창업 상품은 이 큰 그릇 안의 한 국자다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다른 하나는 <strong>지분</strong>이다. 정부는 연내 산업은행과 한국성장금융을 주축으로 민간 금융사가 참여하는 전문 운용사(가칭 한국전략기술파트너스, KSTP)를 세워 매년 1~2조 원씩 5년간 최대 10조 원을 굴릴 계획이다. 투자 대상으로 거명된 것은 양자 슈퍼컴퓨팅, 포스트-나노 AI 반도체, 역분화줄기세포 — 공통점은 <strong>실패 확률이 높고 회수까지 10년 이상 걸린다는 것</strong>이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 설계 의도가 드러난다. 담보 잡고 빌려주는 방식으로는 살 수 없는 물건을 사려는 것이다. 담보는 이미 있는 자산을 근거로 하는데, 원천기술에는 담보 잡을 자산이 아직 없다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. 그래서 손실은 누가 맞나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">담보 대출의 세계에서 실패의 청구서는 명확했다. 못 갚으면 집이 넘어간다. 손실을 맞는 손은 차주였고, 은행은 담보 뒤에 서 있었다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">새 경로에서는 이 순서가 바뀐다. 보증부 대출이 부실해지면 보증기관이 대신 갚고(대위변제), 그 돈은 공공 재정에서 나간다. 지분투자가 실패하면 대신 갚아줄 사람도 없이 원금이 소멸한다. 어느 쪽이든 <strong>손실을 먼저 맞는 자리는 개인이 아니라 공공의 장부</strong>다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이건 비판이 아니라 이 설계의 목적 그 자체다. 개인이 못 지는 위험을 사회가 대신 지기로 한 것이고, 실패 확률이 높은 기술에 돈을 보내려면 그 방법밖에 없다. 다만 그렇다면 <strong>이 제도의 진짜 가격표는 공급 규모가 아니라 부실률</strong>이라는 결론이 따라온다. 참고로 성격이 다른 제도이긴 하나, 서민금융진흥원의 대위변제율은 2025년 19.3%에서 2029년 29.8%까지 오를 것으로 전망돼 있다 — 보증 기반 제도가 시간이 지나며 어떤 원가 곡선을 그리는지 보여주는 사례다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 왜 두 문이 한 세트인가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가계대출을 조이는 조치와 산업 쪽 관을 넓히는 조치를 따로 읽으면 서로 모순돼 보인다. 같은 회계 안에 놓으면 모순이 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">경제 전체가 감당할 수 있는 신용에는 한계가 있다. 그 한계 안에서 신용이 부동산 담보로 흘러가면 자산 가격이 오르고, 산업으로 흘러가면 설비와 기술이 는다. 한쪽 밸브를 잠그지 않으면 다른 쪽 관을 아무리 넓혀도 물이 안 간다. <strong>두 조치는 반대 방향이 아니라 같은 배관 작업의 앞뒤 공정</strong>이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 해석이 맞다면 검증 가능한 예측이 하나 따라온다. 산업 쪽 관이 넓어지는 동안 가계 쪽 밸브가 다시 열린다면, 배관 공사는 실패한 것이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 정직한 경계</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 구조가 반드시 작동한다고 말할 근거는 아직 없다. 최소 세 가지가 결과를 가른다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>선별</strong>. 담보라는 필터를 뺀 자리를 무엇이 대신하는가. 대안신용평가 같은 새 잣대가 담보만큼의 변별력을 갖는지는 아직 실적이 없다. 잣대가 헐거우면 통로는 넓어지되 부실만 빨리 쌓인다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>시차</strong>. 원천기술 투자는 10년 뒤에 답이 나오는데 예산과 정권은 그보다 짧은 주기로 돈다. 인내자본을 표방한 자금이 실제로 인내할 수 있는지는 아직 증명된 바 없다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>접근의 실제 폭</strong>. 통로가 열려도 요건(연령·업력·보증 심사)에 닿지 않는 사람에게는 없는 통로와 같다. 집을 못 사게 된 청년이 자동으로 창업가나 투자자가 되지는 않는다. 이 지점에 개인의 깔끔한 해법은 없고, 그 사실을 정확히 아는 것이 지금 할 수 있는 일에 가깝다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론 · 그래서 무엇을 보면 되나</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">이 발표에서 바뀐 핵심은 돈의 액수가 아니라 <strong>위험이 놓인 자리</strong>다. 개인의 담보에서 공공의 장부로 옮겨 앉았다.</li>
+<li style="margin:0.3em 0;">따라서 성패를 재는 눈금은 공급 규모(몇 조)가 아니라 <strong>부실률과 회수율</strong>이다. 규모 발표는 입력값이고, 대위변제율은 결과값이다.</li>
+<li style="margin:0.3em 0;">통로가 열렸다는 소식을 들었다면, 실제로 확인할 것은 규모가 아니라 <strong>내 조건이 그 요건 안에 들어가는지</strong>다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">KSTP의 법인 설립·라이선스 취득이 예정대로 연내에 끝나고 첫 투자가 집행되는지 — 인내자본의 인내심을 재는 첫 시험이다.</li>
+<li style="margin:0.3em 0;">가계대출 총량 관리 기조가 부동산 대책 발표 이후에도 유지되는지 — 밸브가 다시 열리면 배관 해석 자체가 무너진다.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;&lsquo;청년이 체감하는 금융&rsquo;…창업대출 2천억·자산형성 프로그램 추진[금융위 하반기 업무보고]&rdquo;, 2026-07-15 — https://www.fnnews.com/news/202607151020314662</li>
+<li style="margin:0.3em 0;">더쎈뉴스, &ldquo;정부, 국민성장펀드 200조 확대…대출 문턱은 더 높인다&rdquo;, 2026-07-15 — https://www.mhns.co.kr/news/articleView.html?idxno=753463</li>
+<li style="margin:0.3em 0;">머니투데이, &ldquo;&lsquo;10조 투입해 한국형 팔란티어 키운다&rsquo; 미래기술 특화 운용사 설립&rdquo;, 2026-07-15 — https://www.mt.co.kr/stock/2026/07/15/2026071508351481114</li>
+<li style="margin:0.3em 0;">이투데이, &ldquo;국민성장펀드 200조로 키운다…&lsquo;10년 투자&rsquo; KSTP 내년 가동 [업무보고]&rdquo;, 2026-07-15 — https://www.etoday.co.kr/news/view/2603930</li>
+<li style="margin:0.3em 0;">신용보증기금 2026 업무계획 (보증 총량 76.5조 원 및 부문별 배분) — https://www.kodit.co.kr/kodit/cm/cntnts/cntntsView.do?mi=2531&amp;cntntsId=11071</li>
+<li style="margin:0.3em 0;">G.ECONOMY, &ldquo;서민금융진흥원 보증잔액 8조 넘어섰다. 대위변제율 5년내에 30% 전망&rdquo; — https://www.geconomy.co.kr/news/article.html?no=321758</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
