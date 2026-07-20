@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>수수료를 0으로 내려도 이길 수 없는 자리가 있다 — ONGLE</title>
+<meta name="description" content="앱마켓 경쟁에는 축이 둘 있다. 가격축(수수료·할인)은 후발 주자가 자기 돈으로 움직일 수 있지만, 시간축(여기에 먼저 나오는 신작)은 게임사가 정하기 때문에 후발 주자가 못 건드린다. 동등성 조항은 바로 그 시간축을 0으로 고정한다. 동시 입점된 상위 50개 게임만 놓고 보면 원스토어 거래액 점유율이 49.2%인데 전체 시장에서는 12.6%라는 간격이, 후발 스토어의 문제가 이용자가 아니라 입점이었음을 보여준다. 신작 매출이 초기에 쏠리는 시장에서 &#x27;먼저는 안 돼&#x27;는 사실상 &#x27;오지 마&#x27;에 가까워진다.">
+<meta property="og:title" content="수수료를 0으로 내려도 이길 수 없는 자리가 있다">
+<meta property="og:description" content="앱마켓 경쟁에는 축이 둘 있다. 가격축(수수료·할인)은 후발 주자가 자기 돈으로 움직일 수 있지만, 시간축(여기에 먼저 나오는 신작)은 게임사가 정하기 때문에 후발 주자가 못 건드린다. 동등성 조항은 바로 그 시간축을 0으로 고정한다. 동시 입점된 상위 50개 게임만 놓고 보면 원스토어 거래액 점유율이 49.2%인데 전체 시장에서는 12.6%라는 간격이, 후발 스토어의 문제가 이용자가 아니라 입점이었음을 보여준다. 신작 매출이 초기에 쏠리는 시장에서 &#x27;먼저는 안 돼&#x27;는 사실상 &#x27;오지 마&#x27;에 가까워진다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">수수료를 0으로 내려도 이길 수 없는 자리가 있다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TB
+    G["앱마켓이 이용자를 끌어오는 축"]
+    G --> P["① 가격축<br/>수수료·할인·적립"]
+    G --> T["② 시간축<br/>여기에 먼저 나오는 신작"]
+    P --> PO["후발 주자가<br/>자기 돈으로 움직일 수 있음"]
+    T --> TO["게임사가 정함<br/>후발 주자는 못 건드림"]
+    TO -.동등성 조항이<br/>여기를 0으로 고정.-> X["시차 = 0"]
+    X --> R["가격축에서 이겨도<br/>옮겨 올 이유가 안 생김"]
+    style T fill:#ffe0e0
+    style TO fill:#ffe0e0
+    style X fill:#ffe0e0
+    style P fill:#e3f2fd
+    style PO fill:#e3f2fd
+</pre></div>
+    <div class="article-meta">2026-07-21 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#플랫폼</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">수수료를 0으로 내려도 이길 수 없는 자리가 있다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-21 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.
+공정위 심의는 진행 중이며 위법 여부는 확정되지 않았습니다. 아래는 이런 유형의 계약 조항이 경쟁에 어떻게 작동하는지에 관한 설명입니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>영상에서 본 그 계약의 다음 이야기입니다.</strong> 영상은 공정위가 무엇을 문제 삼았고 그 계약에 어떤 조건이 들어 있었는지를 다뤘다. 이 리포트는 그다음 — <strong>왜 후발 앱마켓은 수수료를 아무리 깎아도 그 조건을 못 넘는가</strong>를 본다. (특정 종목 추천·투자 자문 아님.)</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 · 두 개의 경쟁 축, 하나만 잠긴다</h2>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">플랫폼 독점 이야기는 대개 수수료율 싸움으로 정리된다. 그래서 &ldquo;후발 스토어가 수수료를 낮추면 언젠가 균형이 돌아온다&rdquo;가 자연스러운 결론이 된다. 그런데 앱마켓에는 <strong>후발 주자가 자기 힘으로는 못 움직이는 축이 하나 더 있다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이게 남 얘기가 아닌 이유: 내가 쓰는 스토어에 신작이 언제 뜨는지, 그리고 그 스토어가 주는 할인이 왜 체감상 힘을 못 쓰는지가 여기서 갈린다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저 · 낯선 말 넷</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>최혜대우(MFN) 조항</strong> = 거래 상대에게 &ldquo;다른 곳보다 나쁘게 대하지 말라&rdquo;고 요구하는 계약 조항. 가격에 걸면 &ldquo;다른 데보다 싸게 팔지 마라&rdquo;가 되고, 시점에 걸면 &ldquo;다른 데보다 먼저 내지 마라&rdquo;가 된다.</li>
+<li style="margin:0.3em 0;"><strong>배타조건부거래</strong> = 상대가 경쟁 사업자와 거래하지 못하도록 묶는 행위. 공정거래법이 시장지배적 사업자에게 특히 엄격하게 보는 유형이다.</li>
+<li style="margin:0.3em 0;"><strong>거래액 점유율</strong> = 그 스토어를 통해 실제로 결제된 금액 기준의 몫. 앱 설치 수가 아니라 돈이 흐른 양이다.</li>
+<li style="margin:0.3em 0;"><strong>ARPPU</strong> = 실제로 돈을 쓴 이용자 한 명당 평균 결제액. 이용자가 몇 명인가가 아니라 한 명이 얼마 쓰나를 본다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심 · 이 글이 보는 네 가지</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전제</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">후발 앱마켓의 문제는 이용자가 안 와서가 아니라 <strong>게임이 안 들어와서</strong>다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">증거</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">들어오기만 하면 후발 스토어가 거래액 <strong>절반 가까이</strong>를 가져간다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">잠금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">동등성 조항은 후발 주자가 <strong>돈으로 못 만드는 자산</strong>(먼저 나옴)을 0으로 고정한다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">귀결</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신작 매출이 초기에 쏠리는 시장에서 &ldquo;먼저는 안 돼&rdquo;는 사실상 &ldquo;오지 마&rdquo;에 가까워진다</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 1. 후발 스토어의 문제는 이용자가 아니다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 결정적인 숫자가 하나 있다. 2025년 상반기, <strong>구글 플레이와 원스토어에 동시 입점된 상위 매출 50개 게임만 놓고 보면 원스토어의 거래액 점유율은 49.2%</strong>였다. 장르를 쪼개면 시뮬레이션 64.8%, 스포츠 74.3%로 오히려 앞선다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 회사를 전체 시장으로 넓혀 보면 그림이 뒤집힌다. 2020년 하반기부터 2025년 상반기까지 5년간 원스토어의 국내 거래액 점유율은 <strong>12.6%</strong>다. 애플 앱스토어(12.3%)를 겨우 앞선 2위다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 두 숫자의 간격이 이 글의 출발점이다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기준</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">원스토어 몫</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전체 시장 거래액 (5년 누적)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">12.6%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>동시 입점된 상위 50개 게임만</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>49.2%</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 회사가 어떤 조건에서는 12%, 어떤 조건에서는 49%를 가져간다. 조건의 차이는 하나다 — <strong>그 게임이 거기 있었느냐.</strong> 이용자가 후발 스토어를 싫어해서 안 간 게 아니다. 갈 이유가 되는 게임이 거기 없었을 뿐이다. 원스토어의 ARPPU가 구글 플레이의 약 5배라는 지표도 같은 방향을 가리킨다. 남아 있는 이용자는 오히려 지갑이 두껍다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그래서 후발 앱마켓의 진짜 경쟁 변수는 &lsquo;이용자 유치&rsquo;가 아니라 &lsquo;입점 확보&rsquo;다. 그리고 입점을 정하는 건 스토어가 아니라 게임사다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 2. &ldquo;먼저는 안 돼&rdquo;가 왜 &ldquo;오지 마&rdquo;와 같아지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">동등성 조항은 표면적으로는 아무것도 금지하지 않는다. 다른 스토어에 내도 된다. <strong>다만 먼저는 안 되고, 품질도 더 좋게는 안 된다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이게 왜 치명적인지는 모바일 게임의 매출 곡선을 보면 드러난다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    L["출시일"] --> W1["1주차<br/>사전예약 전환·초기 결제 폭발"]
+    W1 --> M1["1개월<br/>순위·리뷰·커뮤니티 고착"]
+    M1 --> T["이후<br/>완만한 하강"]
+    style W1 fill:#ffe0e0
+    style M1 fill:#fff0d0
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">신작 모바일 게임은 초기에 매출이 몰린다. 출시 열흘 만에 1억 달러를 넘긴 사례가 나올 만큼, 출시 전 미리 예약해 둔 이용자가 첫날 한꺼번에 들어와 결제하는 몫이 게임 수명 전체에서 차지하는 비중이 크다. 초기 순위에 오르면 노출이 늘고, 노출이 늘면 결제가 늘고, 그 결과가 다시 순위를 굳힌다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그렇다면 후발 스토어가 가질 수 있었던 유일한 무기는 <strong>&ldquo;여기서 먼저 받으세요&rdquo;</strong>였다. 며칠 먼저 열어 주는 것만으로 이용자가 앱을 새로 깔 이유가 생긴다. 스토어 경쟁에서 선출시·독점 콘텐츠가 반복해서 쓰이는 이유다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">동등성 조항은 정확히 그 무기를 뺏는다. 시차가 0이면 이용자는 굳이 다른 앱을 새로 깔 이유가 없다. 이미 깔려 있는 스토어에서 같은 날 같은 게임을 받으면 되니까.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>이 상태에서 후발 스토어가 수수료를 0으로 내리면 어떻게 되나?</strong> 게임사의 정산 몫은 늘지만, 이용자가 그 스토어를 선택할 이유는 거의 그대로다. 이용자에게 보이는 건 수수료율이 아니라 &ldquo;언제 받을 수 있나&rdquo;이기 때문이다. 가격축의 승리가 시간축으로 번역되지 않는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">경쟁법 문헌이 플랫폼 MFN을 다룰 때 지적하는 우려는 보통 세 가지다 — 가격 경쟁 축소, 담합 촉진, 경쟁자 배제. 여기서 작동하는 건 세 번째다. 게다가 이 조항은 가격이 아니라 <strong>출시 시점</strong>에 걸려 있어서, 가격 인하로는 상쇄할 방법이 없다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 3. 강제하지 않고 배제하는 법</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">또 하나 눈여겨볼 지점은 이 구조가 <strong>금지가 아니라 보상의 형태</strong>를 띤다는 것이다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["게임사가 동등성 조건 수락"] --> B["플랫폼 서비스 이용 비용 지원"]
+    B --> C["그 스토어 매출 증가"]
+    C --> D["지원 금액도 함께 증가"]
+    D --> A
+    style D fill:#ffe0e0
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">지원금이 그 스토어의 매출에 연동돼 커지는 구조라면, 게임사 입장에서 <strong>경쟁 스토어를 키우는 행동은 자기 지원금을 깎는 행동</strong>이 된다. 누가 시키지 않아도 스스로 경쟁 스토어를 후순위로 미룰 유인이 생긴다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 차이가 실무적으로 중요하다. 계약서에 &ldquo;경쟁 스토어에 내지 마라&rdquo;라고 적혀 있으면 누구나 알아본다. 하지만 &ldquo;다른 데보다 늦게만 내지 않으면 비용을 지원해 드립니다&rdquo;라는 문장은 읽는 사람에게 배제로 보이지 않는다. <strong>배제가 처벌이 아니라 인센티브의 문법으로 쓰이면, 당사자들도 자기가 무엇에 가담했는지 인식하기 어렵다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">누가 어느 루프에 들어가는지로 정리하면 이렇게 된다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">위치</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무슨 일이 생기나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">계약에 들어간 대형 게임사</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지원금이라는 양의 루프. 다만 협상 카드 하나(출시 시점)를 반납한 상태</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">계약 밖 중소 게임사</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지원금 없이 같은 스토어에서 경쟁. 마케팅 비용 격차가 벌어짐</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">후발 앱마켓</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">가격축만 남은 채로 경쟁. 쓰면 쓸수록 적자가 깊어지는 음의 루프</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이용자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">스토어 간 선택지가 형식적으로만 존재. 결제 조건을 개선하라는 압력이 약해짐</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">§ 4. 이 각도의 한계</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>위법 여부는 확정되지 않았다.</strong> 위 설명은 이런 조항이 경쟁에 어떻게 작동하는지에 관한 일반론이다. 개별 계약의 실제 문구·기간·예외 조항은 공개돼 있지 않고, 구글은 절차에서 이를 다툴 수 있다.</li>
+<li style="margin:0.3em 0;"><strong>동등성 조항에는 정당화 논리도 있다.</strong> 플랫폼이 마케팅·인프라 비용을 대는 대가로 최소한의 동등 대우를 요구하는 것은 무임승차 방지 논리로 설명되기도 한다. 경쟁법 문헌에서 MFN 평가가 사안마다 갈리는 이유다.</li>
+<li style="margin:0.3em 0;"><strong>49.2%는 조건부 숫자다.</strong> &lsquo;동시 입점된 상위 50개 게임&rsquo;이라는 표본은 이미 원스토어에 우호적인 게임 쪽으로 기울어 있을 수 있다. 이 숫자는 &ldquo;입점만 하면 무조건 절반&rdquo;의 증거가 아니라 &ldquo;입점 여부가 점유율을 크게 좌우한다&rdquo;의 방증으로 읽는 게 정확하다. 또 이 수치의 출처는 원스토어 자체 보도자료다.</li>
+<li style="margin:0.3em 0;"><strong>깨끗한 개인 출구는 없다.</strong> 이용자 한 명이 스토어 경쟁 구조를 바꿀 방법은 없다. 여기서 얻을 수 있는 건 해법이 아니라 <strong>읽는 순서</strong>다.</li>
+</ul>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">플랫폼 경쟁 뉴스를 읽는 눈금을 하나 바꿀 수 있다. &ldquo;수수료가 몇 퍼센트인가&rdquo; 다음에 <strong>&ldquo;경쟁자가 돈으로는 못 사는 자산이 무엇인가&rdquo;</strong>를 한 칸 더 묻는 것. 앱마켓에서는 그게 출시 시점이었고, 다른 플랫폼에서는 노출 순위나 데이터 접근권일 수 있다.</li>
+<li style="margin:0.3em 0;">규제의 효과를 볼 때도 마찬가지다. 수수료율 인하 조치는 눈에 잘 띄지만, 시간축이 잠겨 있으면 점유율은 잘 안 움직인다. <strong>어떤 축을 푸는 조치인가</strong>가 실제 결과를 가른다.</li>
+<li style="margin:0.3em 0;">소비자가 당장 쓸 수 있는 정보는 하나다. 후발 스토어의 할인·적립이 유독 커 보인다면, 그건 그 스토어가 가격축에만 기댈 수밖에 없는 상태라는 신호이기도 하다. 같은 게임이 같은 날 올라온다면 결제 조건만 비교해 고르면 된다 — 지금 구조에서 이용자가 실제로 행사할 수 있는 선택은 그 정도 크기다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">공정위 위원들이 모여 최종 결론을 내리는 전원회의의 판단, 그리고 시정명령이 나온다면 그 명령이 <strong>가격축을 건드리는지 시간축을 건드리는지</strong>. 후자여야 점유율이 실제로 움직인다.</li>
+<li style="margin:0.3em 0;">국내 상위 신작들의 원스토어 동시 출시 여부. 조항의 실효가 사라지면 이 지표부터 바뀐다.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">서울신문, &ldquo;구글 앱마켓 &lsquo;갑질&rsquo; 공정위 심판대로…최대 8500억원 과징금&rdquo;, 2026-07-01 — https://www.seoul.co.kr/news/economy/2026/07/01/20260701500097</li>
+<li style="margin:0.3em 0;">아시아투데이, &ldquo;&lsquo;게임사에 독점 거래 강제&rsquo;…공정위, 구글 앱마켓 지위 남용 심의 개시&rdquo;, 2026-07-01 — https://www.asiatoday.co.kr/kn/view.php?key=20260701010000518</li>
+<li style="margin:0.3em 0;">뉴스핌, &ldquo;게임사 붙잡으려 지원금 제공…공정위, &lsquo;구글&rsquo; 앱마켓 독점 심의 착수&rdquo;, 2026-07-01 — https://www.newspim.com/news/view/20260701000233</li>
+<li style="margin:0.3em 0;">이지경제, &ldquo;구글, 게임사 &lsquo;최혜대우 계약&rsquo; 공정위 제재 착수…최대 8496억원 과징금 가능&rdquo;, 2026-07-01 — https://www.ezyeconomy.com/news/articleView.html?idxno=236964</li>
+<li style="margin:0.3em 0;">원스토어 보도자료, &ldquo;&lsquo;입점 게임 점유율 49.2%&rsquo;…원스토어, 국내 2위 앱마켓 입지 굳혀&rdquo;, 2025-08-14 — https://www.onestorecorp.com/news/presskit/2025/2025-08-14.html</li>
+<li style="margin:0.3em 0;">디지털투데이, &ldquo;원스토어 &lsquo;최근 5년 국내 앱마켓 점유율 2위…애플 앱스토어 제쳤다&rsquo;&rdquo; — https://www.digitaltoday.co.kr/news/articleView.html?idxno=585151</li>
+<li style="margin:0.3em 0;">바이라인네트워크, &ldquo;원스토어, 애플 앞질러 국내 2위 앱마켓 입지&rdquo;, 2025-08-14 — https://byline.network/2025/08/14-486/</li>
+<li style="margin:0.3em 0;">Yale Law Journal, &ldquo;Antitrust Enforcement Against Platform MFNs&rdquo; — https://yalelawjournal.org/feature/antitrust-enforcement-against-platform-mfns</li>
+<li style="margin:0.3em 0;">The Journal of Law and Economics, &ldquo;The Effects of Platform Most-Favored-Nation Clauses on Competition and Entry&rdquo; — https://www.journals.uchicago.edu/doi/10.1086/686971</li>
+<li style="margin:0.3em 0;">Winston &amp; Strawn, &ldquo;Antitrust 101: &lsquo;Most Favored Nation&rsquo; Clauses&rdquo; — https://www.winston.com/en/blogs-and-podcasts/competition-corner/antitrust-101-most-favored-nation-clauses</li>
+<li style="margin:0.3em 0;">Sensor Tower, &ldquo;2026년 1월 전 세계 모바일 게임 매출 및 다운로드 순위 TOP 10&rdquo; — https://sensortower.com/ko/blog/top-10-worldwide-mobile-games-by-revenue-and-downloads-in-january-2026-KR</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
