@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>디지털 원화의 &#x27;발행 차익&#x27;은 누구 주머니로 흘러가나 — ONGLE</title>
+<meta name="description" content="원화 스테이블코인 법의 표면 쟁점은 &#x27;누가 발행하나&#x27;지만, 그 아래에는 발행이 만들어내는 시뇨리지(발행 차익)와 결제 지대를 어떤 민간에게 몰아줄지의 배분 설계가 있다. 은행 독점과 개방이 각각 남기는 비용을 따라간다.">
+<meta property="og:title" content="디지털 원화의 &#x27;발행 차익&#x27;은 누구 주머니로 흘러가나">
+<meta property="og:description" content="원화 스테이블코인 법의 표면 쟁점은 &#x27;누가 발행하나&#x27;지만, 그 아래에는 발행이 만들어내는 시뇨리지(발행 차익)와 결제 지대를 어떤 민간에게 몰아줄지의 배분 설계가 있다. 은행 독점과 개방이 각각 남기는 비용을 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">디지털 원화의 &#x27;발행 차익&#x27;은 누구 주머니로 흘러가나</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    U[이용자: 원화 1,000원 맡김] --> I[발행사: 스테이블코인 1개 발행]
+    I -->|맡긴 원화를 국채 등에 굴림| S[이자 수익 = 시뇨리지]
+    I -->|코인 위에서 결제 발생| P[결제망 수수료 = 결제 지대]
+    S --> W[발행 라이선스 보유자에게 쌓임]
+    P --> W
+    U -.->|이자 0원| X[이용자는 예금 이자를 못 받음]
+    F[핀테크·배제된 사업자] -.->|라이선스 없음| X2[지대에 접근 불가]
+</pre></div>
+    <div class="article-meta">2026-07-22 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#디지털자산</span> <span class="tag">#스테이블코인</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">디지털 원화의 &lsquo;발행 차익&rsquo;은 누구 주머니로 흘러가나</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-22 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;누가 발행하느냐&rsquo;라는 쟁점에서 출발해, 그 발행권이 만들어내는 돈의 흐름이 <strong>어디에 쌓이는지</strong>를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">스테이블코인은 &lsquo;코인&rsquo;이 아니라 &lsquo;준-화폐&rsquo;다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>준-화폐</strong>란, 법정화폐는 아니지만 사실상 돈처럼 쓰이는 지급수단을 말한다. 스테이블코인은 값이 원화에 묶여 출렁이지 않기 때문에, 투자 대상이 아니라 <strong>예금과 송금을 대신하는 지갑 속 돈</strong>에 가깝다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 핵심 한 단어가 등장한다. <strong>시뇨리지(seigniorage)</strong> — 돈을 발행하는 쪽이 얻는 차익이다. 옛날 왕이 동전을 찍으며 금 함량을 조금 덜 넣어 차익을 남긴 데서 온 말이다. 스테이블코인에서는 이렇게 작동한다: 이용자가 1,000원을 맡기면 발행사는 그 돈을 국채 같은 안전자산에 굴려 <strong>이자를 먹는다.</strong> 이용자에게 주는 이자는 보통 0원이다. 맡긴 사람은 이자를 포기하고, 그 이자는 발행사 몫이 된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 진짜 쟁점은 &lsquo;지대를 누구에게 몰아주나&rsquo;다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행 주체를 정하는 일은 안전이냐 혁신이냐의 문제로 보인다. 하지만 돈의 흐름으로 보면 성격이 달라진다. 새로 생기는 두 갈래 수익 — 맡긴 돈에서 나오는 <strong>시뇨리지</strong>와, 그 코인 위에서 결제가 일어날 때 붙는 <strong>결제 지대</strong>(결제망 통행료) — 이 둘을 <strong>어떤 민간에게 몰아줄지</strong>를 정하는 배분 설계인 것이다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은행 컨소시엄 독점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">핀테크까지 개방</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">시뇨리지·결제 지대</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기존 은행권에 집중</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">여러 사업자에 분산</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지급 보장 책임</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">명확(은행이 떠안음)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">흐려짐(부실 시 책임 소재 불분명)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">새 진입자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사실상 차단</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">열림</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이용자 선택지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">좁음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">넓지만 옥석 혼재</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">은행으로 묶으면 기존 금융의 지대 수취 구조가 디지털 화폐로 <strong>그대로 연장</strong>된다. 문을 열면 지대가 흩어지는 대신, 발행사가 무너졌을 때 누가 이용자 돈을 물어줄지가 <strong>흐려진다.</strong> 어느 쪽도 공짜가 아니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">비용은 결국 누구에게 떨어지나</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>이용자:</strong> 어느 구조든 맡긴 돈의 이자는 발행사가 가져간다. 편의를 얻는 대신 이자를 내주는 셈이다.</li>
+<li style="margin:0.3em 0;"><strong>배제된 사업자:</strong> 라이선스를 못 받으면 새로 생긴 화폐적 지대에 아예 접근하지 못한다.</li>
+<li style="margin:0.3em 0;"><strong>납세자:</strong> 개방했다가 발행사가 부실해지면, 준-화폐가 예금처럼 쓰인 뒤라 결국 공적 안전망이 뒷수습에 불려 나올 수 있다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정부가 발행 주체와 거래소 지분을 굳이 규제로 못 박으려 한다는 사실 자체가, 이것이 단순한 기술 승인이 아니라 <strong>지대 배분 설계</strong>임을 드러낸다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">당장 내 지갑이 바뀌진 않는다. 다만 이 법이 어떻게 짜이느냐에 따라, 앞으로 우리가 &lsquo;디지털 원화&rsquo;를 쓸 때 <strong>그 편의의 이자를 누가 가져가고, 부실이 났을 때 누가 물어주는지</strong>가 정해진다. 스테이블코인을 쓰게 된다면 확인할 한 가지: 내가 맡긴 원화가 <strong>어디에 보관·운용되고, 발행사가 무너지면 어떻게 돌려받는지</strong>가 약관에 적혀 있는지다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">스테이블코인 논쟁의 무게중심은 &lsquo;코인 가격&rsquo;이 아니라 <strong>새로 생기는 화폐적 지대를 누구에게 배분하나</strong>에 있다.</li>
+<li style="margin:0.3em 0;">은행 독점과 전면 개방은 각각 <strong>지대 집중 vs 책임 소재 흐려짐</strong>이라는 다른 비용을 남긴다 — 정답이 정해진 문제가 아니다.</li>
+<li style="margin:0.3em 0;">이건 개인이 요령으로 벗어날 수 있는 문제가 아니다. 발행 주체 구조를 <strong>정직하게 같이 들여다보는 것</strong>이 유일한 출구다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">발행 주체를 은행 과반 컨소시엄으로 못 박는지, 핀테크에 문을 여는지</li>
+<li style="margin:0.3em 0;">이용자에게 이자·지급 보장을 어디까지 의무화하는지(시뇨리지를 이용자와 나누게 하는지)</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="VIDEO_URL" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">원화를 디지털로 찍는 권리, 누가 가질까요</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">금융위, 디지털자산법 연내 마련…스테이블코인 제도화도 추진 — 뉴스1, 2026-07-15</li>
+<li style="margin:0.3em 0;">정부 &ldquo;스테이블코인법 연내 입법&rdquo;…비트코인 ETF 도입 — 이데일리, 2026-07-15</li>
+<li style="margin:0.3em 0;">이억원 금융위원장 &ldquo;연내 디지털자산 기본법 마련…스테이블코인 제도화 추진&rdquo; — 블록미디어, 2026-07-15</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
