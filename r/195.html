@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>누구의 &#x27;장사 실력&#x27;이 보이나 — SCB가 다시 그리는 대출 가시성 지도 — ONGLE</title>
+<meta name="description" content="SCB의 핵심은 &#x27;포용&#x27;이 아니라 가시성 재편이다. 성장성을 데이터로 재기 시작하면 온라인 흔적이 두꺼운 가게는 선명하게 잡혀 문이 열리고, 현금·오프라인·신규·고령 가게는 같은 실력에도 흐릿해 조용히 밀린다. 데이터가 점수가 되면 역선택 유인도 따라온다. 개인이 자기 위치를 읽는 신호 셋을 짚는다.">
+<meta property="og:title" content="누구의 &#x27;장사 실력&#x27;이 보이나 — SCB가 다시 그리는 대출 가시성 지도">
+<meta property="og:description" content="SCB의 핵심은 &#x27;포용&#x27;이 아니라 가시성 재편이다. 성장성을 데이터로 재기 시작하면 온라인 흔적이 두꺼운 가게는 선명하게 잡혀 문이 열리고, 현금·오프라인·신규·고령 가게는 같은 실력에도 흐릿해 조용히 밀린다. 데이터가 점수가 되면 역선택 유인도 따라온다. 개인이 자기 위치를 읽는 신호 셋을 짚는다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">누구의 &#x27;장사 실력&#x27;이 보이나 — SCB가 다시 그리는 대출 가시성 지도</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    R[SCB: 성장성을 데이터로 평가] --> V["누가 평가에 '잘 보이나'가 재편"]
+    V --> ON[온라인·예약·리뷰가 쌓이는 가게<br/>→ 데이터로 선명 → 문이 열림]
+    V --> OFF[현금·오프라인·신규·고령 가게<br/>→ 데이터가 얇음 → 문이 조용히 닫힘]
+    OFF --> GAP[같은 실력, 다른 등급]
+    ON -.부작용.-> GAME[리뷰·예약 꾸미기 = 역선택 유인]
+    GAP --> SIG[읽는 신호: 데이터 자산화 · 업종 성장지수 가중 · 역선택 검증]
+</pre></div>
+    <div class="article-meta">2026-07-27 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">누구의 &lsquo;장사 실력&rsquo;이 보이나 — SCB가 다시 그리는 대출 가시성 지도</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-27 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;성장등급이 비금융·플랫폼 데이터로 미래를 잰다, 데이터가 남는 가게와 남지 않는 가게의 점수가 갈린다&rsquo;에서 출발해, 그 갈림이 <strong>누구와 누구</strong> 사이에서 벌어지고 개인이 <strong>무엇으로</strong> 자기 위치를 읽을지를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">핵심은 &lsquo;포용&rsquo;이 아니라 &lsquo;가시성 재편&rsquo;</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">SCB를 두고 흔히 &lsquo;담보 없는 사장에게도 문이 열린다&rsquo;고 한다. 맞는 말이다. 그런데 그 문은 모두에게 같은 폭으로 열리지 않는다. 평가의 잣대가 &lsquo;과거 상환&rsquo;에서 &lsquo;데이터로 드러난 성장성&rsquo;으로 옮겨가는 순간, 진짜로 바뀌는 건 <strong>누가 평가에 잘 보이느냐</strong>다. 이걸 가시성(평가 모형이 그 가게를 얼마나 선명하게 읽어내는지)이라 부르자.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">매출이 계좌·카드로 또렷이 찍히고 예약·리뷰·재방문이 매일 쌓이는 가게는 모형에 선명하게 잡힌다. 반대로 현금 결제가 많은 노포, 온라인 흔적이 옅은 오프라인 점포, 이제 막 문을 연 신규 가게, 플랫폼을 잘 안 쓰는 고령 사장의 가게는 <strong>같은 실력이어도 데이터가 얇아</strong> 흐릿하게 보인다. 포용이 늘어난 건 &lsquo;평균&rsquo;이지 &lsquo;가장자리&rsquo;가 아니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">문이 열리는 쪽과 닫히는 쪽</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">데이터로 선명한 가게</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">데이터가 얇은 가게</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대표 예</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">예약·배달·리뷰형(카페·미용·음식점 온라인 운영)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">현금 위주 노포·신규 개업·고령 사장·오프라인 전용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">모형 가시성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">높음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">낮음</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">성장등급 유불리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상향 유리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">실력 대비 저평가 위험</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">새 국면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자금 접근이 넓어짐</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">새로운 사각지대</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">데이터가 곧 점수면, 데이터를 &lsquo;만든다&rsquo;</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">평가가 플랫폼 흔적에 묶이면 그 흔적을 꾸밀 유인이 함께 생긴다. 리뷰·예약을 인위적으로 부풀리거나 재방문처럼 보이게 만드는 식이다. 경제학은 이런 어긋남을 <strong>역선택</strong>(정보 비대칭 탓에 정작 걸러야 할 쪽이 유인되는 현상)이라 부른다. 모형이 성장성을 정교하게 볼수록, 그 신호가 실제인지 검증하는 비용도 같이 커진다. 시범 단계에서 등급 자체보다 &lsquo;데이터 신뢰&rsquo;가 먼저 시험대에 오르는 이유다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">개인 사장은 무엇으로 자기 위치를 읽나 — 신호 셋</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>데이터 자산화 정도</strong>다. 내 매출·거래·고객 흔적이 계좌·플랫폼에 &lsquo;읽히는 형태&rsquo;로 쌓이고 있나. 현금과 수기 장부에 머물면 실력이 있어도 모형엔 흐릿하게 보인다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>업종별 성장지수 가중</strong>이다. 성장등급은 업종을 몇 개 분야로 나눠 평가한다. 내 업종에서 무엇을 성장으로 치는지 — 재방문인지, 객단가인지, 신규 유입인지 — 를 확인하면 내 강점이 모형에 잡히는 항목인지 가늠할 수 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>역선택 검증의 문턱</strong>이다. 시범 초기엔 데이터 신뢰가 관건이라, 급조된 리뷰나 조작 흔적은 오히려 감점 요인이 될 수 있다. 진짜 흔적을 꾸준히 남긴 쪽이 유리해지는 구조다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">담보 없는 사장에게 문이 열리는 건 분명한 진전이다. 동시에, 무엇을 &lsquo;실력&rsquo;으로 인정하느냐를 데이터가 정하기 시작하면 데이터에 잘 안 잡히는 노동은 조용히 뒤로 밀린다. 여기엔 깨끗한 개인 해법이 없다 — 현금 장사를 억지로 온라인으로 바꾸는 게 정답도 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다만 내 가게가 모형에 &lsquo;어떻게 보이는지&rsquo;를 미리 읽고, 시범 대상 은행과 내 업종의 평가 기준을 확인해 두는 것 — 그게 개인이 쥘 수 있는 판독 레버다. 그리고 이 잣대가 누구를 비추고 누구를 그늘에 두는지, 정책이 그 그늘을 무엇으로 메우는지를 옆에서 같이 지켜보는 일이 남는다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">SCB의 핵심 변화는 &lsquo;포용&rsquo;이 아니라 <strong>가시성 재편</strong>이다 — 데이터로 선명한 가게가 유리해지고, 얇은 가게는 같은 실력에도 저평가될 수 있다.</li>
+<li style="margin:0.3em 0;">데이터가 점수가 되면 데이터를 꾸미는 역선택 유인이 따라온다 — 검증 비용과 데이터 신뢰가 시범의 핵심 관건이다.</li>
+<li style="margin:0.3em 0;">개인이 읽을 신호는 셋 — <strong>데이터 자산화 정도</strong>, <strong>업종 성장지수 가중</strong>, <strong>역선택 검증 문턱</strong>.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">8월 시범에서 성장등급 상향이 실제 한도·금리 혜택으로 얼마나 이어지는지 — &lsquo;가시성 프리미엄&rsquo;의 크기.</li>
+<li style="margin:0.3em 0;">현금·오프라인·신규 점포의 사각지대를 메울 보완 장치(대체 데이터·현장 실사)가 함께 붙는지.</li>
+</ol>
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">금융위원회, 소상공인 특화 신용평가체계(SCB) 시범운영 참여기관 선정·점검회의 관련 보도 (2026-04·06·07). https://www.fsc.go.kr</li>
+<li style="margin:0.3em 0;">머니투데이, &ldquo;소상공인 대출, 담보 대신 &lsquo;장사 실력&rsquo; 본다…연간 10.5조 공급 기대&rdquo; (2026-06-30). https://www.mt.co.kr</li>
+<li style="margin:0.3em 0;">서울경제, &ldquo;네이버 평점·예약 기록, 소상공인 금융 문턱 낮춘다&rdquo;. https://www.sedaily.com</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
