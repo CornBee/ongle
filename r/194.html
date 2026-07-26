@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>물가 3%가 안 와닿는 이유 — 바구니가 &#x27;누구&#x27;를 재느냐 — ONGLE</title>
+<meta name="description" content="물가 바구니 개편은 &#x27;표준 소비자&#x27;와 가중치 지도를 다시 그린다. 더 정확해지는 건 평균일 뿐, 표준에서 먼 저소득·고령 가구일수록 공식 물가와 체감의 괴리가 벌어진다. 개인이 그 괴리를 읽는 신호 세 가지.">
+<meta property="og:title" content="물가 3%가 안 와닿는 이유 — 바구니가 &#x27;누구&#x27;를 재느냐">
+<meta property="og:description" content="물가 바구니 개편은 &#x27;표준 소비자&#x27;와 가중치 지도를 다시 그린다. 더 정확해지는 건 평균일 뿐, 표준에서 먼 저소득·고령 가구일수록 공식 물가와 체감의 괴리가 벌어진다. 개인이 그 괴리를 읽는 신호 세 가지.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">물가 3%가 안 와닿는 이유 — 바구니가 &#x27;누구&#x27;를 재느냐</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    R[물가 바구니 개편] --> S[지수가 '표준 소비자'를 새로 정의]
+    S --> N[표준에 가까운 가구: 구독·서비스 지출 큼<br/>→ 공식 지수에 잘 잡힘]
+    S --> F[표준에서 먼 가구: 식료품·에너지 등 필수재 비중 큼<br/>→ 체감이 평균에서 지워짐]
+    F --> G[공식 물가와 체감의 괴리 확대]
+    G --> Sig[읽는 신호: 품목별 가중치 · 생활물가지수 · 품목 기여도]
+</pre></div>
+    <div class="article-meta">2026-07-26 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">물가 3%가 안 와닿는 이유 — 바구니가 &lsquo;누구&rsquo;를 재느냐</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-26 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;고사리가 빠지고 구독료가 들어온다, 무엇을 재느냐가 바뀌면 같은 삶도 다른 숫자가 나온다&rsquo;에서 출발해, 그 괴리가 <strong>누구에게</strong> 크게 벌어지고 개인이 <strong>무엇으로</strong> 읽어낼지를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">지수는 &lsquo;평균 소비자&rsquo;를 정의한다 — 열쇠는 가중치</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">소비자물가지수에서 각 품목은 똑같은 무게가 아니다. <strong>가중치</strong>(각 품목이 지수에서 차지하는 비중, 곧 &lsquo;평균 가계가 그 품목에 돈을 얼마나 쓰나&rsquo;)가 다르게 매겨진다. 바구니를 개편한다는 건 품목을 넣고 빼는 데서 끝나지 않고, 이 <strong>가중치 지도를 다시 그리는 일</strong>이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구독료·클라우드가 들어오고 그 비중이 커진다는 건, 지수가 상정하는 &lsquo;평균 소비자&rsquo;가 구독을 여럿 쓰고 서비스에 지출하는 사람 쪽으로 옮겨간다는 뜻이다. 지수는 늘 이 가상의 평균 소비자를 기준으로 움직인다 — 그리고 나는 그 평균이 아니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">괴리는 아무에게나 벌어지지 않는다 — 표준에서 먼 쪽</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 이거다. 개편으로 지수가 더 정확해지는 건 <strong>&lsquo;평균&rsquo;이지 &lsquo;나&rsquo;가 아니다.</strong> 내 소비가 그 평균에 가까울수록 공식 숫자와 체감이 붙고, 멀수록 벌어진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구독 서비스 비중이 큰 도시 청년·1인 가구는 새 바구니에 잘 담긴다. 반면 지출의 상당분이 식료품·연료 같은 필수재에 묶인 저소득·고령 가구는 다르다. 구독료가 지수에서 커질수록, 이들이 실제로 매일 부딪히는 장바구니 물가는 평균 안에서 상대적으로 옅어진다. 유가·농산물이 밀어올린 체감은 뜨거운데, 공식 평균은 그만큼 뜨겁지 않게 나오는 구조다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">표준에 가까운 소비자</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">표준에서 먼 소비자</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대표 예</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">도시 청년·1인 가구</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">저소득·고령 가구</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지출 구성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">구독·외식·서비스 비중 큼</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">식료품·에너지 등 필수재 비중 큼</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개편 후 지수 적합도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">높음(잘 잡힘)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">낮음(옅어짐)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공식 물가 vs 체감</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대체로 붙음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">벌어짐</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그럼 개인은 무엇으로 괴리를 읽나 — 신호 세 개</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">헤드라인 한 줄로는 착시에 휩쓸린다. 나눠 읽으려면 볼 게 정해져 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>품목별 가중치</strong>다. 통계청은 어떤 품목에 얼마의 비중을 뒀는지 공개한다. 내 실제 지출 구성과 대보면, 내가 &lsquo;평균 소비자&rsquo;에서 얼마나 떨어져 있는지가 바로 보인다. 멀수록 공식 숫자를 그대로 믿으면 안 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>생활물가지수</strong>다. 전체 지수 중에서 사람들이 자주 사는 품목만 따로 골라 만든 지수다. 지난달 이 숫자(3.4%)가 전체(3.2%)보다 높았다는 건, 체감이 평균보다 뜨거운 게 착각이 아니라 측정으로도 확인된다는 뜻이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>품목별 기여도</strong>다. 지수를 밀어올린 게 무엇인지 품목별로 쪼갠 값이다. 오른 게 내가 많이 쓰는 품목이면 체감은 더 뜨겁고, 내가 안 쓰는 품목이면 &lsquo;숫자는 올랐는데 나는 모르겠는&rsquo; 상태가 된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">바구니를 어떻게 짤지는 개인이 정하는 게 아니다. 여기엔 깨끗한 개인 해법이 없다. 다만 &lsquo;올해 물가 몇 퍼센트&rsquo;라는 뉴스를 만났을 때, 그 숫자를 <strong>내 것으로 번역하는 습관</strong>은 쥘 수 있다. 공식 지수 대신 생활물가지수를 같이 보고, 오른 품목이 내 지출과 겹치는지 품목별 기여도로 확인하는 것이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정책과 시장이 &lsquo;평균 물가 안정&rsquo;만 보고 판단할 때, 표준에서 먼 가구의 체감은 평균 뒤에 가려진다. 그 괴리를 스스로 읽어내는 것 — 그게 개인이 쥘 수 있는 판독 레버다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">물가 바구니 개편은 품목 교체를 넘어 &lsquo;표준 소비자&rsquo;와 <strong>가중치 지도를 다시 그리는 일</strong>이다. 더 정확해지는 건 평균이지 개인이 아니다.</li>
+<li style="margin:0.3em 0;">괴리는 아무에게나 벌어지지 않는다 — 구독·서비스 비중이 큰 가구는 잘 잡히고, 필수재 비중이 큰 저소득·고령 가구는 체감이 평균에서 옅어진다.</li>
+<li style="margin:0.3em 0;">나눠 읽는 신호는 셋이다 — <strong>품목별 가중치</strong>(내가 평균에서 얼마나 먼가), <strong>생활물가지수</strong>(자주 사는 것만), <strong>품목 기여도</strong>(오른 게 내 품목인가).</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">연말 개편에서 구독·서비스 품목에 실제로 부여되는 가중치가 얼마나 커지는지 — 그만큼 &lsquo;평균 소비자&rsquo;가 이동한다.</li>
+<li style="margin:0.3em 0;">유가·농산물발 생활물가와 전체 지수의 격차가 벌어질수록, 저소득·고령 가구의 체감 괴리는 더 두드러진다.</li>
+</ol>
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">재정경제부, 「2026년 7월 최근 경제동향」 (2026-07). https://www.mofe.go.kr</li>
+<li style="margin:0.3em 0;">통계청, 소비자물가지수 대표품목·가중치 개편 관련 보도(2026-07-07) 및 생활물가지수 통계. https://kostat.go.kr</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
