@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>중복상장3%룰 — 시장이 놓친 한 단계는? — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="중복상장3%룰 — 시장이 놓친 한 단계는?">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">중복상장3%룰 — 시장이 놓친 한 단계는?</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    R[3% 룰: 쪼개기 결정권이 일반주주에게 넘어감] --> Q{같은 규칙, 종목마다 다른 얼굴}
+    Q --> MAT[성숙·저성장주<br/>알짜 유출 방어가 핵심 이익]
+    Q --> GRO[성장·자본이 급한 주<br/>분할 후 상장으로 돈 모으던 길이 좁아짐]
+    MAT --> GOOD[주주 협상력 상승 · 저평가 해소 기대]
+    GRO -.역설.-> COST[성장자본 조달 통로 축소]
+    GOOD --> SIG[읽는 신호: 주주구성 · 자금조달 의존도 · 성장단계]
+    COST --> SIG
+</pre></div>
+    <div class="article-meta">2026-07-28 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">거부권은 공짜가 아니다 — 3% 룰이 성장주와 성숙주에 정반대로 작동하는 이유</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-28 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;3% 룰로 쪼개기 결정권이 일반주주에게 넘어갔다&rsquo;에서 출발해, 그 거부권이 성장기업과 성숙기업에서 <strong>왜 정반대로</strong> 작동하는지, 개인이 <strong>무엇으로</strong> 자기 종목의 위치를 읽을지를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">&lsquo;무조건 호재&rsquo;라는 한 방향 착시</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">거부권이 일반주주에게 넘어갔다는 소식은 주주 보호 강화로만 들린다. 그런데 거부권은 방패이자 동시에 <strong>비용</strong>이다. 방패가 필요 없는 회사에 방패를 채우면, 그건 보호가 아니라 족쇄가 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 회사가 자회사 상장으로 무엇을 하려 했느냐다. 성숙한 회사가 알짜 사업부만 떼어 이중으로 상장하려는 것과, 자본이 부족한 회사가 신사업을 키울 돈을 시장에서 모으려는 것은 겉모습이 같아도 성격이 다르다. 같은 3% 룰이 앞의 경우엔 남용을 막는 브레이크지만, 뒤의 경우엔 성장 연료를 잠그는 밸브가 된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">성숙주와 성장주, 갈리는 손익</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">성숙·저성장 회사</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">성장·자본조달형 회사</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자회사 상장의 목적</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이미 큰 알짜 사업부의 가치 재평가·현금화</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신사업(바이오·2차전지 등) 키울 외부 자금 확보</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3% 룰의 체감</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지배주주 남용을 막는 방패 → 주주에 유리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">조달 통로가 좁아짐 → 성장 지연 위험</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">표 대결의 성격</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">알맹이 유출을 막는 방어전</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">성장 자금줄을 여느냐 마느냐의 생존전</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">주가에 남는 것</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">저평가 해소·협상력 상승 기대</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자본 조달 지연 리스크 반영</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 규칙인데 한쪽 주주는 방패를 얻고, 다른 쪽 주주는 회사의 성장 지연이라는 청구서를 나눠 받는다. &lsquo;중복상장 규제 = 주주 호재&rsquo;라는 한 줄 요약이 놓치는 지점이 여기다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">거부권이 상시화된다는 뜻</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">3% 룰이 만든 더 근본적인 변화는 개별 안건 하나가 아니다. <strong>지배주주와 일반주주의 이해가 갈리는 순간마다 표 대결이 상시화</strong>된다는 것이다. 상장을 밀어붙이려는 대주주와, 알맹이를 지키려는 일반주주가 정기적으로 맞선다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이건 지배구조가 좋은 회사엔 형식적 절차로 끝나지만, 오너 지분이 크고 성장 투자가 급한 회사엔 매번 통과를 장담할 수 없는 관문이 된다. &lsquo;누가 표를 쥐었나&rsquo;가 바뀌면, 회사의 자본 조달 속도와 예측 가능성도 함께 바뀐다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">내 종목은 어느 쪽인가 — 신호 셋</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>주주구성</strong>이다. 오너·특수관계인 지분이 높을수록 3% 룰의 의결권 제한이 크게 걸린다. 그만큼 일반주주 표의 무게가 커지니, 지배주주 뜻대로 되던 안건이 관문에 걸릴 여지가 커진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>자금조달 의존도</strong>다. 회사가 신사업·설비에 쓸 돈을 내부 이익으로 대는지, 외부 조달에 기대는지를 본다. 물적분할(회사의 한 사업부를 100% 자회사로 떼어내는 것) 후 상장을 자금 창구로 써 온 회사일수록 이번 규제의 제약을 정면으로 맞는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>성장단계</strong>다. 이미 현금을 버는 성숙 기업엔 규제가 방패에 가깝고, 아직 돈을 태워 키우는 성장 기업엔 밸브에 가깝다. 같은 뉴스가 내 종목의 단계에 따라 호재로도, 부담으로도 읽힐 수 있다는 뜻이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">내가 가진 종목이 지배구조 논란이 있던 대형 지주·제조라면, 이 규칙은 그동안 새어 나가던 가치를 지키는 쪽으로 기운다. 반대로 외부 자금으로 신사업을 키우던 성장주라면, 조달이 느려질 리스크를 함께 봐야 한다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기에 깨끗한 정답은 없다. 주주 보호를 강화하면 자금조달 통로가 좁아지는 건 맞바꿈이기 때문이다. 다만 내 종목이 &lsquo;알맹이를 지켜야 하는 쪽&rsquo;인지 &lsquo;돈을 모아야 하는 쪽&rsquo;인지를 주주구성·조달 의존도·성장단계로 미리 읽어 두면, 같은 뉴스에 시장이 왜 종목마다 다르게 반응하는지를 옆에서 함께 지켜볼 수 있다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">3% 룰은 &lsquo;주주 호재&rsquo;라는 한 줄로 끝나지 않는다. <strong>거부권은 방패이자 비용</strong>이라, 방패가 필요한 성숙주엔 이익, 자본이 급한 성장주엔 성장 지연 청구서가 된다.</li>
+<li style="margin:0.3em 0;">진짜 변화는 개별 안건이 아니라 <strong>거부권의 상시화</strong> — 지배주주와 일반주주가 갈리는 순간마다 표 대결이 반복된다.</li>
+<li style="margin:0.3em 0;">내 종목의 위치를 읽는 신호는 셋 — <strong>주주구성</strong>, <strong>자금조달 의존도</strong>, <strong>성장단계</strong>.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">예외 심사를 통과해 실제로 중복상장에 성공하는 성장기업 사례가 나오는지 — 통로가 완전히 막힌 건지, 좁아진 건지 가른다.</li>
+<li style="margin:0.3em 0;">오너 지분이 큰 기업의 분할·상장 안건이 일반주주 표에 막히는 첫 사례가 나오는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">쪼개기 상장 제동 — 이제 최대주주 표는 딱 3%만 인정된다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">금융위원회·한국거래소, 「중복상장 가이드라인」 및 상장·공시규정 개정안 (2026-07-06). https://www.fsc.go.kr</li>
+<li style="margin:0.3em 0;">한국일보, &ldquo;&lsquo;쪼개기 상장&rsquo; 제동…물적분할 자회사 중복상장 땐 주주동의 의무화&rdquo; (2026-07-06). https://www.hankookilbo.com</li>
+<li style="margin:0.3em 0;">인베스트조선, &ldquo;중복상장 가이드라인 나왔다…물적분할시 3%룰 적용·특례심사 도입&rdquo; (2026-07-06). https://www.investchosun.com</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
