@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>중국 쇼크는 한 덩어리가 아니다 — 창신메모리, 삼성·하이닉스에 다르게 걸린다 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="중국 쇼크는 한 덩어리가 아니다 — 창신메모리, 삼성·하이닉스에 다르게 걸린다">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">중국 쇼크는 한 덩어리가 아니다 — 창신메모리, 삼성·하이닉스에 다르게 걸린다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    C[창신메모리 데뷔 = 중국 D램 등판] --> Q{메모리는 한 층이 아니다}
+    Q --> L[레거시 · 범용 D램<br/>오래된 규격 · 마진 얇음]
+    Q --> H[첨단 HBM<br/>AI가 쓸어담는 고부가 규격]
+    L --> LT[창신이 먼저 잠식하는 층<br/>가격 경쟁 직격]
+    H -.당장은 방어벽.-> HT[선단공정 격차로 진입 난도 높음]
+    LT --> SIG[개인이 읽을 신호]
+    HT --> SIG
+    SIG --> S1[HBM 비중]
+    SIG --> S2[범용 D램 가격·재고]
+    SIG --> S3[선단공정 격차 좁혀지나]
+</pre></div>
+    <div class="article-meta">2026-07-28 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">중국 쇼크는 한 덩어리가 아니다 — 창신메모리가 삼성과 하이닉스에 다르게 걸리는 이유</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-28 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;시장이 메모리 독점 프리미엄에 만기를 매겼다&rsquo;에서 출발해, 그 만기가 <strong>레거시 D램</strong>과 <strong>HBM</strong>이라는 두 층위에서 삼성·하이닉스에 왜 다르게 걸리는지, 개인이 패닉과 재평가를 무엇으로 가를지를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">&lsquo;중국이 추격한다&rsquo;는 한 덩어리 착시</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">폭락하는 날엔 뉴스가 한 줄로 압축된다 — &ldquo;중국이 메모리를 따라잡으니 한국은 끝&rdquo;. 그런데 메모리는 하나의 시장이 아니다. <strong>적어도 두 층으로 나뉜다.</strong> 이 구분을 놓치면 오늘의 공포를 종목마다 얼마로 번역해야 하는지 알 수 없다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째 층은 <strong>레거시(범용) D램</strong>이다. 스마트폰·PC·서버에 두루 쓰이는, 규격이 오래되고 누구나 만들면 값으로 경쟁하는 얇은 마진의 세계다. 둘째 층은 <strong>HBM</strong>(High Bandwidth Memory·고대역폭 메모리, D램 칩을 수직으로 쌓아 데이터 통로를 넓힌 AI 전용 고부가 규격)이다. AI 가속기에 붙어 값을 부르는 쪽이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">창신메모리(중국 최대 D램 업체 CXMT)가 당장 밀고 들어오는 곳은 <strong>첫째 층, 레거시 범용 D램</strong>이다. 값으로 미는 후발주자가 가장 먼저 붙는 자리이고, 그동안 창신이 물량을 쏟아온 구간도 여기다. 반대로 HBM은 <strong>선단공정</strong>(가장 앞선 미세 회로 제조 기술) 격차와 수율 장벽이 커서, 데뷔 첫날의 주가 폭등만으로 곧장 넘볼 수 있는 층이 아니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">같은 &lsquo;중국 쇼크&rsquo;, 다르게 걸리는 두 층</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">레거시 · 범용 D램</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">첨단 HBM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">무엇에 쓰나</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">폰·PC·일반 서버</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AI 가속기 전용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">마진 성격</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">얇다 · 값 경쟁</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">두껍다 · 희소성 프리미엄</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">창신 위협</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>직격</strong> — 후발주자가 먼저 붙는 자리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">당장은 완충 — 선단공정·수율 장벽</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">무너진 &lsquo;프리미엄&rsquo;의 정체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">범용까지 2강이 쥐던 값 지배력</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AI 특수로 새로 붙은 값</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 문장으로 들린 &lsquo;독점 프리미엄 소멸&rsquo;이, 실제로는 <strong>범용 층에서 먼저, 크게</strong> 깎이고 HBM 층에서는 <strong>당장보다 나중</strong> 이야기라는 뜻이다. 그래서 매출·이익에서 범용 비중이 큰 쪽과 HBM 비중이 큰 쪽은, 같은 뉴스에 노출 정도가 다르다. 오늘 지수는 둘을 구분하지 않고 한꺼번에 팔았지만, 회복 국면에선 이 구분이 종목을 가른다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">패닉과 재평가를 가르는 신호 셋</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">폭락이 &lsquo;하루짜리 공포&rsquo;였는지 &lsquo;구조가 바뀌는 재평가&rsquo;였는지는 사후에야 이름이 붙는다. 다만 옆에서 함께 지켜볼 세 가지 신호는 지금도 읽을 수 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>HBM 비중</strong>이다. 한 회사의 이익에서 AI용 HBM이 차지하는 몫이 클수록, 창신이 먼저 붙는 범용 층의 충격에서 상대적으로 멀다. 실적 발표에서 HBM 매출 비중과 증설 계획을 보는 이유다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>범용 D램 가격·재고</strong>다. 창신의 등판이 실제 공급 과잉으로 번지는지는 주가가 아니라 범용 D램 현물 가격과 재고 지표에서 먼저 드러난다. 값이 흘러내리고 재고가 쌓이면 &lsquo;패닉&rsquo;이 아니라 &lsquo;재평가&rsquo; 쪽에 무게가 실린다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>선단공정 격차</strong>다. HBM의 방어벽은 결국 미세공정과 수율의 시간차다. 창신·중국 업체가 이 격차를 얼마나 빨리 좁히느냐가, HBM 프리미엄에도 만기가 붙을지를 결정한다. 장비 수급·수율 뉴스가 이 신호의 온도계다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">내 계좌가 반도체 대장주에 실려 있다면, 오늘 같은 날의 교훈은 &lsquo;메모리가 끝났다&rsquo;가 아니라 <strong>&lsquo;내가 든 회사가 어느 층에 더 걸려 있나&rsquo;</strong> 다. 범용 노출이 큰 쪽은 값 경쟁 소식에 더 흔들리고, HBM 비중이 큰 쪽은 AI 수요와 선단공정 격차라는 다른 시계를 본다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기에 깨끗한 개인 출구는 약하다. 한국 지수 자체가 사실상 두 종목에 크게 기대어 서 있어서, 개인이 그 집중을 혼자 피하기 어렵기 때문이다. 그래서 정직한 자세는 종목 추천이 아니라, <strong>&lsquo;한 나라 지수가 두 종목·한 산업에 인질처럼 묶여 있다&rsquo;는 구조를 같이 보는 것</strong>이다. 그 구조를 알고 나면, 왜 남의 나라 회사 상장 하나에 내 지수가 10%씩 흔들리는지가 더는 낯설지 않다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">&lsquo;중국 쇼크&rsquo;는 한 덩어리가 아니다. 창신이 먼저 잠식하는 건 <strong>레거시 범용 D램</strong>이고, <strong>HBM</strong>은 선단공정 격차로 당장은 완충된다.</li>
+<li style="margin:0.3em 0;">그래서 같은 폭락에도 <strong>범용 비중이 큰 쪽과 HBM 비중이 큰 쪽의 노출은 다르다</strong> — 지수는 오늘 둘을 구분 없이 팔았을 뿐이다.</li>
+<li style="margin:0.3em 0;">패닉인지 재평가인지는 세 신호로 옆에서 읽는다 — <strong>HBM 비중 · 범용 D램 가격·재고 · 선단공정 격차</strong>.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">범용 D램 현물 가격과 재고가 실제로 꺾이는지 — 창신 데뷔가 &lsquo;심리&rsquo;였는지 &lsquo;수급&rsquo;이었는지 가른다.</li>
+<li style="margin:0.3em 0;">중국 업체의 선단공정·수율이 HBM 문턱에 얼마나 다가서는지 — HBM 프리미엄의 만기일이 앞당겨지는 신호.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">코스피 서킷브레이커 — 창신메모리 465%가 부순 건 실적이 아니었다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">머니투데이, &ldquo;&lsquo;465% 폭등&rsquo; 창신메모리 쇼크…코스피 8% 급락, 또 &lsquo;서킷브레이커&rsquo;&rdquo; (2026-07-28). https://www.mt.co.kr</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;&lsquo;검은 화요일&rsquo; 코스피 10% 급락…금융위 &lsquo;진정 안 되면 레버리지 투자한도 검토&rsquo;&rdquo; (2026-07-28). https://www.fnnews.com</li>
+<li style="margin:0.3em 0;">경향신문, &ldquo;[속보]코스피, 8% 폭락에 서킷브레이커…올 들어 8번째&rdquo; (2026-07-28). https://www.khan.co.kr</li>
+<li style="margin:0.3em 0;">뉴스핌, &ldquo;중국, DUV 노광장비 자체 생산 돌입…ASML 독점 구도 흔드나&rdquo; (2026-07-28). https://www.newspim.com</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
