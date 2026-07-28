@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>막힌 전세 돈은 사라지지 않는다 — 규제가 남길 사람과 밀어낼 사람 — ONGLE</title>
+<meta name="description" content="정부가 전세대출을 조여도 막힌 돈과 수요는 사라지지 않고 매매·월세·우회 조달로 옮겨간다. 보증비율 인하는 일률 규제가 아니라 청년·신혼·생애최초는 남기고 유주택·비거주 레버리지는 밀어내는 선별 장치다. 내 위치를 읽는 신호 셋 — 자기자본 여력·보증 대상 여부·매매 전환 가능성.">
+<meta property="og:title" content="막힌 전세 돈은 사라지지 않는다 — 규제가 남길 사람과 밀어낼 사람">
+<meta property="og:description" content="정부가 전세대출을 조여도 막힌 돈과 수요는 사라지지 않고 매매·월세·우회 조달로 옮겨간다. 보증비율 인하는 일률 규제가 아니라 청년·신혼·생애최초는 남기고 유주택·비거주 레버리지는 밀어내는 선별 장치다. 내 위치를 읽는 신호 셋 — 자기자본 여력·보증 대상 여부·매매 전환 가능성.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">막힌 전세 돈은 사라지지 않는다 — 규제가 남길 사람과 밀어낼 사람</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    R[전세대출 조이기: 보증비율 인하 · 유주택/비거주 타깃] --> Q["막힌 돈과 수요는 사라지나, 옮겨가나?"]
+    Q --> MOVE[옮겨가는 갈래]
+    MOVE --> BUY[매매 수요로 전환<br/>전세 대신 사버리는 쪽]
+    MOVE --> RENT[월세로 이동<br/>보증금 못 채우는 쪽]
+    MOVE --> ETC[비주택담보 등 우회 조달]
+    R --> SEL[보증비율 인하가 '선별'한다]
+    SEL --> STAY[남는 층: 청년·신혼·생애최초<br/>선별 지원 유지]
+    SEL --> OUT[밀리는 층: 유주택·비거주 1주택<br/>레버리지 통로 축소]
+    BUY -.역설.-> PUSH[매매 수요 자극 → 집값 진정 목표와 충돌 여지]
+    STAY --> SIG[읽는 신호: 자기자본 여력 · 보증 대상 여부 · 매매 전환 가능성]
+    OUT --> SIG
+</pre></div>
+    <div class="article-meta">2026-07-29 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">막힌 전세 돈은 사라지지 않는다 — 규제가 남길 사람과 밀어낼 사람</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-29 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 줄 다리: 영상이 확인한 &lsquo;한쪽 문을 막으면 돈은 다른 문으로 몰려간다&rsquo;에서 출발해, 그 자금과 수요가 <strong>실제로 어디로</strong> 이동하고 보증비율·선별 설계가 <strong>누구를</strong> 남기고 <strong>누구를</strong> 밀어내는지를 따라간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">&lsquo;전세 세입자만 손해&rsquo;라는 한 방향 착시</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">전세대출을 조인다고 하면 대개 &lsquo;전세 사는 사람이 더 힘들어진다&rsquo;는 한 방향으로 읽힌다. 맞는 말이지만 절반이다. 대출로 채우던 전세 보증금이 막힌다고 그 돈과 수요가 증발하지는 않기 때문이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 <strong>전세대출이 원래 두 얼굴</strong>이었다는 점이다. 한쪽에선 목돈 없는 세입자가 보증금을 마련하는 사다리였고, 다른 한쪽에선 집주인이 세입자 보증금을 지렛대 삼아 적은 자기 돈으로 집을 사 모으는 <strong>갭투자</strong>(전세를 끼고 시세차익을 노려 집을 사는 것)의 연료였다. 정부가 겨눈 건 뒤쪽이다. 그런데 통로를 좁히면 앞쪽 실수요까지 같이 걸리고, 밀려난 돈은 옆문으로 흐른다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">막힌 돈이 향하는 세 갈래</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>매매로 전환</strong>된다. 전세로 눌러앉으려던 수요 중 일부는 &lsquo;이럴 바엔 산다&rsquo;로 돌아선다. 문제는 이게 집값을 누르려는 정책 목표와 정면으로 부딪친다는 것이다. 실제로 규제·세금 강화 국면인데도 7월 주택가격전망지수는 전월보다 7포인트 오른 127로 4년 10개월 만에 최고를 찍었다. 규제가 오히려 &lsquo;앞으로 살 기회가 좁아진다&rsquo;는 신호로 읽히는 국면이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>월세로 밀려난다</strong>. 보증금 대출이 막히면 목돈이 부족한 층은 전세 자체를 포기하고 반전세·월세로 내려간다. 전세의 월세화가 빨라지면 매달 나가는 주거비가 늘고, 이 부담은 자산이 적을수록 크다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>우회 조달</strong>로 샌다. 일부는 신용대출이나 <strong>비주택담보대출</strong>(집이 아닌 자산을 담보로 받는 대출)처럼 규제 강도가 다른 통로로 자금을 메운다. 한쪽을 조일 때 규제가 약한 옆문에 줄이 길어지는, 이른바 풍선효과다(관련: 영상_170·196).</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">보증비율 인하가 &lsquo;선별&rsquo;하는 방식</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이번 대책의 손잡이 하나는 <strong>보증비율</strong>이다. 보증비율은 전세대출이 부실 나면 보증기관이 은행에 갚아주는 비율로, 지금은 80%(비수도권 90%) 수준이다. 이걸 낮추면 은행이 떠안는 위험이 커져 대출 문턱이 함께 높아진다. 정부는 이 문턱을 <strong>일률적으로가 아니라 계층별로</strong> 조정하려 한다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">남는 쪽</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">밀리는 쪽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">해당 층</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">청년·신혼부부·생애 최초 임차인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">유주택자·비거주 1주택자</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정책 취급</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">선별 지원 유지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보증·한도 우선 축소</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">설계 의도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">실수요 사다리 보존</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">갭투자·다주택 레버리지 차단</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">남는 리스크</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대상 밖 실수요는 함께 걸림</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">밀린 자금이 매매·월세로 전이</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 규제가 자기자본 여력과 보유 주택 수에 따라 누구에겐 열린 문, 누구에겐 닫힌 문이 된다. &lsquo;전세대출 규제&rsquo;라는 한 줄이 실제로는 <strong>누가 시장에 남나</strong>를 다시 긋는 작업인 이유다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">내 위치를 읽는 신호 셋</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, <strong>자기자본 여력</strong>이다. 보증금에서 내 순현금이 차지하는 비율이 낮을수록, 즉 대출 의존도가 높을수록 이번 조임을 정면으로 맞는다. 여력이 크면 규제와 무관하게 움직일 수 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">둘째, <strong>보증 대상 여부</strong>다. 청년·신혼부부·생애 최초에 해당하면 선별 지원으로 사다리가 유지될 가능성이 크고, 유주택·비거주 1주택이면 축소 1순위다. 내 조건이 어느 칸에 들어가는지가 체감 문턱을 가른다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">셋째, <strong>매매 전환 가능성</strong>이다. 전세가 막혔을 때 &lsquo;살 수 있는&rsquo; 쪽인지 &lsquo;월세로 내려가는&rsquo; 쪽인지에 따라 결과가 갈린다. 같은 규제가 앞의 층엔 매수 재촉으로, 뒤의 층엔 주거비 상승으로 나타난다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">전세를 대출에 기대야 하는 쪽이라면, 이번 대책은 &lsquo;갭투자를 막는 안전장치&rsquo;인 동시에 &lsquo;내 보증금 마련을 어렵게 하는 문턱&rsquo;으로 동시에 작동한다. 여기엔 깨끗한 개인 해법이 없다 — 무리해서 매매로 갈아타는 것도, 월세로 밀려나는 것도 답이라 부르긴 어렵다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다만 내 자기자본 여력과 보증 대상 여부, 매매 전환 가능성을 미리 따져 두면, 이 규제가 나에게 어느 방향으로 작동할지는 읽을 수 있다. 그리고 한쪽 문을 좁힐 때 그 돈이 매매·월세·우회 조달 중 어디로 흐르는지, 정책이 그 풍선의 다른 쪽을 무엇으로 누르는지를 옆에서 같이 지켜보는 일이 남는다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">전세대출을 조여도 막힌 돈과 수요는 사라지지 않는다 — <strong>매매·월세·우회 조달</strong>로 옮겨가며, 특히 매매 전환은 집값 진정이라는 목표와 부딪칠 여지가 있다.</li>
+<li style="margin:0.3em 0;">보증비율 인하는 일률 규제가 아니라 <strong>선별 장치</strong>다 — 청년·신혼·생애최초는 남기고, 유주택·비거주 레버리지는 밀어낸다.</li>
+<li style="margin:0.3em 0;">내 위치를 읽는 신호는 셋 — <strong>자기자본 여력</strong>, <strong>보증 대상 여부</strong>, <strong>매매 전환 가능성</strong>.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">전세 조임에 밀린 수요가 매매로 얼마나 전이돼 집값 전망을 다시 자극하는지.</li>
+<li style="margin:0.3em 0;">보증비율 인하가 청년·신혼 선별 지원으로 실수요 이탈을 얼마나 완충하는지, 아니면 대상 밖 실수요가 월세로 대거 내려가는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">잔금은 풀고 전세는 죈다 — 정부가 같은 대출을 정반대로 손댄 이유</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;잔금대출은 풀고 전세대출은 죈다…금융당국, 부동산 금융 대책 막판 고심&rdquo; (2026-07-29). https://www.fnnews.com/news/202607290501457968</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;전세대출 규제 강화… 유주택·비거주1주택자 &lsquo;타깃&rsquo;&rdquo; (2026-07-26). https://www.fnnews.com/news/202607261805443595</li>
+<li style="margin:0.3em 0;">머니투데이, &ldquo;李, &lsquo;실수요&rsquo; 잔금·이주비 대출 푼다…전세·기존대출은 규제강화 예고&rdquo; (2026-07-23). https://www.mt.co.kr/finance/2026/07/23/2026072315034694458</li>
+<li style="margin:0.3em 0;">헤럴드경제, &ldquo;&lsquo;그래도 집값 오른다&rsquo; 세금·대출 규제에도 주택심리 약 5년 만에 최고&rdquo; (2026-07-28). https://biz.heraldcorp.com/article/10821889</li>
+<li style="margin:0.3em 0;">한국은행, 「2026년 7월 소비자동향조사 결과」 (2026-07-28). https://www.bok.or.kr</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
