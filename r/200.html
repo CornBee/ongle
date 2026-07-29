@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>같은 국채, 다른 세금 — 이 절세는 누구를 위해 설계됐나 — ONGLE</title>
+<meta name="description" content="개인투자용 국채의 세제 혜택은 &#x27;누구에게나 똑같이&#x27;가 아니다. 낮은 세율이 아니라 금융소득종합과세 회피가 핵심이라, 이자소득이 클수록·목돈을 오래 묶어둘 수 있을수록 이득이 커진다. 같은 상품이 누구에겐 절세 무기, 누구에겐 그림의 떡이 되는 역진적 설계를 계층별로 분해한다.">
+<meta property="og:title" content="같은 국채, 다른 세금 — 이 절세는 누구를 위해 설계됐나">
+<meta property="og:description" content="개인투자용 국채의 세제 혜택은 &#x27;누구에게나 똑같이&#x27;가 아니다. 낮은 세율이 아니라 금융소득종합과세 회피가 핵심이라, 이자소득이 클수록·목돈을 오래 묶어둘 수 있을수록 이득이 커진다. 같은 상품이 누구에겐 절세 무기, 누구에겐 그림의 떡이 되는 역진적 설계를 계층별로 분해한다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">같은 국채, 다른 세금 — 이 절세는 누구를 위해 설계됐나</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[개인투자용 국채 세제 혜택] --> B{내 이자소득이<br/>연 2,000만원을 넘나?}
+    B -- 아니오 --> C[일반 세율과 큰 차이 없음<br/>혜택 체감 거의 없음]
+    B -- 예 --> D[종합과세 최고 49.5% 회피<br/>14%로 분리과세 → 절세 폭 큼]
+    A --> E{20년·2억을<br/>묶어둘 여력이 있나?}
+    E -- 아니오 --> F[중도환매 → 가산금리·복리·<br/>분리과세 전부 소멸]
+    E -- 예 --> G[설계된 혜택을 온전히 수령]
+</pre></div>
+    <div class="article-meta">2026-07-29 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">같은 국채, 다른 세금 — 이 절세는 누구를 위해 설계됐나</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-29 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 아래 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 개인투자용 국채를 사도, 세후로 남는 돈은 사람마다 다릅니다. 이 국채의 세제 혜택은 &ldquo;누구에게나 똑같이&rdquo; 주어지는 게 아니라, <strong>이자소득이 많은 사람일수록 크게</strong> 작동하도록 설계돼 있기 때문입니다. 이 한 장이 그 구조입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 — 같은 상품, 세 갈래 결과</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이 사람은</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이자소득 규모</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이 국채가 주는 실익</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">목돈 없는 사회초년생</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 이자 몇십만 원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>거의 없음</strong> — 일반 예금과 세율 차이 미미, 20년 락업 부담만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">여윳돈 있는 중산층</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 이자 수백만 원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소폭 — 안전자산 + 약간의 절세</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금융소득 큰 자산가</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 이자 2,000만 원 초과</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>가장 큼</strong> — 종합과세(최고 49.5%) 대신 14%로 끝냄</td>
+</tr>
+</tbody>
+</table>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>이 리포트가 답하는 질문:</strong> 영상은 &ldquo;161.8%는 착시이고, 진짜 무기는 만기 보유자에게만 주는 분리과세&rdquo;라는 데서 멈췄습니다. 여기서부터 한 걸음 더 — 그 분리과세가 <strong>실제로 누구의 절세를 키우고, 누구에겐 그림의 떡인지</strong>를 봅니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저, 용어 두 개만</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>분리과세:</strong> 그 소득만 따로 정해진 세율로 떼고 끝내는 방식. 다른 소득과 합치지 않습니다.</li>
+<li style="margin:0.3em 0;"><strong>금융소득종합과세:</strong> 이자·배당을 합쳐 연 2,000만 원을 넘으면, 그 초과분을 <strong>다른 소득과 합산</strong>해 누진세율(지방세 포함 최고 49.5%)로 물리는 제도. 이자소득이 큰 사람일수록 세율이 가파르게 올라갑니다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 둘을 겹쳐 보면 개인투자용 국채의 진짜 성격이 드러납니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">낮은 세율이 아니라, &lsquo;종합과세 회피&rsquo;가 핵심</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">흔히 &ldquo;국채는 절세 상품&rdquo;이라고 하지만, 일반 예금 이자세(지방세 포함 15.4%)와 이 국채의 분리과세율(14%+지방세)은 사실 <strong>큰 차이가 없습니다.</strong> 세율만 보면 서민에게 돌아오는 절세는 미미합니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">혜택이 폭발하는 지점은 따로 있습니다. 이자소득이 연 2,000만 원을 넘겨 <strong>종합과세 구간에 들어가는 사람</strong>입니다. 이들은 원래 이자에 최고 49.5%까지 세금을 물 수 있는데, 개인투자용 국채는 만기 보유 시 그 이자를 종합과세에서 빼주고 14%로 끝내줍니다. 즉 이 상품의 세제 혜택은 <strong>&ldquo;세율을 낮춰주는&rdquo; 게 아니라 &ldquo;높은 누진 구간을 건너뛰게 해주는&rdquo;</strong> 것이고, 그 이득은 이자소득이 클수록 커집니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">특히 20년물은 이자를 <strong>만기에 한 번에</strong> 복리로 몰아 받습니다. 큰돈을 넣은 사람일수록 그해 금융소득이 한꺼번에 치솟아 종합과세 폭탄을 맞을 텐데, 분리과세가 바로 그 폭탄을 막아줍니다. 설계가 대형·고소득 매입자에게 가장 유용해지는 이유입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그리고, 애초에 문턱을 넘을 수 있어야 한다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세제 혜택은 <strong>만기 5년 이상</strong>, <strong>1인당 총 2억 원 한도</strong>에서만 적용됩니다. 중도환매하면 혜택이 사라진다는 건 영상에서 봤죠. 여기서 새로 볼 지점은, 이 조건들이 조용히 사람을 거른다는 것입니다. 20년(또는 최소 5년)을 손대지 않을 여윳돈, 그리고 한도를 채울 만한 목돈이 있어야 설계된 혜택을 온전히 가져갑니다. 급전이 필요해 중간에 빼야 하는 사람은 혜택을 스스로 반납하게 됩니다. <strong>여력이 있는 쪽의 이점을 키우고, 없는 쪽에는 사실상 닫혀 있는</strong> 구조입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 내 판단에 무엇이 달라지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이건 종목 추천이 아니라 판별 기준입니다. 스스로에게 세 가지를 물어보면 이 상품이 내게 설계된 것인지 가늠할 수 있습니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, 내 연간 이자·배당 소득이 2,000만 원 근처거나 그 이상인가. 그렇다면 종합과세 회피라는 진짜 혜택이 내게 작동합니다. 아니라면 절세 효과는 홍보만큼 크지 않습니다. 둘째, 이 돈을 정말 만기까지 안 건드릴 수 있는가. 중도환매는 혜택을 0으로 만듭니다. 셋째, &lsquo;161.8%&rsquo; 같은 총수익 표기에 휘둘리지 않고 연 단위 실질 수익으로 환산해 다른 안전자산과 비교했는가.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">이 국채의 세제 혜택은 세율 인하가 아니라 <strong>종합과세 회피</strong>이고, 그 이득은 <strong>이자소득이 클수록</strong> 커진다.</li>
+<li style="margin:0.3em 0;">2억 한도·장기 락업·중도환매 페널티는 <strong>목돈과 대기 여력이 있는 쪽</strong>에 유리하게 작동한다.</li>
+<li style="margin:0.3em 0;">&lsquo;국민 안전 상품&rsquo;이라는 겉면 아래, 혜택은 소득·자산에 따라 <strong>역진적으로</strong>(가진 쪽에 더 유리하게) 배분된다 — 좋고 나쁨의 문제가 아니라, 내게 맞는 설계인지 정직하게 따져볼 문제다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">청약 경쟁률이 소액(300만 원 우선배정 구간)에 몰리는지, 대형 매입에 몰리는지 — 실제 수요층의 성격이 드러난다.</li>
+<li style="margin:0.3em 0;">세제혜택 일몰(2027년 말)을 앞두고 한도·연장 논의가 어떻게 흘러가는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@rockstar-wannabe" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">20년에 161.8%? — 국채 &lsquo;대박 수익률&rsquo;에 숨은 진짜 설계</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">아주경제, &ldquo;8월 개인투자용 국채 1500억 발행…20년물 세전수익률 161.8%&rdquo; (2026-07-29) — https://www.ajunews.com/view/20260729090839219</li>
+<li style="margin:0.3em 0;">헤럴드경제, &ldquo;8월 개인투자용 국채 1500억원어치 발행…5년물 늘고 10년물 줄어&rdquo; (2026-07-29) — https://biz.heraldcorp.com/article/10823833</li>
+<li style="margin:0.3em 0;">KB the think, &ldquo;개인투자용 국채에 대한 이자소득 분리과세 특례란?&rdquo; — https://kbthink.com/dictionary/view.html?dictId=KED-00015295</li>
+<li style="margin:0.3em 0;">대한민국 정책브리핑, &ldquo;내년 개인투자용 국채 2조 원 발행…만기부담 적은 3년물 신설&rdquo; — https://www.korea.kr/news/policyNewsView.do?newsId=148957316</li>
+<li style="margin:0.3em 0;">미래에셋증권, &ldquo;개인투자용국채 안내&rdquo; — https://securities.miraeasset.com/hks/hks4046/n01.do</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
