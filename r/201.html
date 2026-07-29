@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>금리로 집값을 누르면, 먼저 밀려나는 건 누구일까 — ONGLE</title>
+<meta name="description" content="자산을 겨냥한 금리 인상의 첫 반응은 &#x27;가격 하락&#x27;이 아니라 &#x27;거래 동결&#x27;인 경우가 많다. 대출에 의존하는 실수요자는 한도 축소로 먼저 시장에서 밀려나고, 현금 여력이 있는 쪽은 인상을 &#x27;기다릴 자원&#x27;으로 바꾼다. &#x27;집값 잡기&#x27;라는 한 문장 뒤에서 부담이 역진적으로 갈리는 전달 경로를 계층별로 따라간다.">
+<meta property="og:title" content="금리로 집값을 누르면, 먼저 밀려나는 건 누구일까">
+<meta property="og:description" content="자산을 겨냥한 금리 인상의 첫 반응은 &#x27;가격 하락&#x27;이 아니라 &#x27;거래 동결&#x27;인 경우가 많다. 대출에 의존하는 실수요자는 한도 축소로 먼저 시장에서 밀려나고, 현금 여력이 있는 쪽은 인상을 &#x27;기다릴 자원&#x27;으로 바꾼다. &#x27;집값 잡기&#x27;라는 한 문장 뒤에서 부담이 역진적으로 갈리는 전달 경로를 계층별로 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">금리로 집값을 누르면, 먼저 밀려나는 건 누구일까</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[금리 인상<br/>자산·부채 겨냥] --> B[대출 한도 축소<br/>DSR 계산상 빌릴 수 있는 돈↓]
+    B --> C[실수요자 매수 여력 급감]
+    C --> D[사려는 사람이 먼저 사라짐<br/>= 거래 동결]
+    A --> E[보유자는 급매할 이유 없음<br/>매물 회수]
+    E --> F[가격은 천천히·끈끈하게 버팀]
+    D --> G[결과: 가격보다 거래가 먼저 멈춘다]
+    F --> G
+</pre></div>
+    <div class="article-meta">2026-07-30 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">금리로 집값을 누르면, 먼저 밀려나는 건 누구일까</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-07-30 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 아래 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">금리를 올리면 집값이 내린다 — 우리는 보통 이렇게 한 줄로 기대합니다. 그런데 자산을 겨냥한 인상의 첫 반응은 &lsquo;가격 하락&rsquo;이 아니라 &lsquo;거래 정지&rsquo;인 경우가 많고, 그 정지의 부담은 사람마다 정반대로 떨어집니다. 이 한 장이 그 순서입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 — 같은 인상, 먼저 밀려나는 순서</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이 사람은</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">인상 직후 처지</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">먼저 밀려나나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대출 끼고 지금 사려던 실수요자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한도↓·이자↑로 매수 계획이 바로 막힘</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>가장 먼저 퇴장</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전세 레버리지로 버티던 임차인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전세대출 이자↑, 갈아탈 곳이 좁아짐</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그다음으로 압박</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">빚 없이 현금 쥔 보유자·다주택자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">팔 이유가 없어 매물을 거둠, 예금이자는 덤</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>버티며 기다림</strong></td>
+</tr>
+</tbody>
+</table>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>이 리포트가 답하는 질문:</strong> 영상은 &ldquo;이번 인상의 진짜 타깃은 물가가 아니라 집값·가계부채&rdquo;라는 데서 멈췄습니다. 여기서 한 걸음 더 — 그 인상이 실제로 집값을 곧장 떨어뜨리는지, 아니면 <strong>누군가를 먼저 시장 밖으로 밀어내는지</strong>를 봅니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">먼저, 용어 두 개만</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>DSR(총부채원리금상환비율):</strong> 내 소득 대비 매년 갚아야 할 원리금 비율. 은행은 이 비율로 한도를 정하는데, <strong>금리가 오르면 같은 소득이라도 빌릴 수 있는 돈이 줄어듭니다.</strong></li>
+<li style="margin:0.3em 0;"><strong>거래 동결:</strong> 가격이 크게 내리지 않은 채, <strong>사고파는 건수 자체가 급감</strong>하는 상태. 가격표는 그대로인데 계약서가 안 써지는 상황입니다.</li>
+</ul>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">왜 가격보다 거래가 먼저 멈추나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">금리 인상이 자산시장에 닿는 첫 지점은 &lsquo;가격&rsquo;이 아니라 &lsquo;한도&rsquo;입니다. 금리가 오르면 DSR 계산상 빌릴 수 있는 돈이 줄고, 대출을 껴야 집을 살 수 있던 실수요자는 매수 계획을 바로 접습니다. 즉 <strong>사려는 쪽이 먼저 사라집니다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">반대편에서 이미 집을 가진 사람은 금리가 올랐다고 급히 팔 이유가 없습니다. 버틸 여력이 있으면 매물을 거두고 값을 지키죠. 파는 쪽은 안 급하고 사는 쪽만 사라지니, 결과는 &lsquo;가격 폭락&rsquo;이 아니라 <strong>&lsquo;거래 정지&rsquo;</strong>입니다. 과거 금리 인상기에도 거래량은 가파르게 줄지만 호가는 끈끈하게 버티는 흐름이 먼저 나타나곤 했습니다. 가격이 내리더라도 그건 대개 거래가 얼어붙은 한참 뒤의 일입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 부담이 역진적으로 갈린다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 부담의 방향이 갈립니다. 대출을 껴야 하는 사람일수록 한도 축소와 이자 부담을 정면으로 맞고, 여차하면 가장 먼저 시장에서 밀려납니다. 반대로 현금 여력이 있는 사람은 같은 인상을 <strong>기다릴 자원</strong>으로 바꿉니다 — 예금이자는 오르고, 거래가 얼어붙은 사이 값이 눌리면 나중에 더 싸게 살 여지도 생깁니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">&lsquo;집값을 잡는다&rsquo;는 명분은 같지만, 그 사이 실제로 일어나는 일은 <strong>여력 없는 쪽을 먼저 걸러내는 것</strong>에 가깝습니다. 정책이 나쁘다는 뜻이 아니라, 자산을 금리로 누를 때 부담이 균등하게 나뉘지 않고 대출 의존도가 높은 쪽에 먼저·더 크게 얹힌다는 구조를 보자는 겁니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 내 판단에 무엇이 달라지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">종목이나 매매 타이밍을 찍어주는 얘기가 아닙니다. 내 위치를 먼저 확인하자는 겁니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫째, 나는 이 자산시장에서 &lsquo;대출이 필요한 쪽&rsquo;인가 &lsquo;기다릴 수 있는 쪽&rsquo;인가. 이 위치에 따라 같은 금리 인상이 압박이 되기도, 여유가 되기도 합니다. 둘째, &ldquo;금리 올렸으니 곧 집값 내리겠지&rdquo;라는 기대는 <strong>거래가 먼저 얼고 가격은 한참 뒤에 움직인다</strong>는 시차를 감안해 다시 봐야 합니다. 셋째, 뉴스가 &lsquo;집값 안정&rsquo;이라고 말할 때, 그게 가격이 내린 건지 거래가 멈춘 건지를 나눠서 확인하는 습관입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">자산을 겨냥한 금리 인상의 1차 효과는 가격 하락보다 <strong>거래 동결</strong>로 나타나는 경향이 있다.</li>
+<li style="margin:0.3em 0;">그 부담은 균등하지 않다 — <strong>대출에 의존하는 실수요자가 먼저·크게</strong> 밀려나고, 현금 여력이 있는 쪽은 기다린다.</li>
+<li style="margin:0.3em 0;">&lsquo;집값 잡기&rsquo;라는 한 문장 뒤에서 누가 먼저 퇴장하는지를 나눠 보면, 정책의 효과를 훨씬 정확하게 읽을 수 있다 — 좋고 나쁨의 문제가 아니라, 내 위치를 정직하게 아는 문제다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">거래량과 가격 중 무엇이 먼저 움직이는지 — 거래만 줄고 가격은 버티면 &lsquo;동결&rsquo; 국면이다.</li>
+<li style="margin:0.3em 0;">추가 인상 또는 대출 규제(DSR)가 겹칠 때, 실수요자 매수 여력이 어디까지 줄어드는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@rockstar-wannabe" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">미국은 멈췄는데 한국만 금리 인상 — 진짜 겨냥한 건 물가가 아니었다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">한국은행, &ldquo;통화정책방향 — 기준금리 2.75%로 인상&rdquo;(금융통화위원회 2026-07-16) — https://www.bok.or.kr/portal/main/main.do</li>
+<li style="margin:0.3em 0;">대한민국 정책브리핑, &ldquo;2026년 6월 소비자물가동향(전년동월비 3.2%)&rdquo; — https://www.korea.kr/briefing/policyBriefingView.do?newsId=156769262</li>
+<li style="margin:0.3em 0;">CNBC, &ldquo;Fed rate decision July 2026: Divided Fed holds interest rates steady&rdquo; (2026-07-29) — https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html</li>
+<li style="margin:0.3em 0;">Forbes, &ldquo;Kevin Warsh&rsquo;s Fed Holds Interest Rates Steady Again—But Dissent Among Officials Mounts&rdquo; (2026-07-29) — https://www.forbes.com/sites/tylerroush/2026/07/29/fed-keeps-interest-rates-unchanged-as-dissent-mounts/</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
