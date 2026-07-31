@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이름을 부르면 회사가 바뀔까 — 일본이 먼저 해봤다 — ONGLE</title>
+<meta name="description" content="국가가 종목 화면에 &#x27;저PBR&#x27; 낙인을 찍으면 회사는 정말 바뀔까. 3년 먼저 같은 실험을 한 일본은 초기 배당·자사주 확대 뒤 저PBR 대상 비중이 다시 반등했다 — 자사주로 민 겉숫자와 ROE로 번 속알맹이의 차이, 그리고 낙인이 대형주·소형주에 다르게 걸리는 이유.">
+<meta property="og:title" content="이름을 부르면 회사가 바뀔까 — 일본이 먼저 해봤다">
+<meta property="og:description" content="국가가 종목 화면에 &#x27;저PBR&#x27; 낙인을 찍으면 회사는 정말 바뀔까. 3년 먼저 같은 실험을 한 일본은 초기 배당·자사주 확대 뒤 저PBR 대상 비중이 다시 반등했다 — 자사주로 민 겉숫자와 ROE로 번 속알맹이의 차이, 그리고 낙인이 대형주·소형주에 다르게 걸리는 이유.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">이름을 부르면 회사가 바뀔까 — 일본이 먼저 해봤다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["국가가 '저평가' 낙인 공개"] --> B{"회사의 반응"}
+    B -->|겉으로| C["자사주 매입·배당 확대<br/>→ PBR 숫자만 반등"]
+    B -->|속으로| D["수익성(ROE)은 그대로<br/>→ 저평가 다시 굳음"]
+    C --> E["일본: 낙인 대상 비중<br/>43.9% → 33.5%로 다시 반등"]
+    D --> E
+    style C fill:#8a6d1f,color:#fff
+    style D fill:#8a2f2f,color:#fff
+    style E fill:#3a3a55,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-01 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">이름을 부르면 회사가 바뀔까 — 일본이 먼저 해봤다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-01 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 국가가 종목 화면에 &lsquo;저PBR&rsquo; 낙인을 찍는다는 데서 끝났다. 리포트는 거기서 한 걸음 더 간다 — 그 낙인이 실제로 회사를 바꾼 적이 있나. 마침 3년 먼저 같은 실험을 한 나라가 있다. 일본이다. 결과는 &ldquo;부르니 잠깐 움직였다가, 다시 제자리로&rdquo;였다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 <strong>PBR</strong>은 주가가 회사 순자산의 몇 배냐를 보는 지표다. 1배 미만이면 주가가 장부상 순자산보다도 싸다는 뜻이라 &lsquo;저평가&rsquo;로 불린다. 문제는 이 숫자를 올리는 길이 두 갈래라는 것 — 회사가 진짜 돈을 더 벌어서 올리는 길과, 자사주를 사서 주식 수를 줄여 숫자만 올리는 길이다. 낙인은 이 둘을 구분하지 못한다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 일본은 3년 전에 이 버튼을 눌렀다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">2023년, 도쿄증권거래소(TSE)는 PBR 1배 미만 상장사에 &ldquo;자본 비용과 주가를 의식한 경영 계획을 내놓으라&rdquo;고 요구했다. 2024년 1월부터는 개선 계획을 낸 회사 <strong>명단을 매달 공표</strong>하기 시작했다. 한국이 지금 준비하는 것과 뼈대가 같다 — 국가가 저평가를 공론화해 경영진을 압박하는 방식이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">명단이라는 압박은 처음엔 통하는 듯 보였다. 2023년 한 해에만 <strong>64개 기업이 순이익 감소 전망에도 배당을 늘리고 자사주를 사들였다.</strong> 정책보유주식(서로 지분을 쥐고 경영권을 방어하던 &lsquo;상호출자&rsquo;)을 푸는 회사도 늘었고, 닛케이 지수는 사상 최고치를 새로 썼다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 그런데 낙인 대상이 다시 늘었다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기가 뉴스가 잘 안 짚는 자리다. 초반에 줄던 저PBR 기업이 <strong>다시 늘어났다.</strong></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">TOPIX 500 중 PBR 1배 미만 비중</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">43.9%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2022년 말 (정책 시작 전)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">하락세</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2023~2024 초</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>33.5%로 반등</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이후 2분기</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">더 상승</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그다음 분기</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">숫자가 되돌아온 이유는 단순하다. 자사주 매입은 주식 수를 줄여 PBR을 <strong>기계적으로</strong> 밀어올릴 뿐, 회사가 실제로 더 잘 버는 것과는 다르다. PBR을 지속적으로 올리는 핵심은 <strong>ROE</strong>(자기자본이익률 — 가진 자본으로 얼마를 버느냐)인데, 일본 기업 다수는 여기서 멈췄다. 실제로 도쿄거래소 후속 점검에서도 &ldquo;경영진의 자본 비용 이해는 나아졌지만, 적자 사업 철수나 성장 사업 재배치 같은 <strong>과감한 결정은 널리 이뤄지지 않았다</strong>&ldquo;고 평가됐다. 이름을 부르면 배당은 늘지만, 사업이 바뀌지는 않았다는 뜻이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 낙인의 무게는 고르게 떨어지지 않는다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">명단의 부담은 회사 규모에 따라 다르게 걸린다. 개선 계획을 낸 비율을 보면:</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">일본 시장</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">개선계획 공시 비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">프라임(대형주)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>47%</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">스탠더드(중소형주)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>14%</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">대형주는 절반 가까이 응답했지만, 중소형주는 일곱 곳 중 한 곳만 움직였다. 배당·자사주로 답할 곳간이 있는 큰 회사는 낙인에 반응할 수 있지만, 거래량이 얇고 여력이 없는 작은 회사는 계획서를 낼 여유조차 부족했다. 낙인이 <strong>강한 자에겐 신호, 약한 자에겐 그냥 딱지</strong>로 남을 수 있다는 뜻이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한국의 설계는 여기서 한 발 더 세다. 일본이 &lsquo;개선 계획을 낸 회사&rsquo;를 격려하듯 명단에 올린 반면, 한국은 저평가 자체를 투자자가 매수하는 종목 화면에 직접 띄운다. 거래가 얇은 소형주라면, 낙인이 개혁을 부르기 전에 개미의 &lsquo;매도 신호&rsquo;로 먼저 작동해 저평가를 더 굳힐 위험이 있다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">4. 그래서 독자에게 남는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">저PBR 공개가 무의미하다는 얘기가 아니다. 일본에서 배당·자사주 확대와 상호출자 해소라는 실질 변화가 있었던 건 사실이다. 다만 낙인은 <strong>겉숫자(자사주로 민 PBR)와 속알맹이(ROE로 번 PBR)를 구분하지 못한다.</strong> 그래서 명단에서 빠졌다고 좋아진 회사가 아니고, 명단에 남았다고 나쁜 회사도 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 읽을 때 쓸모 있는 한 가지 — 어떤 회사가 저PBR 딱지를 뗐다면, 그게 <strong>자사주로 숫자를 민 것</strong>인지 <strong>실제 이익(ROE)이 늘어 뗀 것</strong>인지를 갈라 보는 것이다. 구조 차원에선, 뉴스가 &ldquo;밸류업 성공&rdquo;을 말할 때 그게 지수 반등인지 개별 기업의 수익성 개선인지 — 둘은 같은 말이 아니라는 걸 같이 보는 게 정직한 독법이다. (특정 종목 매수·매도 권유가 아니라, 숫자를 가르는 눈에 관한 이야기다.)</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">일본은 3년 먼저 저PBR 명단 압박을 시작했고, 초기엔 배당·자사주 확대와 지수 반등으로 통하는 듯 보였다.</li>
+<li style="margin:0.3em 0;">그러나 낙인 대상(PBR 1배 미만) 비중은 43.9%에서 하락 후 33.5%로 <strong>다시 반등</strong>했다 — 자사주로 민 PBR은 되돌아오고, ROE(수익성)는 크게 개선되지 않았다.</li>
+<li style="margin:0.3em 0;">명단의 부담은 불균등하다(프라임 47% vs 스탠더드 14%). 여력 있는 대형주는 반응하고, 거래 얇은 소형주는 낙인만 남을 수 있다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">한국 첫 공표(11월) 후, 명단 기업의 반응이 <strong>자사주 매입(겉숫자)</strong> 쪽인지 <strong>사업 재편·수익성 개선(속알맹이)</strong> 쪽인지.</li>
+<li style="margin:0.3em 0;">거래량이 얇은 소형 저PBR주가 공표 후 개혁으로 가는지, 매도 압력으로 저평가가 더 굳는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ONGLE" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">국가가 &lsquo;저평가&rsquo; 딱지를 붙입니다 — 11월, 당신 종목 화면에 뜨는 저PBR 낙인 220곳</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">금융위·거래소 저PBR 기업 공표 기준 공개 — 헤럴드경제 (2026-07-28) — https://biz.heraldcorp.com/article/10822883</li>
+<li style="margin:0.3em 0;">저PBR 코스피 기업 11월 공개…3년 연속 하위 25%·코스닥 10% — 디지털타임스 (2026-07-28) — https://www.dt.co.kr/article/12075154</li>
+<li style="margin:0.3em 0;">Tokyo Stock Exchange Initiative on Cost of Capital and Stock Price Conscious Management — Harvard Law School Forum on Corporate Governance (2025-10-21) — https://corpgov.law.harvard.edu/2025/10/21/tokyo-stock-exchange-initiative-on-cost-of-capital-and-stock-price-conscious-management/</li>
+<li style="margin:0.3em 0;">Action to Implement Management Conscious of Cost of Capital and Stock Price (Prime/Standard 공시율) — Japan Exchange Group — https://www.jpx.co.jp/english/equities/follow-up/02.html</li>
+<li style="margin:0.3em 0;">일본 밸류업에 무슨 일?…&rsquo;PBR 1 미만&rsquo; 기업 6개월 새 더 늘었다 — 에너지경제 (2024-10-04) — https://m.ekn.kr/view.php?key=20241004029550341</li>
+<li style="margin:0.3em 0;">&ldquo;저PBR 기업 명단 공개해 망신줘야&rdquo;…한국거래소 밸류업 추가 대책 — 뉴스핌 (2026-05-27) — https://www.newspim.com/news/view/20260527000795</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
