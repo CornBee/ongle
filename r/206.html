@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>&#x27;테크&#x27;라는 이름표가 연료였을 때 — 중국이 먼저 값을 치렀다 — ONGLE</title>
+<meta name="description" content="전자금융업자의 금융복합기업집단 편입은 이름이 아니라 비용을 바꾼다(위험가산자본 최대 20%). 규제차익이 핀테크 저비용 성장의 연료였는지를, 같은 모델이 강제 편입된 앤트그룹(기업가치 약 3,000억$→780억$) 선례로 따라간다.">
+<meta property="og:title" content="&#x27;테크&#x27;라는 이름표가 연료였을 때 — 중국이 먼저 값을 치렀다">
+<meta property="og:description" content="전자금융업자의 금융복합기업집단 편입은 이름이 아니라 비용을 바꾼다(위험가산자본 최대 20%). 규제차익이 핀테크 저비용 성장의 연료였는지를, 같은 모델이 강제 편입된 앤트그룹(기업가치 약 3,000억$→780억$) 선례로 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">&#x27;테크&#x27;라는 이름표가 연료였을 때 — 중국이 먼저 값을 치렀다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["'금융이 아님'이라는 분류<br/>= 규제차익(낮은 자본·감독 비용)"] --> B{"이 차익이 성장의 연료였나?"}
+    B -->|"단순 이름표였다면"| C["편입돼도 비용우위 유지<br/>→ 계속 은행보다 싸다"]
+    B -->|"진짜 연료였다면"| D["자본·내부통제 비용이 은행급으로<br/>→ '싸고 빠름'이 깎인다"]
+    D --> E["앤트그룹 실측:<br/>기업가치 약 3,000억$ → 약 780억$"]
+    style C fill:#3a5a40,color:#fff
+    style D fill:#8a2f2f,color:#fff
+    style E fill:#3a3a55,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-01 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#핀테크</span> <span class="tag">#규제</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">&lsquo;테크&rsquo;라는 이름표가 연료였을 때 — 중국이 먼저 값을 치렀다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-01 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 금융위가 &lsquo;산업분류&rsquo;라는 칸을 지워 전자금융업자를 그룹 감독 안으로 넣었다는 데서 끝났다. 리포트는 그다음 질문으로 간다 — 그 칸은 단순한 이름표였을까, 아니면 핀테크가 은행보다 싸고 빠를 수 있었던 <strong>진짜 연료</strong>였을까. 마침 이 실험을 5년 먼저, 훨씬 거칠게 한 회사가 있다. 중국의 앤트그룹이다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 <strong>규제차익</strong>(regulatory arbitrage)은 같은 일을 하면서도 규제가 약한 쪽에 서서 비용을 아끼는 것을 말한다. 은행이 대출을 하면 손실에 대비해 자기자본을 쌓아야 하지만, &lsquo;금융회사가 아닌&rsquo; 플랫폼이 대출을 <strong>중개</strong>만 하면 그 자본 부담을 은행에 떠넘길 수 있다. 이 차이가 곧 속도와 가격이었다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 이름표가 지우는 건 &lsquo;이름&rsquo;이 아니라 &lsquo;비용&rsquo;이다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">전자금융업자가 <strong>금융복합기업집단</strong>(2개 이상 금융업을 하고 인허가 금융회사를 낀, 자산 5조원 이상 그룹)으로 편입되면 실제로 바뀌는 건 명패가 아니라 대차대조표다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">편입 전 (분류상 &lsquo;테크&rsquo;)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">편입 후 (금융복합기업집단)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">계열사별로 각자 규제</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>대표금융회사</strong> 지정, 그룹을 한 몸으로 감독</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그룹 차원 자본 요구 없음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>위험가산자본 최대 20%</strong> 추가 적립(평가등급 차등)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">리스크 전이 자체 판단</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">위험집중·전이 정기 점검·보고·공시 의무</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 <strong>위험가산자본</strong>이다. 그룹 안에서 자본을 중복으로 쓰거나 위험이 한쪽에 쏠렸다고 평가되면, 감독당국이 최대 20%까지 자본을 더 쌓으라고 요구한다. 자본은 곧 묶이는 돈이고, 묶이는 돈은 곧 비용이다. 토스는 이미 2026년 7월 15일 국내 첫 전자금융업 기반 금융복합기업집단으로 지정됐고, 7월 31일 개정은 분류로 빠져나가던 나머지까지 이 부담 안으로 끌어들인 것이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 앤트그룹 — &lsquo;테크&rsquo;로 불리다 하루아침에 &lsquo;금융&rsquo;이 된 회사</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">앤트그룹은 규제차익 모델의 극단이었다. 알리페이 데이터로 신용을 평가하고 대출을 <strong>연결</strong>했지만, 실제 대출금 대부분은 제휴 은행이 댔다. 앤트는 자기자본을 거의 안 쌓고 수수료만 챙기는, 문자 그대로 &lsquo;자본 없는 은행&rsquo;이었다. 2020년 11월 예정된 상장은 약 <strong>340억 달러</strong> 규모로 사상 최대였다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그런데 상장 이틀 전, 중국 당국은 IPO를 전격 중단시켰다. 사유 중 하나가 정확히 <strong>&ldquo;규제차익을 활용했다&rdquo;</strong>였다. 이후 앤트는 <strong>금융지주회사</strong>로 전환하라는 명령을 받았고, 소액대출 사업(화베이·제베이)은 분리돼 국유자본이 들어온 소비자금융 자회사로 재편됐다. 은행처럼 자본을 쌓아야 하는 구조로 강제 전환된 것이다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">앤트그룹 기업가치</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시점</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 3,000억 달러</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2020년 상장 직전</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>약 780억 달러</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2023년 자사주 매입 기준</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">5년 사이 가치의 <strong>약 4분의 3이 증발</strong>했다. 시장이 매긴 답은 분명했다 — 앤트를 비싸게 만든 건 기술이 아니라, 은행 규제를 피한 그 지위 자체였다. 이름표를 떼자 몸값도 떨어졌다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 한국은 훨씬 부드럽다 — 그래서 오히려 진짜 시험이다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">오해를 막자. 한국의 조치는 앤트식 &lsquo;강제 해체&rsquo;가 아니다. IPO를 막지도, 사업을 쪼개지도 않는다. 그룹 위험을 함께 보게 하고 자본을 조금 더 쌓게 하는, 훨씬 절제된 편입이다. 바로 그래서 더 정직한 실험이다 — 정치적 응징이라는 잡음 없이, <strong>규제비용이 오르면 핀테크의 비용우위가 얼마나 깎이는가</strong>만 순수하게 드러나기 때문이다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">차익이 <strong>단순 이름표</strong>였다면: 토스 등은 편입 뒤에도 은행보다 싸고 빠를 것이다. 그럼 &lsquo;핀테크 혁신&rsquo;은 규제 회피가 아니라 진짜 기술이었다는 증거가 된다.</li>
+<li style="margin:0.3em 0;">차익이 <strong>진짜 연료</strong>였다면: 편입 뒤 수수료·금리 조건이 은행 쪽으로 수렴할 것이다. 그동안의 &lsquo;싸고 빠름&rsquo; 일부는 우리가 못 보던 리스크를 대신 떠안은 대가였다는 뜻이 된다.</li>
+</ul>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">4. 그래서 독자에게 남는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 당장 할 수 있는 건 크지 않지만 하나는 분명하다 — <strong>내가 페이 앱에 넣어둔 돈이 어떤 법적 지위에 있는지</strong>를 아는 것이다. 예금자보호가 되는 은행 예금인지, 선불충전금(별도 예치·신탁으로 보호되지만 예금은 아님)인지에 따라 사고 시 돌려받는 경로가 다르다. 편입은 그 뒤에서 &lsquo;그룹이 흔들려도 내 돈이 옆 계열사 리스크에 끌려가지 않게&rsquo; 막는 안전장치에 가깝다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구조 차원에선, 이건 &lsquo;혁신 대 안전&rsquo;의 트레이드오프를 정직하게 보는 문제다. 규제차익 축소는 소비자 보호와 시스템 안정을 높이지만, 동시에 핀테크가 은행보다 쌌던 이유의 일부를 깎는다. 둘 다 사실이다. &ldquo;규제가 혁신을 죽인다&rdquo;도, &ldquo;핀테크는 순수 기술이었다&rdquo;도 아닌, 그 사이 어디쯤을 이번 편입이 실측해줄 것이다. (특정 종목·서비스 권유가 아니라, 비용이 어디서 왔는지 갈라 보는 이야기다.)</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">전자금융업자의 금융복합기업집단 편입은 &lsquo;이름&rsquo;이 아니라 <strong>비용</strong>을 바꾼다 — 대표회사 지정, 그룹 감독, 위험가산자본 최대 20%.</li>
+<li style="margin:0.3em 0;">앤트그룹은 같은 규제차익 모델이 편입될 때 무슨 일이 생기는지 보여줬다 — 기업가치 약 3,000억$ → 약 780억$. 시장은 &lsquo;테크 프리미엄&rsquo;의 상당 부분이 규제 회피였다고 답했다.</li>
+<li style="margin:0.3em 0;">한국은 훨씬 부드러운 편입이라 오히려 순수한 시험이다 — 규제비용이 오를 때 핀테크의 비용우위가 실제로 얼마나 깎이는지가 드러난다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">편입된 전자금융업자의 송금·대출 수수료·금리 조건이 은행 쪽으로 수렴하는가(연료였다는 신호), 아니면 격차가 유지되는가(이름표였다는 신호).</li>
+<li style="margin:0.3em 0;">위험가산자본 부담이 핀테크의 신규 대출·투자 사업 확장 속도를 늦추는지 — 자본을 아껴 빨랐던 모델의 &lsquo;속도세&rsquo;.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 토스는 &lsquo;테크 회사&rsquo;라서 은행급 감독을 피했습니다 — 금융위가 그 이름표를 지운 날</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">금융위원회, 「금융복합기업집단 감독규정」 일부개정고시안 의결(2026-07-31) — 헤럴드경제·머니투데이·이데일리·이투데이·뉴스핌 보도.</li>
+<li style="margin:0.3em 0;">「금융복합기업집단의 감독에 관한 법률」 — 지정 기준(2개 이상 금융업·인허가 금융회사·자산 5조원↑), 위험가산자본 최대 20% 가산. (국가법령정보센터, 김·장 법률사무소 해설)</li>
+<li style="margin:0.3em 0;">토스 금융복합기업집단 첫 지정(2026-07-15) — 아주경제.</li>
+<li style="margin:0.3em 0;">앤트그룹 IPO 중단·금융지주회사 전환·규제차익 지적 — Wikipedia(Ant Group), 코인데스크코리아, 플래텀, MarketBeat.</li>
+<li style="margin:0.3em 0;">앤트그룹 기업가치 변화(약 3,000억$ → 약 780억$, 2023 자사주 매입 기준) — 관련 보도 종합.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
