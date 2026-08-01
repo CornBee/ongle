@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>방패를 빼앗은 자리엔 무엇이 들어오나 — 자사주 소각, 그다음의 싸움 — ONGLE</title>
+<meta name="description" content="올해 상법 개정으로 자사주가 원칙적으로 소각되면서 지배주주가 무상으로 지배력을 불리던 &#x27;자사주 마법&#x27;이 막혔다. 그런데 자사주는 사실상 유일한 경영권 방패이기도 했다. 그 빈자리를 채우려는 포이즌필·차등의결권·황금주 요구와, 한국·해외의 현황을 소액주주 관점에서 갈라 본다.">
+<meta property="og:title" content="방패를 빼앗은 자리엔 무엇이 들어오나 — 자사주 소각, 그다음의 싸움">
+<meta property="og:description" content="올해 상법 개정으로 자사주가 원칙적으로 소각되면서 지배주주가 무상으로 지배력을 불리던 &#x27;자사주 마법&#x27;이 막혔다. 그런데 자사주는 사실상 유일한 경영권 방패이기도 했다. 그 빈자리를 채우려는 포이즌필·차등의결권·황금주 요구와, 한국·해외의 현황을 소액주주 관점에서 갈라 본다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">방패를 빼앗은 자리엔 무엇이 들어오나 — 자사주 소각, 그다음의 싸움</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["자사주 소각 의무화<br/>= '숨은 방패' 제거"] --> B{"빈 방패 자리를<br/>무엇이 채우나?"}
+    B -->|"아무것도 안 넣음"| C["적대적 M&A·투기자본에 노출<br/>(재계가 말하는 '안방 내주기')"]
+    B -->|"포이즌필·차등의결권 도입"| D["통제권은 방어되나<br/>지배주주 '참호'가 굳을 위험"]
+    B -->|"드러난 규칙형 방패로 교체"| E["지분 희석 없이 통제만 방어<br/>→ 소액주주엔 덜 해로울 수 있음"]
+    style C fill:#8a2f2f,color:#fff
+    style D fill:#7a5a2f,color:#fff
+    style E fill:#3a5a40,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-02 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">방패를 빼앗은 자리엔 무엇이 들어오나 — 자사주 소각, 그다음의 싸움</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-02 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 올해 상법 개정으로 자사주가 원칙적으로 소각되면서 &lsquo;자사주의 마법&rsquo;이 쓸 재료를 잃었다는 데서 끝났다. 리포트는 그다음을 본다 — 자사주는 지배주주에게 <strong>거의 유일한 경영권 방패</strong>이기도 했다. 방패의 재료를 태워버렸다면, 그 빈자리는 저절로 비어 있지 않는다. 지금 그 자리를 채우려고 세 가지가 밀려들어오고 있고, 그중 무엇이 오느냐에 따라 소액주주에게 득이 될 수도, 형태만 바꾼 굴레가 될 수도 있다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 <strong>포이즌필</strong>(신주인수선택권)은 적대적 인수 시도가 있을 때 기존 주주에게 싸게 신주를 살 권리를 줘 인수자의 지분을 희석시키는 장치이고, <strong>차등의결권</strong>(복수의결권)은 특정 주식 1주에 여러 표를 주는 것, <strong>황금주</strong>는 단 1주로 주요 안건에 거부권을 행사하는 주식이다. 한국은 이 셋 중 어느 것도 상장사에는 아직 없다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 자사주는 원래 두 얼굴이었다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자사주가 &lsquo;마법&rsquo;으로 불린 건 통제권을 <strong>소액주주 몰래</strong> 옮겼기 때문이다. 회사 돈으로 산 주식엔 원래 의결권이 없다가, 인적분할 같은 순간에 되살아나 지배주주 손에 얹혔다. 소액주주는 자기 지분이 옅어지는 걸 고지받지도 못했다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">자사주 마법 (사라진 방패)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">포이즌필·차등의결권 (들어오려는 방패)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">방어 방식</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">분할 때 의결권 되살려 지배력 확보</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">규칙에 따라 통제권 방어</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">투명성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>숨어 있음</strong> — 소액주주 사후 인지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정관·공시로 드러남</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소액주주 지분</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">실제로 희석됨 (가치 이전)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">설계에 따라 희석 없이 통제만 방어 가능</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">현재 한국 지위</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소각 의무화로 차단</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상장사엔 미도입</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 아래 칸이다. 자사주 마법은 소액주주의 <strong>돈</strong>(지분 가치)을 옮겼지만, 잘 설계된 포이즌필·차등의결권은 <strong>표</strong>(통제권)만 방어하고 지분 가치는 건드리지 않을 수 있다. 그래서 &ldquo;방패를 없앴다&rdquo;와 &ldquo;새 방패를 준다&rdquo;는 정반대처럼 보여도, 소액주주에겐 어느 쪽이 덜 해로운가가 진짜 질문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 빈자리를 채우려 밀려드는 것들 — 한국의 현주소</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">3차 상법이 의결되자마자(2026-03-05) 재계와 일부 의원은 포이즌필·차등의결권·황금주 도입을 요구했다. 자사주라는 방패를 뺏었으니 대체 장치를 달라는 것이다. 그런데 한국은 이 문을 거의 닫아둔 상태다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">방어 장치</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">한국 현황</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">포이즌필(신주인수선택권)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>미도입</strong> — 법적 근거 없음</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차등의결권(복수의결권)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비상장 벤처만 2023-11 허용(1주 최대 10표, 상장 3년 뒤 보통주 전환). <strong>상장사 불가</strong>(상법 제369조 1주 1의결권)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">황금주</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>미도입</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">즉 지금 한국 상장사는 &lsquo;숨은 방패(자사주)&rsquo;는 잃었는데 &lsquo;드러난 방패&rsquo;는 받은 게 없는 상태다. 재계는 이를 &ldquo;글로벌 표준 방어 수단도 없이 안방을 내주는 것&rdquo;이라 부르고, 반대편은 &ldquo;방어 수단부터 주면 소각 의무화의 취지(지배주주 참호 해체)가 되돌아간다&rdquo;고 본다. 둘 다 일리가 있다 — 문제는 순서와 설계다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 해외는 이 교환을 먼저 겪었다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">미국은 포이즌필과 차등의결권을 <strong>상장 단계에서 허용</strong>하는 방식으로 운영한다. 구글·메타처럼 창업자가 복수의결권으로 통제권을 쥔 회사가 상장돼 있다. 대신 시장은 그 대가를 가격에 반영한다 — 지배구조 참호가 강한 회사엔 &lsquo;거버넌스 할인&rsquo;이 붙는다는 연구가 오래 쌓였다. 일본은 정부가 포이즌필 <strong>가이드라인</strong>을 만들어, 법으로 강제하기 전에 기업이 방어 장치를 쓰되 남용은 억제하는 절충을 택했다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">시사점은 분명하다. 방어 수단 자체가 선이거나 악인 게 아니라, <strong>누가 그 방패의 방아쇠를 쥐고, 소액주주가 그 대가를 가격으로 확인할 수 있느냐</strong>가 갈림길이다. 자사주 마법이 나빴던 진짜 이유도 &lsquo;방어&rsquo;라서가 아니라 그게 <strong>숨어 있어</strong> 가격에 반영될 수 없었기 때문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">4. 그래서 독자에게 남는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 당장 할 일은 크지 않지만 하나는 또렷하다 — 내가 가진 주식(또는 사려는 주식) 회사가 <strong>지주회사 전환·인적분할 이력</strong>이 있는지, 정관에 새 방어 조항을 넣으려 하는지를 보는 것이다. 자사주 마법이 막힌 뒤 어떤 회사는 조용히 다른 방패를 정관에 심으려 할 수 있고, 그 안건은 이제 <strong>주주총회에 드러나서</strong> 올라온다. 숨어 있던 게 표결 위로 올라온 것 자체가 이번 개정의 성과다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구조 차원에선 이건 &lsquo;경영권 방어는 무조건 나쁘다&rsquo;의 문제가 아니다. 안정적 경영권은 장기 투자를 가능케 하기도 한다. 다만 그 방패가 <strong>숨어서 소액주주 몫을 옮기는 것</strong>과, <strong>드러난 규칙으로 통제권만 지키는 것</strong>은 전혀 다른 이야기다. 이번 소각 의무화는 전자를 닫았고, 다음 싸움은 후자를 어떤 설계로 열 것인가다. (특정 종목·서비스 권유가 아니라, 방패의 종류가 소액주주에게 어떻게 다른지를 갈라 보는 이야기다.)</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">자사주 소각 의무화는 방패를 없앤 게 아니라 <strong>숨은 방패</strong>를 없앴다 — 소액주주 몫을 몰래 옮기던 통로를 닫은 것이 핵심 성과다.</li>
+<li style="margin:0.3em 0;">그 빈자리를 포이즌필·차등의결권·황금주 요구가 채우려 하지만, 한국 상장사엔 셋 다 아직 없다 — &lsquo;숨은 방패는 잃고 드러난 방패는 못 받은&rsquo; 과도기다.</li>
+<li style="margin:0.3em 0;">방어 수단의 선악은 형태가 아니라 <strong>투명성</strong>에서 갈린다 — 소액주주가 그 대가를 표결과 가격으로 확인할 수 있느냐가 자사주 마법과 정식 방패를 가른다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">포이즌필·차등의결권 도입 법안이 실제 입법 궤도에 오르는가, 오른다면 &lsquo;소액주주 보호 장치(일몰·주총 특별결의 등)&rsquo;를 함께 다는가.</li>
+<li style="margin:0.3em 0;">자사주 소각 의무화 이후 기업들이 정관에 새 방어 조항을 올리는 주총 안건이 늘어나는가 — 숨어 있던 방어가 표결 위로 드러나는 신호.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 오너가 돈 한 푼 안 쓰고 지배력을 불리던 &lsquo;자사주 마법&rsquo; — 올해 상법이 그 재료를 태워버렸습니다</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">3차 상법 개정안(자기주식 의무 소각) 국회 본회의 통과(2026-02-25)·공포·시행(2026-03-06) — 법률신문(율촌·대륙아주 해설), 김·장 법률사무소, 삼일PwC.</li>
+<li style="margin:0.3em 0;">인적분할 시 &lsquo;자사주의 마법&rsquo;과 소각 의무화의 차단 효과 — 법무부 「자기주식 소각 의무화 관련 개정 상법 길라잡이」(2026-03-11), 시사저널e.</li>
+<li style="margin:0.3em 0;">재계·의원의 포이즌필·차등의결권·황금주 도입 요구, 법무부의 대체 방어수단 논의 필요성 — 한국경제(2026-03-05), 서울경제, ESG경제.</li>
+<li style="margin:0.3em 0;">한국 복수의결권 현황(상법 제369조 1주 1의결권, 비상장 벤처 2023-11 도입, 상장 3년 뒤 보통주 전환) — 김·장 법률사무소, 머니투데이, 나무위키.</li>
+<li style="margin:0.3em 0;">해외 운영(미국 상장 단계 차등의결권·포이즌필 허용, 일본 포이즌필 가이드라인) — 관련 보도 종합.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
