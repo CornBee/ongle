@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>구멍을 하나 막을 때마다, 돈은 왜 새 길을 내나 — &#x27;사후에 뒤따르는 규제&#x27;의 구조 — ONGLE</title>
+<meta name="description" content="보이스피싱 선불 사각지대를 메운 8월 4일 개정을 출발점으로, 결제가 편해질수록 추적 사각지대가 구조적으로 다시 생기는 고리를 짚는다. 편의성과 추적성은 같은 손잡이의 양 끝이라 규제는 &#x27;편의→악용→사후 규제&#x27; 순서로 늘 한 발 늦고, 다음 칸인 가상자산에서는 세계가 이미 트래블룰로 같은 문제를 풀고 있다. 관건은 규제의 세기가 아니라 추적성을 설계 앞단에 심느냐는 순서다.">
+<meta property="og:title" content="구멍을 하나 막을 때마다, 돈은 왜 새 길을 내나 — &#x27;사후에 뒤따르는 규제&#x27;의 구조">
+<meta property="og:description" content="보이스피싱 선불 사각지대를 메운 8월 4일 개정을 출발점으로, 결제가 편해질수록 추적 사각지대가 구조적으로 다시 생기는 고리를 짚는다. 편의성과 추적성은 같은 손잡이의 양 끝이라 규제는 &#x27;편의→악용→사후 규제&#x27; 순서로 늘 한 발 늦고, 다음 칸인 가상자산에서는 세계가 이미 트래블룰로 같은 문제를 풀고 있다. 관건은 규제의 세기가 아니라 추적성을 설계 앞단에 심느냐는 순서다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">구멍을 하나 막을 때마다, 돈은 왜 새 길을 내나 — &#x27;사후에 뒤따르는 규제&#x27;의 구조</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["결제를 더 편하게<br/>(새 수단 등장)"] --> B["돈의 경로가<br/>더 잘게 쪼개짐"]
+    B --> C["추적 사각지대<br/>발생"]
+    C --> D["범죄가<br/>그 틈을 악용"]
+    D --> E["사후에 규제로<br/>그 구멍만 메움"]
+    E --> A
+    style C fill:#8a2f2f,color:#fff
+    style E fill:#3a5a40,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-03 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">구멍을 하나 막을 때마다, 돈은 왜 새 길을 내나 — &lsquo;사후에 뒤따르는 규제&rsquo;의 구조</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-03 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 보이스피싱 돈을 돌려받느냐가 개인의 조심성이 아니라 &lsquo;돈이 지나간 결제 경로&rsquo;가 갈랐고, 8월 4일 개정이 그 선불 사각지대를 메운다는 데서 끝났다. 리포트는 다른 것을 묻는다 — 그럼 이 구멍은 마지막 구멍인가, 아니면 결제가 편해질수록 <strong>구조적으로 계속 생겨나는</strong> 것인가. 그리고 규제는 왜 항상 한 발 늦게 도착하나.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 핵심 용어 하나. <strong>선불전자지급수단</strong>은 미리 충전해 두고 쓰는 전자지갑 잔액을 말한다. 은행 계좌가 아니라 &lsquo;충전해 둔 돈&rsquo;이라, 계좌 중심으로 짜인 추적 장치의 바깥에 있었다. 이 한 가지 성질이 위 고리를 돌린다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 규제가 늘 한 발 늦는 이유 — 편의성과 추적성의 맞바꿈</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈을 옮기는 수단이 편해진다는 건, 중간 단계와 확인 절차가 줄어든다는 뜻이다. 그런데 그 확인 절차가 바로 <strong>누가 누구에게 보냈는지를 남기는 기록</strong>이다. 편의성을 올리면 추적성이 내려간다 — 둘은 같은 손잡이의 양 끝이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그래서 새 결제 수단은 거의 항상 &lsquo;추적 설계&rsquo;보다 &lsquo;편의 설계&rsquo;를 앞세워 먼저 나온다. 규제는 그 수단이 <strong>악용된 사례가 쌓인 뒤에야</strong> 구멍의 모양을 알고 메운다. 이번 선불 사각지대도 그랬다. 순서가 늘 &lsquo;편의 → 악용 → 사후 규제&rsquo;인 한, 규제는 구조적으로 뒤따라갈 수밖에 없다. 이걸 <strong>규제 차익</strong>이라고 부른다 — 감시가 약한 쪽으로 돈이 흘러가 이득을 보는 것이다. 범인은 은행보다 똑똑해서가 아니라, 감시가 얇은 레일을 고를 뿐이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 그럼 다음 사각지대는 어디인가</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">레일</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">편의성</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">추적의 빈틈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 계좌</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">낮음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">거의 없음 (지급정지 즉시)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">간편송금·선불충전</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">높음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이번에 메움 (8/4)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">가상자산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매우 높음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국경 넘으면 여전히 헐거움</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈이 가장 새 나가기 쉬운 다음 칸은 <strong>가상자산</strong>이다. 여기서 국제적으로 도입 중인 장치가 <strong>트래블룰</strong>인데, 이는 코인을 옮길 때 보내는 사람과 받는 사람 정보를 반드시 함께 넘기게 한 규칙이다. 은행 송금엔 원래 있던 &lsquo;동반 정보&rsquo;를 코인에도 붙이자는 것이다. 즉 세계는 이미 같은 문제를 <strong>한 레일 앞서</strong> 풀고 있다 — 방식도 같다. 끊긴 정보를 다시 잇는 것.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 보이는 게 하나 있다. 각 나라·기관이 구멍을 따로따로 메우면 범인은 <strong>가장 늦게 메운 나라의 레일</strong>로 옮겨 갈 뿐이다. 그래서 앞선 설계들은 개별 구멍이 아니라 &lsquo;정보가 돈을 따라다니게&rsquo; 한다는 <strong>공통 원칙</strong>을 심는 쪽으로 간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 그래서 출구는 있나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">솔직히 개인이 이 고리를 끊을 깨끗한 방법은 없다. 이건 개인의 주의력 문제가 아니라 결제 인프라를 어떻게 설계하느냐의 문제다. 다만 이 렌즈로 보면 두 가지가 또렷해진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>구조 차원</strong>에선 논쟁을 &lsquo;규제를 더 세게 vs 혁신을 막지 마라&rsquo;로 좁히지 않는 게 정직하다. 핵심은 세기가 아니라 <strong>순서</strong>다 — 새 결제 수단을 설계하는 단계에서 추적성을 처음부터 심느냐, 아니면 편의부터 풀고 사고가 난 뒤 메우느냐. 앞단에 심으면 고리의 붉은 칸(사각지대)이 아예 안 생긴다. 사후 패치는 늘 피해자가 먼저 생긴 뒤다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>개인 차원</strong>에서 붙잡을 건 영상이 남긴 그 한 줄이다 — 내 돈이 &lsquo;어느 레일&rsquo;을 타는지가 사고가 났을 때 회수 가능성을 가른다는 것. 편의성이 높다는 건 되돌리기가 그만큼 어렵다는 뜻이기도 하다. 이건 특정 서비스를 쓰지 말라는 얘기가 아니라, 편의의 뒷면에 무엇이 얇아졌는지를 같이 보자는 이야기다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">선불 사각지대는 마지막 구멍이 아니다 — 결제가 편해질수록 추적의 빈틈은 <strong>구조적으로 다시 생긴다</strong>. 편의성과 추적성은 같은 손잡이의 양 끝이다.</li>
+<li style="margin:0.3em 0;">규제가 늘 한 발 늦는 건 무능이 아니라 순서 탓이다 — &lsquo;편의 → 악용 → 사후 규제&rsquo;라는 고리 자체가 규제를 뒤따르게 만든다.</li>
+<li style="margin:0.3em 0;">세계는 이미 다음 칸(가상자산)에서 <strong>트래블룰</strong>로 같은 문제를 풀고 있다 — 방식은 똑같이 &lsquo;끊긴 정보를 돈에 다시 붙이기&rsquo;다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">이번 선불 정보공유가 실제 지급정지·환급률을 올리는지, 아니면 범인이 곧바로 다음 레일(가상자산·상품권)로 옮겨 가는 신호가 잡히는지.</li>
+<li style="margin:0.3em 0;">새 결제·송금 서비스 인가 단계에서 추적성 요건을 <strong>앞단에</strong> 붙이는 논의가 나오는지, 여전히 사후 패치로만 가는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 보이스피싱 돈을 돌려받느냐는 당신의 조심성이 아니라 &lsquo;돈이 지나간 길&rsquo;이 갈랐습니다 — 8월 4일, 그 사각지대가 막힙니다</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">개정 통신사기피해환급법 시행령(2026-08-04 시행): 금융회사가 피해금의 선불업자 이전을 확인하면 선불업자가 최종 사기이용계좌를 확인·통지 — 금융위원회 보도자료·법률 칼럼(2026-07~08).</li>
+<li style="margin:0.3em 0;">2026년 1분기 보이스피싱 피해 3,116억원(전년 동기 2.2배)·건당 평균 5,301만원·기관사칭형 51% — 금융감독원 집계 언론 보도(2026-04).</li>
+<li style="margin:0.3em 0;">규제 차익(regulatory arbitrage)·감시 강도 격차로 인한 자금 이동 일반론 — 금융규제 문헌 종합.</li>
+<li style="margin:0.3em 0;">가상자산 트래블룰(송수신자 정보 동반 의무) — FATF 권고 및 국내 도입 자료 종합.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
