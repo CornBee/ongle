@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>같은 라인, 다른 손님 — 수요가 옮겨가면 산업은 설비를 버리지 않고 방향만 바꾼다 — ONGLE</title>
+<meta name="description" content="SK온이 전기차 라인을 ESS 라인으로 바꿔 7개 분기 만에 흑자로 돌아섰다는 사실을 출발점으로, 왜 큰 수요가 다른 곳으로 옮겨가면 산업은 설비를 버리지 않고 &#x27;손님&#x27;만 바꾸는지를 짚는다. 배터리 셀이 전기차용과 ESS용에서 사실상 같은 물건이라 라인 재배치가 가능하며, 자동차→항공·조선→해상풍력처럼 반복돼 온 &#x27;용도 전환&#x27; 문법이다. 이익은 전환이 빠른 소수(셀 메이커·AI 빅테크)에 응축되고, 전력망·전력요금이라는 비용은 소비자에게 분산되며, ESS 수요도 결국 사이클이라 피크아웃 위험을 안는다.">
+<meta property="og:title" content="같은 라인, 다른 손님 — 수요가 옮겨가면 산업은 설비를 버리지 않고 방향만 바꾼다">
+<meta property="og:description" content="SK온이 전기차 라인을 ESS 라인으로 바꿔 7개 분기 만에 흑자로 돌아섰다는 사실을 출발점으로, 왜 큰 수요가 다른 곳으로 옮겨가면 산업은 설비를 버리지 않고 &#x27;손님&#x27;만 바꾸는지를 짚는다. 배터리 셀이 전기차용과 ESS용에서 사실상 같은 물건이라 라인 재배치가 가능하며, 자동차→항공·조선→해상풍력처럼 반복돼 온 &#x27;용도 전환&#x27; 문법이다. 이익은 전환이 빠른 소수(셀 메이커·AI 빅테크)에 응축되고, 전력망·전력요금이라는 비용은 소비자에게 분산되며, ESS 수요도 결국 사이클이라 피크아웃 위험을 안는다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">같은 라인, 다른 손님 — 수요가 옮겨가면 산업은 설비를 버리지 않고 방향만 바꾼다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["수요 축이 바뀜<br/>(전기차 정체 → AI 데이터센터 ESS 급증)"] --> B["설비를 버리고<br/>새로 짓기"]
+    A --> C["같은 라인의<br/>용도만 갈기"]
+    B --> D["느리고 비쌈<br/>매몰비용 크게 발생"]
+    C --> E["빠르고 쌈<br/>셀·모듈이 공용이라 가능"]
+    E --> F["이익: 전환 빠른 셀 메이커·AI 빅테크에 응축"]
+    E --> G["비용: 전력망 증설·전력요금으로 분산"]
+    style C fill:#3a5a40,color:#fff
+    style E fill:#3a5a40,color:#fff
+    style B fill:#8a2f2f,color:#fff
+    style D fill:#8a2f2f,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-04 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">같은 라인, 다른 손님 — 수요가 옮겨가면 산업은 설비를 버리지 않고 방향만 바꾼다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-04 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 SK온이 놀던 전기차 라인을 뜯어 ESS 라인으로 바꿨다는 데서 끝났다. 리포트는 다른 걸 묻는다 — 왜 큰 수요가 다른 곳으로 옮겨가면 산업은 설비를 <strong>버리지 않고 &lsquo;방향&rsquo;만 바꾸며</strong>, 그 전환의 이익과 비용은 각각 누구에게 흘러가나.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 하나만 맞추자. <strong>ESS</strong>는 전기를 담아뒀다 필요할 때 내보내는 대형 배터리 저장장치다. 전기차 배터리와 <strong>속 알맹이(셀)가 사실상 같은 물건</strong>이라, 담는 상자와 제어 장치만 바꾸면 같은 라인에서 만들 수 있다. 이 &lsquo;알맹이가 공용&rsquo;이라는 한 가지가 아래 이야기를 전부 끌고 간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 왜 버리지 않고 용도를 바꾸나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">공장 하나를 새로 짓는 데는 몇 년과 조 단위 돈이 든다. 이미 지어둔 라인을 안 쓰고 세워두면, 그 돈은 <strong>매몰비용</strong> — 되돌릴 수 없이 이미 묻힌 비용 — 이 된다. 그래서 기업의 첫 선택지는 &lsquo;새로 짓기&rsquo;가 아니라 &lsquo;있는 걸 딴 데 쓰기&rsquo;다. 단, 이게 가능하려면 조건이 하나 필요하다. <strong>만들던 물건과 새로 팔 물건의 핵심 부품이 겹쳐야 한다.</strong></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">배터리는 이 조건이 유난히 잘 맞는다. 전기차용이든 ESS용이든 에너지를 담는 셀은 거의 같은 물건이고, 달라지는 건 바깥 포장과 제어 소프트웨어다. 그래서 전기차 수요가 식은 라인을 통째로 버리는 대신, <strong>손님만 자동차에서 데이터센터로 바꿔</strong> 다시 돌릴 수 있다. 수요가 사라진 게 아니라 수요처가 옮겨간 것이고, 옮겨간 자리로 설비를 따라 보내는 일이 지금 벌어지는 전환의 정체다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 이 패턴은 처음이 아니다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">&lsquo;수요가 꺾이면 설비를 방향만 튼다&rsquo;는 산업사에서 반복돼 온 문법이다. 승자가 누구일지 불확실할 때, 가진 설비를 새 수요축으로 가장 빨리 돌린 쪽이 살아남았다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">수요가 옮겨간 계기</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">원래 쓰던 설비</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">방향을 바꾼 곳</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2차 세계대전</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자동차 공장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">항공기·군수 라인</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">조선 불황</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">조선소 도크·크레인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">해상풍력 구조물 생산</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">석유화학 침체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">정유·화학 설비</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">친환경 원료·수소 설비</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AI 전력 급증</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전기차 배터리 라인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">ESS 라인</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">패턴은 매번 같다. 새 수요는 갑자기 오고, 그걸 받을 설비를 처음부터 새로 짓는 쪽은 늦는다. 이미 가진 라인을 <strong>가장 빨리, 가장 싸게</strong> 새 손님 쪽으로 돌린 쪽이 그 사이의 초과 수요를 먼저 먹는다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 이익과 비용은 어디로 가나 — 그리고 출구</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">솔직히 개인이 이 전환의 방향을 바꿀 방법은 없다. 이건 노력의 문제가 아니라 산업이 설비를 어떻게 재배치하느냐의 문제다. 다만 이 렌즈로 보면 두 가지가 또렷해진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>구조 차원.</strong> 이익은 전환이 빠른 소수에게 <strong>응축</strong>된다. 셀을 공용으로 쓸 수 있는 대형 배터리 회사, 그리고 값싸고 빠르게 ESS를 확보해 AI 서버를 24시간 돌리려는 빅테크(하이퍼스케일러)다. 반대편에는 비용이 있다. ESS 수요 폭증은 결국 전력망을 늘리고 데이터센터가 끌어가는 전기를 대야 한다는 뜻이고, 그 인프라 비용의 일부는 시간이 지나며 일반 전력 소비자의 요금으로 분산될 수 있다. 초과이익의 반대편에는 늘 그 값을 치르는 쪽이 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">또 하나. &lsquo;전기차 대신 AI&rsquo;는 영구 안전판이 아니다. ESS 수요도 결국 <strong>사이클</strong>이다. AI 데이터센터 투자 속도가 꺾이거나, 너도나도 라인을 ESS로 돌려 공급이 한꺼번에 늘면 ESS 역시 공급과잉으로 값과 이익이 반락할 수 있다 — 이걸 <strong>피크아웃</strong>이라 한다. 지금 흑자는 &lsquo;수요축을 잘 갈아탔다&rsquo;는 뜻이지 &lsquo;계속 이긴다&rsquo;는 보장이 아니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>개인 차원.</strong> 붙잡을 건 한 줄이다 — 어떤 회사의 흑자 뉴스를 볼 때 &lsquo;원래 시장이 회복됐나&rsquo;가 아니라 &lsquo;수요처가 어디로 옮겨갔나&rsquo;를 먼저 묻는 것. 그리고 그 전환의 비용을 누가 치르는지(전력망·전력요금)까지 같이 보는 것. 무엇을 사라는 얘기가 아니라, 뉴스의 방향을 읽는 렌즈를 갖자는 이야기다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">큰 수요가 다른 곳으로 옮겨가면 산업은 설비를 버리지 않고 <strong>손님만 바꾼다</strong> — 단, 핵심 부품(배터리 셀)이 공용일 때만 가능하다. 배터리가 전기차에서 ESS로 빠르게 갈아탈 수 있는 이유다.</li>
+<li style="margin:0.3em 0;">이 &lsquo;용도 전환&rsquo; 문법은 자동차→항공, 조선→해상풍력처럼 반복돼 왔고, 이익은 <strong>가장 빨리 방향을 돌린 소수</strong>(셀 메이커·AI 빅테크)에 응축된다.</li>
+<li style="margin:0.3em 0;">단, ESS 수요도 사이클이다. 전환한 라인이 한꺼번에 늘면 <strong>피크아웃</strong>이 온다. 그리고 전력망·전력요금이라는 비용은 반대편의 소비자에게 분산된다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">배터리 3사의 ESS 라인 전환·증설 규모와 가동 시점 — 공급이 수요를 따라잡아 피크아웃 신호가 잡히는지.</li>
+<li style="margin:0.3em 0;">AI 데이터센터 전력 수요가 전력망 증설·전기요금 인상 논의로 얼마나 번지는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 전기차 배터리 회사가 전기차 라인을 뜯기 시작했다 — SK온, 7개 분기 만의 흑자를 만든 건 AI였다</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">SK온 2026년 2분기 영업이익 8218억 원, 7개 분기 만의 흑자 전환(2024년 3분기 이후 처음), 아시아 판매 확대·고객 보상금·IRA 세액공제·원가 절감 반영 — 언론 보도(2026-07) 종합.</li>
+<li style="margin:0.3em 0;">SK온 &ldquo;흑자전환은 일회성이 아니라 ESS 전환에 따른 턴어라운드&rdquo;, 기존 전기차 생산라인 일부를 ESS 생산라인으로 전환 — 언론 보도(2026-07~08) 종합.</li>
+<li style="margin:0.3em 0;">배터리 3사(LG에너지솔루션·삼성SDI·SK온) 7개 분기 만에 동반 흑자, AI 데이터센터 확산에 따른 ESS 수요가 견인 — 언론 보도(2026-07~08) 종합.</li>
+<li style="margin:0.3em 0;">수요 충격 시 기존 설비의 용도 전환(자동차→항공, 조선→해상풍력 등) 및 매몰비용·피크아웃 개념 — 산업사·산업 사이클 일반론.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
