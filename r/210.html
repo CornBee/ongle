@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 골드러시에서 곡괭이를 판 건 누구였나 — 병목의 초과이윤이 소수에 쌓이는 구조 — ONGLE</title>
+<meta name="description" content="오늘 삼성전기를 밀어올린 게 화려한 칩이 아니라 수동부품 MLCC였다는 사실을 출발점으로, 왜 이런 붐마다 최종 제품이 아니라 대체가 어려운 &#x27;병목&#x27;을 쥔 소수에게 초과이윤이 응축되는지를 짚는다. 경쟁은 이익을 흩고 희소성은 이익을 모은다. 골드러시의 곡괭이·삽부터 반복된 구조지만, 병목의 초과이윤은 과점의 증설이 끝나는 피크아웃으로 꺾이고 그 값은 수요자에게 전가된다.">
+<meta property="og:title" content="AI 골드러시에서 곡괭이를 판 건 누구였나 — 병목의 초과이윤이 소수에 쌓이는 구조">
+<meta property="og:description" content="오늘 삼성전기를 밀어올린 게 화려한 칩이 아니라 수동부품 MLCC였다는 사실을 출발점으로, 왜 이런 붐마다 최종 제품이 아니라 대체가 어려운 &#x27;병목&#x27;을 쥔 소수에게 초과이윤이 응축되는지를 짚는다. 경쟁은 이익을 흩고 희소성은 이익을 모은다. 골드러시의 곡괭이·삽부터 반복된 구조지만, 병목의 초과이윤은 과점의 증설이 끝나는 피크아웃으로 꺾이고 그 값은 수요자에게 전가된다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">AI 골드러시에서 곡괭이를 판 건 누구였나 — 병목의 초과이윤이 소수에 쌓이는 구조</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A["거대한 수요 충격<br/>(AI 서버 폭증)"] --> B["최종 제품층<br/>(완성 서버·모델 경쟁)"]
+    A --> C["상류 병목 부품층<br/>(대체 어려운 소수 과점)"]
+    B --> D["경쟁·대체 쉬움<br/>이익은 얇고 짧다"]
+    C --> E["증설·대체 어려움<br/>초과이윤 두껍고 오래간다"]
+    style C fill:#3a5a40,color:#fff
+    style E fill:#3a5a40,color:#fff
+    style D fill:#8a2f2f,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-03 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">AI 골드러시에서 곡괭이를 판 건 누구였나 — 병목의 초과이윤이 소수에 쌓이는 구조</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-03 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 오늘 삼성전기를 밀어올린 게 화려한 칩이 아니라 쌀알보다 작은 수동부품 MLCC였고, 그게 AI의 새 병목이 됐다는 데서 끝났다. 리포트는 다른 걸 묻는다 — 왜 이런 붐이 올 때마다 <strong>가장 앞선 최종 제품이 아니라, 눈에 안 띄는 &lsquo;병목&rsquo;을 쥔 소수에게 이익이 더 두껍게, 더 오래 쌓이나.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 하나만 맞추자. <strong>병목</strong>은 전체 생산에서 공급이 가장 달리는 한 칸이다. 여기가 막히면 나머지를 아무리 늘려도 완성품이 안 늘어난다. 그래서 병목을 쥔 쪽은 &lsquo;값을 부르는 힘&rsquo;을 갖는다. 이 한 가지가 아래 이야기를 전부 끌고 간다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 왜 이익은 최종 제품이 아니라 병목에 고이나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">붐이 오면 돈은 먼저 눈에 띄는 곳, 즉 최종 제품으로 몰린다. 그런데 최종 제품은 만들려는 곳이 많다. 경쟁자가 몰리면 값은 깎이고 이익은 얇아진다. 반면 <strong>병목 부품</strong>은 아무나 못 만든다. 수십 년 쌓은 미세 적층 노하우, 불량을 잡는 공정 데이터, 대규모 설비 — 이 <strong>진입장벽</strong>이 대체를 막는다. 대체가 어려우니 수요가 몰려도 공급이 금방 안 늘고, 그 희소성이 고스란히 값과 이익으로 남는다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 이거다. 최종 제품층의 경쟁은 이익을 <strong>분산</strong>시키고, 병목층의 희소성은 이익을 <strong>응축</strong>시킨다. 그래서 같은 붐인데도 최종 제품에서는 이익이 얇게 흩어지고, 병목에서는 소수에게 두껍게 고인다. 붐이 클수록 이 격차도 커진다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 곡괭이와 삽 — 이 패턴은 처음이 아니다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">1849년 캘리포니아 골드러시에서 가장 꾸준히 번 건 금을 캔 사람들이 아니라 <strong>곡괭이·삽·청바지를 판 상인들</strong>이었다. 금맥은 불확실했지만, 캐려는 모두가 도구는 반드시 사야 했기 때문이다. 이 &lsquo;곡괭이·삽(picks and shovels)&rsquo; 구조 — 붐의 참가자 전원이 반드시 거쳐야 하는 병목을 쥐는 것 — 은 그 뒤로도 계속 반복됐다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">붐</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">눈에 띈 주인공</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">조용히 더 오래 번 병목</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1849 골드러시</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금 캐러 간 사람들</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">곡괭이·삽·청바지 상인</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">닷컴·인터넷</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수많은 닷컴 기업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">네트워크 장비·반도체</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">스마트폰</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">앱·제조사 경쟁</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">카메라 모듈·부품·수동소자</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AI 서버</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">완성 서버·모델 경쟁</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">고성능 메모리·기판·수동부품</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">패턴은 매번 같다. 승자가 누구일지 불확실한 최종 제품 경쟁의 아래층에는, 승자가 누구든 <strong>반드시 지나가야 하는 좁은 문</strong>이 있다. 그 문을 소수가 쥐고 있을 때 초과이윤이 거기 쌓인다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 그래서, 이 구조에 출구는 있나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">솔직히 개인이 이 구조를 바꿀 방법은 없다. 이건 주의력이나 노력의 문제가 아니라 산업이 어떻게 층층이 쌓여 있느냐의 문제다. 다만 이 렌즈로 보면 두 가지가 또렷해진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>구조 차원.</strong> 병목의 초과이윤은 영원하지 않다. 과점 소수가 값이 좋을 때 설비를 크게 늘리고, 그 증설이 끝나 공급이 수요를 따라잡으면 값과 이익이 꺾인다 — 이걸 <strong>피크아웃</strong>이라 한다. 즉 &lsquo;병목을 쥔 쪽이 이긴다&rsquo;는 말은 &lsquo;지금 이긴다&rsquo;는 뜻이지 &lsquo;계속 이긴다&rsquo;는 보장이 아니다. 승자를 우러러 따라붙기 전에 그 병목이 언제 넓어지는지를 같이 봐야 하는 이유다. 또 하나, 병목이 값을 올리면 그 비용은 결국 저마진 범용 부품에 기대던 중소 전자·가전 제조와 소비자에게 흘러간다. 초과이윤의 반대편에는 늘 그 값을 치르는 쪽이 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>개인 차원.</strong> 붙잡을 건 한 줄이다 — 붐의 수혜를 화려한 최종 제품에서만 찾으면, 정작 이익이 고이는 병목은 놓친다. 이건 무엇을 사라는 얘기가 아니라, &lsquo;누가 반드시 거쳐야 하는 문을 쥐고 있나&rsquo;를 먼저 묻는 렌즈를 갖자는 이야기다. 그리고 그 문조차 언제 넓어지는지까지 함께 봐야 렌즈가 완성된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">붐이 클수록 이익은 경쟁이 몰리는 최종 제품이 아니라, 대체가 어려운 <strong>병목 소수</strong>에 응축된다 — 경쟁은 이익을 흩고, 희소성은 이익을 모은다.</li>
+<li style="margin:0.3em 0;">이건 AI만의 얘기가 아니라 골드러시부터 반복된 &lsquo;곡괭이·삽&rsquo; 구조다 — 승자가 누구든 반드시 지나가는 좁은 문을 쥔 쪽이 조용히 오래 번다.</li>
+<li style="margin:0.3em 0;">단, 병목의 초과이윤은 <strong>피크아웃</strong>으로 꺾인다. &lsquo;지금 이긴다&rsquo;와 &lsquo;계속 이긴다&rsquo;는 다르다. 초과이윤의 반대편엔 그 값을 치르는 수요자가 있다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">과점 3사의 증설 규모와 가동 시점 — 공급이 수요를 따라잡아 병목이 넓어지는(피크아웃) 신호가 잡히는지.</li>
+<li style="margin:0.3em 0;">병목 부품값 인상이 중소 전자·가전 제조의 원가와 최종 소비자가로 얼마나 전가되는지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: AI 서버가 삼킨 건 칩만이 아니었다 — 쌀알보다 작은 이 부품이 오늘 삼성전기를 장중 10% 밀어올렸습니다</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">무라타·삼성전기·다이요유덴 AI 서버용 MLCC 수주잔고 대비 매출 비율 1 이상 유지, 저마진 주문 거절·가격 인상 — 언론 보도(2026-04~08) 종합.</li>
+<li style="margin:0.3em 0;">삼성전기 북미 CSP와 약 4,500억원 규모 AI 서버용 MLCC 공급계약, MLCC·FC-BGA 수요 확대 — 증권가 리포트·언론(2026-07) 종합.</li>
+<li style="margin:0.3em 0;">&lsquo;곡괭이와 삽(picks and shovels)&rsquo; 골드러시 병목 수익 구조 — 경제사 일반론.</li>
+<li style="margin:0.3em 0;">과점 증설 사이클과 피크아웃(공급이 수요를 따라잡을 때 가격·이익 반락) — 반도체·부품 산업 사이클 문헌 종합.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
