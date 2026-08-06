@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>경기도재정비상 — 시장이 놓친 한 단계는? — ONGLE</title>
+<meta name="description" content="취득세는 &#x27;거래량×가격&#x27;이라 부동산 한파에 두 배로 무너지는 거래세다. 큰 세원을 거래세에 몰아둔 지방재정 설계가 완충 없이 흔들릴 때, 손댈 수 있는 재량 예산(복지·민생)부터 깎이며 비용은 취약계층에 먼저 쌓인다.">
+<meta property="og:title" content="경기도재정비상 — 시장이 놓친 한 단계는?">
+<meta property="og:description" content="취득세는 &#x27;거래량×가격&#x27;이라 부동산 한파에 두 배로 무너지는 거래세다. 큰 세원을 거래세에 몰아둔 지방재정 설계가 완충 없이 흔들릴 때, 손댈 수 있는 재량 예산(복지·민생)부터 깎이며 비용은 취약계층에 먼저 쌓인다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">경기도재정비상 — 시장이 놓친 한 단계는?</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    T["부동산 거래 동결"] --> A["거래세(취득세) 급감"]
+    A --> B["재량 예산부터 삭감"]
+    B --> C["복지·민생 사업<br/>= 취약계층에 먼저"]
+    A -.경직성 예산은 못 줄임.-> D["인건비·법정지출<br/>= 그대로 유지"]
+    style T fill:#334,color:#fff
+    style A fill:#8a2f2f,color:#fff
+    style C fill:#8a2f2f,color:#fff
+    style D fill:#3a5a40,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-06 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">지방 살림은 왜 &lsquo;집이 팔려야&rsquo; 돌아가나 — 얼어붙은 거래가 가장 먼저 깎는 것</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-06 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 &lsquo;1등 부자 경기도가 왜 갑자기 재정 비상에 빠졌나&rsquo;에서 끝났다. 리포트는 다른 걸 묻는다 — 애초에 <strong>지방 살림이 왜 &lsquo;집이 팔려야만&rsquo; 돌아가도록 설계됐고</strong>, 그 거래가 멈추면 예산을 깎는 칼날이 <strong>누구에게 먼저 닿나</strong>.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 하나다. 지방정부 돈줄에는 <strong>경기를 타는 세금</strong>과 <strong>경기를 덜 타는 세금</strong>이 섞여 있는데, 하필 가장 크게 기댄 쪽이 경기를 가장 심하게 타는 세금이었다.</p>
+
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. &lsquo;거래세&rsquo;는 왜 경기를 심하게 타나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">취득세는 집이나 땅을 <strong>살 때 한 번 내는 세금</strong>이다(거래세). 세액은 &lsquo;거래량 × 가격&rsquo;으로 정해지는데, 부동산이 얼어붙으면 <strong>거래량과 가격이 동시에</strong> 빠진다. 그래서 거래세는 경기 하강기에 두 배로 무너진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">반대로 <strong>재산세</strong>(가진 부동산에 매년 매기는 보유세)나 <strong>지방소득세</strong>(주민·기업 소득에 붙는 세금)는 거래가 없어도 걷힌다. 소득과 보유 자산은 거래처럼 한순간에 증발하지 않기 때문이다. 같은 부동산 세금이라도 <strong>&lsquo;거래&rsquo;에 걸면 경기 민감, &lsquo;보유·소득&rsquo;에 걸면 상대적 안정</strong>이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 어디에 기댔느냐가 체력을 가른다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">세원</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇에 매기나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">경기 민감도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">취득세(거래세)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사고파는 순간</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매우 높음 — 거래량·가격 동시 반응</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">재산세(보유세)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매년 가진 자산</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">낮음 — 거래와 무관</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지방소득세</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">주민·기업 소득</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중간 — 경기 따라 완만</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세입을 거래세 한쪽에 몰아둔 지자체일수록, 부동산 한파가 오면 <strong>완충 장치 없이</strong> 살림이 꺾인다. 문제는 개별 지자체의 실수가 아니라, 큰 세원을 거래세에 묶어 둔 <strong>제도 설계 자체</strong>다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 그래서 칼날은 왜 복지부터 향하나 — 그리고 렌즈</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">예산은 두 종류다. 인건비·법정지출처럼 <strong>못 줄이는 경직성 예산</strong>과, 사업·행사처럼 <strong>줄일 수 있는 재량 예산</strong>. 세입이 갑자기 비면 손댈 수 있는 건 재량 예산뿐이고, 지방정부 재량 예산의 큰 몫이 <strong>복지·민생 사업</strong>이다. 지방 예산에서 복지·민생이 차지하는 비중은 절반 가까이에 이른다. 몫이 큰 만큼, 재량 예산을 깎을 때 이쪽이 먼저 표적이 된다.</p>
+<pre style="background:#f4f4f4;padding:1em;border-radius:6px;overflow-x:auto;font-family:Menlo,Consolas,monospace;font-size:0.9em;line-height:1.5;"><code class="language-chart-pie" style="background:#f4f4f4;padding:0.1em 0.4em;border-radius:3px;font-family:Menlo,Consolas,monospace;font-size:0.92em;">{&quot;title&quot;:&quot;지방 예산의 절반 가까이가 복지·민생 — 그래서 삭감의 표적&quot;,&quot;data&quot;:{&quot;복지·민생&quot;:49,&quot;그 외 예산&quot;:51}}
+</code></pre>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">결국 세원이 흔들릴 때 <strong>가장 먼저 얇아지는 쪽이 그 예산에 가장 많이 기대는 사람들</strong>이 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 지방 세수를 바꿀 방법은 없다. 다만 붙잡을 렌즈는 있다 — &lsquo;어느 도가 부도났다&rsquo;는 뉴스를 만나면 한 칸 더 들어가, <strong>그 살림이 어떤 세금에 기대고 있었는지</strong>, 그리고 구멍이 났을 때 <strong>누구의 예산이 먼저 깎이는지</strong>를 같이 보는 것. 화려한 위기가 아니라 세원의 구조가 이 사건의 본질이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">취득세는 &lsquo;거래량 × 가격&rsquo;이라 경기 하강기에 두 배로 무너지는 <strong>거래세</strong>다. 보유세·소득세와 성격이 근본적으로 다르다.</li>
+<li style="margin:0.3em 0;">큰 세원을 거래세에 몰아둔 구조는 개별 지자체의 실수가 아니라 <strong>세제 설계</strong>의 문제다 — 부동산 한파에 완충이 없다.</li>
+<li style="margin:0.3em 0;">세입이 비면 손댈 수 있는 건 재량 예산뿐이고, 그 큰 몫이 복지·민생이다. <strong>비용은 취약계층에 먼저</strong> 쌓인다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">감액 추경에서 실제로 어떤 항목이 깎이는지 — 재량(복지·사업) 대 경직성(인건비·법정) 중 어디가 먼저인지.</li>
+<li style="margin:0.3em 0;">다른 거래세 의존 지자체로 같은 압박이 번지는지 — 이번이 경기도 한 곳의 사건인지, 구조적 신호인지.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 1등 부자 &lsquo;경기도&rsquo;가 부도 위기? — 집이 안 팔리자 벌어진 일</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">추미애 경기도지사, 2026년 8월 5일 경기도 재정 &lsquo;비상 상황&rsquo; 공식 선언 및 세출 구조조정·감액추경 추진 — 언론 종합(2026-08).</li>
+<li style="margin:0.3em 0;">경기도 도세의 절반 이상이 취득세이며, 취득세 수입은 2022년 약 11조원에서 2026년 약 8조원 수준으로 감소, 3기 신도시 취득세도 예상 6500억원에서 약 2300억원으로 축소 전망 — 언론 종합(2026-08).</li>
+<li style="margin:0.3em 0;">취득세(거래세)·재산세(보유세)·지방소득세의 과세 대상 차이와 경기 민감도, 지방재정의 경직성·재량 예산 구분 — 지방재정 일반론.</li>
+<li style="margin:0.3em 0;">지방 예산에서 복지·민생 예산이 차지하는 비중이 전체의 약 49% 수준 — 언론 종합(2026-08).</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
