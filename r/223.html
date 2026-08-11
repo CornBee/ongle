@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>청년이 1년 만에 떠나는 자리, 그 비용은 왜 회사가 아니라 우리 통장으로 갈까 — ONGLE</title>
+<meta name="description" content="">
+<meta property="og:title" content="청년이 1년 만에 떠나는 자리, 그 비용은 왜 회사가 아니라 우리 통장으로 갈까">
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">청년이 1년 만에 떠나는 자리, 그 비용은 왜 회사가 아니라 우리 통장으로 갈까</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    J["저품질 일자리<br/>(낮은 임금·짧은 근속)"] -->|1년 안에 이탈| E["청년 퇴사"]
+    E --> C["이직 사이 소득 공백<br/>= 이직 비용 발생"]
+    C -->|누가 부담?| P["고용보험 기금<br/>(모두의 공동 통장)"]
+    J -.비용 안 냄.-> P
+    style J fill:#8a2f2f,color:#fff
+    style P fill:#334,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-12 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">청년이 1년 만에 떠나는 자리, 그 비용은 왜 회사가 아니라 &lsquo;우리 통장&rsquo;으로 갈까</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-12 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 &lsquo;자발적 퇴사에도 청년 실업급여&rsquo;라는 방안이 왜 논란인지에서 끝났다. 리포트는 다른 걸 묻는다 — 청년이 1년도 못 버티고 떠나는 자리의 <strong>이직 비용</strong>은, 왜 그 자리를 만든 회사가 아니라 <strong>모두의 공동 통장</strong>으로 흘러가나.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">먼저 용어 하나. <strong>고용보험 기금</strong>은 노동자와 회사가 보험료를 나눠 적립해 실업에 대비하는 공동 통장이다. 실업급여는 여기서 나간다. 그러니 &lsquo;나라가 준다&rsquo;는 말은 정확히는 <strong>지금 일하는 사람들이 함께 채운 통장에서 나간다</strong>는 뜻이다.</p>
+
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">1. 비용이 &lsquo;외부화&rsquo;된다는 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">경제학에서 <strong>외부화(externalize)</strong> 는 내가 만든 비용을 남에게 떠넘기는 걸 말한다. 공장이 폐수 처리비를 안 내고 강에 흘리면, 그 비용은 하류 주민이 진다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">저품질 일자리도 비슷한 구조를 만든다. 임금이 낮고 오래 못 다니는 자리는 필연적으로 잦은 이직을 낳는다. 원래 이 &lsquo;갈아치움&rsquo;의 비용은 그런 자리를 계속 찍어내는 <strong>회사</strong>가 감당해야 할 몫이다. 그런데 이탈한 청년에게 공동 통장이 소득을 메워주면, 회사는 낮은 임금·높은 이직률을 <strong>그대로 유지한 채</strong> 그 비용만 사회로 떠넘길 수 있게 된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2. 지금 지는 사람 vs 제도 뒤 지는 사람</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이직 비용을 지는 주체</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">제도 전</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">제도 후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">청년 본인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득 공백 전부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일부(공동 통장이 완충)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">저품질 고용주</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이직률 부담(임금·환경 개선 압박)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>거의 없음</strong> — 완충이 압박을 흡수</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지금 일하는 사람들</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">없음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공동 통장 지출로 분담</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 맨 아랫줄이 아니라 <strong>가운데 줄</strong>이다. 완충 장치는 청년을 돕는 동시에, 나쁜 자리를 고칠 <strong>압박도 같이 흡수해버린다.</strong> 아프지 않으면 고치지 않는다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">3. 그래서 어디를 봐야 하나 — 출구</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이건 개인이 혼자 풀 굴레가 아니다. &lsquo;청년 지원이냐 세금 낭비냐&rsquo;의 이분법도 핵심을 비껴간다. 진짜 갈림길은 <strong>설계</strong>에 있다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    D["제도 설계"] --> G["고용주에 개선 유인<br/>(이직률 높은 곳 부담↑)"]
+    D --> B["완충만 제공<br/>(비용만 사회화)"]
+    G --> W1["나쁜 자리가 줄어듦"]
+    B --> W2["나쁜 자리는 그대로<br/>기금만 소진"]
+    style G fill:#3a5a40,color:#fff
+    style B fill:#8a2f2f,color:#fff
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 &lsquo;청년 실업급여&rsquo;라도, 이직이 잦은 고용주에게 보험료·부담을 더 지우는 설계와, 청년에게 완충만 주는 설계는 6개월 뒤 전혀 다른 결과를 낳는다. 뉴스에서 이 제도를 만나면 &lsquo;얼마 준다&rsquo;가 아니라 <strong>&lsquo;회사 쪽 유인은 어떻게 설계됐나&rsquo;</strong>를 같이 보면, 같은 정책 아래 전혀 다른 이야기가 보인다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">저품질 일자리의 잦은 이직 비용은 원래 그 자리를 만든 회사의 몫인데, 완충 장치가 그 비용을 <strong>모두의 공동 통장으로 외부화</strong>할 수 있다.</li>
+<li style="margin:0.3em 0;">그래서 논점은 &lsquo;청년을 도우냐&rsquo;가 아니라, 완충이 나쁜 자리를 <strong>고칠 압박까지 흡수하느냐</strong>다. 완충만 있고 고용주 유인이 없으면 나쁜 자리는 그대로 남는다.</li>
+<li style="margin:0.3em 0;">제도를 볼 땐 지급액보다 <strong>고용주 쪽 설계</strong>(이직률 높은 곳에 부담이 가는가)를 먼저 봐야 한다. 무엇을 사고팔라는 얘기가 아니라, 정책 하나에 속지 않는 눈을 갖자는 이야기다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">고용보험법 개정안에 이직이 잦은 고용주의 부담을 키우는 장치(경험요율 등)가 함께 담기는지.</li>
+<li style="margin:0.3em 0;">지급 요건이 &lsquo;경력 전환&rsquo;을 어떻게 좁히는지 — 느슨하면 완충이 압박을 흡수하고, 좁으면 유인이 유지된다.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 내 발로 그만뒀는데 나라가 100만원 — 청년 실업급여, 그 돈 누가 내나</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">2026년 8월 정부가 국회에 보고한 하반기 노동정책 중 35세 미만 청년 자발적 퇴사자에 대한 생애 1회 구직급여(이직 전 임금의 60%, 월 최대 100만원) 도입 방안 — 머니투데이·국민일보·뉴시스·한국NGO신문 등 언론 종합(2026-08-04~08-10).</li>
+<li style="margin:0.3em 0;">해당 연령대 자진 퇴사자의 다수가 입사 1년 미만이라는 점, 재원인 고용보험 기금의 적자, &lsquo;수당화&rsquo; 우려 — 언론 보도(2026) 종합.</li>
+<li style="margin:0.3em 0;">6월 청년고용률 43.9%로 26개월 연속 하락, 제조업 취업자 24개월 연속 감소 — 통계 및 언론 보도(2026) 종합.</li>
+<li style="margin:0.3em 0;">외부화(externality)·경험요율(experience rating)의 개념 — 노동·사회보험 경제학 일반론.</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
