@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>합산 족쇄는 풀렸다 — 그런데 &#x27;첫 집&#x27; 문턱은 왜 그대로인가 — ONGLE</title>
+<meta name="description" content="8·13 대책이 정책대출의 부부 소득 합산을 1인 기준으로 바꿔 &#x27;결혼 페널티&#x27;를 없앴지만, LTV·DSR과 집값이라는 금액의 문은 그대로다. 걸림돌이 제거된 게 아니라 소득 관문에서 가격·한도 관문으로 이동했을 뿐일 수 있고, 완화 비용은 기금·재정과 가계부채로 전가된다.">
+<meta property="og:title" content="합산 족쇄는 풀렸다 — 그런데 &#x27;첫 집&#x27; 문턱은 왜 그대로인가">
+<meta property="og:description" content="8·13 대책이 정책대출의 부부 소득 합산을 1인 기준으로 바꿔 &#x27;결혼 페널티&#x27;를 없앴지만, LTV·DSR과 집값이라는 금액의 문은 그대로다. 걸림돌이 제거된 게 아니라 소득 관문에서 가격·한도 관문으로 이동했을 뿐일 수 있고, 완화 비용은 기금·재정과 가계부채로 전가된다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">합산 족쇄는 풀렸다 — 그런데 &#x27;첫 집&#x27; 문턱은 왜 그대로인가</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[신혼부부] --> B{자격의 문<br/>소득 기준}
+    B -- 8·13로 넓어짐 --> C{금액의 문<br/>집값·LTV·DSR}
+    C -- 그대로 --> D[첫 집]
+    C -. 한도 < 집값 .-> E[여전히 못 삼]
+</pre></div>
+    <div class="article-meta">2026-08-13 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#부동산</span> <span class="tag">#정책대출</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">합산 족쇄는 풀렸다 — 그런데 &lsquo;첫 집&rsquo; 문턱은 왜 그대로인가</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-13 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에서 던진 질문 — &lsquo;합산이라는 족쇄는 풀렸는데, 사라진 첫 집의 문턱은 그대로일까&rsquo;. 여기서 핵심은 이번 8·13 개편이 결혼 페널티를 <strong>없앤 게 아니라, 걸림돌을 &lsquo;소득 관문&rsquo;에서 &lsquo;가격·한도 관문&rsquo;으로 옮겼을 뿐일 수 있다</strong>는 데 있습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 — 관문은 하나가 아니다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정책대출을 받아 첫 집에 도달하려면 문을 두 개 통과해야 합니다. <strong>자격의 문</strong>(소득 기준)과 <strong>금액의 문</strong>(집값·LTV·DSR로 정해지는 실제 빌릴 수 있는 돈). 이번 대책이 연 소득 합산을 1인 기준으로 바꾼 건 앞의 문 하나를 넓힌 것이고, 뒤의 문은 그대로 두었습니다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><em>자격을 얻어도, 빌릴 수 있는 금액이 첫 집 가격에 못 미치면 문턱은 남습니다.</em></p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">왜 &lsquo;제거&rsquo;가 아니라 &lsquo;이동&rsquo;인가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">소득 기준은 &ldquo;신청할 자격이 되느냐&rdquo;를 가르는 문입니다. 하지만 집을 실제로 사게 해주는 건 <strong>빌릴 수 있는 금액</strong>이고, 그 금액은 소득이 아니라 집값과 LTV(담보인정비율)·DSR(총부채원리금상환비율)이 정합니다. 8·13은 총량은 풀되 LTV·DSR 같은 핵심 규제는 유지한다고 못 박았습니다. 즉 자격의 문을 통과한 부부가 늘어도, 그들이 손에 쥐는 대출 한도 자체는 그대로입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관문</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇을 정하나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">8·13 이후</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득 기준(자격의 문)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신청 가능 여부</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">합산→1인, <strong>넓어짐</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">LTV·DSR(금액의 문)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">실제 대출 한도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>유지</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">첫 집 가격</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">필요한 총액</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개편 대상 아님</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">결혼했다는 이유로 &lsquo;자격&rsquo;에서 탈락하던 부부는 구제됩니다. 그건 분명한 개선입니다. 다만 자격을 얻은 뒤 마주하는 &lsquo;한도와 집값의 간극&rsquo;은 그대로여서, 걸림돌이 사라졌다기보다 한 칸 뒤로 옮겨간 것에 가깝습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">완화의 비용은 어디로 가나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">자격 대상을 넓히면 비용이 사라지는 게 아니라 어딘가로 이동합니다. 디딤돌·버팀목·보금자리는 시중보다 낮은 금리로 나가는 정책대출이고, 재원은 주로 주택도시기금과 재정에서 나옵니다. 대상이 늘수록 그 부담과 건전성 관리 압박도 함께 커집니다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    S[소득 자격 대상 확대] --> P1[주택도시기금·재정<br/>저리 대출 재원 부담 ↑]
+    S --> P2[기금 건전성<br/>연체·부실 관리 부담 ↑]
+    S --> P3[한도가 집값에 못 미치면<br/>부족분을 민간대출로 → 가계부채]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 놓치기 쉬운 지점은 세 번째입니다. 자격은 얻었지만 정책대출 한도가 첫 집 가격에 못 미치면, 부부는 부족분을 결국 민간 대출로 메웁니다. 총량은 3%로 풀렸으니 통로는 열려 있습니다. <strong>가장 이득을 보는 쪽은 이미 자기 자본이 충분해 자격 완화만으로 매수가 완성되는 가구</strong>고, 자본이 얇은 부부일수록 넓어진 자격이 곧바로 내 집으로 이어지지 않은 채 추가 대출 부담만 떠안을 수 있습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 뭘 보면 되나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">&lsquo;결혼 페널티 폐지&rsquo;라는 헤드라인 아래에서 볼 것은 딱 하나입니다 — <strong>자격 완화가 신청 가능한 사람 수를 늘리는 데 그치는가, 아니면 실제 대출 한도와 첫 집 가격 사이의 간극을 좁히는가.</strong> 앞이면 상징적 개선이고, 뒤여야 실질적으로 첫 집에 닿습니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">자격을 넓힌 만큼 정책대출 &lsquo;한도&rsquo;나 대상 주택 &lsquo;가격 상한&rsquo;도 함께 조정되는가 — 자격만 넓히고 한도가 그대로면 체감 효과는 제한적.</li>
+<li style="margin:0.3em 0;">늘어난 대상만큼 주택도시기금·재정의 재원 계획이 같이 제시되는가 — 재원 없는 확대는 다음 조임의 씨앗.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="영상 URL" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">혼자일 땐 됐는데 — 결혼하니 대출 탈락, 8·13이 푼 &lsquo;합산소득 족쇄&rsquo;</a></p>
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;&lsquo;드디어 혼인신고 할 수 있을까&rsquo;…결혼 페널티 규제 손본다 [8.13 대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;&lsquo;아내 5000만원·남편 7000만원&rsquo;…연봉 1억 넘어도 정책대출 받는다 [8.13 대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">이투데이, &ldquo;&lsquo;결혼하면 대출 탈락&rsquo; 없앤다…청년 주거사다리 전방위 지원 [8·13대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;가계대출 증가 여력 60조로… &lsquo;대출 오픈런 해소&rsquo; [8·13 부동산 대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">아시아투데이, &ldquo;총량은 풀고 규제는 유지…8·13 대책 &lsquo;두 토끼&rsquo; 잡을까&rdquo; (2026-08-13)</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
