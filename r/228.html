@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한 번만 살면 통과 — &#x27;거주 흔적&#x27; 규제가 남긴 빈칸 — ONGLE</title>
+<meta name="description" content="8·13 대책은 갭투자 판별 기준을 &#x27;주택 수·가격&#x27;에서 &#x27;실거주 흔적&#x27;으로 옮겼다. 그러나 &#x27;한 번이라도 실거주하면 제외&#x27;라는 예외가 단기 실거주 후 임대 전환이라는 우회로를 열고, 전입신고와 실거주의 괴리를 검증할 확인 장치·비용은 아직 비어 있다.">
+<meta property="og:title" content="한 번만 살면 통과 — &#x27;거주 흔적&#x27; 규제가 남긴 빈칸">
+<meta property="og:description" content="8·13 대책은 갭투자 판별 기준을 &#x27;주택 수·가격&#x27;에서 &#x27;실거주 흔적&#x27;으로 옮겼다. 그러나 &#x27;한 번이라도 실거주하면 제외&#x27;라는 예외가 단기 실거주 후 임대 전환이라는 우회로를 열고, 전입신고와 실거주의 괴리를 검증할 확인 장치·비용은 아직 비어 있다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">한 번만 살면 통과 — &#x27;거주 흔적&#x27; 규제가 남긴 빈칸</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[갭투자 판별] --> B{새 기준 8·13<br/>실거주 흔적 있나}
+    B -- 한 번도 안 삶 --> C[전세대출 차단]
+    B -- 한 번이라도 삶 --> D[예외로 통과]
+    D -.빈칸.-> E[짧게 실거주 후<br/>임대 전환 우회]
+</pre></div>
+    <div class="article-meta">2026-08-14 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">한 번만 살면 통과 — &lsquo;거주 흔적&rsquo; 규제가 남긴 빈칸</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-14 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에서 던진 질문 — &lsquo;거주 흔적이 기준이 된 규제, 그 빈칸은 무엇일까&rsquo;. 핵심은 그 빈칸이 <strong>조항의 허점이 아니라 &lsquo;확인의 빈칸&rsquo;</strong>이라는 데 있습니다. 정부는 기준을 옮겼는데, 그 기준이 진짜인지 확인할 길은 아직 비어 있습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한눈에 — 기준은 옮겼지만, 예외가 문을 하나 남겼다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">8·13 대책은 갭투자를 가르는 잣대를 &lsquo;몇 채·얼마&rsquo;에서 &lsquo;그 집에 살아봤나&rsquo;로 바꿨습니다. 그런데 &lsquo;한 번이라도 실거주하면 제외&rsquo;라는 예외가, 짧게 살고 빠지는 우회로를 함께 열어둡니다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><em>차단선(왼쪽)은 분명한데, 예외의 문(오른쪽)으로 우회로가 새어 나옵니다.</em></p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">빈칸의 정체 ① 예외가 곧 설계도가 된다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>실거주 이력</strong>이란 &lsquo;본인 또는 배우자가 그 집에 실제로 살았던 기록&rsquo;입니다. 규제는 이 기록이 <strong>한 번도 없는</strong> 비거주 임대 1주택자를 겨냥합니다. 문제는 예외 조건이 너무 단순하다는 점입니다 — 과거에 <strong>딱 한 번</strong> 살았으면 빠집니다. 그러면 결심한 갭 수요자는 규제를 피하려 아래 경로를 설계할 수 있습니다. 한 번도 안 산 투자자는 걸리지만, 한 번 살아준 투자자는 통과하는 비대칭이 생깁니다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[아파트 매입] --> B[짧게 실거주<br/>전입신고]
+    B --> C[예외 인정<br/>거주 이력 1회 확보]
+    C --> D[다시 임대 전환]
+    D --> E[전세대출 규제 밖<br/>사실상 갭 유지]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><em>&lsquo;딱 한 번&rsquo;이라는 얇은 문턱은, 규제를 우회하는 순서표가 되기도 합니다.</em></p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">빈칸의 정체 ② &lsquo;살았다&rsquo;를 누가 확인하나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 핵심 빈칸이 드러납니다. <strong>전입신고</strong>(주소지를 옮겼다는 행정 신고)는 서류일 뿐, 실제 거주와 다를 수 있습니다. 서류상 주소만 옮겨두고 실제로는 안 사는 &lsquo;위장 전입&rsquo;을 걸러내려면 누군가 실거주 여부를 확인해야 하는데, 그 확인 비용과 인력은 규제에 딸려 오지 않았습니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규제가 잡는 것</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규제가 아직 못 잡는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한 번도 안 산 비거주 1주택자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">짧게 살고 빠지는 <strong>단기 실거주</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">임대 중 + 거주 이력 0의 조합</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">서류 전입과 실거주의 <strong>괴리</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">판별 <strong>기준</strong>의 이동</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">거주를 검증할 <strong>확인 장치·비용</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 뭘 보면 되나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">&lsquo;갭투자를 막는다&rsquo;는 헤드라인 아래에서 볼 것은 차단선이 아니라 <strong>예외의 설계</strong>입니다 — &lsquo;한 번&rsquo;이라는 문턱에 최소 거주 기간이 붙는지, 그리고 전입이 아니라 실거주를 확인할 장치가 채워지는지. 이게 비면 규제는 &lsquo;한 번도 안 산&rsquo; 소극적 투자자만 걸러내고, 실거주를 연기할 여력이 있는 쪽엔 오히려 길을 안내하는 셈입니다. 동시에 정부는 청년 실수요엔 맞춤 대출로 문을 여는데, 규제와 지원이 같은 방향을 보려면 &lsquo;거주&rsquo;의 정의부터 촘촘해야 합니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">예외의 &lsquo;한 번&rsquo;에 <strong>최소 실거주 기간</strong>(예: 몇 개월 이상)이 붙는가 — 문턱이 얇으면 우회로가 그대로 열립니다.</li>
+<li style="margin:0.3em 0;">전입신고가 아니라 <strong>실거주를 검증</strong>할 절차·데이터가 도입되는가 — 확인 장치가 없으면 기준만 바뀌고 결과는 그대로일 수 있습니다.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="영상 URL" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">집 사놓고 한 번도 안 살았으면 — 내년부터 전세대출 막힙니다 (8·13의 &lsquo;거주 흔적&rsquo; 기준)</a></p>
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">이투데이, &ldquo;보유 주택에 한 번도 안 산 1주택자, 전세대출 막힌다[8·13 대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;집 사놓고 한번도 안 살았으면 전세대출 막힌다[8·13 부동산 대책]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;&lsquo;한 번만 살았어도 제외&rsquo;…금융위, 비거주 1주택자 전세대출 제한 [8.13 대책 일문일답]&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">문화일보, &ldquo;중도금 대출 풀고 청년 주담대 늘려… &lsquo;꽉틀막&rsquo; 불만 해소 나섰다&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">한국일보, &ldquo;올해 가계대출 증가율 목표 2배 상향…대출 오픈런·뺑뺑이 없앤다&rdquo; (2026-08-13)</li>
+<li style="margin:0.3em 0;">허프포스트코리아, &ldquo;갭투자 막고 청년의 비아파트 매입 돕는다: 금융위 부동산 대출 핀셋 규제·지원책 발표&rdquo; (2026-08-13)</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
