@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>친일재산 환수, 되돌림이 새는 &#x27;한 단계&#x27;는 어디인가 — ONGLE</title>
+<meta name="description" content="친일재산 환수는 몰수가 아니라 독립유공자 재원으로의 순환이지만, 과거엔 &#x27;땅&#x27;에만 걸려 반쪽이었다. 팔아치운 처분 대가·선의취득·시효라는 누수 관문에서 재원이 샜고, 2026년 16년 만에 부활한 조사위의 핵심은 &#x27;처분 대가&#x27;까지 추적해 그 순환의 원을 더 닫는 것. 다만 선의취득·입증 부담이 남아 완전히 닫히진 않는다.">
+<meta property="og:title" content="친일재산 환수, 되돌림이 새는 &#x27;한 단계&#x27;는 어디인가">
+<meta property="og:description" content="친일재산 환수는 몰수가 아니라 독립유공자 재원으로의 순환이지만, 과거엔 &#x27;땅&#x27;에만 걸려 반쪽이었다. 팔아치운 처분 대가·선의취득·시효라는 누수 관문에서 재원이 샜고, 2026년 16년 만에 부활한 조사위의 핵심은 &#x27;처분 대가&#x27;까지 추적해 그 순환의 원을 더 닫는 것. 다만 선의취득·입증 부담이 남아 완전히 닫히진 않는다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">친일재산 환수, 되돌림이 새는 &#x27;한 단계&#x27;는 어디인가</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[친일 축적 재산] --> B[국가귀속 결정]
+    B --> C[독립유공자·유가족 재원]
+    A -.이미 팔아치움.-> D[처분 대가 → 후손 현금화]
+    A -.선의취득·시효.-> E[환수 불가]
+    D -.2026 강화 표적.-> B
+    style D fill:#7a2e2e,color:#fff
+    style E fill:#3a3f4a,color:#fff
+</pre></div>
+    <div class="article-meta">2026-08-15 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span> <span class="tag">#공공재정</span> <span class="tag">#정책</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">친일재산 환수, 되돌림이 새는 &lsquo;한 단계&rsquo;는 어디인가</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-15 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">친일로 쌓인 재산이 독립유공자 재원으로 되돌아가는 이 순환은, 실제로는 한 단계에서 크게 샜다. 그 새는 지점이 이번 강화의 핵심 표적이다.</p>
+
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">순환은 원래 반쪽이었다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">2006~2010년 대통령 직속 친일재산조사위원회는 4년간 친일반민족행위자 168명을 조사해 토지 2,359필지를 국고로 환수했다. 규모는 공시지가 959억 원, 시가 약 2,106억 원. 귀속된 재산은 법에 따라 독립유공자·유가족 지원과 기념사업에 우선 쓰이도록 설계됐다. 여기까지가 영상이 짚은 &lsquo;되돌아가는 돈&rsquo;이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">문제는 되돌림이 <strong>땅에만</strong> 걸렸다는 것이다. 후손이 이미 팔아 현금으로 바꿔둔 재산은 손이 닿지 않았다. 땅은 등기부에 남지만, 판 돈은 흩어진다.</p>
+<pre style="background:#f4f4f4;padding:1em;border-radius:6px;overflow-x:auto;font-family:Menlo,Consolas,monospace;font-size:0.9em;line-height:1.5;"><code class="language-chart-bar" style="background:#f4f4f4;padding:0.1em 0.4em;border-radius:3px;font-family:Menlo,Consolas,monospace;font-size:0.92em;">{&quot;title&quot;:&quot;같은 친일재산, 평가 기준 따라 2배 — 그래도 '귀속 결정액'일 뿐&quot;,&quot;x&quot;:[&quot;공시지가&quot;,&quot;시가&quot;],&quot;y&quot;:{&quot;귀속 결정 재산 규모(억원)&quot;:[959,2106]},&quot;ylabel&quot;:&quot;억원&quot;}
+</code></pre>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">959억이든 2,106억이든 이는 &lsquo;귀속 결정&rsquo;의 값이다. 유공자에게 실제로 닿은 실수령 재원은 이보다 작고, 따로 공개되지도 않는다 — 헤드라인 숫자와 실수령의 간격이 곧 순환이 덜 닫힌 크기다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">새는 지점 세 개</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">누수 관문</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">뜻</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">되돌림에 미친 영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>처분 대가</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">후손이 재산을 팔아 챙긴 매각 대금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">땅만 환수하고 판 돈은 못 따라가 순환에서 이탈</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>선의취득</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사정을 모르고 정당한 값을 치른 제3자의 취득</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">법이 명시한 예외 — 그 재산은 환수 대상에서 빠짐</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>소송·시효</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">후손이 건 행정소송·위헌심판, 그리고 기간 제한</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대부분 패소·각하됐지만 절차가 회수를 지연·축소</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세 관문을 지날 때마다 되돌아갈 재원은 조금씩 줄었다. 시가 2,106억이라는 숫자는 &lsquo;귀속 결정&rsquo;의 크기지, 실제로 유공자 쪽으로 흘러간 현금의 크기가 아니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2026년 강화가 겨냥한 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">16년 만에 부활한 조사위의 핵심 변화는 한 줄로 요약된다 — <strong>&lsquo;처분 대가&rsquo;까지 추적</strong>. 팔아치운 재산의 매각 대금을 환수 대상에 명시하는 순간, 위 그림에서 붉게 칠한 누수 관문이 다시 국가귀속 쪽으로 접힌다. 되돌림의 원이 조금 더 닫히는 것이다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다만 선의취득 예외와 입증 부담은 그대로 남는다. 80년 전 거래를 지금 되짚어 &lsquo;누가 사정을 알았나&rsquo;를 증명하는 일은 여전히 무겁다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">한국 시청자 stake</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 사안은 개인이 취할 행동이 있는 종류가 아니다. 대신 뉴스를 읽는 눈을 하나 바꿔둘 수 있다. &lsquo;환수 결정 ○○억&rsquo;이라는 헤드라인이 나오면, 그 뒤에 빠진 두 번째 숫자 — 실제로 유공자에게 지급된 금액 — 를 함께 찾는 습관이다. 그 후속 숫자가 잘 안 나온다는 사실 자체가, 이 순환이 여전히 결정 단계에서 멈춰 있다는 신호다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론·시사점</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">친일재산 환수는 &lsquo;몰수&rsquo;가 아니라 유공자 재원으로의 순환이고, 그 순환은 원래 땅에만 걸려 반쪽이었다.</li>
+<li style="margin:0.3em 0;">이번 강화의 실질은 도덕적 선언이 아니라 <strong>누수 관문(처분 대가) 봉합</strong>이라는 기술적 조정이다.</li>
+<li style="margin:0.3em 0;">선의취득·입증 부담이 남아 있어, 되돌림의 원은 &lsquo;더 닫히는&rsquo; 것이지 &lsquo;완전히 닫히는&rsquo; 것은 아니다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">처분 대가 추적이 실제 환수액을 얼마나 늘리는가(귀속 결정액 대비 실수령 재원의 간격).</li>
+<li style="margin:0.3em 0;">선의취득·시효를 둘러싼 신규 소송에서 법원이 어느 선을 긋는가.</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 친일재산 &lsquo;환수&rsquo;가 끝이 아니다 — 그 돈이 80년 만에 되돌아가는 곳</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">친일반민족행위자 재산의 국가귀속에 관한 특별법 — 위키백과. https://ko.wikipedia.org/wiki/%EC%B9%9C%EC%9D%BC%EB%B0%98%EB%AF%BC%EC%A1%B1%ED%96%89%EC%9C%84%EC%9E%90_%EC%9E%AC%EC%82%B0%EC%9D%98_%EA%B5%AD%EA%B0%80%EA%B7%80%EC%86%8D%EC%97%90_%EA%B4%80%ED%95%9C_%ED%8A%B9%EB%B3%84%EB%B2%95</li>
+<li style="margin:0.3em 0;">대한민국 친일반민족행위자재산조사위원회(2006~2010) — 위키백과. https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD_%EC%B9%9C%EC%9D%BC%EB%B0%98%EB%AF%BC%EC%A1%B1%ED%96%89%EC%9C%84%EC%9E%90%EC%9E%AC%EC%82%B0%EC%A1%B0%EC%82%AC%EC%9C%84%EC%9B%90%ED%9A%8C</li>
+<li style="margin:0.3em 0;">&ldquo;16년 만에 부활한 친일재산조사위…이제 &lsquo;처분 대가&rsquo;까지 추적&rdquo; — 이슈에디코(2026). https://www.issueedico.co.kr/news/article.html?no=37907</li>
+<li style="margin:0.3em 0;">&ldquo;친일파 재산 샅샅이 찾아 온다…친일재산조사위원회 16년 만에 부활&rdquo; — 헤럴드경제(2026). https://biz.heraldcorp.com/article/10762366</li>
+<li style="margin:0.3em 0;">이재명 대통령 광복절 81주년 경축사 — 뉴스핌(2026-08-15). https://www.newspim.com/news/view/20260815000047</li>
+</ol></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
