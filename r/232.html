@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>청년 &#x27;첫 칸&#x27;은 경기가 아니라 구조가 지웠나 — 그리고 국가는 되살릴 수 있나 — ONGLE</title>
+<meta name="description" content="전체 취업자는 느는데 청년만 45개월째 줄어드는 현상을 &#x27;경기설 vs 구성 이동설&#x27;로 가르고, &#x27;첫경력 국가책임제&#x27;가 사라진 진입 사다리를 실제로 복원하는지 통계만 가리는지 따진다.">
+<meta property="og:title" content="청년 &#x27;첫 칸&#x27;은 경기가 아니라 구조가 지웠나 — 그리고 국가는 되살릴 수 있나">
+<meta property="og:description" content="전체 취업자는 느는데 청년만 45개월째 줄어드는 현상을 &#x27;경기설 vs 구성 이동설&#x27;로 가르고, &#x27;첫경력 국가책임제&#x27;가 사라진 진입 사다리를 실제로 복원하는지 통계만 가리는지 따진다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">청년 &#x27;첫 칸&#x27;은 경기가 아니라 구조가 지웠나 — 그리고 국가는 되살릴 수 있나</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[경력직 선호 확대<br/>수습·인턴 축소] --> D[신입 진입 칸 소멸]
+    B[정형 초급업무<br/>자동화·외주로 대체] --> D
+    C[중고령 재취업 공급<br/>같은 자리 경쟁] --> D
+    D --> E[경력 못 쌓음]
+    E --> F[경력 없어 또 탈락]
+    F --> E
+</pre></div>
+    <div class="article-meta">2026-08-16 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">청년 &lsquo;첫 칸&rsquo;은 경기가 아니라 구조가 지웠나 — 그리고 국가는 그걸 되살릴 수 있나</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-16 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 &ldquo;전체는 느는데 청년 첫 일자리만 사라진다&rdquo;는 장면까지 보여줬다. 여기서 한 발 더 들어간다 — 그 사라짐이 <strong>경기(잠깐)인지 구조(구성 이동)인지</strong>, 그리고 국가가 만든 첫 일자리가 사다리를 <strong>되살리는지 통계만 가리는지</strong>.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">두 가설, 무엇이 데이터에 맞나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 현상을 두 렌즈가 다르게 예측한다. 어느 쪽이 지금 숫자와 맞는지가 처방을 가른다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">질문</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">경기 하강설</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">구성 이동설(구조)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전체 고용은?</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같이 줄어야 함</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>늘어도 됨</strong> (관측치와 일치)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">왜 청년만?</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">경기 회복 시 자동 복구</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">진입로 자체가 막혀 <strong>안 복구</strong></td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">45개월 지속</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">설명 어려움</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">추세라 설명됨</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">처방</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부양·기다림</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">진입로 재설계</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">전체 취업자가 늘어나는데 청년만 45개월째 빠진다는 사실은 <strong>경기설보다 구성 이동설에 가깝다.</strong> 경기라면 전체가 함께 눌려야 하기 때문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">왜 &lsquo;첫 칸&rsquo;만 지워지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구성 이동설의 메커니즘. 세 힘이 겹쳐 신입 진입로를 선택적으로 닫는다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기업 입장에선 합리적이다. 훈련비를 아끼고 즉시 전력을 뽑는다. 하지만 이 합리적 선택이 모이면, 누구도 신입을 훈련하지 않는 <strong>공유지의 비극</strong>이 된다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">누가 얻고 누가 잃나</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">구분</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">주체</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직접 수혜</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">경력직 재진입자·중고령</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">즉시 전력으로 우선 채용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">간접 수혜</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">경력 매칭·자동화 솔루션</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신입 대체 수요 흡수</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직접 피해</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">첫 구직 청년(무경력)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">오를 칸 자체가 없음</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">간접 피해</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>기업 자신</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5~10년 뒤 중간관리자 파이프라인 공백</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">핵심은 마지막 줄이다. 첫 칸을 지운 기업이 훗날 <strong>숙련 공백</strong>으로 되돌려 받는다. 이건 청년만의 문제가 아니라 노동시장 전체의 시한폭탄이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">국가 개입은 사다리인가, 분칠인가</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">&lsquo;첫경력 국가책임제&rsquo;(국가가 청년의 첫 경력을 책임지는 제도)는 설계에 따라 정반대 결과를 낸다.</p>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    P[국가가 첫 일자리 제공] --> Q{설계 유형}
+    Q -->|직접·한시 고용| R[통계상 취업자 ↑<br/>지원 끝나면 원위치]
+    Q -->|민간 전환·경력 인증| S[진짜 사다리 칸 복원]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">직접 고용형은 청년 취업자 수치를 <strong>빠르게</strong> 올리지만, 지원이 끝나면 민간에 남을 칸이 없다 — 통계 분칠에 그칠 위험. 반대로 민간 채용과 연결해 <strong>경력을 인증</strong>해주는 다리형이면 사라진 첫 칸을 실제로 메운다. 같은 이름, 다른 결과다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 무엇을 볼까</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 굴레엔 깨끗한 개인 해법이 없다. &ldquo;스펙을 더 쌓아라&rdquo;는 첫 칸이 사라진 구조에선 각자도생 조언일 뿐이다. 대신 구조를 정직하게 같이 읽는 편이 쓸모 있다.</p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">청년·부모라면: 지금 취업난은 개인 역량보다 <strong>진입로 설계</strong>의 문제일 확률이 높다 — 자책의 프레임을 구조의 프레임으로 바꿔 읽자.</li>
+<li style="margin:0.3em 0;">정책을 볼 때: &lsquo;청년 취업자 수&rsquo;가 아니라 <strong>지원 종료 뒤에도 남는 일자리인지</strong>를 보라. 그게 사다리와 분칠을 가른다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 6개월 관전 포인트</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">청년 취업자 수와 청년 <strong>고용률</strong>의 방향이 갈리는지 (숫자만 vs 질)</li>
+<li style="margin:0.3em 0;">첫경력책임제가 <strong>직접 고용형</strong>인지 <strong>민간 전환형</strong>인지 — 설계 유형이 성패를 가른다</li>
+<li style="margin:0.3em 0;">기업 경력직 채용 비중이 계속 오르는지 (구성 이동의 지속 신호)</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: 전체 취업자는 느는데 청년만 사라진다 — 사라진 &lsquo;첫 칸&rsquo;의 정체 (락스타지망생)</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">헤럴드경제, &ldquo;청년 고용 한파 45개월째…정부 &lsquo;청년 일자리 회복방안&rsquo; 다시 짠다&rdquo; — https://biz.heraldcorp.com/article/10838465</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;노동장관 &lsquo;청년 첫경력 국가책임제 곧 발표…민간채용 임금고지 의무화 검토&rsquo;&rdquo; — https://www.fnnews.com/news/202608041726348390</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &ldquo;청년고용에 현금 더 푼다…자발적 퇴사에 실업급여, 구직수당 추가인상 추진&rdquo; — https://www.fnnews.com/news/202608041522576950</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
