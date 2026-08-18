@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>방역 기준표에 &#x27;보상&#x27; 칸은 없다 — 부담이 흘러간 자리 — ONGLE</title>
+<meta name="description" content="새 기준표는 방역 조치의 경제·돌봄 피해를 검토 항목으로 올렸지만, 그 피해를 지원으로 잇는 배선은 없다. 지난 보상은 보정률 80%와 1년 4개월 소급 제외로 두 번 잘렸고, 반사이익을 얻은 비대면 쪽 정산은 애초에 없었다.">
+<meta property="og:title" content="방역 기준표에 &#x27;보상&#x27; 칸은 없다 — 부담이 흘러간 자리">
+<meta property="og:description" content="새 기준표는 방역 조치의 경제·돌봄 피해를 검토 항목으로 올렸지만, 그 피해를 지원으로 잇는 배선은 없다. 지난 보상은 보정률 80%와 1년 4개월 소급 제외로 두 번 잘렸고, 반사이익을 얻은 비대면 쪽 정산은 애초에 없었다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">방역 기준표에 &#x27;보상&#x27; 칸은 없다 — 부담이 흘러간 자리</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[영업시간·집합 제한] --> B[대면 가게: 매출 끊김]
+    A --> C[비대면·플랫폼: 수요 흡수]
+    B --> D{보상}
+    D -->|보상 한도| E[피해의 일부만 회수]
+    D -->|소급 제외 구간| F[아예 대상 밖]
+    C -.정산 절차 없음.-> G[이익은 그대로 귀속]
+</pre></div>
+    <div class="article-meta">2026-08-19 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">방역 기준표에 &lsquo;보상&rsquo; 칸은 없다 — 부담이 흘러간 자리</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-19 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에선 &lsquo;판단 기준이 문서로 생겼다&rsquo;는 장면까지 봤다. 여기선 그 다음 질문 하나만 판다 — <strong>적어 넣은 것과 메워 주는 것 사이에 남는 간격.</strong></p>
+
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">같은 조치가 만든 반대 방향의 장부</h2>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>O2O</strong>: 온라인으로 주문하고 오프라인에서 받는 서비스(배달·예약·중고거래 등).</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">문을 닫힌 쪽만 있던 게 아니다. 같은 기간 반대편 시장은 커졌다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">지표</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">2020년</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">2021년</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">O2O 서비스 시장 규모</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3조 5,145억 원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5조 4,323억 원 (+54.6%)</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">키오스크 도입 사업체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 3만 개</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">약 8만 개</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한쪽의 닫힌 문이 다른 쪽의 주문 건수가 됐다. 이건 누가 잘못해서가 아니라 조치의 구조가 그렇게 생겼기 때문이다. 문제는 이 이동이 <strong>한 방향으로만 정산됐다</strong>는 점이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">보상은 두 번 잘렸다</h2>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>보정률</strong>: 계산된 영업손실 중 실제로 지급할 비율. 100%면 전액, 80%면 8할만 준다.</p>
+</blockquote>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">잘린 지점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1차 — 비율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">집합금지·시간제한 구분 없이 보정률 <strong>80%</strong> 일괄 적용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2차 — 기간</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">손실보상법은 2021년 7월 7일 이후 손실만 대상. 그 전 <strong>1년 4개월</strong>은 제외</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">두 번째 컷은 아직 끝난 얘기가 아니다. <strong>위헌법률심판 제청</strong>은 법원이 그 조항이 헌법에 어긋나는지 판단해 달라고 헌법재판소에 넘기는 절차다. 서울행정법원은 2022년 8월 노래연습장 사업자 163명의 신청을 받아들여 이 조항을 넘겼다. 조치는 법이 생기기 전부터 있었는데, 보상은 법이 생긴 날부터 시작한다는 구조였기 때문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">적힌 것과 안 적힌 것</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이번 기준표가 바꾼 건 &lsquo;판단할 때 무엇을 함께 보는가&rsquo;다. 바꾸지 않은 건 &lsquo;본 다음 무엇을 해 주는가&rsquo;다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기준표에 있음</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기준표에 없음</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사전</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">경제·교육·돌봄 영향 검토</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부담이 특정 업종에 쏠릴 때 자동으로 켜지는 보상</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사후</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">영향·수용성 점검</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">점검 결과와 보상 산정을 잇는 배선</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대상</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">제한받는 쪽의 피해</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반사이익을 얻은 쪽의 기여</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 뭐가 달라지나</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">피해를 회의록에 적게 만든 것만으로도 이전보다는 낫다. 이전엔 그 피해가 애초에 계산 항목이 아니었고, 그래서 사후에 다툴 근거 자체가 없었다. 기록은 근거가 되고, 근거는 협상 재료가 된다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">다만 그 기록이 실제로 쓰이려면 두 가지가 더 필요하다. <strong>점검 결과가 공개·보존될 것</strong>, 그리고 <strong>점검에서 확인된 부담이 지원 결정으로 넘어가는 경로가 있을 것.</strong> 지금 문서에는 앞의 절반만 있다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 다음 위기에 혼자 할 수 있는 건 많지 않다. 대신 이번엔 최소한 &ldquo;그때 무엇을 근거로 그 결정을 했는가&rdquo;를 물을 자리가 생겼다. 업종 단체가 사후평가 자료를 요구할 수 있는 근거도 여기서 나온다. 개인 출구가 없는 굴레에서는, 같은 자료를 함께 들여다볼 수 있게 된 것 자체가 출구 쪽으로 난 문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">조치의 부담은 대면 업종에 몰리고 반사이익은 비대면 쪽에 남는데, 정산은 한쪽에만 이뤄졌다.</li>
+<li style="margin:0.3em 0;">지난번 보상은 비율과 기간에서 두 번 잘렸고, 두 번째는 위헌 심판 대상이 됐다.</li>
+<li style="margin:0.3em 0;">새 기준표는 부담을 <strong>보게</strong> 만들었지 <strong>갚게</strong> 만들지는 않았다 — 점검과 지원 사이 배선이 다음 과제다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 관전 포인트:</strong> 사후평가 결과가 공개 자료로 나오는지 · 부칙 소급 조항 위헌 판단이 어떻게 정리되는지.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://youtube.com/@rockstar-aspirant" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">왜 우리 가게만 닫았나 — 5년 만에 나온 방역 조치 기준표</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">코메디닷컴, 「왜 우리 가게만 문 닫아야 했나…정부가 드디어 &lsquo;기준&rsquo; 정했다」 (2026-08-18) — https://kormedi.com/2848493/</li>
+<li style="margin:0.3em 0;">매일안전신문, 「&rsquo;코로나19 경험 반영&rsquo;&hellip;질병청, 감염병 위기 사회대응 매뉴얼 마련」 (2026-08-18) — https://idsn.co.kr/news/view/1065602440089766</li>
+<li style="margin:0.3em 0;">뉴시스, 「&rsquo;소상공인 손실보상&rsquo; 피해 80% 지급…보상금 10만~1억원」 (2021-10-08) — https://newsis.com/view/?id=NISX20211008_0001607982</li>
+<li style="margin:0.3em 0;">리걸타임즈, 「&rsquo;코로나19 소상공인 손실, 2021년 7월 7일 이후만 보상&rsquo; 위헌 소지」 — https://www.legaltimes.co.kr/news/articleView.html?idxno=68323</li>
+<li style="margin:0.3em 0;">경향신문, 「코로나19 2년차 플랫폼·키오스크·배달 거래 &lsquo;쑥&rsquo;」 (2022-12-23) — https://www.khan.co.kr/article/202212231200001</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
