@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>연체율은 내려가고 &#x27;요주의&#x27;는 22% 늘었다 — 한 은행 안에서 갈라진 두 지표 — ONGLE</title>
+<meta name="description" content="공시로 나가는 연체율·NPL은 개선됐는데 은행 내부 요주의여신은 22.3% 늘었다. 넘어지기 전을 세는 지표는 이미 있지만 은행 내부에 머물러 공용 신호가 되지 못한다.">
+<meta property="og:title" content="연체율은 내려가고 &#x27;요주의&#x27;는 22% 늘었다 — 한 은행 안에서 갈라진 두 지표">
+<meta property="og:description" content="공시로 나가는 연체율·NPL은 개선됐는데 은행 내부 요주의여신은 22.3% 늘었다. 넘어지기 전을 세는 지표는 이미 있지만 은행 내부에 머물러 공용 신호가 되지 못한다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">연체율은 내려가고 &#x27;요주의&#x27;는 22% 늘었다 — 한 은행 안에서 갈라진 두 지표</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[정상여신] --> B[요주의여신]
+    B --> C[고정이하여신 NPL]
+    C --> D[상각·매각]
+    A -. 투자·채용을 줄여 버티는 구간<br/>어떤 여신 분류에도 안 잡힘 .-> A
+    B -.은행 내부 관리 지표.-> E[헤드라인에 거의 안 나감]
+    C -.공시·감독 지표.-> F[헤드라인·정책 방아쇠]
+</pre></div>
+    <div class="article-meta">2026-08-19 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">연체율은 내려가고 &lsquo;요주의&rsquo;는 22% 늘었다 — 한 은행 안에서 갈라진 두 지표</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-19 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에선 &lsquo;넘어진 곳&rsquo;과 &lsquo;버틴 곳&rsquo; 사이의 간극까지 봤다. 여기선 다른 질문 하나만 판다 — <strong>넘어지기 전을 세는 지표는 이미 있는데, 왜 방아쇠가 되지 못하나.</strong></p>
+
+
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>정상여신</strong>: 아직 아무 위험 표시가 붙지 않은 대출.
+<strong>요주의여신</strong>: 아직 부실(NPL)로 분류되진 않았지만 정상여신보다 신용위험이 높다고 은행이 따로 표시해 둔 대출.
+<strong>NPL(고정이하여신)</strong>: 회수가 어렵다고 판단해 손실 대비를 쌓기 시작한 대출. 연체율과 함께 은행 건전성의 대표 공시 지표다.
+<strong>상각·매각</strong>: 회수를 포기하고 장부에서 털어내거나 남에게 넘기는 마지막 단계.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">같은 은행, 같은 분기, 반대 방향</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">KB국민은행 한 곳만 보면 방향이 정면으로 갈린다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">지표</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">2026-03 말</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">2026-06 말</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 전체 연체율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.35%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.27%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개선</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">NPL비율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.34%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.28%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개선</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기업대출 연체율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.40%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">0.26%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개선</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>기업 요주의여신</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>1조 1,830억 원</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>1조 4,470억 원</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>+22.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">공시로 나가는 세 줄은 전부 좋아졌고, 은행이 내부에서 보는 한 줄만 나빠졌다. 같은 시기 국민은행은 상반기까지 운영할 예정이던 <strong>자산건전성 TFT</strong>(부실 위험을 따로 챙기려고 여러 부서에서 사람을 모아 꾸린 전담팀)의 운영을 연말까지 연장했다. 공시 지표가 좋아진 분기에 내부 관리 조직은 오히려 기간을 늘린 셈이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">지표마다 &lsquo;언제&rsquo;를 본다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">지표</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">포착 시점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">성격</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">요주의여신</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상환이 흔들리기 시작한 때</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 내부 관리용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연체율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원리금이 실제로 밀린 뒤</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공시·정책 방아쇠</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">NPL·상각</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">회수를 포기한 뒤</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">사후 정리</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정책은 아래 두 줄을 보고 움직인다. 맨 윗줄은 은행마다 기준과 공개 방식이 달라 업권 단위로 합산되지도 발표되지도 않는다. 선행 지표가 없어서 늦는 게 아니라, <strong>있는 선행 지표를 공용 신호로 쓰지 않아서</strong> 늦는다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">돈이 실제로 간 방향</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 은행 상반기 대출 증가율을 쪼개면 이렇다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">구분</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">상반기 증가율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대기업대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">+9.0%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중소기업대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">+1.8%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개인사업자대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">−0.1%</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가격도 갈렸다. 2026년 6월 신규취급 기준 중소기업 대출금리는 연 4.38%, 대기업은 4.17%. 격차 0.21%포인트는 3년 4개월 만에 가장 크다. 약한 쪽이 더 비싸게 빌리는 건 원래 그렇지만, 그 격차가 벌어지는 국면과 요주의여신이 늘어나는 국면이 겹친다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 뭐가 달라지나</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>은행 실적 발표에서 볼 곳이 바뀐다.</strong> 연체율·NPL이 좋아졌다는 헤드라인 밑에서 요주의여신 잔액도 같이 줄었는지를 보면 된다. 같이 줄었으면 실제 개선이고, 한쪽만 줄었으면 위험이 뒤 칸으로 미뤄진 것이다.</li>
+<li style="margin:0.3em 0;"><strong>정책 타이밍을 미리 잴 수 있다.</strong> 요주의여신이 먼저 늘고 두세 분기 뒤 연체율이 따라 오르는 순서가 반복되면, 지원 대책은 언제나 그 뒤에 온다.</li>
+<li style="margin:0.3em 0;"><strong>업권 합산 공개 여부가 갈림길이다.</strong> 요주의여신이 업권 단위로 정기 공개되면 그때부터 선행 신호가 된다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">혼자 버티는 사업자가 이 지표를 바꿀 수는 없다. 다만 자기 대출이 어느 칸에 있는지는 은행에 물어 확인할 수 있고, 그 칸의 이동은 만기 연장·금리 재조정 협상에서 근거가 된다. 개인이 풀 수 없는 굴레에서도, 같은 장부를 같이 볼 수 있게 되는 것 자체가 출구 쪽으로 난 문이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">결론</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">한 은행 안에서 공시 지표는 좋아지고 내부 위험 지표는 두 자릿수로 나빠졌다 — 개선과 악화가 동시에 참이다.</li>
+<li style="margin:0.3em 0;">넘어지기 전을 세는 지표는 이미 존재한다. 다만 은행 내부에 머물러 공용 신호가 되지 못한다.</li>
+<li style="margin:0.3em 0;">자금은 대기업 쪽으로, 가격 부담은 중소기업 쪽으로 갈렸고 두 흐름은 같은 분기에 일어났다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 관전 포인트:</strong> 3분기 실적에서 요주의여신 잔액이 꺾이는지 · 중소기업·대기업 대출금리 격차가 더 벌어지는지.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://youtube.com/@rockstar-aspirant" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">연체율 10년 만에 최고인데 숫자는 0.55% — 통계가 못 세는 다섯 곳 중 한 곳</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">뉴스핌, 「&rsquo;기업 대출 200조원&rsquo; KB국민은행, 요주의여신 22% 증가」 (2026-08-12) — https://www.newspim.com/news/view/20260812000847</li>
+<li style="margin:0.3em 0;">뉴스핌, 「中企 대출 연체율 10년 만에 최고…하반기 경제 &lsquo;시한폭탄&rsquo;」 (2026-08-19) — https://www.newspim.com/news/view/20260819000967</li>
+<li style="margin:0.3em 0;">한국은행, 「금융안정보고서(2026년 6월)」 — https://www.bok.or.kr/portal/bbs/P0000593/view.do?nttId=11062197&amp;menuNo=200068</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
