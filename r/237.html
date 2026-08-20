@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>예외 목록이 길어질 때, 목록 밖에서 벌어지는 일 — ONGLE</title>
+<meta name="description" content="총량이라는 분모가 고정된 상태에서 예외 항목(집단대출·중금리·청년)을 늘리면 공급이 늘어나는 게 아니라 은행 창구의 심사 우선순위가 재배열된다. 2021년 전세대출 제외의 반복이고, 정작 지금 가장 빠르게 늘고 있는 기타대출(2분기 +12.8조)은 그 목록 밖에 있다.">
+<meta property="og:title" content="예외 목록이 길어질 때, 목록 밖에서 벌어지는 일">
+<meta property="og:description" content="총량이라는 분모가 고정된 상태에서 예외 항목(집단대출·중금리·청년)을 늘리면 공급이 늘어나는 게 아니라 은행 창구의 심사 우선순위가 재배열된다. 2021년 전세대출 제외의 반복이고, 정작 지금 가장 빠르게 늘고 있는 기타대출(2분기 +12.8조)은 그 목록 밖에 있다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">예외 목록이 길어질 때, 목록 밖에서 벌어지는 일</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TB
+    T["은행별 총량 한도<br/>(고정된 그릇)"]
+    subgraph OUT["총량 밖으로 빠지거나 덜 잡히는 대출"]
+        A["집단대출<br/>전체 목표엔 포함, 은행 한도는 미소진"]
+        B["중금리대출<br/>취급액 일부만 반영"]
+        C["청년 주거 지원 상품<br/>항목 신설·제외 검토"]
+    end
+    D["일반 신용대출<br/>일반 주담대<br/>개인사업자 생활자금"]
+    T --> OUT
+    T --> D
+    OUT -.빠져나간 만큼.-> D
+</pre></div>
+    <div class="article-meta">2026-08-20 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">예외 목록이 길어질 때, 목록 밖에서 벌어지는 일</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-08-20 | 락스타지망생 산업분석
+이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에선 예외 목록이 늘어난 회의에서 유독 신용대출에만 관리 당부가 붙었다는 데까지 봤다. 여기선 질문 하나만 판다 — <strong>총량이라는 분모가 고정된 상태에서 예외를 만들면, 그 몫은 어디서 나오나.</strong></p>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>집단대출</strong>: 한 아파트 단지의 입주 예정자들에게 은행이 한꺼번에 내주는 대출. 재건축으로 집을 비울 때 쓰는 이사비, 분양대금을 나눠 내는 중도금, 입주할 때 치르는 잔금이 여기 들어간다.</p>
+</blockquote>
+
+
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>총량 관리</strong>: 은행마다 올해 가계대출을 얼마나 늘릴 수 있는지 상한을 정해두는 방식. 상한을 넘길 것 같으면 은행은 새 대출 접수를 줄이거나 한도를 깎는다.
+<strong>인정 비율</strong>: 어떤 대출을 취급했을 때 그 금액 중 몇 %를 총량 계산에 넣을지 정한 비율. 비율이 낮을수록 은행 입장에선 &lsquo;한도를 덜 쓰는 대출&rsquo;이 된다.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">예외는 파이를 키우지 않는다, 우선순위를 다시 매긴다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">인정 비율이라는 장치의 실제 효과는 공급 확대가 아니라 <strong>심사 순서의 재배열</strong>이다. 같은 1억원을 빌려줘도 총량에 100이 잡히는 대출과 30만 잡히는 대출이 있으면, 한도가 빠듯한 은행 창구에서는 후자가 먼저 나간다. 그리고 당국이 검토 중인 방향은 이 기준치를 더 낮추는 쪽이다.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이건 은행에 &lsquo;더 빌려주라&rsquo;고 말하는 게 아니라 <strong>&lsquo;어떤 대출을 먼저 처리하면 손해를 덜 보는지&rsquo;를 알려주는 신호</strong>다. 그리고 신호가 강해질수록, 아무 가중치도 붙지 않은 대출은 대기줄 뒤로 밀린다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">이 방식은 처음이 아니고, 결과도 기록돼 있다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">시점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">총량에서 빼준 것</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">뒤이어 벌어진 일</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2021년 4분기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전세대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">&lsquo;대출 셧다운&rsquo; 국면에서 실수요 항목만 선별 구제</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2026년 8월</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">잔금대출·청년·신혼부부·중금리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같은 구조가 5년 만에 재현</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민일보는 이 반복을 두고 &ldquo;연초 총량 목표를 설정하는 단계부터 불가피한 실수요 규모를 고려해야 한다&rdquo;는 지적과 함께, 예외가 쌓이면 <strong>대출받는 사람들 사이의 형평성 문제가 따라온다</strong>고 짚었다. 금융권 관계자의 말이 그 문제를 정확히 요약한다 — &ldquo;같은 실수요자인데도 개별 주택 매수자냐, 분양 아파트 입주 예정자냐에 따라 자금 조달 여건이 달라지는 상황이 생길 수 있다.&rdquo;<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">2</a></sup></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">실제로 서울 서초구 디에이치 방배에서는 KB국민·신한·하나은행이 각 1000억원씩 총 3000억원의 잔금대출 한도를 배정했는데, 한도가 정해져 있다 보니 예비 입주자들이 금리 조건을 비교할 겨를 없이 <strong>선착순 접수 경쟁</strong>을 벌였다.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">2</a></sup> 예외로 들어간 항목 안에서조차 배분은 다시 좁아진다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">목록 밖 항목이, 지금 가장 빠르게 늘고 있는 항목이다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">여기서 숫자 하나가 방향을 뒤집는다. 한국은행 2026년 2분기 가계신용 통계에서 신용대출을 포함한 <strong>기타대출이 주택담보대출 증가액을 앞질렀다</strong> — 2021년 2분기 이후 처음이다.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">3</a></sup></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">2026년 2분기 증가액</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">금액</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">총량 예외 목록</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">주택담보대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">12조 2000억원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">집단대출 형태로 일부 제외</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>기타대출</strong>(신용대출 포함)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>12조 8000억원</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>이름 없음</strong></td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가중치가 붙은 항목(주담대성 집단대출·중금리·청년)은 총량 밖으로 빠지고 있고, 가중치가 없는 항목(일반 신용대출)이 가장 빠르게 늘고 있다. 두 사실을 겹치면 이렇게 읽힌다 — <strong>규제가 겨냥한 창구는 좁혀지지만, 돈은 규제가 이름을 붙이지 않은 창구로 이동한다.</strong> 그리고 그 창구에 붙은 것은 예외가 아니라 &lsquo;지속적 관리&rsquo; 당부였다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">은행에 걸린 인센티브는 &lsquo;많이&rsquo;가 아니라 &lsquo;정확히&rsquo;다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">배분 방식도 같은 방향으로 작동한다. 당국은 30조원을 일률 배분하지 않고, 상반기 취급 실적과 기존 총량목표 준수 여부를 따져 <strong>목표를 잘 지킨 은행에 더 많은 한도를 배정</strong>하는 인센티브를 걸었다.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">4</a></sup></p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 규칙 아래에서 은행이 최적화하는 대상은 대출 규모가 아니라 <strong>목표 대비 오차</strong>다. 오차를 줄이려면 통제하기 쉬운 항목부터 조여야 하는데, 집단대출은 입주 일정에 묶여 있고 청년·중금리는 당국이 독려하는 항목이다. 남는 조절 손잡이가 무엇인지는 뺄셈으로 나온다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">실제 은행들의 자율 조치도 아직 그 방향에 서 있다.<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup></p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은행</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">조치</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">NH농협</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">변동형 주담대 취급</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">8월 20일 재개</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">KB국민</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">주택구입자금 한도 6억 → 3억원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">유지</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">우리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">주담대 지점당 한도 축소</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">유지</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">한 시중은행 관계자는 &ldquo;기존의 제한조치를 성급히 푸는 것은 시장에 미치는 영향이 너무 크다… 일단 은행별 총량이 확정된 후 추세를 지켜보며 결정하게 될 것&rdquo;이라고 했다.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup> 총량은 늘었지만 창구는 아직 다 열리지 않았다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">앞으로 몇 주 안에 확인될 세 가지</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>중금리 인정 비율이 몇 %로 내려가나.</strong> 낮아지는 폭이 클수록 예외의 힘이 세지고, 목록 밖 대출의 대기줄도 그만큼 길어진다.</li>
+<li style="margin:0.3em 0;"><strong>청년 항목의 자격 요건이 어디서 끊기나.</strong> 연령·소득·주거 목적 중 어느 선에서 잘리는지가 &lsquo;예외에 들어간 사람&rsquo;과 &lsquo;한 칸 차이로 밀려난 사람&rsquo;을 가른다.</li>
+<li style="margin:0.3em 0;"><strong>집단대출이 개별 은행 총량에서 완전히 빠지나.</strong> 당국은 아직 검토 중이라고 답했다. 완전 제외로 확정되면 그릇 밖으로 나가는 몫이 한 번 더 커진다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">예외 목록은 계속 길어질 것이다. 그러니 뉴스에서 &lsquo;총량을 얼마 늘렸다&rsquo;는 문장을 볼 때, 같이 볼 것은 <strong>그 옆에 붙은 목록에 내 대출의 이름이 있는가</strong>다. 이름이 있으면 그건 정말 완화이고, 없으면 같은 발표가 조임으로 도착한다. 목록 밖에 있다는 걸 먼저 알면, 적어도 창구가 닫히기 전에 움직일지 말지는 스스로 고를 수 있다.</p>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 글은 정보 제공을 위한 분석이며 특정 금융상품의 가입·차입을 권유하지 않습니다. 대출 조건은 개인의 신용·소득·담보에 따라 달라지므로 실제 결정은 해당 금융회사의 안내를 확인하시기 바랍니다.</p>
+</blockquote>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<div class="footnote">
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li id="fn:1" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">머니투데이, <a href="https://www.mt.co.kr/finance/2026/08/19/2026081915440491980" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">[단독]&rdquo;청년·중저신용자 대출은 충분히 공급&rdquo;&hellip;금융당국, 지침 전달</a> (2026-08-19)&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+<li id="fn:2" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국민일보, <a href="https://www.kmib.co.kr/article/view.asp?arcid=9000002428" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">잔금대출도 청년·신혼도 &ldquo;예외 또 예외&rdquo;… 대출규제 땜질 논란</a> (2026-08-12)&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+<li id="fn:3" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">시선뉴스, <a href="https://www.sisunnews.co.kr/news/articleView.html?idxno=244565" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">가계부채 2천조 원 돌파 &lsquo;사상 최대&rsquo;… 2분기에만 26조 원 급증</a> (2026-08-19, 한국은행 &lsquo;2026년 2분기 가계신용(잠정)&rsquo; 인용)&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+<li id="fn:4" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">헤럴드경제, <a href="https://biz.heraldcorp.com/article/10843641" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">가계대출 목표치 잘 맞춘 은행에 추가 총량 더 배분한다</a> (2026-08)&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
