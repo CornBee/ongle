@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>162조의 잠금장치 — 국회 없이 열리는 30%의 문 — ONGLE</title>
+<meta name="description" content="교육교부금에서 절감된 재원이 흘러드는 미래대응기금 162.3조의 지배구조 분석 — 국회 사전심의 없이 열리는 30% 룰과 제한 없는 세입보전 전출, 운용 규칙이 미확정인 여유자금 104.4조.">
+<meta property="og:title" content="162조의 잠금장치 — 국회 없이 열리는 30%의 문">
+<meta property="og:description" content="교육교부금에서 절감된 재원이 흘러드는 미래대응기금 162.3조의 지배구조 분석 — 국회 사전심의 없이 열리는 30% 룰과 제한 없는 세입보전 전출, 운용 규칙이 미확정인 여유자금 104.4조.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">162조의 잠금장치 — 국회 없이 열리는 30%의 문</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A["미래대응기금<br>162.3조"] --> B["운용계획 변경<br>30% 이내"]
+    B -->|국회 사전심의 없음| C["집행"]
+    A -.세입보전 전출.-> D["30% 제한도 미적용<br>사후 통보만"]
+    D --> C
+</pre></div>
+    <div class="article-meta">2026-09-02 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#시점성 분석</span> <span class="tag">#재정</span> <span class="tag">#예산</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">162조의 잠금장치 — 국회 없이 열리는 30%의 문</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-02 | 락스타지망생 시점성 분석 #251
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 아래 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">돈이 어디서 왔는지는 다들 따진다. 어디에 &lsquo;어떤 잠금장치&rsquo;로 보관되는지는 잘 안 따진다. 아래 표는 신설 미래대응기금 162.3조 원이 실제로 어떻게 쪼개지는지와, 각 조각에 걸린 통제 장치다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">구분</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규모</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">용처</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">통제 장치</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4대 분야 투입</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">45.4조</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">청년·성장동력·지방·교육인재</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">예산안 심사 대상</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국채 축소</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">12.5조</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신규 발행 물량 감축</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">계획 명시</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>여유자금</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>104.4조</strong></td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">세수 결손·불시 수요 대비</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>운용 규칙 미확정 · 외부 위탁 예정</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 영상이 확인한 &lsquo;55년 자동이체의 절단과 32조의 이체&rsquo;에서 출발해, 여기서는 그 돈이 도착하는 <strong>계좌의 잠금장치</strong>만 본다.</p>
+</blockquote>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">&lsquo;30% 룰&rsquo; — 사전심의 없이 열리는 문</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">기금운용계획은 주요 항목 지출액의 30% 범위 안에서 국회 사전심의 없이 정부가 스스로 바꿀 수 있다. 여기까지는 다른 기금과 같다. 다른 건 그다음이다 — 일반회계의 세입 부족을 메우는 전출금은 <strong>이 30% 제한조차 적용받지 않는다</strong>(국가재정법 개정안 70조 3항 7호). 정부가 &ldquo;세수 결손 보전이 필요하다&rdquo;고 판단하면, 규모 제한 없이 국회 사전심의 없이 기금에서 꺼낼 수 있고, 국회에는 사후 통보된다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세수 호황이 꺾이는 해에 이 문이 어떻게 쓰이는지가, 이 기금의 실제 성격을 결정한다. 호황기 적립·불황기 방출이라는 &lsquo;재정 댐&rsquo; 설계 자체는 교과서적이다 — 문제는 수문을 여는 손이 사전 심의를 거치지 않는다는 점이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">아직 안 정해진 것들의 목록</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">미정 항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">현재 상태</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">확정 경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">여유자금 목표수익률</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관련 법 통과 이후</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">여유자금 투자 범위</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관련 법 통과 이후</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">손실 발생 시 책임·보전 방식</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관련 법 통과 이후</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기금 최소 적립액</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미공표</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기금 적정 규모</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미공표</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">기금 존치 기간</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미정</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미공표</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가장 큰 조각인 여유자금은 외부 전문기관에 위탁 운용될 예정인데, 위 여섯 항목이 전부 빈칸인 채로 위탁 계획만 먼저 서 있다. 국민연금(기금운용위원회·수탁자책임 규정)과 비교하면, 100조대 자금이 지배구조 골격 없이 먼저 만들어지고 규칙은 나중에 오는 순서다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">지켜볼 세 가지</h2>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>국가재정법 개정안 심사</strong> — 70조 3항 7호의 세입보전 전출 예외가 원안대로 통과되는지, 상한이나 사전보고 의무가 붙는지가 핵심 조항이다.</li>
+<li style="margin:0.3em 0;"><strong>여유자금 위탁 규칙</strong> — 목표수익률과 손실 책임이 확정되기 전에 위탁 계약이 먼저 나가는지 순서를 볼 것.</li>
+<li style="margin:0.3em 0;"><strong>첫 전출의 용처</strong> — 기금 출범 후 첫 세입보전 전출이 발생하는 시점과 규모가, &lsquo;재정 댐&rsquo;과 &lsquo;쌈짓돈&rsquo; 중 어느 쪽으로 굳는지의 첫 신호다.</li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">송금인 계좌의 논쟁은 시끄럽고, 수취인 계좌의 약관은 조용하다. 조용한 쪽을 읽는 것 — 그게 이 표를 실제로 쓰는 방법이다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ONGLE" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">55년 만에 끊긴 자동이체 — 학생이 줄어도 불어나던 돈 32조의 행선지</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">이투데이, &lsquo;162조 미래대응기금 신설…교육교부금 55년 만에 개편 [2027예산]&rsquo; (2026-09-01) — https://www.etoday.co.kr/news/view/2620069</li>
+<li style="margin:0.3em 0;">파이낸셜뉴스, &lsquo;의무지출 55년 만에 대수술.. 교육교부금 등 69兆&rsquo; (2026-09-01) — https://www.fnnews.com/news/202609011811296623</li>
+<li style="margin:0.3em 0;">이데일리, &lsquo;108조 칼질해 만든 162조 미래기금…장밋빛 전망 논란&rsquo; (2026-09-01) — https://www.edaily.co.kr/News/Read?newsId=05113526645575856</li>
+<li style="margin:0.3em 0;">이투데이, &lsquo;반도체 호황에 내년 821조 슈퍼예산…성장페달 더 밟는다&rsquo; (2026-09-01) — https://www.etoday.co.kr/news/view/2620369</li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
