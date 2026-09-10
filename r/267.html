@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>성장이 배정되는 시장 — 2위에게 낙수가 안 흐르는 이유 — ONGLE</title>
+<meta name="description" content="사상 최대로 커진 파운드리 시장에서 성장분은 경쟁이 아니라 배정처럼 흐른다 — AI 주문은 1위의 생태계에, 중국 주문은 국경 안에 잠기는 이중 배선과 2위의 구조적 위치">
+<meta property="og:title" content="성장이 배정되는 시장 — 2위에게 낙수가 안 흐르는 이유">
+<meta property="og:description" content="사상 최대로 커진 파운드리 시장에서 성장분은 경쟁이 아니라 배정처럼 흐른다 — AI 주문은 1위의 생태계에, 중국 주문은 국경 안에 잠기는 이중 배선과 2위의 구조적 위치">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">성장이 배정되는 시장 — 2위에게 낙수가 안 흐르는 이유</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[파운드리 시장 성장분] --> B{수요의 출처}
+    B -->|AI 칩 주문| C[최첨단 공정 티어]
+    B -->|중국 내수 주문| D[중국 자국 파운드리]
+    B -->|그 외 일반 주문| E[나머지 업체들의 경쟁]
+    C -.생태계에 잠김.-> F[1위 독식]
+    D -.국경 안에 잠김.-> G[자국 업체 몫]
+    E --> H[2위가 실제로 뛰는 링]
+</pre></div>
+    <div class="article-meta">2026-09-10 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">성장이 배정되는 시장 — 2위에게 낙수가 안 흐르는 이유</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-10 | ONGLE 시점성 분석 #267
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">격차 0.5%포인트를 만든 건 삼성의 후퇴가 아니라 성장분의 흐름이었다 — 그 흐름이 어떻게 갈리는지부터 보자. 이 글의 질문은 하나입니다. <strong>사상 최대로 커진 시장의 성장분은 왜 &lsquo;경쟁&rsquo;이 아니라 &lsquo;배정&rsquo;처럼 흐르나.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 세 줄. <strong>파운드리</strong>는 설계 없이 남의 반도체를 위탁 생산하는 공장입니다. <strong>선단공정</strong>은 3~5나노처럼 가장 미세한 최신 생산 기술 — AI 칩은 사실상 여기서만 만들어집니다. <strong>성숙공정</strong>은 그보다 오래된 기술로, 가전·차량용 등 범용 칩을 만듭니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">위쪽 수원 — AI 주문은 생태계에 잠긴다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첨단 공정은 지금 공급 부족입니다. 물량이 넘치면 2위에게 흘러야 정상인데, 그렇게 되지 않습니다. AI 칩 고객이 파운드리를 고르는 기준은 가격이 아니라 <strong>검증된 수율과 설계 생태계</strong>라서입니다. 한 번 특정 공장에 맞춰 설계를 검증하면 옮기는 비용이 막대해, 주문은 넘치는 쪽에서 대기할지언정 옆으로 새지 않습니다. 공급 부족 속에서도 낙수는 없었습니다 — 오히려 그 반대였습니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">공급 부족 분기의 1위-2위 점유율 격차</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1분기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">65.8%포인트</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2분기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;"><strong>66.6%포인트 — 더 벌어짐</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">아래쪽 수원 — 중국 주문은 국경 안에 잠긴다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">미국의 반도체 수출통제 이후 중국은 <strong>수입 대체</strong>(외국산을 자국산으로 바꾸는 것)를 정책적으로 밀고 있습니다. 중국 PC·가전 업체들의 부품 주문이 자국 파운드리로 향하는 배경입니다. 이 수요는 품질 경쟁으로 따낸 것이 아니라 지정학이 국경 안에 가둔 것이라, 바깥 업체는 애초에 입찰장에 못 들어갑니다. 벽 안의 수원은 한 회사가 아니라 <strong>진영 전체</strong>를 키우고 있습니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이번 집계 10위권의 중국계</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">순위</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">SMIC</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3위</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">화홍그룹</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6위</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">2위의 링은 어디인가</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">위쪽(선단공정)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">아래쪽(성숙공정)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수요의 주인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">AI 빅테크</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중국 내수·범용 칩</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">진입 장벽</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수율 신뢰·생태계 잠김</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국경·가격</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2위의 접근성</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">검증 이력에서 열세</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">입찰장 진입 불가·수익성 악화</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">위는 생태계에, 아래는 국경에 잠긴 시장에서 2위가 실제로 뛸 수 있는 링은 가운데의 &lsquo;그 외 주문&rsquo;뿐입니다. 그런데 그 링은 시장에서 성장이 가장 느린 구간입니다. <strong>매출이 늘어도 순위가 위태로운 이유는 실력이 아니라 배선입니다.</strong></p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 무엇을 보나</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">반도체 점유율 기사를 만나면 순위표보다 먼저 <strong>성장분이 어느 수원에서 왔는지</strong>를 확인하기 — 총액 성장률과 업체별 성장률의 격차가 배선을 드러냅니다.</li>
+<li style="margin:0.3em 0;">이 배선은 개인이 바꿀 수 없지만, 읽을 수는 있습니다. 분기마다 공개되는 파운드리 집계에서 &lsquo;1위 점유율&rsquo;과 &lsquo;중국계 합산 점유율&rsquo; 두 숫자만 추적해도 양쪽 수원의 잠김이 강해지는지 풀리는지 보입니다.</li>
+</ul>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>향후 관전 포인트:</strong></p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;">3분기 집계에서 2위-3위 격차가 역전되는지 — 역전된다면 &lsquo;성장률 게임&rsquo;의 산수가 그대로 관철된 것</li>
+<li style="margin:0.3em 0;">삼성의 차기 선단공정(2나노) 전환기에 대형 고객 검증을 통과하는지 — 위쪽 수원에 접근할 몇 안 되는 재배선 기회</li>
+<li style="margin:0.3em 0;">중국 성숙공정 증설이 범용 칩 가격에 미치는 압력 — 가운데 링의 수익성이 더 좁아지는지</li>
+</ol>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">매출은 늘었는데 2위가 위험하다 — 삼성과 중국의 거리, 0.5%포인트</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.edaily.co.kr/News/Read?newsId=04746166645578480" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이데일리 — 삼성 파운드리 점유율 5.9%…中 SMIC 턱밑 추격</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.segye.com/newsView/20260909519550" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">세계일보 — 2분기 전세계 파운드리 매출 11.5%↑…TSMC·삼성 격차 확대</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.ebn.co.kr/news/articleView.html?idxno=1722107" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">EBN — &lsquo;AI 특수&rsquo; 파운드리 29% 성장…TSMC 독주 속 삼성은 제자리</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
