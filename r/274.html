@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>가격이 쓴 신기록의 유통기한 — 47%가 남기는 청구서 — ONGLE</title>
+<meta name="description" content="9월 초순 수출 신기록은 물량이 아니라 부족이 만든 가격이 썼다. 그 가격을 받는 쪽과 내는 쪽, 직전 사이클(2019년 -25.9%)이 보여준 유통기한, 그리고 한 품목 47% 집중이 국가 지표에 남기는 청구서를 따라간다.">
+<meta property="og:title" content="가격이 쓴 신기록의 유통기한 — 47%가 남기는 청구서">
+<meta property="og:description" content="9월 초순 수출 신기록은 물량이 아니라 부족이 만든 가격이 썼다. 그 가격을 받는 쪽과 내는 쪽, 직전 사이클(2019년 -25.9%)이 보여준 유통기한, 그리고 한 품목 47% 집중이 국가 지표에 남기는 청구서를 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">가격이 쓴 신기록의 유통기한 — 47%가 남기는 청구서</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    P((같은 칩<br>같은 가격)) --> R1[받는 쪽<br>HBM 생산능력을 쥔 메모리 대기업]
+    P --> R2[받는 쪽<br>장기계약을 미리 맺은 빅테크]
+    P --> C1[내는 쪽<br>계약 없이 현물로 사는 중소 수요기업]
+    P --> C2[가려지는 쪽<br>반도체 밖 수출기업 — 지표는 좋은데 체감은 아님]
+    P -.가격이 꺾이면.-> X[받는 쪽의 이익부터 지워지고<br>국가 지표는 물량을 따라 내려간다]
+</pre></div>
+    <div class="article-meta">2026-09-16 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">가격이 쓴 신기록의 유통기한 — 47%가 남기는 청구서</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-16 | ONGLE 시점성 분석 #274
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상이 보여준 건 물량이 줄었는데 가격이 뛰어 금액이 커진 한 줄이다. 이 리포트는 그 가격이 지나가는 자리 — 누구 주머니에서 나와 누구 주머니로 들어가고, 방향을 바꿀 때 무엇이 남는지 — 를 따라간다. 질문은 하나. <strong>부족이 만든 가격이 쓴 기록은 누구의 기록이고, 언제까지 유효한가.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>HBM</strong>은 AI 서버에 들어가는 고대역 메모리로, D램을 여러 층 쌓아 만듭니다. <strong>수율</strong>은 만든 칩 가운데 제대로 나온 비율 — 낮을수록 같은 양을 얻는 데 D램을 더 씁니다. <strong>장기계약가</strong>는 대형 고객과 미리 정해 둔 공급가, <strong>현물가</strong>는 지금 시장에서 바로 살 때 가격이고, <strong>고정거래가격</strong>은 그 장기계약가를 조사기관이 매달 집계해 발표하는 대표값입니다. <strong>슈퍼사이클</strong>은 몇 년에 한 번 오는 메모리 가격의 큰 상승 국면을 뜻합니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">같은 가격, 받는 쪽과 내는 쪽</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">가격이 주도하는 호황은 국가 단위 뉴스로는 하나의 숫자지만, 그 안에서 돈은 한 방향으로 흐릅니다. 부족할수록 단가가 곧 이익률이 되는 메모리 대기업, 현물보다 훨씬 싼 확정가로 물량을 먼저 잡아 둔 빅테크가 받는 쪽입니다. 계약 없이 현물로 사는 중소 수요기업은 같은 칩을 몇 배 가격에 조달하고, 반도체 밖 수출기업은 좋아 보이는 국가 지표 뒤에서 체감과 지표의 괴리를 떠안습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">이 기록의 유통기한 — 가격은 사이클 변수다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">직전 사이클이 답을 먼저 보여줬습니다. 슈퍼사이클 정점 직후인 2019년, 한국 반도체 수출은 1,267억달러에서 939억달러로 <strong>-25.9%</strong> 급감했고, 주범은 물량이 아니라 <strong>메모리 단가 하락</strong>이었습니다. 그해 한국 전체 수출 감소의 절반이 반도체 한 품목에서 나왔습니다. 올라갈 때 가격이 쓴 기록은, 내려올 때도 가격이 지웁니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">집중은 그 사이 더 깊어졌습니다. 1년 전 같은 열흘의 반도체 비중은 23.2% — 올해는 47.1%로, 국가 수출 지표의 절반이 사실상 한 품목의 가격 변수에 노출된 상태입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기록의 두 축</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">지금</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">가격이 방향을 바꾸면</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">가격(단가)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부족이 밀어올리는 중</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">하락분이 금액에 그대로 반영</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">물량</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이미 감소 방향</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">완충 없이 감소가 드러남</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지표 노출도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">수출의 47%가 이 구조 위</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국가 지표가 한 품목과 함께 출렁</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 피할 수 있는 구조가 아닙니다. 할 수 있는 건 국가 수출 지표를 &lsquo;하나의 숫자&rsquo;가 아니라 물량과 가격, 반도체와 그 바깥으로 쪼개 읽는 눈을 갖는 것 — 다음 발표부터 바로 쓸 수 있는 눈입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 무엇을 보나</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관찰 지점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">어디서 보나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇이 신호인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">D램 고정거래가격</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매월 말 시장조사기관 발표</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">상승 둔화·하락 전환이 기록의 유통기한 신호</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">월간 수출 확정치의 분해</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">관세청·산업부 월간 발표</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금액 증가가 물량 회복을 동반하는지</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반도체 제외 증가율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같은 발표의 품목별 표</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반도체 바깥 수출의 실제 온도</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">수출의 47%가 반도체 — 물량은 줄었는데, 무엇이 2.7배를 만들었나?</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/economy/2026/09/11/2026091108332919931" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 9월 1~10일 수출 350억달러 &lsquo;역대최대&rsquo;…반도체 270.1%↑</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202609110907507591" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — 9월 초순 수출 350억弗 전년比 82.6%↑…동기간 역대 최대</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.sedaily.com/article/20085406" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">서울경제 — 수출물량 줄어도 단가 37%↑…현물가격, LTA의 5배</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.sedaily.com/article/20054123" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">서울경제 — 반도체 수출액 폭증했지만…물량은 되레 줄었다</a></li>
+<li style="margin:0.3em 0;"><a href="https://news.skhynix.co.kr/past-semiconductor-market/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">SK하이닉스 뉴스룸 — 과거 반도체 시장의 폭락 원인과 향후 전망</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.epnc.co.kr/news/articleView.html?idxno=95590" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">테크월드 — 2019년 반도체 시장 급락, 전년 대비 매출 하락</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
