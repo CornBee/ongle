@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>중산층은 상태가 아니라 잔고다 — 50대 31%가 70대 10%가 되는 경로 — ONGLE</title>
+<meta name="description" content="NH 100세시대연구소 기준 중산층 비율은 50대 31.2%에서 70세 이상 10.5%로 무너진다. 은퇴 후 근로소득 절벽이 저축 여력→순자산→노후준비 필터를 순서대로 풀어내는 경로, 개인이 붙잡을 수 있는 두 숫자의 한계, 그리고 그 곡선이 66세 이상 상대빈곤율 39.8%와 만나는 자리를 따라간다.">
+<meta property="og:title" content="중산층은 상태가 아니라 잔고다 — 50대 31%가 70대 10%가 되는 경로">
+<meta property="og:description" content="NH 100세시대연구소 기준 중산층 비율은 50대 31.2%에서 70세 이상 10.5%로 무너진다. 은퇴 후 근로소득 절벽이 저축 여력→순자산→노후준비 필터를 순서대로 풀어내는 경로, 개인이 붙잡을 수 있는 두 숫자의 한계, 그리고 그 곡선이 66세 이상 상대빈곤율 39.8%와 만나는 자리를 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">중산층은 상태가 아니라 잔고다 — 50대 31%가 70대 10%가 되는 경로</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[은퇴 — 근로소득 절벽] --> B[저축 여력 0<br>쓰고 남는 돈이 사라진다]
+    B --> C[자산을 헐어 생활<br>순자산이 매년 줄어든다]
+    C --> D[노후 준비 '보통' 아래로<br>필터 3중 2를 못 채운다]
+    D --> E((중산층 자격 소멸<br>정점의 3분의 1))
+    A -.집 한 채·연금이 있으면.-> F[곡선이 완만해진다<br>하지만 방향은 같다]
+</pre></div>
+    <div class="article-meta">2026-09-17 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">중산층은 상태가 아니라 잔고다 — 50대 31%가 70대 10%가 되는 경로</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-17 | ONGLE 시점성 분석 #275
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상이 보여준 것은 소득이 아닌 필터가 4가구 중 3을 걸러내는 장면 한 컷이다. 이 리포트는 그 필터가 나이와 함께 어떻게 조여드는지를 따라간다. 질문은 하나. <strong>중산층 자격은 벌어서 얻는 상태인가, 아니면 매년 깎여 나가는 잔고인가.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>처분가능소득</strong>은 세금·사회보험료를 낸 뒤 실제로 쓸 수 있는 소득입니다. <strong>원리금</strong>은 대출의 원금과 이자를 합쳐 갚는 돈, <strong>순자산</strong>은 가진 자산에서 빚을 뺀 값이고, <strong>상대빈곤율</strong>은 중위소득의 절반 아래로 사는 사람의 비율입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">곡선의 모양 — 오르다가 꺾인다</h2>
+<figure style="margin:1.4em 0;padding:12px 10px;background:#fff;border:1px solid #e9ecef;border-radius:10px;text-align:center;overflow-x:auto;"><svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" width="100%" style="max-width:720px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;"><rect x="0" y="0" width="720" height="440" fill="#ffffff"/><text x="360" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#222">연령대별 중산층 비율 — 소득·소비·저축 + 자산·부채·노후 3중 2 통과 (NH 100세시대연구소)</text><line x1="66" y1="356.0" x2="696" y2="356.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="360.0" text-anchor="end" font-size="12" fill="#868e96">0</text><line x1="66" y1="296.4" x2="696" y2="296.4" stroke="#e9ecef" stroke-width="1"/><text x="58" y="300.4" text-anchor="end" font-size="12" fill="#868e96">8</text><line x1="66" y1="236.8" x2="696" y2="236.8" stroke="#e9ecef" stroke-width="1"/><text x="58" y="240.8" text-anchor="end" font-size="12" fill="#868e96">16</text><line x1="66" y1="177.2" x2="696" y2="177.2" stroke="#e9ecef" stroke-width="1"/><text x="58" y="181.2" text-anchor="end" font-size="12" fill="#868e96">24</text><line x1="66" y1="117.6" x2="696" y2="117.6" stroke="#e9ecef" stroke-width="1"/><text x="58" y="121.6" text-anchor="end" font-size="12" fill="#868e96">32</text><line x1="66" y1="58.0" x2="696" y2="58.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="62.0" text-anchor="end" font-size="12" fill="#868e96">40</text><text x="18" y="207" text-anchor="middle" font-size="12" fill="#868e96" transform="rotate(-90 18 207)">%</text><polyline points="66.0,172.7 223.5,128.8 381.0,123.6 538.5,167.5 696.0,277.8" fill="none" stroke="#ff7a45" stroke-width="2.5"/><circle cx="66.0" cy="172.7" r="3.5" fill="#ff7a45"/><circle cx="223.5" cy="128.8" r="3.5" fill="#ff7a45"/><circle cx="381.0" cy="123.6" r="3.5" fill="#ff7a45"/><circle cx="538.5" cy="167.5" r="3.5" fill="#ff7a45"/><circle cx="696.0" cy="277.8" r="3.5" fill="#ff7a45"/><text x="66.0" y="378.0" text-anchor="middle" font-size="12" fill="#495057">39세 이하</text><text x="223.5" y="378.0" text-anchor="middle" font-size="12" fill="#495057">40대</text><text x="381.0" y="378.0" text-anchor="middle" font-size="12" fill="#495057">50대</text><text x="538.5" y="378.0" text-anchor="middle" font-size="12" fill="#495057">60대</text><text x="696.0" y="378.0" text-anchor="middle" font-size="12" fill="#495057">70세 이상</text></svg></figure>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">30대까지는 자산이 아직 없어 순자산 필터에서 걸리고, 40·50대는 소득과 자산이 함께 정점에 있어 가장 높으며, 60대에 근로소득 절벽이 시작되면서 꺾이고 70대에는 정점의 3분의 1로 내려옵니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">무엇이 먼저 무너지나 — 필터가 풀리는 순서</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세 필터는 독립적이지 않습니다. 소득이 끊기면 저축 여력이 가장 먼저 0이 되고, 그다음 생활비를 자산에서 꺼내 쓰면서 순자산 필터가 흔들리고, 마지막으로 노후 준비 상태가 &lsquo;보통&rsquo; 아래로 내려갑니다. 한 필터가 풀리면 다음 필터를 붙잡을 힘도 같이 빠지는 구조입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">필터</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은퇴 전</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은퇴 후</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">개인이 붙잡을 수 있나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">저축 여력 10%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">월급에서 자동으로 남김</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득 자체가 없어 0</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은퇴 전까지만</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원리금 30% 이하</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득이 커서 비율 낮음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">분모(소득)가 줄어 비율 급등</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대출을 미리 줄이면 일부</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">노후 준비 &lsquo;보통&rsquo;</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">준비 중이라 &lsquo;보통&rsquo;</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">준비가 곧 소진 대상</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연금·자산이 대신 버텨야</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">곡선의 끝 — 두 곡선이 만나는 자리</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">70대의 숫자는 고립돼 있지 않습니다. OECD 집계에서 한국 66세 이상의 상대빈곤율은 39.8%로 OECD 평균 14.8%의 2.7배, 회원국 중 가장 높습니다. 위쪽에서는 중산층 자격이 소멸하고 아래쪽에서는 빈곤선 아래로 내려가는 두 곡선이 같은 연령대에서 만납니다 — 중산층에서 내려온 가구가 곧바로 빈곤선 근처로 옮겨 가는 통로가 그 사이에 있다는 뜻입니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 할 수 있는 건 두 숫자 — 쓰고 10%를 남기는지, 원리금이 소득의 30%를 넘지 않는지 — 를 은퇴 전에 고정해 두는 것까지입니다. 60대 이후의 급락은 저축 습관으로 막히는 기울기가 아니라 근로소득이 사라진 뒤 무엇이 그 자리를 채우느냐의 문제이고, 그 답은 개인 통장이 아니라 연금과 노후 소득 구조에 있습니다. 이 곡선을 정직하게 같이 보는 것이 출발점입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">그래서 무엇을 보나</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관찰 지점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">어디서 보나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇이 신호인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">내 저축 여력 비율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">월 처분가능소득 대비 남는 돈</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">10% 아래로 내려가면 첫 필터가 풀리는 중</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">원리금 상환 비율</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 원리금 ÷ 처분가능소득</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">30% 근접 시 소득이 줄면 바로 이탈</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">노인 상대빈곤율 추이</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">통계청·OECD 연간 발표</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">40% 아래 정착 여부 — 아래 곡선의 방향</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">중산층 24.6% — 소득이 같은데 무엇이 4가구 중 3을 걸렀나?</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.edaily.co.kr/News/Read?newsId=05038086645580776&amp;mediaCodeNo=257" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이데일리 — 난 중산층인 줄 알았는데…4가구 중 3가구는 &lsquo;가짜&rsquo;였다 (NH투자증권 100세시대연구소 보고서, 2026-09-16)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.kjob.news/news/517365" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">전국인력신문 — OECD 38개국 중 꼴찌…한국 노인 빈곤율 39.8%의 구조적 원인과 과제 (2026-08-28)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.index.go.kr/unity/potal/main/EachDtlPageDetail.do?idx_cd=1024" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">e-나라지표 — 노인 빈곤율 통계표</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
