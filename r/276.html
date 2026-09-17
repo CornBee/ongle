@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한국이 빌리는 &#x27;만드는 도구&#x27;는 누가 쥐고 있나 — 지식서비스 적자의 임대 구조 — ONGLE</title>
+<meta name="description" content="상반기 지식서비스 적자 64.4억달러의 뒤에는 반도체 설계 소프트웨어를 세계 80% 이상 쥔 미국·독일 3사와, 검증(sign-off) 합의가 잠근 전환 불가 구조가 있다. 중국이 국산화에 총력을 쏟고도 자국 1위 점유가 5.9%에 머무는 이유, 아시아에서 벌어 북미·유럽에 내는 지역별 통행료 지도, 그리고 개인 구독과 공장 사용료가 같은 임대 구조에 놓인 자리를 따라간다.">
+<meta property="og:title" content="한국이 빌리는 &#x27;만드는 도구&#x27;는 누가 쥐고 있나 — 지식서비스 적자의 임대 구조">
+<meta property="og:description" content="상반기 지식서비스 적자 64.4억달러의 뒤에는 반도체 설계 소프트웨어를 세계 80% 이상 쥔 미국·독일 3사와, 검증(sign-off) 합의가 잠근 전환 불가 구조가 있다. 중국이 국산화에 총력을 쏟고도 자국 1위 점유가 5.9%에 머무는 이유, 아시아에서 벌어 북미·유럽에 내는 지역별 통행료 지도, 그리고 개인 구독과 공장 사용료가 같은 임대 구조에 놓인 자리를 따라간다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">한국이 빌리는 &#x27;만드는 도구&#x27;는 누가 쥐고 있나 — 지식서비스 적자의 임대 구조</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[도구 소유자<br>미국·독일 설계SW 3사<br>AI 플랫폼] -- 사용료·구독료 --> B[한국 공장<br>반도체·제조업]
+    A -- 구독료 --> C[한국 개인<br>AI·OTT 구독]
+    B -- 칩·완제품 --> D[아시아 시장<br>여기서 번다]
+    C -.같은 계정 항목.-> B
+    B -. 사용료는 북미·유럽으로 .-> A
+</pre></div>
+    <div class="article-meta">2026-09-17 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">한국이 빌리는 &lsquo;만드는 도구&rsquo;는 누가 쥐고 있나 — 지식서비스 적자의 임대 구조</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-17 | ONGLE 시점성 분석 #276
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 흑자 옆에 적자가 붙어 다니는 장면 한 컷을 보여줬다. 이 리포트는 그 적자를 받아 가는 손이 누구이고 왜 바꿀 수 없는지를 따라간다. 질문은 하나. <strong>한국은 왜 &lsquo;만드는 도구&rsquo;를 사지 않고 빌리며, 그 임대 계약은 왜 갈아탈 수 없나.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>EDA</strong>는 반도체 회로를 설계·검증하는 전용 소프트웨어예요. <strong>sign-off</strong>는 칩을 공장에 넘기기 전 &ldquo;이 설계는 타이밍·전력 기준을 통과했다&rdquo;고 최종 도장을 찍는 검증 단계고요. <strong>지역별 수지</strong>는 어느 대륙과 거래해서 얼마를 남기고 잃었는지의 합계입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">손의 주인 — 세 회사가 쥔 도구</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">반도체 설계 소프트웨어 시장은 미국 시놉시스·케이던스와 독일 지멘스 세 회사가 세계의 80% 이상을 나눠 갖습니다. 시장 자체는 2026년 180억달러를 넘길 전망인데, 이 도구 없이는 어떤 첨단 칩도 설계 단계를 통과하지 못합니다. 한국이 칩을 더 많이 만들수록 사용료가 늘어나는 이유는 소비가 아니라 이 소유 구조에 있습니다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">국산화를 가장 강하게 밀어붙인 중국조차 아직 이 손을 못 놓습니다.</p>
+<figure style="margin:1.4em 0;padding:12px 10px;background:#fff;border:1px solid #e9ecef;border-radius:10px;text-align:center;overflow-x:auto;"><svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" width="100%" style="max-width:720px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;"><rect x="0" y="0" width="720" height="400" fill="#ffffff"/><text x="360" y="32" text-anchor="middle" font-size="17" font-weight="700" fill="#222">중국 EDA 시장 점유율 — 국산화 총력에도 자국 1위는 5.9% (2025)</text><path d="M 210.0 64.0 A 150 150 0 0 1 345.7 277.9 L 210 214 Z" fill="#ff7a45"/><text x="318.1" y="149.4" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">32%</text><path d="M 345.7 277.9 A 150 150 0 0 1 113.7 329.0 L 210 214 Z" fill="#ffa94d"/><text x="237.5" y="343.0" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">29.1%</text><path d="M 113.7 329.0 A 150 150 0 0 1 62.2 188.7 L 210 214 Z" fill="#ffd43b"/><text x="89.8" y="262.1" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">16.6%</text><path d="M 62.2 188.7 A 150 150 0 0 1 81.4 136.8 L 210 214 Z" fill="#69db7c"/><text x="90.0" y="173.5" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">5.9%</text><path d="M 81.4 136.8 A 150 150 0 0 1 210.0 64.0 L 210 214 Z" fill="#38d9a9"/><text x="146.9" y="106.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">16.4%</text><circle cx="210" cy="214" r="90" fill="#ffffff"/><rect x="430" y="138" width="16" height="16" rx="3" fill="#ff7a45"/><text x="454" y="151" font-size="14" fill="#343a40">케이던스(미) · 32%</text><rect x="430" y="168" width="16" height="16" rx="3" fill="#ffa94d"/><text x="454" y="181" font-size="14" fill="#343a40">시놉시스(미) · 29.1%</text><rect x="430" y="198" width="16" height="16" rx="3" fill="#ffd43b"/><text x="454" y="211" font-size="14" fill="#343a40">지멘스 EDA(독) · 16.6%</text><rect x="430" y="228" width="16" height="16" rx="3" fill="#69db7c"/><text x="454" y="241" font-size="14" fill="#343a40">화다주톈(중) · 5.9%</text><rect x="430" y="258" width="16" height="16" rx="3" fill="#38d9a9"/><text x="454" y="271" font-size="14" fill="#343a40">기타 · 16.4%</text></svg></figure>
+
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">왜 갈아탈 수 없나 — 검증이 잠근 자물쇠</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">3나노·2나노 공정은 트랜지스터 수십억 개를 배치하기 때문에 설계 최적화 난이도가 기하급수로 오릅니다. 여기서 장벽은 기능이 아니라 <strong>신뢰</strong>입니다 — 파운드리와 고객이 &ldquo;이 도구가 찍은 sign-off는 믿는다&rdquo;고 합의한 도구만 통합니다. 한 번 그 합의 안에 들어간 도구는 성능이 조금 나은 대체품이 나와도 바뀌지 않습니다. 검증 이력 자체가 자산이기 때문입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">개인의 AI·OTT 구독</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">반도체 공장의 설계SW</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">바꾸면 잃는 것</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">익숙함·저장된 기록</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">검증 이력·고객 신뢰·양산 일정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대체품이 있나</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">있음, 품질 차이 작음</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">있어도 sign-off 합의 밖이면 무의미</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">값을 정하는 쪽</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공급자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공급자</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">결과</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">그냥 낸다</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">더 많이 만들수록 더 낸다</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 계정 항목에 잡히는 두 결제의 공통점은 &lsquo;값을 정하는 쪽이 저쪽&rsquo;이라는 겁니다. 다른 점은 공장 쪽 자물쇠가 훨씬 무겁다는 것.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">통행료의 지도 — 아시아에 팔고 북미에 낸다</h2>
+<figure style="margin:1.4em 0;padding:12px 10px;background:#fff;border:1px solid #e9ecef;border-radius:10px;text-align:center;overflow-x:auto;"><svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" width="100%" style="max-width:720px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;"><rect x="0" y="0" width="720" height="440" fill="#ffffff"/><text x="360" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#222">2026 상반기 지식서비스 수지 — 지역별 (억달러)</text><line x1="66" y1="344.0" x2="696" y2="344.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="348.0" text-anchor="end" font-size="12" fill="#868e96">0</text><line x1="66" y1="286.8" x2="696" y2="286.8" stroke="#e9ecef" stroke-width="1"/><text x="58" y="290.8" text-anchor="end" font-size="12" fill="#868e96">6</text><line x1="66" y1="229.6" x2="696" y2="229.6" stroke="#e9ecef" stroke-width="1"/><text x="58" y="233.6" text-anchor="end" font-size="12" fill="#868e96">12</text><line x1="66" y1="172.4" x2="696" y2="172.4" stroke="#e9ecef" stroke-width="1"/><text x="58" y="176.4" text-anchor="end" font-size="12" fill="#868e96">18</text><line x1="66" y1="115.2" x2="696" y2="115.2" stroke="#e9ecef" stroke-width="1"/><text x="58" y="119.2" text-anchor="end" font-size="12" fill="#868e96">24</text><line x1="66" y1="58.0" x2="696" y2="58.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="62.0" text-anchor="end" font-size="12" fill="#868e96">30</text><text x="18" y="201" text-anchor="middle" font-size="12" fill="#868e96" transform="rotate(-90 18 201)">억달러</text><rect x="129.0" y="94.2" width="84.0" height="249.8" rx="4" fill="#ff7a45"/><text x="171.0" y="86.2" text-anchor="middle" font-size="13" font-weight="700" fill="#343a40">26.2</text><text x="171.0" y="366.0" text-anchor="middle" font-size="12" fill="#495057">아시아</text><rect x="339.0" y="660.5" width="84.0" height="-316.5" rx="4" fill="#ffa94d"/><text x="381.0" y="652.5" text-anchor="middle" font-size="13" font-weight="700" fill="#343a40">-33.2</text><text x="381.0" y="366.0" text-anchor="middle" font-size="12" fill="#495057">북미</text><rect x="549.0" y="558.5" width="84.0" height="-214.5" rx="4" fill="#ffd43b"/><text x="591.0" y="550.5" text-anchor="middle" font-size="13" font-weight="700" fill="#343a40">-22.5</text><text x="591.0" y="366.0" text-anchor="middle" font-size="12" fill="#495057">유럽</text></svg></figure>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">차트가 보여주듯 버는 대륙과 내는 대륙이 다릅니다. 게임·음악·플랫폼은 아시아로 팔리고, 설계 도구·AI·OTT 사용료는 북미와 유럽으로 나갑니다. 즉 이 적자는 &lsquo;한국이 못 벌어서&rsquo;가 아니라 <strong>번 돈이 지나가는 길목에 통행료 부스가 서 있는 구조</strong>입니다. 수출이 커질수록 부스를 지나는 차가 늘어나는 셈이고요.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출구 — 개인 해법은 없다, 대신 볼 것은 있다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">구독 하나 끊는다고 이 구조가 바뀌지 않습니다. 정직한 출구는 두 가지를 같이 보는 것입니다. 하나는 중국처럼 국가 단위로 도구를 만들어도 점유 5.9%에서 멈추는 이유가 성능이 아니라 검증 합의라는 점 — 국산 도구 이야기가 나올 때 &ldquo;누가 그 sign-off를 인정하나&rdquo;를 먼저 묻는 것. 다른 하나는 이 통행료가 반도체 호황의 그림자라는 점 — 수출 기록 뉴스 옆에는 항상 사용료 기록이 붙어 있다는 걸 같이 읽는 것입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관찰 지점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">어디서 보나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇이 신호인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">컴퓨터·모바일 SW 사용료 수지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국은행 지식서비스 무역통계(반기)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반도체 투자와 같은 방향으로 커지면 임대 구조 지속</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">북미 수지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같은 통계의 지역별 항목</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">적자 축소 없이 아시아 흑자만 늘면 통행료 구조 강화</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국산 설계SW 채택 소식</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">파운드리(칩을 대신 찍어주는 공장)·팹리스(설계만 하는 회사) 발표</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">&lsquo;sign-off 인정&rsquo; 언급 유무가 실질 여부</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">지식서비스 적자 64억달러 — K콘텐츠가 벌어도 왜 역대 2위인가</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/economy/2026/09/17/2026091711010990603" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 해외 반도체SW·게임·OTT·AI 구독 늘었다…지식서비스 적자 &lsquo;역대 2위&rsquo; (한국은행 2026 상반기 지식서비스 무역통계, 2026-09-17)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.newspim.com/news/view/20260917000489" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스핌 — K콘텐츠 최대 흑자에도…지식서비스 적자 64억달러 &lsquo;역대 두 번째&rsquo; (2026-09-17)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.g-enews.com/article/Global-Biz/2026/07/202607190707087659fbbec65dfb_1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">글로벌이코노믹 — 성숙 공정서 빗장 풀린 반도체 자율 설계… 상용 EDA 의존 구조 &lsquo;균열&rsquo; (2026-07-19)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.g-enews.com/article/Global-Biz/2026/09/2026091417570599240c8c1c064d_1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">글로벌이코노믹 — &ldquo;칩 설계 기간 1/4로 단축&rdquo;… 中, &lsquo;AI 에이전트 EDA&rsquo;로 美 시놉시스 독점에 맞불 (2026-09-14)</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
