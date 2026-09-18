@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>금리 인상 뒤 청구서는 어디로 가나 — 증권사 부담이 채권에서 &#x27;빌려준 돈&#x27;으로 옮겨가는 길 — ONGLE</title>
+<meta name="description" content="금리 경로가 분명해지면 증권사의 채권 평가손은 줄지만 부담은 사라지지 않고 기업에 빌려준 돈으로 옮겨간다. 은행 대출과 달리 차환·자산매각·상장이라는 특정 회수 경로에 기대는 증권사 기업금융이 금리 상승기에 어떻게 장부에 오래 남는지(셀다운·만기연장 지연), 발행어음 조달금리 상승(NH 2.70%)이 신규 투자 문턱을 어떻게 올리는지, 그 비용이 차주 기업·어음 투자자·개인 고객 순으로 도착하는 사슬과 개인이 볼 수 있는 관찰 지점을 짚는다.">
+<meta property="og:title" content="금리 인상 뒤 청구서는 어디로 가나 — 증권사 부담이 채권에서 &#x27;빌려준 돈&#x27;으로 옮겨가는 길">
+<meta property="og:description" content="금리 경로가 분명해지면 증권사의 채권 평가손은 줄지만 부담은 사라지지 않고 기업에 빌려준 돈으로 옮겨간다. 은행 대출과 달리 차환·자산매각·상장이라는 특정 회수 경로에 기대는 증권사 기업금융이 금리 상승기에 어떻게 장부에 오래 남는지(셀다운·만기연장 지연), 발행어음 조달금리 상승(NH 2.70%)이 신규 투자 문턱을 어떻게 올리는지, 그 비용이 차주 기업·어음 투자자·개인 고객 순으로 도착하는 사슬과 개인이 볼 수 있는 관찰 지점을 짚는다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">금리 인상 뒤 청구서는 어디로 가나 — 증권사 부담이 채권에서 &#x27;빌려준 돈&#x27;으로 옮겨가는 길</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[금리 경로가 분명해짐<br>채권 평가손 감소] --> B[부담이 자리를 옮김<br>기업에 빌려준 돈]
+    B --> C[돌려받는 길이 좁아짐<br>차환·매각·상장 지연]
+    C --> D[증권사 장부에 오래 남음<br>셀다운 지연]
+    D --> E[새로 돈을 구해야 함<br>조달금리 상승]
+    E --> F[비용 전가<br>차주 기업 · 어음 투자자 · 개인 고객]
+</pre></div>
+    <div class="article-meta">2026-09-18 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">금리 인상 뒤 청구서는 어디로 가나 — 증권사 부담이 채권에서 &lsquo;빌려준 돈&rsquo;으로 옮겨가는 길</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-18 | ONGLE 시점성 분석 #278
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 손실이 인상 전 &lsquo;기대 구간&rsquo;에서 났고 인상 후엔 부담이 90조원으로 자리를 옮긴다는 장면까지 보여줬다. 이 리포트는 그 옮겨간 자리에서 비용이 어떤 사슬을 타고 누구에게 도착하는지를 따라간다. 질문은 하나. <strong>채권 평가손이 줄어든 자리에 무엇이 들어오고, 그 비용은 누가 먼저 내나.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>여신성 익스포저</strong>는 증권사가 기업에 빌려주거나 보증해서 떼일 수 있는 돈의 총량이에요. <strong>차환</strong>은 만기가 온 빚을 새 빚으로 갈아타는 것. <strong>셀다운</strong>은 증권사가 먼저 인수한 대출·채권을 다른 기관에 나눠 파는 일. <strong>발행어음</strong>은 증권사가 자기 신용으로 찍어 개인·기관에 파는 1년 안팎의 단기 채권, <strong>환매조건부채권(환매채)</strong> 은 증권사가 나중에 되사주기로 약속하고 파는 단기 채권이에요. <strong>투자은행(IB)</strong> 은 증권사 안에서 기업금융을 맡는 부문입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">돌려받는 길이 은행과 다르다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">은행 대출은 차주가 장사해서 번 돈으로 갚는 게 기본입니다. 증권사 기업금융은 다릅니다. 나이스신용평가는 이 자산이 차주의 영업현금흐름보다 <strong>차환·자산매각·기업공개(상장)</strong> 같은 특정 회수 경로에 기대는 경우가 많다고 짚습니다. 금리가 오르면 투자수요가 줄고 담보가치가 내려가 이 경로가 좁아지고, 돈이 돌아오는 시점이 뒤로 밀립니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">은행 기업대출</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">증권사 기업금융</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">갚는 돈의 출처</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차주의 영업 현금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차환·자산 매각·상장 대금</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금리 오르면</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이자 부담 증가</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">회수 경로 자체가 막힘</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대형 투자은행 최근 흐름</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부동산 아닌 기업금융 자산 증가</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">두 시계 — 손실이 나는 구간과 부담이 남는 구간</h2>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+timeline
+    title 금리 인상기 증권사의 두 시계
+    인상 기대 형성 : 시장금리 선반영 — 채권 평가손 집중
+    인상 확정 : 불확실성 감소 — 채권 손실은 줄어듦
+    인상 이후 수개월 : 빌려준 돈이 장부에 오래 남음
+    다음 조달 시점 : 새 자금을 더 비싸게 구함 — 조달금리 상승
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">첫 시계는 짧고 요란합니다. 둘째 시계는 조용하고 깁니다. 채권은 시가로 매일 평가되니 손실이 즉시 드러나지만, 빌려준 돈은 장부에 그대로 있다가 천천히 부담으로 바뀝니다. 그래서 나이스신용평가는 손실액이 아니라 <strong>익스포저 증가 속도와 자산 구성</strong>을 먼저 보라고 짚습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">조달비용 — 비싸진 돈이 문턱을 올린다</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">증권사는 예금이 없어서 발행어음·환매조건부채권 같은 시장성 조달에 기댑니다. NH투자증권의 올해 상반기 발행어음 평균 조달금리는 2.70%로 지난해 연간 평균 2.65%보다 올랐습니다. 조달금리가 기존 운용자산 수익률보다 빨리 오르면 증권사는 새 투자에서 요구하는 목표수익률을 올립니다. 문턱이 올라가면 차환에 기대던 차주 기업이 먼저 밀립니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">비용이 도착하는 순서</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">누구</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">어떤 형태로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">차환·매각에 기대던 차주 기업</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연장 거절·더 높은 금리·담보 추가</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">발행어음·환매채 투자자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">금리는 오르지만 증권사 건전성 위험을 함께 짊어짐</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">개인 리테일 고객</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">나이스신용평가가 금리 상승의 파급으로 꼽은 &lsquo;리테일 실적 감소&rsquo; — 줄어든 이익을 다른 데서 메우려는 압력</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출구 — 두 시계를 같이 보기</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">깨끗한 개인 해법은 없습니다. 금리 경로도, 셀다운 시장도 개인이 정하지 않으니까요. 정직한 출구는 시계를 하나 더 갖는 것입니다. 금리 발표일은 첫 시계의 끝이지 둘째 시계의 시작이고, 증권사 발행어음이나 환매채에 돈을 넣는 사람이라면 금리 숫자보다 그 회사가 빌려준 돈이 얼마나 빨리 늘고 얼마나 오래 장부에 남는지를 같이 읽는 게 맞습니다. 구조 쪽에서는 회수가 차환·매각·상장에 묶인 자산이 늘수록 금리 상승기의 비용이 차주 기업과 개인 고객 쪽으로 흐른다는 것을 같이 보는 것입니다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">관찰 지점</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">어디서 보나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇이 신호인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">여신성 익스포저 증가 속도</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신용평가사 증권업 보고서 · 분기 사업보고서</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자기자본보다 빠르게 늘면 회수 지연 부담 확대</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만기연장·셀다운 지연</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">증권사 투자자 설명 자료 · 신용평가 코멘트</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연장 비중 상승은 장부 잔류 신호</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">발행어음 조달금리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">각 증권사 발행어음 공시 금리</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">운용수익률보다 빨리 오르면 신규 투자 문턱 상승</td>
+</tr>
+</tbody>
+</table>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금리 오르기 전에 이미 4.5조 — 증권사 채권 손실은 &lsquo;인상&rsquo;이 아니라 &lsquo;인상 기대&rsquo;가 만들었다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202609161620154874" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — 금리 급등에 증권사 채권서 4.5조 날렸다…헤지해도 1.8조 손실 (나이스신용평가 보고서, 2026-09-16)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/stock/2026/09/18/2026091719473747069" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 채권손실 커지고 조달비용 오르고… 증권사 수익성 &lsquo;경고음&rsquo; (2026-09-18)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/stock/2026/09/17/2026091711254141814" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 美 금리인상에 韓 증권사 &lsquo;이중 압박&rsquo;…채권손실 늘고 조달비용 뛴다 (2026-09-17)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202609171340560701" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — 금융권 &lsquo;약한 고리&rsquo; 캐피탈…161조 캐피탈채, 금리 상승기 시험대 (Fed 9/16 인상, 2026-09-17)</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
