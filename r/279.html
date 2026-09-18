@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>약해진 엔은 한국 어디에 먼저 닿나 — 원/엔 880원이 갈라놓는 지갑과 공장 — ONGLE</title>
+<meta name="description" content="원/달러가 오르는 날에도 원/엔은 따로 움직인다. 일본은행 표결의 반대표 2표가 다음 인상 기대를 내려 엔이 약해질 때, 그 엔저가 한국의 가계(일본 여행객 85만 명 vs 사상 최대 엔화예금 1조3456억엔), 수출 공장(한국 최대 수출경합국 일본 46.8·10대 품목 중 9개 중복), 자금 흐름(엔 캐리)에 서로 다른 시계로 도착하는 경로와 승자·부담을 표로 정리하고, 금리 숫자 대신 표결을 읽는 출구를 짚는다.">
+<meta property="og:title" content="약해진 엔은 한국 어디에 먼저 닿나 — 원/엔 880원이 갈라놓는 지갑과 공장">
+<meta property="og:description" content="원/달러가 오르는 날에도 원/엔은 따로 움직인다. 일본은행 표결의 반대표 2표가 다음 인상 기대를 내려 엔이 약해질 때, 그 엔저가 한국의 가계(일본 여행객 85만 명 vs 사상 최대 엔화예금 1조3456억엔), 수출 공장(한국 최대 수출경합국 일본 46.8·10대 품목 중 9개 중복), 자금 흐름(엔 캐리)에 서로 다른 시계로 도착하는 경로와 승자·부담을 표로 정리하고, 금리 숫자 대신 표결을 읽는 출구를 짚는다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">약해진 엔은 한국 어디에 먼저 닿나 — 원/엔 880원이 갈라놓는 지갑과 공장</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[일본은행 표결<br>반대표 2표] --> B[다음 인상 기대가 낮아짐<br>엔 매도]
+    B --> C[원/엔 100엔당 880원대<br>원/달러와 다른 방향]
+    C --> D[가계 지갑<br>일본 여행객 · 엔화 예금자]
+    C --> E[수출 공장<br>일본과 같은 물건을 파는 산업]
+    C --> F[자금 흐름<br>엔을 빌려 투자한 돈]
+</pre></div>
+    <div class="article-meta">2026-09-19 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">약해진 엔은 한국 어디에 먼저 닿나 — 원/엔 880원이 갈라놓는 지갑과 공장</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-19 | ONGLE 시점성 분석 #279
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 31년 만의 최고 금리에도 반대표 2표가 다음 인상 기대를 내려 엔이 약해지고, 원화가 그 사이에 끼는 장면까지 보여줬다. 이 리포트는 그 약해진 엔이 한국의 어느 지갑과 어느 공장에 먼저 도착하는지를 따라간다. 질문은 하나. <strong>원/달러가 오르는 날 원/엔은 따로 움직이는데, 그 갈림길에서 누가 웃고 누가 아픈가.</strong></p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>원/엔 환율</strong>은 100엔을 사는 데 드는 원화 값이에요. 숫자가 내려가면 엔이 싸진 것. <strong>정책위원</strong>은 일본은행에서 금리를 표결로 정하는 9명입니다. <strong>수출경합도</strong>는 두 나라가 세계시장에 얼마나 비슷한 물건을 파는지를 0~100으로 잰 숫자로, 높을수록 같은 손님을 두고 싸운다는 뜻이에요. <strong>엔 캐리</strong>는 금리가 낮은 엔을 빌려 다른 나라 자산에 넣는 투자를 말합니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">원/엔은 이미 두 달 반 동안 다른 길을 걸었다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">날짜</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">원/엔 (100엔당)</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무슨 일이 있었나</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">7월 1일</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">955.63원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔 강세 기대가 살아 있던 구간</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">8월 28일</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">866.47원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2024년 7월 이후 2년 1개월 만의 최저</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">9월 18일</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">880.44원</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">인상 당일 — 달러 대비 원화는 7일째 약세, 엔 대비로는 여전히 싼 구간</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">같은 날 원화는 달러 앞에서 약했고, 엔 앞에서는 강했습니다. 환율 뉴스는 달러 하나만 보여주지만, 여행객·수출 공장·엔 예금자의 손익은 이 두 번째 숫자에서 갈립니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">지갑 — 같은 엔저인데 한쪽은 웃고 한쪽은 기다린다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">규모</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">엔이 더 싸지면</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일본 여행객</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">8월 한 달 85만 500명, 1년 전보다 28.7% 증가 — 방일 외국인 4명 중 1명 이상</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같은 원화로 더 긴 여행. 오늘의 승자</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔화 예금자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5대 은행 잔액 1조 3456억엔, 7월 말보다 29.5% 늘어 사상 최대</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">반등을 기다리며 산 돈. 반등이 늦어질수록 대기 기간이 길어짐</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">엔 예금이 두 달 새 30% 불어난 이유는 &lsquo;지금이 바닥&rsquo;이라는 기대였습니다. 그런데 반대표 2표는 그 바닥이 더 오래 이어질 수 있다는 신호예요. 엔 예금은 이자가 거의 없어서, 반등이 한 분기 늦어지면 그만큼 원화 예금 이자를 그냥 버리는 셈입니다. 여행객과 예금자는 같은 엔을 다른 시계로 봅니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">공장 — 한국이 세계시장에서 가장 자주 마주치는 상대가 일본이다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">경쟁국</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">수출경합도</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">한국 10대 수출품목 중 겹치는 품목</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일본</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">46.8</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">9개</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">싱가포르</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">40.1</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">독일</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">39.8</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">7개</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">미국</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">39.1</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">중국</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">38.5</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">7개</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">무역투자진흥공사가 2024년 말 짚은 대로, 한국 수출품과 가장 많이 겹치는 나라는 중국이 아니라 일본입니다. 특히 자동차·부품, 선박, 의료·정밀·광학기기에서 경합이 오르는 중이었죠. 엔이 싸지면 이 품목을 제3국에 파는 한국 공장은 가격표에서 먼저 밀립니다. 반대로 일본산 장비·부품을 사다 쓰는 국내 공장은 같은 원화로 더 많이 들여올 수 있어요. 어느 쪽 효과가 큰지는 품목마다 다르고 아직 집계된 수치는 없습니다 — 다만 방향은 정해져 있습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">누가 웃고 누가 아픈가</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이득</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">부담</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">가계</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일본 여행·직구</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔화 예금 대기 비용</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">공장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">일본산 장비·부품 수입</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자동차부품·선박·정밀기기 수출</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">자금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔을 빌려 해외 자산에 넣은 쪽 — 빌린 돈이 싸진 상태 유지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">엔 반등에 베팅한 쪽</td>
+</tr>
+</tbody>
+</table>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출구 — 금리 숫자 대신 표결을 읽기</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 일본 금리를 정할 수는 없습니다. 정직한 출구는 보는 숫자를 바꾸는 것입니다. 엔의 방향은 &lsquo;지금 금리가 몇 %냐&rsquo;보다 &lsquo;다음 회의에서 몇 명이 반대하느냐&rsquo;와 &lsquo;우에다 총재가 다음 인상 시점을 어떻게 말하느냐&rsquo;에서 먼저 드러납니다. 여행 환전이라면 발표 전에 미리 바꾸기보다 표결 내용을 보고 바꾸는 쪽이 유리했고, 엔 예금이라면 반등 시점을 맞히려 하기보다 원화 예금 이자를 포기하는 기간을 정해두는 게 맞습니다. 구조 쪽에서는 엔저가 길어질수록 부담이 특정 수출 품목 공장과 그 지역 고용에 먼저 쌓인다는 것을 같이 보는 것입니다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">일본 31년 만의 최고 금리에도 엔화는 더 약해졌다 — 시장이 본 건 반대표 2표였다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.newspim.com/news/view/20260918000696" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스핌 — 엔화, BOJ 금리인상에도 157엔대로 약세…추가 인상 기대 후퇴 (2026-09-18)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.mt.co.kr/economy/2026/09/18/2026091816304284404" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">머니투데이 — 日 금리 올려도 엔화 약세…원/달러 환율 7거래일 연속 상승 (2026-09-18)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.snmnews.com/news/articleView.html?idxno=574954" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">철강금속신문 — 9월 18일 원/달러 환율 1,383.30원…엔화·유로·위안화 (2026-09-18)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.thepublic.kr/news/articleView.html?idxno=316641" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">더퍼블릭 — 엔화예금 잔액 사상 최대…다시 불붙는 &lsquo;엔테크&rsquo; (2026-08-28)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.hankyung.com/article/2026091696547" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">한국경제 — 日 외국인 4명 중 1명은 한국인…역대급 수치 기록 (JNTO 8월 통계, 2026-09-16)</a></li>
+<li style="margin:0.3em 0;"><a href="https://kidd.co.kr/news/239568" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">산업일보 — 내년에도 첨단산업 수출 경쟁 치열…韓 경합국 1위 &lsquo;일본&rsquo; (KOTRA 보고서, 2024-12-14)</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
