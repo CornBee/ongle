@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>깎는 대신 빌려준다 — 집주인 대출이 호가를 지키는 방식 — ONGLE</title>
+<meta name="description" content="집주인이 모자란 돈을 빌려주면 할인은 사라지지 않고 이자·만기 조건으로 옮겨 가고, 신고되는 값은 그대로 남아 다음 거래의 기준이 된다. 매도인·매수인·이웃이 각각 얻고 떠안는 것, 이자제한법 연 20%와 증여 판정이 만드는 금리의 천장과 바닥, 1순위 근저당도 세입자 보증금·당해세에 밀릴 수 있는 회수 경로, 서명 전 계약서 네 줄과 통계 한 칸이라는 두 출구를 표와 흐름도로 정리한다.">
+<meta property="og:title" content="깎는 대신 빌려준다 — 집주인 대출이 호가를 지키는 방식">
+<meta property="og:description" content="집주인이 모자란 돈을 빌려주면 할인은 사라지지 않고 이자·만기 조건으로 옮겨 가고, 신고되는 값은 그대로 남아 다음 거래의 기준이 된다. 매도인·매수인·이웃이 각각 얻고 떠안는 것, 이자제한법 연 20%와 증여 판정이 만드는 금리의 천장과 바닥, 1순위 근저당도 세입자 보증금·당해세에 밀릴 수 있는 회수 경로, 서명 전 계약서 네 줄과 통계 한 칸이라는 두 출구를 표와 흐름도로 정리한다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">깎는 대신 빌려준다 — 집주인 대출이 호가를 지키는 방식</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[매수인 현금이 모자란다] --> B{매도인의 선택}
+    B -->|값을 깎는다| C[낮은 값으로 신고된다]
+    C --> D[이웃 집주인과 다음 매수인이<br>낮은 값을 기준으로 본다]
+    B -->|모자란 돈을 빌려준다| E[제값으로 신고된다<br>+ 이자 수입]
+    E --> F[높은 값이<br>다음 거래의 기준이 된다]
+</pre></div>
+    <div class="article-meta">2026-09-23 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">깎는 대신 빌려준다 — 집주인 대출이 호가를 지키는 방식</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-23 | ONGLE 시점성 분석 #283
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 은행이 멈춘 자리를 집주인이 빌려주고, 그 빚이 은행 장부 밖에 있다는 것까지 보여줬다. 이 리포트는 다른 질문을 본다. <strong>집주인이 돈을 빌려주면, 규제가 누르려던 가격은 누가 떠받치게 되나.</strong> 지금 집을 보러 다니는 사람이라면, 다음에 보게 될 시세가 이 거래로 만들어질 수 있다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 몇 줄. <strong>근저당</strong>은 돈을 빌려준 사람이 그 집에 걸어 두는 담보 권리예요. 못 갚으면 경매로 넘겨 먼저 돌려받을 수 있습니다. <strong>호가</strong>는 집주인이 부르는 값, <strong>실거래가</strong>는 실제 계약서에 적혀 신고된 값이고, <strong>대환</strong>은 기존 빚을 새 대출로 갈아타 갚는 것입니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">할인이 대출로 바뀌면</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;"></th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">얻는 것</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">떠안는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매도인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">부른 값 + 이자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만기까지 못 받은 돈</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매수인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 한도 밖의 자금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">만기에 갈아타지 못할 위험</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">다음 매수인·이웃 집주인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">—</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">할인이 빠진 기준가</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">할인은 사라진 게 아니라 계약서 밖의 이자·만기 조건으로 옮겨 갔어요. 도시와경제 송승현 대표가 이 방식에 대해 &ldquo;가격 왜곡과 신고가 형성 가능성&rdquo;을 짚은 이유가 여기 있습니다. 대출 규제는 돈줄을 죄어 값을 누르려는 장치인데, 매도인이 돈줄을 직접 쥐면 그 누르는 힘이 값까지 닿지 않아요. 부담은 표의 맨 아래 줄, 이 거래에 끼지도 않은 사람에게 남습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">이자는 마음대로 못 정한다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">선</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">기준</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">넘으면</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">천장</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이자제한법 최고 연 20% (개인 사이에도 적용)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">넘는 이자는 무효</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">바닥</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">국세청이 인정하는 적정 이자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">무이자·너무 싼 이자는 증여로 볼 수 있음. 가족 사이면 자금출처 조사 가능성</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">세금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">매도인이 받는 이자</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">과세 대상</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">그래서 이 대출은 &lsquo;공짜 호의&rsquo;가 될 수 없습니다. 매도인 입장에서 이자는 깎아 주지 않은 값을 나눠서 돌려받는 통로이기도 해요.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">빌려준 쪽도 안전하지 않다</h2>
+<pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[만기 도래] --> B[매수인이 은행 대출로<br>갈아타려 함]
+    B -->|그때 규제로 거절| C[연체]
+    C --> D[개인 간 경매<br>은행보다 느림]
+    D --> E[먼저 돈을 돌려받는 쪽<br>세입자 보증금·그 집에 붙은 세금]
+    E --> F[매도인 회수 부족 가능]
+</pre>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">근저당을 1순위로 잡아도, 먼저 계약한 세입자의 보증금이나 그 집에 매겨진 세금(당해세)이 경매 대금에서 먼저 빠져나갈 수 있다는 게 법조계 설명입니다. 은행은 두세 달이면 경매를 진행하지만 개인은 그보다 느려요. 매수인이 만기에 대환하려 해도 그 시점의 대출 규제에 막힐 수 있습니다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출구 — 계약서 네 줄, 그리고 통계 한 칸</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">사는 쪽이든 파는 쪽이든 서명 전에 네 가지를 은행 대출과 같은 잣대로 적어 비교하면 됩니다. 금리가 어느 선인지, 만기에 무엇으로 갚을지, 연체되면 언제 한꺼번에 갚아야 하는지(기한이익상실), 근저당 앞에 누가 서 있는지. 이 네 줄이 비어 있으면 그 거래는 값이 아니라 위험을 미룬 것이에요.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">개인이 풀 수 없는 부분도 있습니다. 거래 신고 때 차입 사실을 적어도 금융권 가계부채 통계에는 충분히 잡히지 않을 수 있다는 지적이 나와요. 그 칸이 이어지기 전까지, 이 방식이 퍼질수록 공식 시세와 실제 부담 사이의 간격은 계속 벌어질 수 있습니다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">은행은 2억, 나머지는 집주인이 — &lsquo;집주인 대출&rsquo; 두 달 새 265건</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.edaily.co.kr/News/Read?newsId=01820406645583072&amp;mediaCodeNo=257" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이데일리 — &ldquo;나도 대통령처럼 빌려준다&rdquo;…집주인 대출, 두 달 새 17배↑ (2026-09-23)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.newspim.com/news/view/20260729000725" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스핌 — &ldquo;집주인 대출 협의&rdquo; 셀러 파이낸싱, 수도권 전역 확산하나 (2026-07-29)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202607290329258873" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — &ldquo;집주인이 은행 된다&rdquo;…셀러 파이낸싱의 역설 (2026-07-29)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.etoday.co.kr/news/view/2606164" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이투데이 — &ldquo;20억은 집주인이 대출 좀&rdquo;…셀러 파이낸싱 (2026-07-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202607221441024278" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스(뉴시스) — &ldquo;매도인 대출 가능&rdquo;…부동산 &lsquo;셀러 파이낸싱&rsquo; 확산 조짐 (2026-07-22)</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
