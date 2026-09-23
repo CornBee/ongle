@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>귀찮음 값은 어디로 가나 — AI 비서가 풀어놓은 돈의 행방 — ONGLE</title>
+<meta name="description" content="소비자 관성이 벌어주던 돈은 영국 보험 갱신 가격차(2018년 600만 명·12억 파운드)와 한국 대환대출(연 490억 원 절감)에서 이미 측정된 적이 있다. AI 비서가 옮기는 비용을 0으로 만들면 그 돈은 소비자에게 돌아올 수도, 구독료·수수료·추천 순서를 쥔 새 문지기에게 갈 수도 있다. 두 갈래를 표와 흐름도로 나누고, 비서를 기다리지 않고 대출·예금·보험·구독에서 지금 되찾는 30분 체크리스트를 정리한다.">
+<meta property="og:title" content="귀찮음 값은 어디로 가나 — AI 비서가 풀어놓은 돈의 행방">
+<meta property="og:description" content="소비자 관성이 벌어주던 돈은 영국 보험 갱신 가격차(2018년 600만 명·12억 파운드)와 한국 대환대출(연 490억 원 절감)에서 이미 측정된 적이 있다. AI 비서가 옮기는 비용을 0으로 만들면 그 돈은 소비자에게 돌아올 수도, 구독료·수수료·추천 순서를 쥔 새 문지기에게 갈 수도 있다. 두 갈래를 표와 흐름도로 나누고, 비서를 기다리지 않고 대출·예금·보험·구독에서 지금 되찾는 30분 체크리스트를 정리한다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">귀찮음 값은 어디로 가나 — AI 비서가 풀어놓은 돈의 행방</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[내가 귀찮아서 안 옮긴 돈<br>낮은 이자 · 비싼 갱신료 · 안 쓰는 구독] --> B{누가 대신 옮겨 주나}
+    B -->|아무도 안 옮김| C[지금까지: 기존 회사 이익]
+    B -->|내가 직접 비교해 옮김| D[내 주머니로 돌아옴]
+    B -->|AI 비서가 옮김| E{비서의 값은?}
+    E -->|무료·중립| D
+    E -->|구독료 · 거래 수수료 · 추천 순서| F[새 문지기의 이익]
+</pre></div>
+    <div class="article-meta">2026-09-23 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">귀찮음 값은 어디로 가나 — AI 비서가 풀어놓은 돈의 행방</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-23 | ONGLE 시점성 분석 #284
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 월가가 값을 매긴 게 AI의 실력이 아니라 고객의 귀찮음이 벌던 돈이라는 데까지 왔다. 이 리포트는 다음 질문을 본다. <strong>그 돈이 풀려나면 내 주머니로 돌아오나, 아니면 새 문지기에게 가나.</strong> 안 옮긴 적금, 자동 갱신된 보험이 하나라도 있다면 당신 이야기다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 두 줄. <strong>관성</strong>은 더 나은 대안이 있어도 하던 대로 계속 사는 습관이다. 월가는 이걸 &lsquo;소비자 관성(consumer inertia)&rsquo;이라 부르며 이날 매도 이유로 꼽았다. <strong>대환</strong>은 기존 대출을 더 싼 대출로 갈아타 갚는 것이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">귀찮음 값은 이미 재 본 적이 있다</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">사례</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">무엇을 쟀나</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">숫자</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">영국 금융감독청(FCA) 2020년 조사</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">같은 위험인데 오래 갱신한 자동차·주택 보험 고객이 더 낸 돈</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2018년 600만 명, 12억 파운드</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">FCA 2022년 1월 규제</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">갱신 고객에게 신규보다 비싸게 받기 금지</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">10년간 42억 파운드 절감 추정</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">한국 대환대출 인프라 (2023년 5월 시작)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">앱에서 대출 비교 후 갈아타기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2023년 12월 22일까지 약 10만 명, 금리 평균 1.6%p↓, 연 490억 원 이자 절감</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영국은 규제로, 한국은 갈아타기 통로를 깔아서 귀찮음 값을 일부 되돌렸다. 두 경우 모두 돈이 돌아온 조건은 같았다. 옮기는 비용을 누군가 낮춰 줬다는 것이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">풀린 돈의 두 갈래</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">갈래</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">신호</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">나에게 뜻하는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소비자에게</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">비서가 비교·해지·이동을 대신하면 옮기는 비용이 거의 0이 된다</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">낮은 이자·비싼 갱신료가 버티기 어려워진다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">새 문지기에게</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">메타 시가총액이 뮤즈 공개 뒤 약 1,920억 달러 불었다 · 뮤즈 유료판은 월 20·100달러 · 블룸버그 인텔리전스는 이런 비서를 &lsquo;새 통행료 징수자&rsquo;로 봤다</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">거래가 비서를 거치면, 어떤 상품을 먼저 보여 줄지가 비서 쪽 손에 넘어간다</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">두 갈래는 동시에 열릴 수 있다. 옛 관성이 끊겨도, 비서가 늘 첫 번째로 보여 주는 상품을 그냥 고르는 순간 새 관성이 생긴다. 추천 순서가 곧 새로운 &lsquo;기본값&rsquo;이 되는 셈이다. 다만 이날 금융주 하락이 비서 탓만은 아니었다. 미국 2년짜리와 10년짜리 국채 금리의 차이가 1년 반 만에 가장 좁아졌는데, 이 폭이 줄면 은행이 싸게 빌려 비싸게 빌려주며 남기는 몫도 줄어든다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출구 — 비서를 기다리지 않는 30분</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">비서가 한국에 언제 올지는 아직 모른다. 그런데 되찾을 몫 상당수는 지금 손으로도 닿는다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">오늘 할 일</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이미 있는 통로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">지금 금리를 적고 다른 곳 조건과 비교</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대환대출 비교 서비스</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">예금·대기 자금</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">이자 거의 없는 통장에 오래 둔 돈 확인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 금리 비교 공시</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보험</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">갱신 안내가 오면 같은 보장으로 견적 한 번 더</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">보험 비교 서비스·다이렉트 견적</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">구독</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">카드 명세서 한 달 치에서 안 쓴 결제 표시</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">각 앱 해지 메뉴</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">나중에 비서를 쓰게 되더라도 질문 하나는 남겨 두자. <strong>이 추천은 누구에게서 돈을 받나.</strong> 그 답을 모르면 귀찮음 값은 사라진 게 아니라 주인만 바뀐다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">AI 비서 하나에 증권사 -6% — 월가가 값을 매긴 건 &lsquo;우리의 귀찮음&rsquo;</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://kelo.com/2026/09/22/financial-stocks-fall-with-ai-and-flattening-yield-curve-in-focus/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">Reuters(KELO) — Financial stocks fall with AI and flattening yield curve in focus (2026-09-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.investing.com/news/stock-market-news/meta-ai-agent-triggers-heavy-selloff-in-banks-insurers-and-travel-stocks-4911491" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">Investing.com — Meta AI agent triggers heavy selloff in banks, insurers, and travel stocks (2026-09-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.bloomberg.com/news/articles/2026-09-22/meta-s-muse-drags-down-stocks-that-depend-on-consumer-inertia" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">Bloomberg — Meta&rsquo;s Muse AI Agent Drives Selloff in Banks, Insurers, Travel Stocks (2026-09-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.theglobeandmail.com/investing/article-meta-ai-agent-muse-revenue-wall-street-expectations/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">The Globe and Mail — Why a new AI agent has Wall Street suddenly turning bullish on Meta (2026-09)</a></li>
+<li style="margin:0.3em 0;"><a href="https://americanbazaaronline.com/2026/09/22/meta-muse-ai-market-cap-488642/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">American Bazaar — Meta&rsquo;s Muse AI agent adds $192 billion to market value (2026-09-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fca.org.uk/news/press-releases/fca-confirms-measures-protect-customers-loyalty-penalty-home-motor-insurance-markets" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">FCA — Measures to protect customers from the loyalty penalty in home and motor insurance markets</a></li>
+<li style="margin:0.3em 0;"><a href="https://en.wikipedia.org/wiki/Price_walking" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">Wikipedia — Price walking (FCA 2020 시장조사·2022 규제 요약)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.ajunews.com/view/20231112133650342" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">아주경제 — 대환대출 이용액 2조 돌파…이자 400억 절감 (2023-11-12)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.etoday.co.kr/news/view/2315189" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">이투데이 — &ldquo;올해 온라인 대환대출 인프라 이용금액 2.3조…평균 1.6%p 대출금리 하락&rdquo; (2023-12)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.news1.kr/world/international-economy/6299901" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">뉴스1 — 메타 &lsquo;뮤즈&rsquo;가 자산관리까지…수익성 압박 우려에 은행주 3% 급락 (2026-09-23)</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
