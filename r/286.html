@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>금리 인상은 발표일이 아니라 &#x27;내 대출의 재산정일&#x27;에 도착한다 — ONGLE</title>
+<meta name="description" content="기준금리 인상은 모든 대출에 같은 날 도착하지 않는다. 변동금리 대출의 이자는 계약서의 금리 변동주기(재산정일)에 맞춰 오르고, 신규취급액 코픽스가 멈춘 8월에도 잔액 기준 코픽스는 계속 올랐다. 대출 유형별로 청구서 도착일을 계산하는 법과, 도착 전에 할 수 있는 네 가지 순서(재산정일 확인·상환 우선순위·전환 비용·금리인하요구권)와 신속채무조정 제도를 표로 정리한다.">
+<meta property="og:title" content="금리 인상은 발표일이 아니라 &#x27;내 대출의 재산정일&#x27;에 도착한다">
+<meta property="og:description" content="기준금리 인상은 모든 대출에 같은 날 도착하지 않는다. 변동금리 대출의 이자는 계약서의 금리 변동주기(재산정일)에 맞춰 오르고, 신규취급액 코픽스가 멈춘 8월에도 잔액 기준 코픽스는 계속 올랐다. 대출 유형별로 청구서 도착일을 계산하는 법과, 도착 전에 할 수 있는 네 가지 순서(재산정일 확인·상환 우선순위·전환 비용·금리인하요구권)와 신속채무조정 제도를 표로 정리한다.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">금리 인상은 발표일이 아니라 &#x27;내 대출의 재산정일&#x27;에 도착한다</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart TD
+    A[한국은행 기준금리 인상] --> B[은행이 돈을 빌려오는 비용 상승]
+    B --> C{내 대출 금리는 언제 다시 정해지나}
+    C -->|6개월마다| D[다음 재산정일에 이자 상승]
+    C -->|1년마다| E[최대 1년 뒤 이자 상승]
+    C -->|몇 년간 고정| F[고정 기간이 끝나는 날 한꺼번에]
+    D --> G[도착 전 남은 시간 = 대응할 수 있는 창]
+    E --> G
+    F --> G
+</pre></div>
+    <div class="article-meta">2026-09-24 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">금리 인상은 발표일이 아니라 &lsquo;내 대출의 재산정일&rsquo;에 도착한다</h1>
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">발행일: 2026-09-24 | ONGLE 시점성 분석 #286
+이 리포트는 AI 보조로 작성됐습니다. 모든 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상은 지금의 낮은 연체율이 아직 도착하지 않은 청구서라는 데까지 왔다. 이 리포트는 다음 질문을 본다. <strong>그 청구서가 내 대출에는 언제 도착하고, 도착 전에 무엇을 할 수 있나.</strong> 변동금리 대출이 하나라도 있다면 당신 이야기다.</p>
+
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">용어 세 줄. <strong>재산정일</strong>은 변동금리 대출의 금리가 새로 정해지는 날로, 약정서에 &lsquo;금리 변동주기&rsquo;로 적혀 있다. <strong>코픽스</strong>는 은행 8곳이 돈을 빌려오는 데 든 평균 금리로, 주택담보대출 변동금리의 기준으로 쓰인다. <strong>혼합형</strong>은 처음 몇 년(보통 5년)은 고정이다가 이후 변동으로 바뀌는 대출이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">같은 달, 다른 방향으로 간 두 지표</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">코픽스에는 두 종류가 있다. 이번 달 새로 빌려온 돈만 보는 <strong>신규취급액 기준</strong>과, 예전에 빌려온 돈까지 섞어 보는 <strong>잔액 기준</strong>이다. 어느 쪽에 연동됐는지가 청구서 도착 속도를 가른다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">코픽스</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">7월</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">8월</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">신규취급액 기준</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 3.18%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 3.18%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">멈춤</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">잔액 기준</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 3.00%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">연 3.05%</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">계속 오름</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">새로 대출받는 사람에겐 숨 고르기처럼 보이지만, 잔액 기준에 묶인 기존 대출은 싸게 빌렸던 옛날 돈이 비싼 새 돈으로 천천히 바뀌면서 뒤늦게 오른다. <strong>같은 인상이 계약에 따라 몇 달씩 다른 날 도착하는 이유</strong>가 여기 있다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">내 청구서 도착일 계산해 보기</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">아래는 예시 계산이다. 7월에 오른 금리가 이자에 반영되는 첫날은 계약이 정한다.</p>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">내 대출</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">금리 변동주기</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">이자가 처음 오르는 날(예시)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">변동형 주택담보대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">6개월(가장 흔함)</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직전 재산정이 7월 초였다면 내년 1월</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1년 변동 신용대출</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">12개월</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">직전 재산정이 6월이었다면 내년 6월</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5년 혼합형</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">5년 고정 후 변동</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2023년에 받았다면 2028년 전환일</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">금리가 0.5%p(퍼센트포인트) 오를 때 대출 3억 원의 이자는 연 150만 원, 한 달 약 12만 5천 원 늘어난다(원금 상환분 제외 단순 계산). 이 금액이 재산정일 <strong>하루에 한꺼번에</strong> 생긴다. 올해 7월 새로 나간 주택담보대출 중 고정금리는 31.9%로 12년 5개월 만에 가장 낮았다. 나머지 대부분은 이 표의 위쪽 두 줄에 해당한다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">도착 전에 할 수 있는 순서</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">순서</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">할 일</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">왜 지금인가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">1</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">은행 앱·약정서에서 &lsquo;다음 금리 변경일&rsquo;과 연동 지표 확인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">날짜를 알아야 창의 길이를 안다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">2</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">대출이 여럿이면 금리가 높고 재산정이 빠른 것부터 갚기</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">먼저 오는 청구서부터 줄인다</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">3</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">고정·혼합 전환을 비교할 땐 중도상환수수료(만기 전에 갚을 때 내는 수수료, 보통 대출 3년 이후 면제)부터 확인</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">전환 비용이 이자 절감보다 크면 손해</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">4</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">소득이나 신용이 좋아졌다면 금리인하요구권(은행에 금리를 낮춰 달라고 요청할 수 있는 법적 권리) 신청</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">오르는 쪽만 기다릴 이유는 없다</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">갚을 여력이 빠듯하다면 혼자 버티는 것보다 제도를 먼저 보는 게 맞다. 신용회복위원회의 <strong>신속채무조정</strong>은 연체 전이라도 실직·폐업 등으로 연체가 우려되면 신청할 수 있고, 이자율 인하와 분할상환을 지원한다. 연체가 쌓인 뒤보다 선택지가 넓다.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 순서가 금리를 되돌리진 못한다. 다만 청구서가 도착하는 날을 &lsquo;갑자기&rsquo;에서 &lsquo;예정된 날&rsquo;로 바꿀 수는 있다. 다음 금리 뉴스를 보면, 발표일 대신 내 재산정일부터 떠올려 보자.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">↪ 관련 영상: <a href="https://www.youtube.com/@ongle" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">금리 두 번 올렸는데 연체율 0.63% — 청구서는 15개월 뒤에 온다</a></p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+
+  </article>
+
+  <article class="references"><h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">출처</h2>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><a href="https://www.g-enews.com/article/Finance/2026/09/202609220923137550bb91c46fcd_1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">글로벌이코노믹 — [9월 금안보고서] 한은 &ldquo;금리 인상, 금융불균형 완화…취약차주·중기 연체는 가속&rdquo; (2026-09-22)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.dt.co.kr/article/12084046" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">디지털타임스 — 주담대 변동금리 기준 &lsquo;코픽스&rsquo; 숨 고르기… 8월 신규 취급액 3.18% 동결 (2026-09-15)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.dailian.co.kr/news/view/1682603/" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">데일리안 — 가계대출 금리 석 달째 ↑…고정금리 비중 31.9%로 &lsquo;뚝&rsquo; (2026-08-26)</a></li>
+<li style="margin:0.3em 0;"><a href="https://www.fnnews.com/news/202607151540146844" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">파이낸셜뉴스 — 주담대 변동금리 오른다…코픽스 1년 5개월 만에 3%대 (2026-07-15)</a></li>
+<li style="margin:0.3em 0;"><a href="https://m.ccrs.or.kr/renewal/debt/quick/debt.do" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">신용회복위원회 — 신속채무조정 안내</a></li>
+</ul></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
