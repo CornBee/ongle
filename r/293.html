@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>명륜당 — 정보공개서 한 칸이 가린 회장 일가 대출 구조 — ONGLE</title>
+<meta name="description" content="공정위가 금리와 별개로 과징금을 따로 매긴 이유 — 점주가 계약 전 서류에서 알 수 없었던 관계.">
+<meta property="og:title" content="명륜당 — 정보공개서 한 칸이 가린 회장 일가 대출 구조">
+<meta property="og:description" content="공정위가 금리와 별개로 과징금을 따로 매긴 이유 — 점주가 계약 전 서류에서 알 수 없었던 관계.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+<link rel="icon" type="image/png" href="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png">
+
+<script>(function(){var qs=window.location.search;var isDev=qs.indexOf('dev=1')>=0||(window.localStorage&&localStorage.getItem('ongle_dev')==='1');if(isDev){if(qs.indexOf('dev=1')>=0&&window.localStorage){try{localStorage.setItem('ongle_dev','1');}catch(e){}}window['ga-disable-G-L02KZS89M1']=true;console.log('[ONGLE] dev mode — GA disabled (G-L02KZS89M1)');}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-L02KZS89M1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L02KZS89M1');</script>
+<script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',themeVariables:{fontFamily:'-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif'}});</script>
+<style>
+  :root {
+    --accent: #ff6b35;
+    --ink: #1a1a1a;
+    --ink-soft: #444;
+    --muted: #777;
+    --rule: #e8e8e8;
+    --bg: #fafafa;
+    --surface: #fff;
+    --highlight-bg: #fff8f3;
+    --highlight-border: #ffd9c2;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); word-break: break-all; overflow-wrap: anywhere; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9em 1.2em;
+  }
+  .topbar-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95em;
+  }
+  .brand {
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .brand-tag { color: var(--muted); font-weight: 400; margin-left: 0.5em; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.4em 1.4em 4em;
+  }
+  /* HERO — 결론 헤드라인 우선 + 시각화 즉답 */
+  .hero { padding: 0.6em 0 1.6em; border-bottom: 1px solid var(--rule); margin-bottom: 1.6em; }
+  .article-title {
+    font-size: 1.95em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .article-sub {
+    font-size: 0.95em;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 1em;
+    font-weight: 500;
+  }
+  .hero-visual {
+    margin: 0.8em 0 1.2em;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 0.4em 0.4em 0.8em;
+  }
+  .hero-visual pre.mermaid {
+    border: none;
+    background: transparent;
+    padding: 0.6em 0.4em;
+    margin: 0;
+  }
+  /* 폴백 — mermaid.js 미로드(모바일·CSP) 시 raw 노출 방지 */
+  pre.mermaid:not([data-processed]) {
+    background: #fafafa;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    color: #555;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+  }
+  pre.mermaid:not([data-processed])::before {
+    content: "📊 다이어그램 (스크립트 미로드 시 텍스트 표시)";
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    font-size: 0.78em;
+    color: #999;
+    margin-bottom: 0.5em;
+    font-weight: 500;
+  }
+  /* PNG 변환된 mermaid (kroki) */
+  .hero-visual img.mermaid-img {
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+  }
+  .article-meta {
+    font-size: 0.84em;
+    color: var(--muted);
+    margin: 0.8em 0 0.6em;
+  }
+  .article-meta a { color: var(--muted); text-decoration: underline; }
+  .article-subtitle {
+    font-size: 1em;
+    color: var(--ink-soft);
+    margin: 0 0 1em;
+    white-space: pre-line;
+  }
+  .tags { margin: 0 0 1.2em; }
+  .tag {
+    display: inline-block;
+    background: #f3f3f3;
+    color: #555;
+    padding: 0.18em 0.6em;
+    border-radius: 999px;
+    font-size: 0.82em;
+    margin-right: 0.3em;
+  }
+  /* KPI 카드 — 모바일 1~2열, 태블릿 3열 */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.8em;
+    margin: 1.4em 0;
+  }
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1em 1.1em;
+  }
+  .kpi-label { font-size: 0.78em; color: var(--muted); font-weight: 500; }
+  .kpi-value { font-size: 1.55em; font-weight: 800; color: var(--ink); margin: 0.15em 0 0.25em; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 0.8em; color: var(--ink-soft); line-height: 1.4; }
+  /* 결론 highlight */
+  .key-conclusion {
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1em 1.2em;
+    margin: 1.4em 0 1em;
+    font-size: 1.02em;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  /* why-matters bar */
+  .why-matters {
+    background: #f7f9fb;
+    border: 1px solid #e2e8ed;
+    border-radius: 10px;
+    padding: 0.85em 1.1em;
+    margin: 0.6em 0 1.6em;
+    font-size: 0.96em;
+    color: var(--ink-soft);
+  }
+  .why-label {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.74em;
+    font-weight: 700;
+    padding: 0.18em 0.55em;
+    border-radius: 4px;
+    margin-right: 0.6em;
+    vertical-align: 1px;
+  }
+  /* APPENDIX 라벨 + 본문 */
+  .appendix-marker {
+    margin: 2.6em 0 1.2em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.86em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .article-body { font-size: 1.03em; }
+  .article-body img { max-width: 100%; height: auto; }
+  .article-body pre.mermaid { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 1em; overflow-x: auto; }
+  /* footnote URL 잘림 방지 */
+  .article-body sup a, .article-body .footnote, .article-body .footnote-ref {
+    text-decoration: none;
+  }
+  .article-body .footnote a, .article-body li a {
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+  /* References (출처/footnote) — 본문 톤보다 살짝 작게 */
+  .references {
+    margin: 2em 0 0;
+    padding: 1.4em 0 0;
+    border-top: 1px dashed var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.94em;
+  }
+  .references h2 { font-size: 1.05em; color: var(--muted); border-left: none; padding-left: 0; }
+  .references ol, .references li { word-break: break-all; overflow-wrap: anywhere; }
+  .references a { color: var(--muted); }
+  /* ONGLE brand 마스코트 */
+  .brand-mascot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  /* Draft 배너 */
+  .draft-banner {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 0.7em 1.2em;
+    text-align: center;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+  /* footer — © 한 줄 + 마스코트 (댓글 위젯 폐기 후 위 여백 확보) */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.6em 1.4em 2.4em;
+    color: #999;
+    text-align: center;
+    font-size: 11.5px;
+    background: var(--surface);
+    margin-top: 3.5em;
+  }
+  footer a { color: #999; text-decoration: none; }
+  .footer-mascot {
+    display: block;
+    width: 36px; height: 36px;
+    margin: 0 auto 0.6em;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .article-title { font-size: 1.7em; }
+    main { padding: 1.6em 1em 3em; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-value { font-size: 1.4em; }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+        onerror="document.documentElement.classList.add('no-mermaid')"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.mermaid) {
+      try {
+        mermaid.initialize({ startOnLoad: false, theme: "default", securityLevel: "loose" });
+        mermaid.run({ querySelector: "pre.mermaid" }).catch(function(e) {
+          console.warn("mermaid render fail:", e);
+          document.documentElement.classList.add("no-mermaid");
+        });
+      } catch (e) {
+        console.warn("mermaid init fail:", e);
+        document.documentElement.classList.add("no-mermaid");
+      }
+    } else {
+      document.documentElement.classList.add("no-mermaid");
+    }
+  });
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="https://cornbee.github.io/ongle/">
+      <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_profile.png" alt="" class="brand-mascot">ONGLE<span class="brand-tag">— 리포트</span>
+    </a>
+    <a href="https://cornbee.github.io/ongle/" style="color:var(--muted);text-decoration:none;font-size:0.9em;">← 전체 리포트</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1 class="article-title">명륜당 — 정보공개서 한 칸이 가린 회장 일가 대출 구조</h1>
+    
+    <div class="hero-visual"><pre class="mermaid" style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:1em;margin:1.2em 0;overflow-x:auto;text-align:center;font-family:inherit;">
+flowchart LR
+    A[가맹희망자] --> B[정보공개서 확인]
+    B --> C{신용 제공 칸}
+    C -->|대출 내용을 적은 경우| D[상대와 조건 파악 가능]
+    C -->|비워 둔 경우| E[대출이 없는 것으로 판단]
+    E --> F[계약 후 대출 연결]
+    F -.회장 일가 소유 회사.-> G[알 수 없었던 관계]
+</pre></div>
+    <div class="article-meta">2026-09-29 · <a href="https://www.youtube.com/@CornBeeRock" target="_blank" rel="noopener">채널</a> · <a href="https://cornbee.github.io/ongle/">블로그</a></div>
+    <div class="tags"><span class="tag">#산업분석</span></div>
+    
+    
+    
+  </section>
+
+  <div class="appendix-marker">전체 리포트 — 깊이 있는 분석</div>
+
+  <article class="article-body">
+<h1 style="font-size:1.6em;font-weight:700;margin-top:1.5em;margin-bottom:0.6em;line-height:1.3;">명륜당 — 정보공개서 한 칸이 가린 회장 일가 대출 구조</h1>
+<div class="exec-summary">
+
+<div class="section-label">핵심 요약 · 한 페이지</div>
+
+<div class="hook">
+점주가 계약 전에 받아 본 서류의 "신용 제공 내역" 칸에는 "해당사항 없음"이라고 적혀 있었다. 공정위는 이 한 칸을 따로 떼어 과징금을 매겼다.
+</div>
+
+<div class="one-message">
+점주가 알 수 없었던 건 금리의 높낮이가 아니라 <strong>돈을 빌려주는 상대가 본사 회장 일가 소유 회사라는 사실</strong>이다.
+</div>
+
+
+
+
+
+</div>
+
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">이 리포트는 AI 보조로 작성됐습니다. 핵심 수치·인용은 출처 링크로 확인할 수 있습니다.</p>
+</blockquote>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상에서 본 금리 차이는 사건의 절반이다<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup>. 이 리포트는 나머지 절반, 공정위가 금리와 별개로 과징금을 따로 매긴 이유를 다룬다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">서류 한 장이 하는 일</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정보공개서는 본사가 가맹 계약을 맺기 전에 가맹희망자에게 주도록 법으로 정해진 회사 소개서다. 점주는 이 서류로 본사가 어떤 회사인지 판단하고 계약 여부를 정한다. 여기에는 &ldquo;신용 제공 및 알선 등 내역&rdquo;이라는 칸이 있다. 본사가 점주에게 돈을 빌려주거나 빌려주는 곳을 소개하면 그 내용을 적는 칸이다<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">2</a></sup>.</p>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">공정위가 확인한 서류에서는 이 칸이 위 그림의 오른쪽 길로 갔다. 그런데 실제로는 회장 일가가 소유한 대부업체에서 대출이 이어졌다<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">2</a></sup>.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">과징금이 둘로 나뉜 이유</h2>
+<figure style="margin:1.4em 0;padding:12px 10px;background:#fff;border:1px solid #e9ecef;border-radius:10px;text-align:center;overflow-x:auto;"><svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" width="100%" style="max-width:720px;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;"><rect x="0" y="0" width="720" height="440" fill="#ffffff"/><text x="360" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#222">공정위 과징금 구성 (억 원)</text><line x1="66" y1="344.0" x2="696" y2="344.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="348.0" text-anchor="end" font-size="12" fill="#868e96">0</text><line x1="66" y1="286.8" x2="696" y2="286.8" stroke="#e9ecef" stroke-width="1"/><text x="58" y="290.8" text-anchor="end" font-size="12" fill="#868e96">30</text><line x1="66" y1="229.6" x2="696" y2="229.6" stroke="#e9ecef" stroke-width="1"/><text x="58" y="233.6" text-anchor="end" font-size="12" fill="#868e96">60</text><line x1="66" y1="172.4" x2="696" y2="172.4" stroke="#e9ecef" stroke-width="1"/><text x="58" y="176.4" text-anchor="end" font-size="12" fill="#868e96">90</text><line x1="66" y1="115.2" x2="696" y2="115.2" stroke="#e9ecef" stroke-width="1"/><text x="58" y="119.2" text-anchor="end" font-size="12" fill="#868e96">120</text><line x1="66" y1="58.0" x2="696" y2="58.0" stroke="#e9ecef" stroke-width="1"/><text x="58" y="62.0" text-anchor="end" font-size="12" fill="#868e96">150</text><text x="18" y="201" text-anchor="middle" font-size="12" fill="#868e96" transform="rotate(-90 18 201)">억 원</text><rect x="181.5" y="144.3" width="84.0" height="199.7" rx="4" fill="#ff7a45"/><text x="223.5" y="136.3" text-anchor="middle" font-size="13" font-weight="700" fill="#343a40">104.72</text><text x="223.5" y="366.0" text-anchor="middle" font-size="12" fill="#495057">돈을 싸게 빌려준 부당지원</text><rect x="496.5" y="260.1" width="84.0" height="83.9" rx="4" fill="#ffa94d"/><text x="538.5" y="252.1" text-anchor="middle" font-size="13" font-weight="700" fill="#343a40">44</text><text x="538.5" y="366.0" text-anchor="middle" font-size="12" fill="#495057">정보공개서를 사실과 다르게 적음</text></svg></figure>
+
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">앞의 것은 본사와 대부업체 사이의 거래를 문제 삼은 것이고, 뒤의 것은 본사와 점주 사이의 정보를 문제 삼은 것이다<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">3</a></sup>. 두 번째 과징금이 있다는 건 공정위가 점주를 단순한 대출 고객이 아니라, 계약 전에 정확한 정보를 받아야 하는 당사자로 봤다는 뜻이다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">대부업체는 어떤 회사였나</h2>
+<table style="border-collapse:collapse;width:100%;margin:1.2em 0;font-size:0.95em;">
+<thead>
+<tr>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">확인 항목</th>
+<th style="border:1px solid #ddd;padding:0.6em 0.8em;background:#f6f6f6;font-weight:700;text-align:left;">공정위가 밝힌 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">규모</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">14곳의 규모가 2025년 기준 대부업체 8,203곳 중 27위</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">실체</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">인력이 최소이고 사무실을 함께 쓰는 회사들</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">본사와의 관계</td>
+<td style="border:1px solid #ddd;padding:0.6em 0.8em;">회장 일가 소유</td>
+</tr>
+</tbody>
+</table>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">규모가 커진 것도 본사의 지원과 이어져 있다고 공정위는 봤다<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">3</a></sup>. 점주가 회사 이름만 보고 본사와의 관계를 알아채기는 어렵다.</p>
+<h2 style="font-size:1.35em;font-weight:700;margin-top:1.6em;margin-bottom:0.5em;color:#222;border-left:4px solid #ff6b35;padding-left:0.6em;">계약 전에 확인할 세 칸</h2>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">정보공개서는 공정위의 가맹사업정보제공시스템(franchise.ftc.go.kr)에서 누구나 열람할 수 있다. 계약서에 서명하기 전에 이 세 가지를 확인해 볼 수 있다.</p>
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"><strong>신용 제공 및 알선 내역</strong> 칸이 비어 있는지, 적혀 있는지 본다.</li>
+<li style="margin:0.3em 0;">본사가 대출처를 소개한다면, 그 회사와 <strong>본사 대표의 관계</strong>를 서면으로 묻는다.</li>
+<li style="margin:0.3em 0;">대출을 받으면 계약 조건이나 물품 구매와 <strong>연결되는지</strong> 묻는다.</li>
+</ol>
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">서류에 적힌 내용을 한 번 되묻는 일이 계약 전에 점주가 쓸 수 있는 가장 싼 안전장치다.</p>
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<blockquote style="border-left:3px solid #ff6b35;background:#fff8f5;padding:0.8em 1em;margin:1em 0;color:#555;font-style:italic;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;"><strong>출처 정리</strong> <sup id="fnref2:1"><a class="footnote-ref" href="#fn:1" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">1</a></sup> <sup id="fnref3:2"><a class="footnote-ref" href="#fn:2" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">2</a></sup> <sup id="fnref3:3"><a class="footnote-ref" href="#fn:3" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">3</a></sup></p>
+<ul style="padding-left:1.5em;line-height:1.75;">
+<li style="margin:0.3em 0;"></li>
+<li style="margin:0.3em 0;"></li>
+<li style="margin:0.3em 0;"></li>
+</ul>
+</blockquote>
+
+  </article>
+
+  <article class="references"><div class="footnote">
+<hr / style="border:none;border-top:1px solid #ddd;margin:2em 0;">
+<ol style="padding-left:1.5em;line-height:1.75;">
+<li id="fn:1" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">영상 나레이션 — 명륜당 대부업체 대여·금리 관련 공정위 발표 요약&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+<li id="fn:2" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">세계일보, &ldquo;회장일가 소유 대부업체에 2983억원 2.3%에 저리 대여&rdquo;, 2026-09-28, https://www.segye.com/newsView/20260928506956 · 뉴스프라임, &ldquo;가맹점엔 최고 18% 이자…명륜당, 오너 일가 …&rdquo;, https://www.newsprime.co.kr/news/article/?no=749081&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+<li id="fn:3" style="margin:0.3em 0;">
+<p style="line-height:1.75;margin:0.8em 0;color:#333;font-size:1.02em;">아시아경제, &ldquo;가맹점에 &lsquo;18% 금리&rsquo;로 이자장사&hellip;명륜당 과징금 &hellip;&rdquo;, 2026-09-28, https://view.asiae.co.kr/article/2026092816232411898 · 뉴스핌, &ldquo;명륜당, 회장일가 대부업체에 2983억 저리 지원…&rdquo;, 2026-09-28, https://www.newspim.com/news/view/20260928000730 · 더퍼블릭, https://www.thepublic.kr/news/articleView.html?idxno=320262&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text" style="color:#ff6b35;text-decoration:none;border-bottom:1px solid #ffe0d0;">↑</a></p>
+</li>
+</ol>
+</div></article>
+</main>
+<footer>
+  <img src="https://cornbee.github.io/ongle/assets/ongle/ongle_idle.png" alt="" class="footer-mascot" loading="lazy">
+  © 2026 ONGLE
+</footer>
+</body>
+</html>
